@@ -10,13 +10,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* ===== CONFIGURACIÓN PARA QUE EL IFRAME SE AJUSTE A SU CONTENIDO ===== */
         html, body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
             height: auto;
-            overflow-y: auto !important; /* Scroll de toda la página */
+            overflow-y: auto !important;
             background: #f5f7fa;
         }
         body {
@@ -46,20 +45,19 @@
             width: 100%;
             border: none;
             background: #f5f7fa;
-            /* La altura la controlará JavaScript */
-            height: 100vh; /* valor inicial */
+            height: 100vh;
             transition: height 0.2s ease;
         }
     </style>
 </head>
 <body>
 
-<!-- ===== HEADER (con barra superior) ===== -->
 <header>
     <div class="top-bar">
         <div class="container top-bar-inner">
             <div class="menu-sup">
                 <a href="oportunidades.html">OPORTUNIDADES</a>
+                <a href="cosecha.html">COSECHA</a>
                 <a href="https://windsor-one.github.io/windsor/" target="_blank" rel="noopener noreferrer">WINDSOR</a>
                 <a href="https://windsor-one.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer">HELIOT</a>
             </div>
@@ -86,6 +84,7 @@
                     <a href="oportunidades.html#empleo">Empleo</a>
                     <a href="oportunidades.html#educacion">Educación y formación</a>
                     <a href="oportunidades.html#becas">Becas y oportunidades</a>
+                    <a href="florecimiento.html">Florecimiento Key</a>
                 </div>
             </div>
             <a href="administrados.html">Administrados</a>
@@ -99,12 +98,10 @@
     </div>
 </header>
 
-<!-- ===== CONTENEDOR DEL IFRAME ===== -->
 <div class="blog-container">
     <iframe id="blogIframe" class="blog-iframe" src="https://the-newkey.blogspot.com/" title="Blog de Key · Fundación Hernández"></iframe>
 </div>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
     <div class="container footer-grid">
         <div class="col-logo">
@@ -139,42 +136,15 @@
     <div class="copyright">Key · Fundación Hernández · 2026</div>
 </footer>
 
-<!-- ===== SCRIPT PARA AJUSTAR LA ALTURA DEL IFRAME ===== -->
 <script>
     (function() {
         var iframe = document.getElementById('blogIframe');
-
-        // Escuchar mensajes del iframe
         window.addEventListener('message', function(event) {
-            // Verificar que el mensaje sea de nuestro blog
             if (event.data && event.data.type === 'setBlogHeight') {
                 var height = event.data.height;
-                if (height && height > 0) {
-                    iframe.style.height = height + 'px';
-                }
+                if (height && height > 0) iframe.style.height = height + 'px';
             }
         });
-
-        // También ajustar cuando la ventana cambie (por si acaso)
-        var resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
-                // Forzar recálculo de altura si el iframe no lo envía
-                // (puede que no sea necesario, pero por seguridad)
-            }, 300);
-        });
-
-        // Si el iframe no envía la altura después de 5 segundos, usar un fallback
-        setTimeout(function() {
-            if (iframe.style.height === '100vh') {
-                // Intentar obtener la altura mediante un método alternativo
-                try {
-                    // No podemos acceder al contenido por dominio cruzado, pero podemos intentar
-                    // con un postMessage manual (no funciona)
-                } catch(e) {}
-            }
-        }, 5000);
     })();
 </script>
 
