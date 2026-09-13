@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ideas seleccionadas · Florecimiento Key</title>
+    <meta name="description" content="Conoce las ideas seleccionadas de Florecimiento Key 2026. Cada propuesta fue evaluada por su mérito.">
+    <link rel="icon" href="./assets/logo-simbolo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .flor-main{
+      --flor-bg:#fbf8f1;
+      --flor-cream:#f5efdf;
+      --flor-line:#e8e0ce;
+      --flor-line-2:#d9cfb8;
+      --flor-text:#1a1f2e;
+      --flor-muted:#5c6478;
+      --maqui:#d9558a; --maqui-2:#e88ab5; --maqui-bg:#fce7f0;
+      --indigo:#3a5da8; --indigo-bg:#e8efff;
+      --celadon:#4a8f70; --celadon-2:#6ddba0; --celadon-bg:#e3f5ea;
+      --gold:#b8912e; --gold-bg:#fbf3dc;
+      color:var(--flor-text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;
+      background:#ffffff;
+    }
+    .flor-main a{color:var(--maqui);text-decoration:none}
+    .flor-main a:hover{text-decoration:underline}
+    .flor-main .btn-flor{color:#0a1f14;text-decoration:none}
+    .flor-main .btn-flor:hover{text-decoration:none}
+    .flor-main .btn-flor-ghost{color:var(--flor-text)}
+    .flor-main .btn-flor-ghost:hover{text-decoration:none}
+    .flor-wrap{max-width:1140px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+
+    /* FONDOS DECORATIVOS */
+    .flor-main .hangul-bg{position:absolute;top:120px;left:50%;transform:translateX(-50%);
+      font-family:serif;font-weight:900;color:rgba(217,85,138,.035);
+      font-size:min(34vw,460px);line-height:1;user-select:none;pointer-events:none;
+      letter-spacing:-.05em;z-index:0;overflow:hidden}
+    .flor-main .bojagi-pattern{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.05;
+      background-image:
+        linear-gradient(rgba(74,143,112,.6) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(74,143,112,.6) 1px,transparent 1px);
+      background-size:120px 120px,120px 120px;
+      mask-image:radial-gradient(ellipse at 15% 30%,#000 0%,transparent 60%);
+      -webkit-mask-image:radial-gradient(ellipse at 15% 30%,#000 0%,transparent 60%)}
+    .flor-main #petals{position:absolute;top:0;left:0;width:100%;height:100%;
+      pointer-events:none;z-index:1;opacity:.5}
+    .flor-main .orb{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
+    .flor-main .orb-1{width:480px;height:480px;background:radial-gradient(circle,rgba(244,163,199,.26),transparent 70%);top:60px;left:-180px;opacity:.5}
+    .flor-main .orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(109,219,160,.22),transparent 70%);top:800px;right:-200px;opacity:.45}
+    .flor-main .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.26;
+      stroke:var(--maqui);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .flor-main .doodle.green{stroke:var(--celadon);opacity:.3}
+    .flor-main .doodle.gold{stroke:var(--gold);opacity:.28}
+    .flor-main .spin-slow{animation:florSpin 60s linear infinite}
+    .flor-main .sway{animation:florSway 10s ease-in-out infinite}
+    @keyframes florSpin{to{transform:rotate(360deg)}}
+    @keyframes florSway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
+
+    /* HERO */
+    .flor-hero{position:relative;padding:82px 0 64px;overflow:hidden;
+      background:linear-gradient(180deg,#ffffff 0%,var(--flor-bg) 60%,#ffffff 100%);
+      border-bottom:1px solid var(--flor-line)}
+    .flor-hero .flor-wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .edition-badge{display:inline-flex;align-items:center;gap:8px;
+      font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
+      color:var(--celadon);border:1px solid rgba(74,143,112,.35);
+      padding:7px 16px;border-radius:999px;margin-bottom:14px;
+      background:var(--celadon-bg);font-weight:700}
+    .edition-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--celadon)}
+    .flor-tag{display:inline-flex;align-items:center;gap:10px;
+      font-size:11.5px;letter-spacing:1.9px;text-transform:uppercase;
+      color:var(--maqui);border:1px solid rgba(217,85,138,.3);
+      padding:9px 18px;border-radius:999px;margin-bottom:26px;
+      background:var(--maqui-bg);font-weight:600}
+    .flor-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--maqui)}
+    .flor-title{font-size:clamp(34px,5.6vw,56px);line-height:1.05;font-weight:900;letter-spacing:-1.6px;
+      margin-bottom:16px;
+      background:linear-gradient(135deg,#d9558a 0%,#e88ab5 40%,#4a8f70 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .flor-title em{font-style:normal}
+    .slogan{font-size:15px;font-style:italic;color:var(--maqui);letter-spacing:.5px;margin-bottom:20px;font-weight:500;
+      display:inline-flex;align-items:center;gap:12px}
+    .slogan::before,.slogan::after{content:"";width:30px;height:1px;
+      background:linear-gradient(90deg,transparent,var(--maqui),transparent)}
+    .flor-lead{color:var(--flor-muted);font-size:17px;max-width:720px;margin:0 auto}
+
+    /* SECCIONES */
+    .flor-section{padding:72px 0;position:relative;overflow:hidden;background:#ffffff}
+    .flor-section.cream{background:var(--flor-bg)}
+    .sec-label{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;
+      text-transform:uppercase;color:var(--celadon);margin-bottom:14px;font-weight:700;
+      position:relative;left:50%;transform:translateX(-50%)}
+    .sec-label::before{content:"";width:22px;height:1px;background:var(--celadon)}
+    .flor-h2{font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:-.7px;margin-bottom:14px;
+      text-align:center;color:var(--flor-text)}
+    .flor-h2 em{font-style:normal;color:var(--maqui)}
+    .flor-h2 em.green{color:var(--celadon)}
+    .sec-intro{color:var(--flor-muted);max-width:640px;margin:0 auto 46px;text-align:center;font-size:15.5px}
+
+    /* STATS */
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;
+      max-width:780px;margin:0 auto 56px}
+    .stat{background:#ffffff;border:1px solid var(--flor-line);border-radius:14px;
+      padding:22px 20px;text-align:center;position:relative;overflow:hidden}
+    .stat::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+      width:50%;height:2px;background:linear-gradient(90deg,transparent,var(--maqui),transparent)}
+    .stat:nth-child(2)::before{background:linear-gradient(90deg,transparent,var(--celadon),transparent)}
+    .stat:nth-child(3)::before{background:linear-gradient(90deg,transparent,var(--indigo),transparent)}
+    .stat .n{font-size:28px;font-weight:800;color:var(--flor-text);line-height:1;margin-bottom:6px;letter-spacing:-.5px}
+    .stat .l{font-size:12.5px;color:var(--flor-muted);letter-spacing:.3px;text-transform:uppercase;font-weight:600}
+
+    /* EMPTY STATE */
+    .empty-state{max-width:620px;margin:0 auto;text-align:center;padding:56px 40px;
+      background:#ffffff;border:1px dashed var(--flor-line-2);border-radius:16px}
+    .empty-state .icon{width:64px;height:64px;margin:0 auto 20px;
+      display:flex;align-items:center;justify-content:center;
+      background:var(--celadon-bg);border-radius:50%;border:1px solid rgba(74,143,112,.2)}
+    .empty-state .icon svg{width:30px;height:30px;stroke:var(--celadon);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .empty-state h3{font-size:20px;font-weight:700;color:var(--flor-text);margin-bottom:10px;letter-spacing:-.3px}
+    .empty-state p{color:var(--flor-muted);font-size:15px;line-height:1.7;margin-bottom:22px}
+    .empty-state .btn-flor{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:999px;
+      font-weight:700;font-size:14.5px;background:linear-gradient(135deg,var(--celadon),var(--celadon-2));
+      color:#0a1f14;border:none;cursor:pointer;transition:.25s;text-decoration:none}
+    .empty-state .btn-flor:hover{transform:translateY(-2px);text-decoration:none}
+    .empty-state .btn-flor svg{width:16px;height:16px}
+
+    /* GRID DE IDEAS */
+    .ideas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;
+      max-width:1080px;margin:0 auto}
+    .idea-card{background:#ffffff;border:1px solid var(--flor-line);border-radius:16px;
+      padding:26px 24px;position:relative;overflow:hidden;transition:.3s;
+      display:flex;flex-direction:column;gap:14px}
+    .idea-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--maqui),var(--gold),var(--celadon))}
+    .idea-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(26,31,46,.06);
+      border-color:var(--celadon)}
+    .idea-badge{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;
+      font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;
+      padding:5px 12px;border-radius:999px}
+    .idea-badge .dot{width:5px;height:5px;border-radius:50%}
+    .idea-badge.emp{background:var(--maqui-bg);color:var(--maqui)}
+    .idea-badge.emp .dot{background:var(--maqui)}
+    .idea-badge.edu{background:var(--celadon-bg);color:var(--celadon)}
+    .idea-badge.edu .dot{background:var(--celadon)}
+    .idea-badge.adul{background:var(--gold-bg);color:var(--gold)}
+    .idea-badge.adul .dot{background:var(--gold)}
+    .idea-badge.incl{background:var(--indigo-bg);color:var(--indigo)}
+    .idea-badge.incl .dot{background:var(--indigo)}
+    .idea-badge.amb{background:var(--celadon-bg);color:var(--celadon)}
+    .idea-badge.amb .dot{background:var(--celadon)}
+    .idea-badge.bien{background:var(--maqui-bg);color:var(--maqui)}
+    .idea-badge.bien .dot{background:var(--maqui)}
+    .idea-badge.tec{background:var(--indigo-bg);color:var(--indigo)}
+    .idea-badge.tec .dot{background:var(--indigo)}
+    .idea-badge.cul{background:var(--gold-bg);color:var(--gold)}
+    .idea-badge.cul .dot{background:var(--gold)}
+    .idea-badge.otr{background:#eef0f4;color:var(--flor-muted)}
+    .idea-badge.otr .dot{background:var(--flor-muted)}
+    .idea-title{font-size:17.5px;font-weight:700;color:var(--flor-text);line-height:1.35;letter-spacing:-.2px}
+    .idea-meta{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;
+      border-top:1px solid var(--flor-line);font-size:13px;color:var(--flor-muted)}
+    .idea-meta svg{width:15px;height:15px;stroke:var(--celadon);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .idea-meta strong{color:var(--flor-text);font-weight:600}
+
+    /* NOTA */
+    .flor-note{background:var(--celadon-bg);
+      border-left:3px solid var(--celadon);padding:22px 26px;border-radius:12px;font-size:14.5px;
+      color:var(--flor-muted);max-width:840px;margin:48px auto 0;line-height:1.75;
+      display:flex;gap:16px;align-items:flex-start}
+    .flor-note svg{width:22px;height:22px;flex-shrink:0;stroke:var(--celadon);fill:none;stroke-width:1.8;margin-top:2px}
+    .flor-note strong{color:var(--flor-text)}
+
+    /* CTA FINAL */
+    .cta-final{text-align:center;padding:88px 0;position:relative;background:var(--flor-bg);
+      border-top:1px solid var(--flor-line)}
+    .cta-final .flor-h2{margin-bottom:18px}
+    .cta-final .slogan{margin-bottom:22px;font-size:18px}
+    .cta-final p{color:var(--flor-muted);max-width:560px;margin:0 auto 32px;font-size:15.5px}
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .btn-flor{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:999px;
+      font-weight:700;font-size:14.5px;border:1px solid transparent;cursor:pointer;transition:.25s;
+      font-family:inherit;text-decoration:none}
+    .btn-flor-green{background:linear-gradient(135deg,var(--celadon),var(--celadon-2));color:#0a1f14;border:none}
+    .btn-flor-green:hover{transform:translateY(-2px);text-decoration:none}
+    .btn-flor-ghost{background:#ffffff;color:var(--flor-text);border:1px solid var(--flor-line-2)}
+    .btn-flor-ghost:hover{border-color:var(--celadon);color:var(--celadon);text-decoration:none}
+    .btn-flor svg{width:17px;height:17px}
+
+    @media(max-width:768px){
+      .flor-hero{padding:56px 0 48px}
+      .flor-section{padding:56px 0}
+      .cta-final{padding:64px 0}
+    }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER DE KEY ===== -->
+<header>
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="menu-sup">
+                <a href="oportunidades.html">OPORTUNIDADES</a>
+                <a href="cosecha.html">COSECHA</a>
+                <a href="https://windsor-one.github.io/windsor/" target="_blank" rel="noopener noreferrer">WINDSOR</a>
+                <a href="https://windsor-one.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer">HELIOT</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-header container">
+        <div class="logo">
+            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key · Fundación Hernández"></a>
+        </div>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <nav class="nav-principal" id="mainNav">
+            <div class="submenu">
+                <a href="sobre-nosotros.html">Sobre nosotros <i class="fas fa-chevron-down"></i></a>
+                <div class="submenu-content">
+                    <a href="sobre-nosotros.html#trayectoria">Nuestra Trayectoria</a>
+                    <a href="sobre-nosotros.html#areas">Áreas de Interés</a>
+                    <a href="sobre-nosotros.html#jovenes-key">Jóvenes Key</a>
+                    <a href="sobre-nosotros.html#vision">Visión de Futuro</a>
+                </div>
+            </div>
+            <div class="submenu">
+                <a href="oportunidades.html">Oportunidades <i class="fas fa-chevron-down"></i></a>
+                <div class="submenu-content">
+                    <a href="oportunidades.html#empleo">Empleo</a>
+                    <a href="oportunidades.html#educacion">Educación y formación</a>
+                    <a href="oportunidades.html#becas">Becas y oportunidades</a>
+                    <a href="florecimiento.html">Florecimiento Key</a>
+                </div>
+            </div>
+            <a href="administrados.html">Administrados</a>
+            <a href="blog.html">Blog</a>
+            <a href="contactanos.html">Contáctanos</a>
+            <div class="search-box">
+                <input type="text" placeholder="BUSCAR...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- ===== CONTENIDO ===== -->
+<main class="flor-main">
+
+  <div class="hangul-bg">개화</div>
+  <div class="bojagi-pattern"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- HERO -->
+  <header class="flor-hero">
+    <canvas id="petals"></canvas>
+    <svg class="doodle sway" style="top:16%;left:5%" width="76" height="76" viewBox="0 0 76 76">
+      <circle cx="38" cy="32" r="5.5"/>
+      <path d="M38 26c-5.5-4.5-12-4.5-14.5 1.5 4.5 4.5 11 4.5 14.5-1.5z"/>
+      <path d="M38 26c5.5-4.5 12-4.5 14.5 1.5-4.5 4.5-11 4.5-14.5-1.5z"/>
+      <path d="M38 38c-5.5 4.5-12 4.5-14.5-1.5 4.5-4.5 11-4.5 14.5 1.5z"/>
+      <path d="M38 38c5.5 4.5 12 4.5 14.5-1.5-4.5-4.5-11-4.5-14.5 1.5z"/>
+    </svg>
+    <svg class="doodle green spin-slow" style="bottom:14%;right:6%" width="90" height="90" viewBox="0 0 90 90">
+      <circle cx="45" cy="45" r="34" stroke-dasharray="4 8"/>
+      <circle cx="45" cy="45" r="20"/>
+      <circle cx="45" cy="45" r="10" stroke-dasharray="2 4"/>
+    </svg>
+
+    <div class="flor-wrap">
+      <span class="edition-badge">Primera edición · 2026</span>
+      <span class="flor-tag">Ideas seleccionadas</span>
+
+      <h1 class="flor-title">Lo que <em>floreció</em></h1>
+      <p class="slogan">It's time to FloreSer</p>
+
+      <p class="flor-lead">
+        Estas son las propuestas que pasaron a la etapa de implementación. Cada una fue evaluada
+        por su mérito, sin importar quién la envió.
+      </p>
+    </div>
+  </header>
+
+  <!-- RESUMEN -->
+  <section class="flor-section">
+    <div class="flor-wrap">
+      <div class="stats">
+        <div class="stat">
+          <div class="n" id="statTotal">0</div>
+          <div class="l">Ideas seleccionadas</div>
+        </div>
+        <div class="stat">
+          <div class="n">2026</div>
+          <div class="l">Primera edición</div>
+        </div>
+        <div class="stat">
+          <div class="n">9</div>
+          <div class="l">Categorías</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTA DE IDEAS -->
+  <section class="flor-section cream">
+    <div class="flor-wrap">
+      <div class="sec-label">Resultados</div>
+      <h2 class="flor-h2">Ideas que pasan a <em class="green">implementación</em></h2>
+      <p class="sec-intro">
+        Los resultados se publican en este mismo sitio. Los autores pueden reclamar su crédito
+        con el código que recibieron al postular.
+      </p>
+
+      <!-- GRID -->
+      <div class="ideas-grid" id="ideasGrid">
+
+        <!-- ============================================================
+             AQUÍ VAN LAS IDEAS SELECCIONADAS.
+             Cuando el jurado seleccione ideas, reemplaza el bloque
+             .empty-state por las .idea-card correspondientes.
+
+             Formato de cada tarjeta:
+
+             <div class="idea-card">
+               <span class="idea-badge CATEGORIA"><span class="dot"></span>CATEGORÍA</span>
+               <h3 class="idea-title">Título de la idea</h3>
+               <div class="idea-meta">
+                 <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg>
+                 Por <strong>Alias del autor</strong>
+               </div>
+             </div>
+
+             Categorías disponibles (clase .idea-badge):
+               emp   → Empleabilidad juvenil    (rosa)
+               edu   → Educación y formación     (verde celadón)
+               adul  → Adultos mayores           (dorado)
+               incl  → Inclusión y diversidad    (índigo)
+               amb   → Medioambiente             (verde celadón)
+               bien  → Bienestar y salud         (rosa)
+               tec   → Tecnología cívica         (índigo)
+               cul   → Cultura y comunidad       (dorado)
+               otr   → Otra                      (gris)
+
+             Cuando haya ideas seleccionadas, elimina el bloque
+             <div class="empty-state"> ... </div> y coloca las tarjetas.
+             También actualiza el número en #statTotal.
+             ============================================================ -->
+
+        <!-- ESTADO VACÍO -->
+        <div class="empty-state" id="emptyState">
+          <div class="icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2v6M12 22v-6M2 12h6M22 12h-6"/>
+              <circle cx="12" cy="12" r="4"/>
+            </svg>
+          </div>
+          <h3>Aún no hay ideas publicadas</h3>
+          <p>
+            Las propuestas seleccionadas de la primera edición se publicarán aquí cuando
+            el jurado termine su evaluación. Si ya postulaste, guarda tu código de autoría.
+          </p>
+          <a href="postular.html" class="btn-flor">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+            Enviar una idea
+          </a>
+        </div>
+
+      </div>
+
+      <div class="flor-note">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <div>
+          <strong>Sobre el crédito:</strong> solo se muestra el alias público que el autor
+          decidió compartir al postular. Si no reclamó crédito, la idea se publica sin nombre.
+          Para reclamar autoría, visita la página de <a href="reclamar.html">reclamación</a>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="flor-wrap">
+      <h2 class="flor-h2">¿Ya postulaste? <em class="green">Reclama tu crédito</em></h2>
+      <p class="slogan">It's time to FloreSer</p>
+      <p>Si tu idea fue seleccionada y quieres aparecer con tu nombre real, usa tu código de autoría.</p>
+      <div class="cta-row">
+        <a href="reclamar.html" class="btn-flor btn-flor-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          Reclamar autoría
+        </a>
+        <a href="florecimiento.html" class="btn-flor btn-flor-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+          </svg>
+          Volver al evento
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER DE KEY ===== -->
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="col-logo">
+            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key · Fundación Hernández"></a>
+        </div>
+        <div class="col-enlaces">
+            <p><strong>Organización</strong></p>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="oportunidades.html">Oportunidades</a>
+            <a href="administrados.html">Administrados</a>
+            <a href="cosecha.html">Programa Cosecha</a>
+            <a href="blog.html">Blog</a>
+            <a href="contactanos.html">Contáctanos</a>
+        </div>
+        <div class="col-enlaces">
+            <p><strong>Transparencia y legal</strong></p>
+            <a href="legal.html#naturaleza">Naturaleza de Key</a>
+            <a href="legal.html#aviso-legal">Aviso Legal</a>
+            <a href="legal.html#politica-editorial">Política Editorial</a>
+            <a href="legal.html#politica-privacidad">Política de Privacidad</a>
+            <a href="legal.html#politica-cookies">Política de Cookies</a>
+            <a href="legal.html#terminos-condiciones">Términos y Condiciones</a>
+            <a href="legal.html#propiedad-intelectual">Propiedad Intelectual</a>
+        </div>
+    </div>
+    <div class="social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="copyright">Key · Fundación Hernández · 2026 · Florecimiento Key · 개화</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+<script>
+/* ===== PÉTALOS ===== */
+(function(){
+  const c = document.getElementById('petals');
+  if (!c) return;
+  const host = c.parentElement;
+  const ctx = c.getContext('2d');
+  let w, h, items = [];
+  const MAQUI = ['#d9558a','#e88ab5','#f4a3c7','#ffc9e0'];
+  const HOJA = ['#4a8f70','#6ddba0','#8fbfa8','#7ec9a3'];
+  const GOLD = ['#b8912e','#c9a75a'];
+  const COUNT = window.innerWidth < 720 ? 14 : 22;
+
+  function resize(){ w = c.width = host.offsetWidth; h = c.height = host.offsetHeight; }
+  resize();
+  addEventListener('resize', resize);
+
+  function drawMaqui(ctx, size, color){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(0, -size * .9);
+    ctx.bezierCurveTo(size * .7, -size * .5, size * .8, size * .4, 0, size);
+    ctx.bezierCurveTo(-size * .8, size * .4, -size * .7, -size * .5, 0, -size * .9);
+    ctx.fill();
+    ctx.globalAlpha = .5;
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.ellipse(-size * .15, -size * .25, size * .16, size * .36, -.2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  function drawBlossom(ctx, size, color){
+    ctx.fillStyle = color;
+    for (let i = 0; i < 5; i++){
+      ctx.save();
+      ctx.rotate((Math.PI * 2 / 5) * i);
+      ctx.beginPath();
+      ctx.ellipse(0, -size * .55, size * .4, size * .65, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+    ctx.fillStyle = '#b8912e';
+    ctx.beginPath();
+    ctx.arc(0, 0, size * .16, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  function drawLeaf(ctx, size, color){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, size * .32, size, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  function P(){ this.reset(true); }
+  P.prototype.reset = function(init){
+    const r = Math.random();
+    if (r < .5) this.type = 'maqui';
+    else if (r < .8) this.type = 'blossom';
+    else this.type = 'leaf';
+    this.x = Math.random() * w;
+    this.y = init ? Math.random() * h : -30;
+    this.size = 5 + Math.random() * 7;
+    this.vy = .25 + Math.random() * .5;
+    this.vx = (Math.random() - .5) * .45;
+    this.rot = Math.random() * Math.PI * 2;
+    this.rs = (Math.random() - .5) * .02;
+    this.op = .35 + Math.random() * .4;
+    this.ph = Math.random() * Math.PI * 2;
+    this.ps = .01 + Math.random() * .02;
+    if (this.type === 'leaf') this.color = HOJA[Math.floor(Math.random() * HOJA.length)];
+    else if (Math.random() < .15) this.color = GOLD[Math.floor(Math.random() * GOLD.length)];
+    else this.color = MAQUI[Math.floor(Math.random() * MAQUI.length)];
+  };
+  P.prototype.draw = function(){
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rot);
+    ctx.globalAlpha = this.op;
+    if (this.type === 'maqui') drawMaqui(ctx, this.size, this.color);
+    else if (this.type === 'blossom') drawBlossom(ctx, this.size * .8, this.color);
+    else drawLeaf(ctx, this.size, this.color);
+    ctx.restore();
+  };
+  P.prototype.update = function(){
+    this.ph += this.ps;
+    this.x += this.vx + Math.sin(this.ph) * .45;
+    this.y += this.vy;
+    this.rot += this.rs;
+    if (this.y > h + 30) this.reset(false);
+    if (this.x < -30) this.x = w + 20;
+    if (this.x > w + 30) this.x = -20;
+  };
+  for (let i = 0; i < COUNT; i++) items.push(new P());
+  (function loop(){
+    ctx.clearRect(0, 0, w, h);
+    items.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ===== CONTADOR AUTOMÁTICO DE IDEAS ===== */
+(function(){
+  const grid = document.getElementById('ideasGrid');
+  const totalEl = document.getElementById('statTotal');
+  if (!grid || !totalEl) return;
+  const cards = grid.querySelectorAll('.idea-card');
+  totalEl.textContent = cards.length;
+})();
+</script>
+
+</body>
+</html>
