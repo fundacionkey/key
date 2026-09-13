@@ -1,12 +1,16 @@
 // ===== MENÚ MÓVIL =====
-document.getElementById('menuToggle').addEventListener('click', function() {
-    document.getElementById('mainNav').classList.toggle('open');
-});
+const menuToggle = document.getElementById('menuToggle');
+if (menuToggle) {
+    menuToggle.addEventListener('click', function() {
+        document.getElementById('mainNav').classList.toggle('open');
+    });
+}
 
 // Cerrar menú al hacer clic en un enlace (para móvil)
 document.querySelectorAll('.nav-principal a').forEach(link => {
     link.addEventListener('click', function() {
-        document.getElementById('mainNav').classList.remove('open');
+        const nav = document.getElementById('mainNav');
+        if (nav) nav.classList.remove('open');
     });
 });
 
@@ -63,46 +67,3 @@ if (counters.length > 0) {
     }, { threshold: 0.5 });
     counters.forEach(c => observer.observe(c));
 }
-
-// ===== BOTÓN FLOTANTE DE DONACIÓN (esquina inferior izquierda) =====
-(function() {
-    const btnDonar = document.createElement('a');
-    btnDonar.href = 'donar.html';
-    btnDonar.innerHTML = '<i class="fas fa-heart" style="margin-right: 8px;"></i> DONAR';
-    btnDonar.setAttribute('aria-label', 'Donar a Key');
-    
-    btnDonar.style.position = 'fixed';
-    btnDonar.style.bottom = '30px';
-    btnDonar.style.left = '30px';
-    btnDonar.style.zIndex = '9999';
-    btnDonar.style.display = 'inline-flex';
-    btnDonar.style.alignItems = 'center';
-    btnDonar.style.justifyContent = 'center';
-    btnDonar.style.gap = '8px';
-    btnDonar.style.backgroundColor = '#FF6D00';
-    btnDonar.style.color = '#fff';
-    btnDonar.style.padding = '14px 28px';
-    btnDonar.style.borderRadius = '50px';
-    btnDonar.style.fontWeight = '700';
-    btnDonar.style.fontSize = '1.1rem';
-    btnDonar.style.fontFamily = "'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
-    btnDonar.style.textDecoration = 'none';
-    btnDonar.style.boxShadow = '0 8px 30px rgba(255, 109, 0, 0.4)';
-    btnDonar.style.transition = 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-    btnDonar.style.border = 'none';
-    btnDonar.style.cursor = 'pointer';
-    btnDonar.style.letterSpacing = '0.5px';
-    
-    btnDonar.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.08) translateY(-4px)';
-        this.style.boxShadow = '0 12px 40px rgba(255, 109, 0, 0.6)';
-        this.style.backgroundColor = '#E65100';
-    });
-    btnDonar.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1) translateY(0)';
-        this.style.boxShadow = '0 8px 30px rgba(255, 109, 0, 0.4)';
-        this.style.backgroundColor = '#FF6D00';
-    });
-    
-    document.body.appendChild(btnDonar);
-})();
