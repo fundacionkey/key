@@ -38,8 +38,14 @@
     body.event-page .flor-main{color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
       line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
-    body.event-page .flor-main a{color:var(--maqui);text-decoration:none}
-    body.event-page .flor-main a:hover{text-decoration:underline}
+
+    /* Enlaces: excepto botones */
+    body.event-page .flor-main a:not(.btn-flor){color:var(--maqui);text-decoration:none}
+    body.event-page .flor-main a:not(.btn-flor):hover{text-decoration:underline}
+    body.event-page .flor-main .btn-flor{color:#0a1f14;text-decoration:none}
+    body.event-page .flor-main .btn-flor-ghost{color:var(--text)}
+    body.event-page .flor-main .btn-flor-ghost:hover{color:var(--green-glow);text-decoration:none}
+
     body.event-page .flor-wrap{max-width:940px;margin:0 auto;padding:0 24px;position:relative;z-index:3}
 
     body.event-page .hangul-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
@@ -62,32 +68,25 @@
       -webkit-mask-image:radial-gradient(ellipse at 20% 50%,#000 0%,transparent 55%)}
     body.event-page .green-band{position:fixed;left:0;right:0;top:38%;height:2px;z-index:0;pointer-events:none;
       background:linear-gradient(90deg,transparent,rgba(143,191,168,.35),rgba(109,219,160,.5),rgba(143,191,168,.35),transparent);
-      filter:blur(1px);animation:florBandShift 14s ease-in-out infinite}
-    body.event-page .green-band.two{top:72%;opacity:.6;animation-duration:20s;animation-direction:reverse}
-    @keyframes florBandShift{0%,100%{transform:translateY(0) scaleX(1);opacity:.4}50%{transform:translateY(-20px) scaleX(1.05);opacity:.75}}
-    body.event-page #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.8}
-    body.event-page .orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
-    body.event-page .orb-1{width:520px;height:520px;background:radial-gradient(circle,rgba(244,163,199,.32),transparent 70%);top:-160px;left:-120px;animation:florFloat1 26s ease-in-out infinite;opacity:.42}
-    body.event-page .orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(109,219,160,.34),transparent 70%);bottom:80px;right:-140px;animation:florFloat2 30s ease-in-out infinite;opacity:.55}
+      filter:blur(1px);animation:florBandShift 14s ease-in-out infinite;opacity:.4}
+    body.event-page .green-band.two{top:72%;opacity:.3;animation-duration:20s;animation-direction:reverse}
+    @keyframes florBandShift{0%,100%{transform:translateY(0) scaleX(1);opacity:.25}50%{transform:translateY(-20px) scaleX(1.05);opacity:.45}}
+
+    body.event-page #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.7}
+    body.event-page .orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+    body.event-page .orb-1{width:520px;height:520px;background:radial-gradient(circle,rgba(244,163,199,.2),transparent 70%);top:-160px;left:-120px;animation:florFloat1 26s ease-in-out infinite;opacity:.22}
+    body.event-page .orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(109,219,160,.22),transparent 70%);bottom:80px;right:-140px;animation:florFloat2 30s ease-in-out infinite;opacity:.28}
     @keyframes florFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,40px)}}
     @keyframes florFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,50px)}}
 
-    body.event-page .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.22;
+    body.event-page .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.18;
       stroke:var(--maqui);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-    body.event-page .doodle.green{stroke:var(--celadon);opacity:.28}
-    body.event-page .doodle.green-2{stroke:var(--green-glow);opacity:.26}
+    body.event-page .doodle.green{stroke:var(--celadon);opacity:.24}
+    body.event-page .doodle.green-2{stroke:var(--green-glow);opacity:.22}
     body.event-page .spin-slow{animation:florSpin 50s linear infinite}
     body.event-page .sway{animation:florSway 9s ease-in-out infinite}
     @keyframes florSpin{to{transform:rotate(360deg)}}
     @keyframes florSway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
-
-    /* BREADCRUMB */
-    body.event-page .flor-breadcrumb{background:rgba(10,15,28,.8);border-bottom:1px solid var(--line);padding:12px 0;position:relative;z-index:5}
-    body.event-page .flor-breadcrumb .flor-wrap{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);letter-spacing:.5px}
-    body.event-page .flor-breadcrumb a{color:var(--muted)}
-    body.event-page .flor-breadcrumb a:hover{color:var(--green-glow);text-decoration:none}
-    body.event-page .flor-breadcrumb .sep{opacity:.4}
-    body.event-page .flor-breadcrumb .current{color:var(--green-glow);font-weight:600}
 
     /* HEADER FORM */
     body.event-page .form-head{position:relative;padding:80px 0 50px;overflow:hidden;border-bottom:1px solid var(--line)}
@@ -95,10 +94,8 @@
     body.event-page .flor-tag{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;
       text-transform:uppercase;color:var(--celadon-2);border:1px solid rgba(143,191,168,.4);
       padding:9px 18px;border-radius:999px;margin-bottom:26px;
-      background:rgba(143,191,168,.06);backdrop-filter:blur(8px)}
-    body.event-page .flor-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green-glow);
-      box-shadow:0 0 12px var(--green-glow);animation:florPulse 2s ease-in-out infinite}
-    @keyframes florPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+      background:rgba(143,191,168,.06)}
+    body.event-page .flor-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green-glow)}
 
     body.event-page h1.form-title{font-size:clamp(34px,5.6vw,56px);line-height:1.02;font-weight:900;letter-spacing:-1.6px;
       margin-bottom:18px;
@@ -114,7 +111,6 @@
     body.event-page .form-section{padding:60px 0 90px;position:relative}
     body.event-page .form-shell{background:linear-gradient(160deg,rgba(16,28,48,.92),rgba(16,28,48,.55));
       border:1px solid var(--line);border-radius:16px;padding:44px;
-      backdrop-filter:blur(12px);box-shadow:0 24px 70px rgba(0,0,0,.4);
       position:relative;overflow:hidden}
     body.event-page .form-shell::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
       width:70%;height:1px;background:linear-gradient(90deg,transparent,var(--green-glow),transparent)}
@@ -149,9 +145,8 @@
     body.event-page .form-actions{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
     body.event-page .btn-flor{display:inline-flex;align-items:center;gap:10px;padding:17px 36px;border-radius:999px;
       font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
-    body.event-page .btn-flor-green{background:linear-gradient(135deg,var(--celadon),var(--green-glow));color:#0a1f14;
-      box-shadow:0 8px 34px rgba(109,219,160,.35)}
-    body.event-page .btn-flor-green:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 14px 44px rgba(109,219,160,.55)}
+    body.event-page .btn-flor-green{background:linear-gradient(135deg,var(--celadon),var(--green-glow));color:#0a1f14}
+    body.event-page .btn-flor-green:hover:not(:disabled){transform:translateY(-2px)}
     body.event-page .btn-flor-green:disabled{opacity:.55;cursor:not-allowed;transform:none}
     body.event-page .btn-flor-ghost{background:rgba(143,191,168,.06);color:var(--text);border-color:rgba(143,191,168,.3)}
     body.event-page .btn-flor-ghost:hover{border-color:var(--green-glow);color:var(--green-glow);text-decoration:none}
@@ -165,8 +160,7 @@
     @keyframes florReveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
     body.event-page .result.show{display:block}
     body.event-page .result::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
-      background:linear-gradient(90deg,transparent,var(--ok),transparent);animation:florShine 2.5s ease-in-out infinite}
-    @keyframes florShine{0%,100%{opacity:.4}50%{opacity:1}}
+      background:linear-gradient(90deg,transparent,var(--ok),transparent)}
     body.event-page .result h3{color:var(--ok);font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
     body.event-page .result h3 svg{width:22px;height:22px;stroke:var(--ok);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
     body.event-page .result p{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.7}
@@ -180,7 +174,7 @@
       color:#0a1f14;border:none;padding:11px 22px;border-radius:9px;font-size:13px;font-weight:700;
       cursor:pointer;font-family:inherit;transition:.2s;
       display:inline-flex;align-items:center;gap:7px}
-    body.event-page .copy-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(109,219,160,.45)}
+    body.event-page .copy-btn:hover{transform:translateY(-1px)}
     body.event-page .copy-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
     body.event-page .result .fine{font-size:13px;color:var(--muted);margin-top:22px;margin-bottom:0}
     body.event-page .char-count{font-variant-numeric:tabular-nums;color:var(--green-glow)}
@@ -234,19 +228,6 @@
         </nav>
     </div>
 </header>
-
-<!-- ===== BREADCRUMB ===== -->
-<div class="flor-breadcrumb">
-  <div class="flor-wrap">
-    <a href="index.html">Inicio</a>
-    <span class="sep">›</span>
-    <a href="oportunidades.html">Oportunidades</a>
-    <span class="sep">›</span>
-    <a href="florecimiento.html">Florecimiento Key</a>
-    <span class="sep">›</span>
-    <span class="current">Postular</span>
-  </div>
-</div>
 
 <!-- ===== CONTENIDO ===== -->
 <main class="flor-main">
@@ -516,7 +497,7 @@
     this.vx = (Math.random() - .5) * .45;
     this.rot = Math.random() * Math.PI * 2;
     this.rs = (Math.random() - .5) * .02;
-    this.op = .32 + Math.random() * .4;
+    this.op = .28 + Math.random() * .35;
     this.ph = Math.random() * Math.PI * 2;
     this.ps = .01 + Math.random() * .02;
     if (this.type === 'leaf') this.color = HOJA[Math.floor(Math.random() * HOJA.length)];
