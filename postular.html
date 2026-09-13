@@ -9,178 +9,155 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-    body.event-page{
-      --night:#0a0f1c; --card:#101c30; --line:#243a52;
-      --text:#f2ece1; --muted:#a8a390;
-      --maqui:#f4a3c7; --maqui-2:#ffc9e0;
-      --celadon:#8fbfa8; --celadon-2:#b5d8c3;
-      --green-glow:#6ddba0;
-      --gold:#c9a75a;
-      --ok:#7ed4a3; --warn:#ef7d7d;
-      --izote:#fdf6e3;
-      background:var(--night);
-    }
-    /* FIX header sobre fondo oscuro */
-    body.event-page > header{
-      background: #ffffff !important;
-      position: relative;
-      z-index: 100;
-      width: 100%;
-    }
-    body.event-page > header .top-bar{
-      background: var(--primary);
-      width: 100%;
-    }
-    body.event-page > header .main-header{
-      background: #ffffff;
-    }
-
-    body.event-page .flor-main{color:var(--text);
+    .flor-main{
+      --flor-bg:#fbf8f1;
+      --flor-cream:#f5efdf;
+      --flor-line:#e8e0ce;
+      --flor-line-2:#d9cfb8;
+      --flor-text:#1a1f2e;
+      --flor-muted:#5c6478;
+      --maqui:#d9558a; --maqui-2:#e88ab5; --maqui-3:#f4a3c7; --maqui-bg:#fce7f0;
+      --indigo:#3a5da8; --indigo-bg:#e8efff;
+      --celadon:#4a8f70; --celadon-2:#6ddba0; --celadon-3:#8fbfa8; --celadon-bg:#e3f5ea;
+      --gold:#b8912e; --gold-bg:#fbf3dc;
+      --ok:#4a8f70;
+      --warn:#c94a5a;
+      color:var(--flor-text);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
-      line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
+      line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;
+      background:#ffffff;
+    }
+    .flor-main a{color:var(--maqui);text-decoration:none}
+    .flor-main a:hover{text-decoration:underline}
+    .flor-main .btn-flor{color:#0a1f14;text-decoration:none}
+    .flor-main .btn-flor:hover{text-decoration:none}
+    .flor-main .btn-flor-ghost{color:var(--flor-text)}
+    .flor-main .btn-flor-ghost:hover{text-decoration:none}
+    .flor-wrap{max-width:940px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
 
-    /* Enlaces: excepto botones */
-    body.event-page .flor-main a:not(.btn-flor){color:var(--maqui);text-decoration:none}
-    body.event-page .flor-main a:not(.btn-flor):hover{text-decoration:underline}
-    body.event-page .flor-main .btn-flor{color:#0a1f14;text-decoration:none}
-    body.event-page .flor-main .btn-flor-ghost{color:var(--text)}
-    body.event-page .flor-main .btn-flor-ghost:hover{color:var(--green-glow);text-decoration:none}
-
-    body.event-page .flor-wrap{max-width:940px;margin:0 auto;padding:0 24px;position:relative;z-index:3}
-
-    body.event-page .hangul-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
-      font-family:serif;font-weight:900;color:rgba(143,191,168,.05);
-      font-size:min(40vw,540px);display:flex;align-items:center;justify-content:center;
-      letter-spacing:-.05em;user-select:none;overflow:hidden}
-    body.event-page .anil-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.07;
+    .flor-main .hangul-bg{position:absolute;top:60px;left:50%;transform:translateX(-50%);
+      font-family:serif;font-weight:900;color:rgba(217,85,138,.04);
+      font-size:min(38vw,480px);line-height:1;user-select:none;pointer-events:none;
+      letter-spacing:-.05em;z-index:0;overflow:hidden}
+    .flor-main .anil-pattern{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.05;
       background-image:
-        repeating-linear-gradient(45deg,transparent 0 14px,rgba(91,125,209,.5) 14px 15px),
-        repeating-linear-gradient(-45deg,transparent 0 14px,rgba(91,125,209,.5) 14px 15px);
+        repeating-linear-gradient(45deg,transparent 0 14px,rgba(58,93,168,.5) 14px 15px),
+        repeating-linear-gradient(-45deg,transparent 0 14px,rgba(58,93,168,.5) 14px 15px);
       background-size:28px 28px;
-      mask-image:radial-gradient(ellipse at 80% 50%,#000 0%,transparent 55%);
-      -webkit-mask-image:radial-gradient(ellipse at 80% 50%,#000 0%,transparent 55%)}
-    body.event-page .bojagi-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.06;
+      mask-image:radial-gradient(ellipse at 85% 30%,#000 0%,transparent 60%);
+      -webkit-mask-image:radial-gradient(ellipse at 85% 30%,#000 0%,transparent 60%)}
+    .flor-main .bojagi-pattern{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.06;
       background-image:
-        linear-gradient(rgba(143,191,168,.7) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(143,191,168,.7) 1px,transparent 1px);
+        linear-gradient(rgba(74,143,112,.6) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(74,143,112,.6) 1px,transparent 1px);
       background-size:120px 120px,120px 120px;
-      mask-image:radial-gradient(ellipse at 20% 50%,#000 0%,transparent 55%);
-      -webkit-mask-image:radial-gradient(ellipse at 20% 50%,#000 0%,transparent 55%)}
-    body.event-page .green-band{position:fixed;left:0;right:0;top:38%;height:2px;z-index:0;pointer-events:none;
-      background:linear-gradient(90deg,transparent,rgba(143,191,168,.35),rgba(109,219,160,.5),rgba(143,191,168,.35),transparent);
-      filter:blur(1px);animation:florBandShift 14s ease-in-out infinite;opacity:.4}
-    body.event-page .green-band.two{top:72%;opacity:.3;animation-duration:20s;animation-direction:reverse}
-    @keyframes florBandShift{0%,100%{transform:translateY(0) scaleX(1);opacity:.25}50%{transform:translateY(-20px) scaleX(1.05);opacity:.45}}
+      mask-image:radial-gradient(ellipse at 15% 30%,#000 0%,transparent 60%);
+      -webkit-mask-image:radial-gradient(ellipse at 15% 30%,#000 0%,transparent 60%)}
+    .flor-main #petals{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.55}
+    .flor-main .orb{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
+    .flor-main .orb-1{width:480px;height:480px;background:radial-gradient(circle,rgba(244,163,199,.28),transparent 70%);top:80px;left:-180px;opacity:.55}
+    .flor-main .orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(109,219,160,.24),transparent 70%);bottom:-100px;right:-200px;opacity:.5}
 
-    body.event-page #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.7}
-    body.event-page .orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
-    body.event-page .orb-1{width:520px;height:520px;background:radial-gradient(circle,rgba(244,163,199,.2),transparent 70%);top:-160px;left:-120px;animation:florFloat1 26s ease-in-out infinite;opacity:.22}
-    body.event-page .orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(109,219,160,.22),transparent 70%);bottom:80px;right:-140px;animation:florFloat2 30s ease-in-out infinite;opacity:.28}
-    @keyframes florFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,40px)}}
-    @keyframes florFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,50px)}}
-
-    body.event-page .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.18;
+    .flor-main .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.28;
       stroke:var(--maqui);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-    body.event-page .doodle.green{stroke:var(--celadon);opacity:.24}
-    body.event-page .doodle.green-2{stroke:var(--green-glow);opacity:.22}
-    body.event-page .spin-slow{animation:florSpin 50s linear infinite}
-    body.event-page .sway{animation:florSway 9s ease-in-out infinite}
+    .flor-main .doodle.green{stroke:var(--celadon);opacity:.32}
+    .flor-main .spin-slow{animation:florSpin 60s linear infinite}
+    .flor-main .sway{animation:florSway 10s ease-in-out infinite}
     @keyframes florSpin{to{transform:rotate(360deg)}}
     @keyframes florSway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
 
     /* HEADER FORM */
-    body.event-page .form-head{position:relative;padding:80px 0 50px;overflow:hidden;border-bottom:1px solid var(--line)}
-    body.event-page .form-head .flor-wrap{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
-    body.event-page .flor-tag{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;
-      text-transform:uppercase;color:var(--celadon-2);border:1px solid rgba(143,191,168,.4);
-      padding:9px 18px;border-radius:999px;margin-bottom:26px;
-      background:rgba(143,191,168,.06)}
-    body.event-page .flor-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green-glow)}
+    .form-head{position:relative;padding:76px 0 48px;overflow:hidden;
+      background:linear-gradient(180deg,#ffffff 0%,var(--flor-bg) 100%);
+      border-bottom:1px solid var(--flor-line)}
+    .form-head .flor-wrap{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+    .flor-tag{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;
+      text-transform:uppercase;color:var(--maqui);border:1px solid rgba(217,85,138,.3);
+      padding:9px 18px;border-radius:999px;margin-bottom:24px;
+      background:var(--maqui-bg);font-weight:600}
+    .flor-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--maqui)}
 
-    body.event-page h1.form-title{font-size:clamp(34px,5.6vw,56px);line-height:1.02;font-weight:900;letter-spacing:-1.6px;
-      margin-bottom:18px;
-      background:linear-gradient(135deg,#fff 15%,var(--maqui-2) 45%,var(--maqui) 65%,var(--celadon-2) 85%,var(--green-glow) 100%);
+    .form-title{font-size:clamp(34px,5.6vw,56px);line-height:1.05;font-weight:900;letter-spacing:-1.6px;
+      margin-bottom:16px;color:var(--flor-text)}
+    .form-title em{font-style:normal;
+      background:linear-gradient(135deg,#d9558a 0%,#e88ab5 40%,#4a8f70 100%);
       -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    body.event-page h1.form-title em{font-style:normal}
-    body.event-page .slogan{font-size:15px;font-style:italic;color:var(--maqui);letter-spacing:.5px;margin-bottom:22px;font-weight:500;
+    .slogan{font-size:15px;font-style:italic;color:var(--maqui);letter-spacing:.5px;margin-bottom:20px;font-weight:500;
       display:inline-flex;align-items:center;gap:12px}
-    body.event-page .slogan::before,body.event-page .slogan::after{content:"";width:30px;height:1px;
+    .slogan::before,.slogan::after{content:"";width:30px;height:1px;
       background:linear-gradient(90deg,transparent,var(--maqui),transparent)}
-    body.event-page .flor-lead{color:var(--muted);font-size:16px;max-width:640px}
+    .flor-lead{color:var(--flor-muted);font-size:16px;max-width:640px}
 
-    body.event-page .form-section{padding:60px 0 90px;position:relative}
-    body.event-page .form-shell{background:linear-gradient(160deg,rgba(16,28,48,.92),rgba(16,28,48,.55));
-      border:1px solid var(--line);border-radius:16px;padding:44px;
-      position:relative;overflow:hidden}
-    body.event-page .form-shell::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
-      width:70%;height:1px;background:linear-gradient(90deg,transparent,var(--green-glow),transparent)}
-    body.event-page .form-shell::after{content:"";position:absolute;bottom:16px;right:16px;width:26px;height:26px;
-      border-bottom:1.5px solid var(--green-glow);border-right:1.5px solid var(--green-glow);
-      border-bottom-right-radius:6px;opacity:.6}
-    @media(max-width:600px){body.event-page .form-shell{padding:28px}}
+    .form-section{padding:56px 0 80px;position:relative;background:var(--flor-bg)}
+    .form-shell{background:#ffffff;border:1px solid var(--flor-line);border-radius:16px;padding:42px;
+      position:relative;overflow:hidden;
+      box-shadow:0 4px 24px rgba(26,31,46,.04)}
+    .form-shell::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--maqui),var(--gold),var(--celadon))}
+    @media(max-width:600px){.form-shell{padding:26px}}
 
-    body.event-page .field{margin-bottom:28px}
-    body.event-page .field label{display:block;font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text)}
-    body.event-page .field label .opt{color:var(--muted);font-weight:400;font-size:12.5px;margin-left:6px}
-    body.event-page .hint{font-size:12.5px;color:var(--muted);margin-top:8px;display:block;line-height:1.5}
-    body.event-page input[type=text],body.event-page textarea,body.event-page select{width:100%;background:rgba(10,15,28,.65);
-      border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--text);
-      font-size:15px;font-family:inherit;transition:.2s}
-    body.event-page input[type=text]:focus,body.event-page textarea:focus,body.event-page select:focus{outline:none;border-color:var(--green-glow);
-      box-shadow:0 0 0 4px rgba(109,219,160,.14);background:rgba(10,15,28,.9)}
-    body.event-page textarea{min-height:120px;resize:vertical;line-height:1.65}
-    body.event-page select{cursor:pointer;appearance:none;
-      background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a8a390' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    .field{margin-bottom:26px}
+    .field label{display:block;font-size:14px;font-weight:700;margin-bottom:10px;color:var(--flor-text)}
+    .field label .opt{color:var(--flor-muted);font-weight:400;font-size:12.5px;margin-left:6px}
+    .hint{font-size:12.5px;color:var(--flor-muted);margin-top:8px;display:block;line-height:1.5}
+    .flor-main input[type=text],.flor-main textarea,.flor-main select{
+      width:100%;background:#ffffff;border:1px solid var(--flor-line-2);border-radius:12px;
+      padding:14px 16px;color:var(--flor-text);font-size:15px;font-family:inherit;transition:.2s}
+    .flor-main input[type=text]:focus,.flor-main textarea:focus,.flor-main select:focus{
+      outline:none;border-color:var(--celadon);box-shadow:0 0 0 4px rgba(74,143,112,.12)}
+    .flor-main textarea{min-height:118px;resize:vertical;line-height:1.65}
+    .flor-main select{cursor:pointer;appearance:none;
+      background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235c6478' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
       background-repeat:no-repeat;background-position:right 16px center;background-size:18px;padding-right:46px}
-    body.event-page .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    @media(max-width:600px){body.event-page .row{grid-template-columns:1fr}}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    @media(max-width:600px){.row{grid-template-columns:1fr}}
 
-    body.event-page .checks{border-top:1px solid var(--line);padding-top:30px;margin-top:12px}
-    body.event-page .checks > label{font-size:15px;margin-bottom:20px;display:block;font-weight:700;color:var(--text)}
-    body.event-page .check{display:flex;gap:13px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin-bottom:16px;line-height:1.65}
-    body.event-page .check input{margin-top:3px;accent-color:var(--green-glow);flex-shrink:0;width:17px;height:17px;cursor:pointer}
-    body.event-page .check label{font-weight:400;margin:0;font-size:13.5px;color:var(--muted);cursor:pointer}
-    body.event-page .check a{color:var(--green-glow)}
+    .checks{border-top:1px solid var(--flor-line);padding-top:28px;margin-top:10px}
+    .checks > label{font-size:15px;margin-bottom:20px;display:block;font-weight:700;color:var(--flor-text)}
+    .check{display:flex;gap:13px;align-items:flex-start;font-size:13.5px;color:var(--flor-muted);margin-bottom:16px;line-height:1.65}
+    .check input{margin-top:3px;accent-color:var(--celadon);flex-shrink:0;width:17px;height:17px;cursor:pointer}
+    .check label{font-weight:400;margin:0;font-size:13.5px;color:var(--flor-muted);cursor:pointer}
+    .check a{color:var(--celadon);text-decoration:underline}
 
-    body.event-page .form-actions{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-    body.event-page .btn-flor{display:inline-flex;align-items:center;gap:10px;padding:17px 36px;border-radius:999px;
+    .form-actions{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+    .btn-flor{display:inline-flex;align-items:center;gap:10px;padding:17px 36px;border-radius:999px;
       font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
-    body.event-page .btn-flor-green{background:linear-gradient(135deg,var(--celadon),var(--green-glow));color:#0a1f14}
-    body.event-page .btn-flor-green:hover:not(:disabled){transform:translateY(-2px)}
-    body.event-page .btn-flor-green:disabled{opacity:.55;cursor:not-allowed;transform:none}
-    body.event-page .btn-flor-ghost{background:rgba(143,191,168,.06);color:var(--text);border-color:rgba(143,191,168,.3)}
-    body.event-page .btn-flor-ghost:hover{border-color:var(--green-glow);color:var(--green-glow);text-decoration:none}
-    body.event-page .btn-flor svg{width:18px;height:18px}
-    body.event-page #status{font-size:14px}
+    .btn-flor-green{background:linear-gradient(135deg,var(--celadon),var(--celadon-2));color:#0a1f14;border:none}
+    .btn-flor-green:hover:not(:disabled){transform:translateY(-2px)}
+    .btn-flor-green:disabled{opacity:.55;cursor:not-allowed;transform:none}
+    .btn-flor-ghost{background:#ffffff;color:var(--flor-text);border:1px solid var(--flor-line-2)}
+    .btn-flor-ghost:hover{border-color:var(--celadon);color:var(--celadon);text-decoration:none}
+    .btn-flor svg{width:18px;height:18px}
+    #status{font-size:14px}
 
-    body.event-page .result{display:none;margin-top:38px;
-      background:linear-gradient(180deg,rgba(126,212,163,.1),transparent);
-      border:1px solid rgba(126,212,163,.35);border-radius:16px;padding:36px;
-      position:relative;overflow:hidden;animation:florReveal .6s ease-out}
-    @keyframes florReveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-    body.event-page .result.show{display:block}
-    body.event-page .result::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
-      background:linear-gradient(90deg,transparent,var(--ok),transparent)}
-    body.event-page .result h3{color:var(--ok);font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-    body.event-page .result h3 svg{width:22px;height:22px;stroke:var(--ok);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-    body.event-page .result p{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.7}
-    body.event-page .code-box{display:flex;align-items:center;gap:12px;
-      background:rgba(10,15,28,.75);border:1px dashed var(--green-glow);
+    .result{display:none;margin-top:36px;
+      background:var(--celadon-bg);border:1px solid rgba(74,143,112,.3);
+      border-radius:16px;padding:34px;position:relative;overflow:hidden;
+      animation:florReveal .5s ease-out}
+    @keyframes florReveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    .result.show{display:block}
+    .result::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--celadon),var(--celadon-2))}
+    .result h3{color:var(--celadon);font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+    .result h3 svg{width:22px;height:22px;stroke:var(--celadon);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .result p{color:var(--flor-muted);font-size:14px;margin-bottom:18px;line-height:1.7}
+    .code-box{display:flex;align-items:center;gap:12px;
+      background:#ffffff;border:1px dashed var(--celadon);
       border-radius:12px;padding:18px;flex-wrap:wrap}
-    body.event-page .code-box code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-      font-size:16px;color:var(--green-glow);word-break:break-all;flex:1;
-      min-width:200px;letter-spacing:.6px;font-weight:600}
-    body.event-page .copy-btn{background:linear-gradient(135deg,var(--celadon),var(--green-glow));
+    .code-box code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+      font-size:16px;color:var(--celadon);word-break:break-all;flex:1;
+      min-width:200px;letter-spacing:.6px;font-weight:700}
+    .copy-btn{background:linear-gradient(135deg,var(--celadon),var(--celadon-2));
       color:#0a1f14;border:none;padding:11px 22px;border-radius:9px;font-size:13px;font-weight:700;
       cursor:pointer;font-family:inherit;transition:.2s;
       display:inline-flex;align-items:center;gap:7px}
-    body.event-page .copy-btn:hover{transform:translateY(-1px)}
-    body.event-page .copy-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-    body.event-page .result .fine{font-size:13px;color:var(--muted);margin-top:22px;margin-bottom:0}
-    body.event-page .char-count{font-variant-numeric:tabular-nums;color:var(--green-glow)}
+    .copy-btn:hover{transform:translateY(-1px)}
+    .copy-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .result .fine{font-size:13px;color:var(--flor-muted);margin-top:22px;margin-bottom:0}
+    .char-count{font-variant-numeric:tabular-nums;color:var(--celadon);font-weight:600}
     </style>
 </head>
-<body class="event-page">
+<body>
 
 <!-- ===== HEADER DE KEY ===== -->
 <header>
@@ -235,13 +212,11 @@
   <div class="hangul-bg">개화</div>
   <div class="anil-pattern"></div>
   <div class="bojagi-pattern"></div>
-  <div class="green-band"></div>
-  <div class="green-band two"></div>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
-  <canvas id="petals"></canvas>
 
   <header class="form-head">
+    <canvas id="petals"></canvas>
     <svg class="doodle sway" style="top:16%;right:5%" width="86" height="86" viewBox="0 0 86 86">
       <circle cx="43" cy="38" r="6"/>
       <path d="M43 32c-6-5-14-5-17 2 5 5 13 5 17-2z"/>
@@ -409,18 +384,22 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
 <script>
-/* PÉTALOS */
+/* ===== PÉTALOS SOBRE FONDO CLARO ===== */
 (function(){
   const c = document.getElementById('petals');
   if (!c) return;
+  const host = c.parentElement;
   const ctx = c.getContext('2d');
   let w, h, items = [];
-  const MAQUI = ['#f4a3c7','#ffc9e0','#e88ab5','#ffb3d1'];
-  const IZOTE = ['#fdf6e3','#f5ede0','#efe4cb'];
-  const HOJA = ['#6ddba0','#8fbfa8','#b5d8c3','#4a8f70'];
-  const COUNT = window.innerWidth < 720 ? 16 : 28;
+  const MAQUI = ['#d9558a','#e88ab5','#f4a3c7','#ffc9e0'];
+  const HOJA = ['#4a8f70','#6ddba0','#8fbfa8','#7ec9a3'];
+  const GOLD = ['#b8912e','#c9a75a'];
+  const COUNT = window.innerWidth < 720 ? 14 : 24;
 
-  function resize(){ w = c.width = innerWidth; h = c.height = innerHeight; }
+  function resize(){
+    w = c.width = host.offsetWidth;
+    h = c.height = host.offsetHeight;
+  }
   resize();
   addEventListener('resize', resize);
 
@@ -431,36 +410,12 @@
     ctx.bezierCurveTo(size * .7, -size * .5, size * .8, size * .4, 0, size);
     ctx.bezierCurveTo(-size * .8, size * .4, -size * .7, -size * .5, 0, -size * .9);
     ctx.fill();
-    ctx.globalAlpha = .4;
+    ctx.globalAlpha = .5;
     ctx.fillStyle = '#fff';
     ctx.beginPath();
-    ctx.ellipse(-size * .15, -size * .25, size * .18, size * .4, -.2, 0, Math.PI * 2);
+    ctx.ellipse(-size * .15, -size * .25, size * .16, size * .36, -.2, 0, Math.PI * 2);
     ctx.fill();
     ctx.globalAlpha = 1;
-  }
-  function drawIzote(ctx, size, color){
-    for (let k = 0; k < 3; k++){
-      ctx.save();
-      ctx.translate((k - 1) * size * .7, Math.abs(k - 1) * size * .3);
-      for (let i = 0; i < 6; i++){
-        ctx.save();
-        ctx.rotate((Math.PI * 2 / 6) * i);
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(-size * .18, -size * .55);
-        ctx.lineTo(0, -size * .95);
-        ctx.lineTo(size * .18, -size * .55);
-        ctx.closePath();
-        ctx.fill();
-        ctx.restore();
-      }
-      ctx.fillStyle = '#6ddba0';
-      ctx.beginPath();
-      ctx.arc(0, 0, size * .14, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    }
   }
   function drawBlossom(ctx, size, color){
     ctx.fillStyle = color;
@@ -472,36 +427,35 @@
       ctx.fill();
       ctx.restore();
     }
-    ctx.fillStyle = '#6ddba0';
+    ctx.fillStyle = '#b8912e';
     ctx.beginPath();
-    ctx.arc(0, 0, size * .18, 0, Math.PI * 2);
+    ctx.arc(0, 0, size * .16, 0, Math.PI * 2);
     ctx.fill();
   }
   function drawLeaf(ctx, size, color){
     ctx.fillStyle = color;
     ctx.beginPath();
-    ctx.ellipse(0, 0, size * .35, size, 0, 0, Math.PI * 2);
+    ctx.ellipse(0, 0, size * .32, size, 0, 0, Math.PI * 2);
     ctx.fill();
   }
   function P(){ this.reset(true); }
   P.prototype.reset = function(init){
     const r = Math.random();
-    if (r < .38) this.type = 'maqui';
-    else if (r < .60) this.type = 'blossom';
-    else if (r < .74) this.type = 'izote';
+    if (r < .45) this.type = 'maqui';
+    else if (r < .75) this.type = 'blossom';
     else this.type = 'leaf';
     this.x = Math.random() * w;
     this.y = init ? Math.random() * h : -30;
     this.size = 5 + Math.random() * 8;
-    this.vy = .22 + Math.random() * .5;
+    this.vy = .25 + Math.random() * .5;
     this.vx = (Math.random() - .5) * .45;
     this.rot = Math.random() * Math.PI * 2;
     this.rs = (Math.random() - .5) * .02;
-    this.op = .28 + Math.random() * .35;
+    this.op = .35 + Math.random() * .4;
     this.ph = Math.random() * Math.PI * 2;
     this.ps = .01 + Math.random() * .02;
     if (this.type === 'leaf') this.color = HOJA[Math.floor(Math.random() * HOJA.length)];
-    else if (this.type === 'izote') this.color = IZOTE[Math.floor(Math.random() * IZOTE.length)];
+    else if (Math.random() < .15) this.color = GOLD[Math.floor(Math.random() * GOLD.length)];
     else this.color = MAQUI[Math.floor(Math.random() * MAQUI.length)];
   };
   P.prototype.draw = function(){
@@ -511,7 +465,6 @@
     ctx.globalAlpha = this.op;
     if (this.type === 'maqui') drawMaqui(ctx, this.size, this.color);
     else if (this.type === 'blossom') drawBlossom(ctx, this.size * .8, this.color);
-    else if (this.type === 'izote') drawIzote(ctx, this.size * .55, this.color);
     else drawLeaf(ctx, this.size, this.color);
     ctx.restore();
   };
@@ -532,7 +485,7 @@
   })();
 })();
 
-/* FORM */
+/* ===== FORM ===== */
 const form = document.getElementById('ideaForm');
 const status = document.getElementById('status');
 const result = document.getElementById('result');
