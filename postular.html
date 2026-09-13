@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postular · Florecimiento Key</title>
+<meta name="description" content="Envía tu idea a Florecimiento Key. Sin registro, sin correo, sin contacto. Recibe un código de reclamación.">
+<style>
+  :root{
+    --bg:#0b0f1a; --bg-2:#111726; --card:#151c2e; --line:#232c44;
+    --text:#e8ecf4; --muted:#8b95ad; --accent:#e8b04b; --accent-2:#f2c56b;
+    --ok:#4ade80; --warn:#f87171;
+    --radius:14px; --max:880px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,15,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-weight:700;letter-spacing:.4px;font-size:15px}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:22px;font-size:14px;align-items:center}
+  .nav-links a{color:var(--muted)}
+  .nav-links a:hover{color:var(--text);text-decoration:none}
+  .nav-cta{background:transparent;color:var(--text) !important;padding:8px 18px;border-radius:999px;border:1px solid var(--line);font-weight:600}
+  .nav-cta:hover{border-color:var(--accent);text-decoration:none !important}
+  @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+
+  header.form-head{
+    padding:72px 0 48px;
+    background:
+      radial-gradient(800px 380px at 20% 0%, rgba(232,176,75,.10), transparent 60%);
+    border-bottom:1px solid var(--line);
+  }
+  .tag{display:inline-block;font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(232,176,75,.35);padding:6px 14px;border-radius:999px;margin-bottom:22px}
+  h1{font-size:clamp(30px,4.8vw,46px);line-height:1.08;font-weight:800;letter-spacing:-1px;margin-bottom:14px}
+  h1 em{font-style:normal;color:var(--accent)}
+  .slogan{font-size:15px;font-style:italic;color:var(--accent);letter-spacing:.3px;margin-bottom:20px;font-weight:500}
+  .lead{color:var(--muted);font-size:16px;max-width:600px}
+
+  section{padding:56px 0 80px}
+
+  .form-shell{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:38px;
+  }
+  @media(max-width:600px){.form-shell{padding:24px}}
+
+  .field{margin-bottom:24px}
+  label{display:block;font-size:14px;font-weight:600;margin-bottom:9px}
+  label .opt{color:var(--muted);font-weight:400;font-size:12.5px;margin-left:6px}
+  .hint{font-size:12.5px;color:var(--muted);margin-top:7px;display:block;line-height:1.5}
+  input[type=text],textarea,select{
+    width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;
+    padding:13px 15px;color:var(--text);font-size:15px;font-family:inherit;transition:.15s;
+  }
+  input[type=text]:focus,textarea:focus,select:focus{
+    outline:none;border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(232,176,75,.12);
+  }
+  textarea{min-height:112px;resize:vertical;line-height:1.6}
+  select{cursor:pointer;appearance:none;
+    background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b95ad' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;background-size:18px;padding-right:44px;
+  }
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:600px){.row{grid-template-columns:1fr}}
+
+  .checks{border-top:1px solid var(--line);padding-top:26px;margin-top:8px}
+  .checks > label{font-size:15px;margin-bottom:18px}
+  .check{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin-bottom:15px;line-height:1.6}
+  .check input{margin-top:3px;accent-color:var(--accent);flex-shrink:0;width:16px;height:16px;cursor:pointer}
+  .check label{font-weight:400;margin:0;font-size:13.5px;color:var(--muted);cursor:pointer}
+
+  .form-actions{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-block;padding:15px 32px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.2s;font-family:inherit}
+  .btn-primary{background:var(--accent);color:#0b0f1a}
+  .btn-primary:hover:not(:disabled){background:var(--accent-2);transform:translateY(-1px)}
+  .btn-primary:disabled{opacity:.55;cursor:not-allowed}
+  .btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent);text-decoration:none}
+  #status{font-size:14px}
+
+  .result{
+    display:none;margin-top:34px;
+    background:linear-gradient(180deg,rgba(74,222,128,.08),transparent);
+    border:1px solid rgba(74,222,128,.3);
+    border-radius:var(--radius);padding:30px;
+  }
+  .result.show{display:block}
+  .result h3{color:var(--ok);font-size:17px;margin-bottom:12px}
+  .result p{color:var(--muted);font-size:14px;margin-bottom:18px;line-height:1.65}
+  .code-box{
+    display:flex;align-items:center;gap:12px;
+    background:var(--bg);border:1px dashed var(--accent);
+    border-radius:10px;padding:16px;flex-wrap:wrap;
+  }
+  .code-box code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:15.5px;color:var(--accent);word-break:break-all;flex:1;min-width:200px;letter-spacing:.5px;
+  }
+  .copy-btn{
+    background:var(--accent);color:#0b0f1a;border:none;
+    padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;
+    cursor:pointer;font-family:inherit;transition:.15s;
+  }
+  .copy-btn:hover{background:var(--accent-2)}
+  .result .fine{font-size:13px;color:var(--muted);margin-top:20px;margin-bottom:0}
+
+  footer{padding:48px 0 64px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+  footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">FLORECIMIENTO<span>·</span>KEY</div>
+    <div class="nav-links">
+      <a href="#formulario">Formulario</a>
+      <a href="florecimiento.html#bases">Bases</a>
+      <a href="florecimiento.html" class="nav-cta">← Volver al evento</a>
+    </div>
+  </div>
+</nav>
+
+<header class="form-head">
+  <div class="wrap">
+    <span class="tag">Postulación · Anónima</span>
+    <h1>Envía tu <em>idea</em></h1>
+    <p class="slogan">It's time to FloreSer</p>
+    <p class="lead">
+      No pedimos nombre, correo ni teléfono. Al enviar, recibirás un código de reclamación.
+      Guárdalo: es tu única forma de reclamar crédito si tu idea es seleccionada.
+    </p>
+  </div>
+</header>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="form-shell">
+      <form id="ideaForm" novalidate>
+
+        <div class="field">
+          <label for="titulo">Título de la idea</label>
+          <input type="text" id="titulo" name="titulo" maxlength="120" required
+                 placeholder="Ej: Red de mentoría entre jóvenes y adultos mayores">
+          <span class="hint">Máximo 120 caracteres. Sé específico y claro.</span>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="categoria">Categoría</label>
+            <select id="categoria" name="categoria" required>
+              <option value="">Selecciona una</option>
+              <option>Empleabilidad juvenil</option>
+              <option>Educación y formación</option>
+              <option>Adultos mayores</option>
+              <option>Inclusión y diversidad</option>
+              <option>Medioambiente</option>
+              <option>Bienestar y salud</option>
+              <option>Tecnología cívica</option>
+              <option>Cultura y comunidad</option>
+              <option>Otra</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="alias">Alias público <span class="opt">(opcional)</span></label>
+            <input type="text" id="alias" name="alias" maxlength="40"
+                   placeholder="Ej: CosechaVerde">
+            <span class="hint">Si tu idea es seleccionada, se publicará con este alias.</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="problema">¿Qué problema resuelve?</label>
+          <textarea id="problema" name="problema" maxlength="900" required
+                    placeholder="Describe el problema o necesidad concreta que tu idea aborda. Contexto, a quién afecta, por qué importa."></textarea>
+          <span class="hint"><span id="cProblema">0</span> / 900 caracteres · mínimo 40</span>
+        </div>
+
+        <div class="field">
+          <label for="solucion">¿Cómo lo resuelve tu idea?</label>
+          <textarea id="solucion" name="solucion" maxlength="1400" required
+                    placeholder="Explica la solución: qué se hace, cómo se implementa, quién participa, qué recursos necesita."></textarea>
+          <span class="hint"><span id="cSolucion">0</span> / 1400 caracteres · mínimo 60</span>
+        </div>
+
+        <div class="field">
+          <label for="impacto">Impacto esperado <span class="opt">(opcional)</span></label>
+          <textarea id="impacto" name="impacto" maxlength="600"
+                    placeholder="¿A cuántas personas beneficiaría? ¿Qué cambiaría si se implementa?"></textarea>
+          <span class="hint"><span id="cImpacto">0</span> / 600 caracteres</span>
+        </div>
+
+        <div class="checks">
+          <label>Antes de enviar</label>
+
+          <div class="check">
+            <input type="checkbox" id="terminos" required>
+            <label for="terminos">
+              He leído y acepto las <a href="florecimiento.html#bases" target="_blank">bases de la convocatoria</a>.
+              Entiendo que Key puede implementar, adaptar o modificar mi idea sin compensación económica,
+              que no habrá contacto directo conmigo y que el crédito solo se otorga si reclamo con mi código.
+            </label>
+          </div>
+
+          <div class="check">
+            <input type="checkbox" id="original" required>
+            <label for="original">
+              Declaro que esta idea es original y no infringe derechos de terceros.
+            </label>
+          </div>
+
+          <div class="check">
+            <input type="checkbox" id="mayor" required>
+            <label for="mayor">
+              Declaro ser mayor de edad.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Enviar idea</button>
+          <a href="florecimiento.html" class="btn btn-ghost">Cancelar</a>
+          <span id="status"></span>
+        </div>
+      </form>
+
+      <div class="result" id="result">
+        <h3>✓ Idea recibida</h3>
+        <p>
+          Guarda este código. Es tu única forma de reclamar crédito si tu idea es seleccionada.
+          No lo compartas con nadie. Si lo pierdes, no podremos identificarte.
+        </p>
+        <div class="code-box">
+          <code id="codeOut">—</code>
+          <button class="copy-btn" id="copyBtn" type="button">Copiar</button>
+        </div>
+        <p class="fine">
+          No recibirás correos ni notificaciones. Los resultados se publican en el sitio del evento.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="year"></span> Key · Fundación Hernández · Florecimiento Key</div>
+    <div>
+      <a href="florecimiento.html">Evento</a> ·
+      <a href="florecimiento.html#bases">Bases</a> ·
+      <a href="https://windsor-one.github.io/key/">Key</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('ideaForm');
+  const status = document.getElementById('status');
+  const result = document.getElementById('result');
+  const codeOut = document.getElementById('codeOut');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Contadores de caracteres
+  const bind = (id, out) => {
+    const el = document.getElementById(id);
+    const o = document.getElementById(out);
+    el.addEventListener('input', () => { o.textContent = el.value.length; });
+  };
+  bind('problema','cProblema');
+  bind('solucion','cSolucion');
+  bind('impacto','cImpacto');
+
+  // Genera código de reclamación (SHA-256 en el navegador)
+  async function generarCodigo(payload) {
+    const data = new TextEncoder().encode(payload);
+    const buf = await crypto.subtle.digest('SHA-256', data);
+    const bytes = new Uint8Array(buf);
+    const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // sin I, O, 0, 1
+    let raw = '';
+    for (let i = 0; i < 16; i++) raw += alphabet[bytes[i] % alphabet.length];
+    return 'KEY-' + raw.match(/.{1,4}/g).join('-');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const titulo   = form.titulo.value.trim();
+    const categoria= form.categoria.value;
+    const problema = form.problema.value.trim();
+    const solucion = form.solucion.value.trim();
+    const alias    = form.alias.value.trim();
+    const impacto  = form.impacto.value.trim();
+    const terminos = form.terminos.checked;
+    const original = form.original.checked;
+    const mayor    = form.mayor.checked;
+
+    const fail = (msg) => { status.textContent = msg; status.style.color = 'var(--warn)'; };
+
+    if (!titulo || !categoria || !problema || !solucion) return fail('Completa los campos obligatorios.');
+    if (problema.length < 40) return fail('Desarrolla un poco más el problema (mínimo 40 caracteres).');
+    if (solucion.length < 60) return fail('Desarrolla un poco más la solución (mínimo 60 caracteres).');
+    if (!terminos || !original || !mayor) return fail('Debes aceptar las tres declaraciones.');
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+    status.textContent = '';
+
+    const payload = JSON.stringify({
+      t: titulo, c: categoria, p: problema, s: solucion, a: alias, i: impacto,
+      ts: Date.now(), r: Math.random().toString(36).slice(2)
+    });
+
+    let codigo;
+    try {
+      codigo = await generarCodigo(payload);
+    } catch {
+      const seg = () => Math.random().toString(36).slice(2,6).toUpperCase();
+      codigo = `KEY-${seg()}-${seg()}-${seg()}-${seg()}`;
+    }
+
+    // =================================================================
+    // ENVÍO REAL — descomenta cuando conectes Formspree
+    //
+    // await fetch('https://formspree.io/f/TU_ID', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    //   body: JSON.stringify({
+    //     titulo, categoria, problema, solucion, alias, impacto, codigo
+    //   })
+    // });
+    // =================================================================
+
+    // Simulación local (quitar cuando conectes el backend)
+    console.log('[Florecimiento Key] Propuesta recibida:', { titulo, categoria, codigo });
+
+    codeOut.textContent = codigo;
+    result.classList.add('show');
+    submitBtn.textContent = 'Enviada';
+    status.textContent = 'Guarda tu código.';
+    status.style.color = 'var(--ok)';
+
+    form.querySelectorAll('input, textarea, select').forEach(el => {
+      if (el.type === 'checkbox') el.checked = false;
+      else el.value = '';
+    });
+    ['cProblema','cSolucion','cImpacto'].forEach(id => document.getElementById(id).textContent = '0');
+
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    const texto = codeOut.textContent;
+    const btn = document.getElementById('copyBtn');
+    try {
+      await navigator.clipboard.writeText(texto);
+      btn.textContent = 'Copiado';
+      setTimeout(() => btn.textContent = 'Copiar', 1800);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = texto;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = 'Copiado';
+      setTimeout(() => btn.textContent = 'Copiar', 1800);
+    }
+  });
+</script>
+
+</body>
+</html>
