@@ -7,16 +7,14 @@
 <meta name="description" content="Florecimiento Key: convocatoria anónima de ideas. El Salvador y Corea del Sur. It's time to FloreSer.">
 <style>
   :root{
-    --night:#0a0f1c; --night-2:#111832; --card:#141c34; --line:#2a3452;
+    --night:#0a0f1c; --night-2:#0d1826; --card:#101c30; --line:#243a52;
     --hanji:#f5ede0; --text:#f2ece1; --muted:#a8a390;
     --maqui:#f4a3c7; --maqui-2:#ffc9e0; --maqui-deep:#d9558a;
     --indigo:#3a5da8; --indigo-2:#5b7dd1;
-    --celadon:#8fbfa8; --celadon-2:#b5d8c3;
+    --celadon:#8fbfa8; --celadon-2:#b5d8c3; --celadon-deep:#4a8f70;
+    --green-glow:#6ddba0; --green-deep:#1f6b4a;
     --gold:#c9a75a; --gold-2:#e8c680;
     --izote:#fdf6e3;
-    /* Obangsaek (5 colores cardinales coreanos) */
-    --oba-blue:#3a5da8; --oba-red:#c94a5a; --oba-yellow:#e8c680;
-    --oba-white:#f5ede0; --oba-black:#0a0f1c;
     --radius:16px; --max:1140px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -28,14 +26,13 @@
   a:hover{text-decoration:underline}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;position:relative;z-index:3}
 
-  /* HANGUL FONDO */
+  /* FONDO */
   .hangul-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
-    font-family:serif;font-weight:900;color:rgba(244,163,199,.035);
+    font-family:serif;font-weight:900;color:rgba(143,191,168,.05);
     font-size:min(38vw,520px);display:flex;align-items:center;justify-content:center;
     letter-spacing:-.05em;user-select:none;overflow:hidden}
 
-  /* PATRÓN AÑIL (textil salvadoreño) */
-  .anil-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.06;
+  .anil-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.07;
     background-image:
       repeating-linear-gradient(45deg,transparent 0 14px,rgba(91,125,209,.5) 14px 15px),
       repeating-linear-gradient(-45deg,transparent 0 14px,rgba(91,125,209,.5) 14px 15px);
@@ -43,28 +40,37 @@
     mask-image:radial-gradient(ellipse at 80% 50%,#000 0%,transparent 55%);
     -webkit-mask-image:radial-gradient(ellipse at 80% 50%,#000 0%,transparent 55%)}
 
-  /* PATRÓN BOJAGI (patchwork coreano) */
-  .bojagi-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;
+  .bojagi-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.06;
     background-image:
-      linear-gradient(rgba(201,167,90,.6) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(201,167,90,.6) 1px,transparent 1px);
+      linear-gradient(rgba(143,191,168,.7) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(143,191,168,.7) 1px,transparent 1px);
     background-size:120px 120px,120px 120px;
     mask-image:radial-gradient(ellipse at 20% 50%,#000 0%,transparent 55%);
     -webkit-mask-image:radial-gradient(ellipse at 20% 50%,#000 0%,transparent 55%)}
 
+  /* BANDA VERDE ANIMADA DE FONDO */
+  .green-band{position:fixed;left:0;right:0;top:38%;height:2px;z-index:0;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(143,191,168,.35),rgba(109,219,160,.5),rgba(143,191,168,.35),transparent);
+    filter:blur(1px);
+    animation:bandShift 14s ease-in-out infinite}
+  .green-band.two{top:72%;opacity:.6;animation-duration:20s;animation-direction:reverse}
+  @keyframes bandShift{0%,100%{transform:translateY(0) scaleX(1);opacity:.4}50%{transform:translateY(-20px) scaleX(1.05);opacity:.75}}
+
   #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.85}
 
-  .orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0;opacity:.42}
-  .orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(244,163,199,.32),transparent 70%);top:-200px;left:-140px;animation:float1 26s ease-in-out infinite}
-  .orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(143,191,168,.26),transparent 70%);top:500px;right:-180px;animation:float2 30s ease-in-out infinite}
-  .orb-3{width:460px;height:460px;background:radial-gradient(circle,rgba(58,93,168,.28),transparent 70%);bottom:100px;left:15%;animation:float3 34s ease-in-out infinite}
+  .orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+  .orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(244,163,199,.30),transparent 70%);top:-200px;left:-140px;animation:float1 26s ease-in-out infinite;opacity:.42}
+  .orb-2{width:620px;height:620px;background:radial-gradient(circle,rgba(109,219,160,.34),transparent 70%);top:400px;right:-200px;animation:float2 30s ease-in-out infinite;opacity:.55}
+  .orb-3{width:520px;height:520px;background:radial-gradient(circle,rgba(74,143,112,.32),transparent 70%);bottom:100px;left:15%;animation:float3 34s ease-in-out infinite;opacity:.5}
+  .orb-4{width:420px;height:420px;background:radial-gradient(circle,rgba(58,93,168,.28),transparent 70%);top:55%;left:45%;animation:float1 38s ease-in-out infinite;opacity:.4}
   @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,50px)}}
   @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,60px)}}
   @keyframes float3{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-60px)}}
 
-  .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.2;
+  .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.22;
     stroke:var(--maqui);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .doodle.green{stroke:var(--celadon);opacity:.24}
+  .doodle.green{stroke:var(--celadon);opacity:.32}
+  .doodle.green-2{stroke:var(--green-glow);opacity:.28}
   .doodle.gold{stroke:var(--gold);opacity:.22}
   .doodle.indigo{stroke:var(--indigo-2);opacity:.2}
   .spin-slow{animation:spin 50s linear infinite}
@@ -74,219 +80,297 @@
   @keyframes sway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
 
   /* NAV */
-  nav{position:sticky;top:0;z-index:50;background:rgba(10,15,28,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,15,28,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
   .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px;font-size:15px}
   .brand .mark{width:32px;height:32px;flex-shrink:0}
   .brand span{color:var(--maqui)}
-  .nav-links{display:flex;gap:24px;font-size:14px;align-items:center}
+  .nav-links{display:flex;gap:22px;font-size:14px;align-items:center}
   .nav-links a{color:var(--muted)}
   .nav-links a:hover{color:var(--text);text-decoration:none}
   .nav-cta{background:linear-gradient(135deg,var(--maqui),var(--maqui-2));color:#2a0f1c !important;padding:10px 22px;border-radius:999px;font-weight:700;box-shadow:0 0 24px rgba(244,163,199,.4);transition:.25s}
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 34px rgba(244,163,199,.6);text-decoration:none !important}
-  @media(max-width:800px){.nav-links a:not(.nav-cta){display:none}}
+  @media(max-width:860px){.nav-links a:not(.nav-cta){display:none}}
 
-  /* HERO */
-  header.hero{position:relative;padding:110px 0 90px;text-align:center;overflow:hidden;border-bottom:1px solid var(--line)}
-  .edition-badge{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--gold-2);border:1px solid rgba(201,167,90,.4);padding:6px 14px;border-radius:999px;
-    margin-bottom:20px;background:rgba(201,167,90,.07);backdrop-filter:blur(8px);font-weight:600}
-  .tag{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;text-transform:uppercase;
-    color:var(--celadon-2);border:1px solid rgba(143,191,168,.4);padding:9px 18px;border-radius:999px;
-    margin-bottom:32px;background:rgba(143,191,168,.06);backdrop-filter:blur(8px)}
-  .tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--maqui);
-    box-shadow:0 0 12px var(--maqui);animation:pulse 2s ease-in-out infinite}
+  /* ===== HERO ARREGLADO: FLEX COLUMN ===== */
+  header.hero{position:relative;padding:110px 0 90px;overflow:hidden;border-bottom:1px solid var(--line)}
+  header.hero .wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:0;
+  }
+  header.hero .wrap > *{display:block;max-width:100%}
+
+  .edition-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--celadon-2);border:1px solid rgba(143,191,168,.5);
+    padding:7px 16px;border-radius:999px;margin-bottom:14px;
+    background:rgba(143,191,168,.1);backdrop-filter:blur(8px);font-weight:700;
+    box-shadow:0 0 20px rgba(143,191,168,.15);
+  }
+  .edition-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green-glow);box-shadow:0 0 10px var(--green-glow)}
+
+  .tag{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11.5px;letter-spacing:1.9px;text-transform:uppercase;
+    color:var(--celadon-2);border:1px solid rgba(143,191,168,.4);
+    padding:9px 18px;border-radius:999px;margin-bottom:32px;
+    background:rgba(143,191,168,.06);backdrop-filter:blur(8px);
+  }
+  .tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green-glow);
+    box-shadow:0 0 12px var(--green-glow);animation:pulse 2s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
 
-  .title-block{position:relative;display:inline-block;margin-bottom:22px}
-  h1{font-size:clamp(42px,7.4vw,82px);line-height:.98;font-weight:900;letter-spacing:-2.4px;
-    background:linear-gradient(135deg,#fff 15%,var(--maqui-2) 45%,var(--maqui) 65%,var(--celadon-2) 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .title-block{display:flex;flex-direction:column;align-items:center;margin-bottom:20px;position:relative;width:100%}
+  h1{
+    font-size:clamp(42px,7.4vw,82px);line-height:.98;font-weight:900;letter-spacing:-2.4px;
+    background:linear-gradient(135deg,#fff 15%,var(--maqui-2) 40%,var(--maqui) 55%,var(--celadon-2) 78%,var(--green-glow) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 40px rgba(109,219,160,.2));
+  }
   h1 em{font-style:normal}
-  .hangul-mark{position:absolute;top:-14px;right:-52px;font-family:serif;font-weight:900;
-    font-size:clamp(20px,3vw,34px);color:var(--celadon);opacity:.85;
-    letter-spacing:.05em;writing-mode:vertical-rl;line-height:1}
-  @media(max-width:600px){.hangul-mark{display:none}}
+  .hangul-mark{
+    display:block;
+    margin-top:14px;
+    font-family:serif;font-weight:900;
+    font-size:clamp(18px,2.4vw,26px);
+    color:var(--celadon);
+    opacity:.85;
+    letter-spacing:.4em;
+    line-height:1;
+    text-align:center;
+  }
 
-  .slogan{font-size:clamp(15px,2.1vw,20px);font-style:italic;color:var(--maqui);letter-spacing:.6px;
-    margin-bottom:32px;font-weight:500;display:inline-flex;align-items:center;gap:14px}
+  .slogan{
+    display:inline-flex;align-items:center;gap:14px;
+    font-size:clamp(15px,2.1vw,20px);font-style:italic;color:var(--maqui);
+    letter-spacing:.6px;margin-bottom:30px;font-weight:500;
+  }
   .slogan::before,.slogan::after{content:"";width:36px;height:1px;
     background:linear-gradient(90deg,transparent,var(--maqui),transparent)}
-  .lead{font-size:17.5px;color:var(--muted);max-width:720px;margin:0 auto 48px}
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+  .lead{font-size:17.5px;color:var(--muted);max-width:720px;margin:0 0 48px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:0}
   .btn{display:inline-flex;align-items:center;gap:10px;padding:17px 36px;border-radius:999px;
     font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
   .btn-primary{background:linear-gradient(135deg,var(--maqui),var(--maqui-2));color:#2a0f1c;
     box-shadow:0 8px 34px rgba(244,163,199,.4)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(244,163,199,.6);text-decoration:none}
-  .btn-ghost{background:rgba(245,237,224,.04);color:var(--text);border-color:var(--line);backdrop-filter:blur(8px)}
-  .btn-ghost:hover{border-color:var(--celadon);color:var(--celadon-2);text-decoration:none}
+  .btn-green{background:linear-gradient(135deg,var(--celadon),var(--green-glow));color:#0a1f14;
+    box-shadow:0 8px 34px rgba(109,219,160,.35)}
+  .btn-green:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(109,219,160,.55);text-decoration:none}
+  .btn-ghost{background:rgba(143,191,168,.06);color:var(--text);border-color:rgba(143,191,168,.3);backdrop-filter:blur(8px)}
+  .btn-ghost:hover{border-color:var(--green-glow);color:var(--green-glow);text-decoration:none}
   .btn svg{width:18px;height:18px}
 
-  .volcanoes{position:absolute;bottom:-1px;left:0;right:0;height:130px;pointer-events:none;z-index:2;opacity:.55}
+  .volcanoes{position:absolute;bottom:-1px;left:0;right:0;height:130px;pointer-events:none;z-index:2;opacity:.65}
   .volcanoes svg{width:100%;height:100%;display:block}
 
-  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;max-width:960px;margin:78px auto 0}
-  .fact{background:linear-gradient(160deg,rgba(20,28,52,.85),rgba(20,28,52,.45));
+  /* FACTS */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;max-width:960px;margin:78px auto 0;width:100%}
+  .fact{background:linear-gradient(160deg,rgba(16,28,48,.9),rgba(16,28,48,.5));
     border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;text-align:center;
     transition:.3s;position:relative;overflow:hidden;backdrop-filter:blur(10px)}
   .fact::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
     width:60%;height:1px;background:linear-gradient(90deg,transparent,var(--maqui),transparent)}
-  .fact:nth-child(2)::before{background:linear-gradient(90deg,transparent,var(--celadon),transparent)}
-  .fact:nth-child(3)::before{background:linear-gradient(90deg,transparent,var(--indigo-2),transparent)}
-  .fact:nth-child(4)::before{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-  .fact:hover{border-color:rgba(244,163,199,.5);transform:translateY(-3px)}
+  .fact:nth-child(2)::before{background:linear-gradient(90deg,transparent,var(--green-glow),transparent)}
+  .fact:nth-child(3)::before{background:linear-gradient(90deg,transparent,var(--celadon),transparent)}
+  .fact:nth-child(4)::before{background:linear-gradient(90deg,transparent,var(--indigo-2),transparent)}
+  .fact:hover{border-color:rgba(143,191,168,.6);transform:translateY(-3px);box-shadow:0 12px 40px rgba(109,219,160,.12)}
   .fact .ico{width:44px;height:44px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;
     border-radius:12px;background:rgba(244,163,199,.1);border:1px solid rgba(244,163,199,.28)}
   .fact .ico svg{width:22px;height:22px;stroke:var(--maqui);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-  .fact:nth-child(2) .ico{background:rgba(143,191,168,.1);border-color:rgba(143,191,168,.28)}
-  .fact:nth-child(2) .ico svg{stroke:var(--celadon)}
-  .fact:nth-child(3) .ico{background:rgba(91,125,209,.1);border-color:rgba(91,125,209,.28)}
-  .fact:nth-child(3) .ico svg{stroke:var(--indigo-2)}
-  .fact:nth-child(4) .ico{background:rgba(201,167,90,.1);border-color:rgba(201,167,90,.28)}
-  .fact:nth-child(4) .ico svg{stroke:var(--gold)}
+  .fact:nth-child(2) .ico{background:rgba(109,219,160,.12);border-color:rgba(109,219,160,.35)}
+  .fact:nth-child(2) .ico svg{stroke:var(--green-glow)}
+  .fact:nth-child(3) .ico{background:rgba(143,191,168,.12);border-color:rgba(143,191,168,.3)}
+  .fact:nth-child(3) .ico svg{stroke:var(--celadon)}
+  .fact:nth-child(4) .ico{background:rgba(91,125,209,.12);border-color:rgba(91,125,209,.3)}
+  .fact:nth-child(4) .ico svg{stroke:var(--indigo-2)}
   .fact .n{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:.2px}
   .fact .l{font-size:12.5px;color:var(--muted);line-height:1.55}
 
+  /* SECCIONES */
   section{padding:100px 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
   .sec-label{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;
-    text-transform:uppercase;color:var(--celadon);margin-bottom:18px;font-weight:700;
+    text-transform:uppercase;color:var(--green-glow);margin-bottom:18px;font-weight:700;
     position:relative;left:50%;transform:translateX(-50%)}
-  .sec-label::before{content:"";width:22px;height:1px;background:var(--celadon)}
+  .sec-label::before{content:"";width:22px;height:1px;background:var(--green-glow)}
   h2{font-size:clamp(28px,4.2vw,44px);font-weight:800;letter-spacing:-.9px;margin-bottom:18px;text-align:center}
   h2 em{font-style:normal;color:var(--maqui)}
+  h2 em.green{color:var(--green-glow)}
   .sec-intro{color:var(--muted);max-width:680px;margin:0 auto 62px;text-align:center;font-size:16px}
 
+  /* ===== MANIFIESTO: POR QUÉ CONVOCAMOS ASÍ ===== */
+  .manifesto{
+    max-width:880px;margin:0 auto;
+    padding:44px 40px;
+    background:linear-gradient(160deg,rgba(16,28,48,.9),rgba(16,28,48,.55));
+    border:1px solid rgba(143,191,168,.35);
+    border-radius:var(--radius);
+    position:relative;overflow:hidden;
+    backdrop-filter:blur(12px);
+    box-shadow:0 20px 60px rgba(0,0,0,.3), inset 0 1px 0 rgba(109,219,160,.1);
+  }
+  .manifesto::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--green-glow),var(--celadon),var(--maqui),transparent);
+    animation:shine 4s ease-in-out infinite;
+  }
+  @keyframes shine{0%,100%{opacity:.4}50%{opacity:1}}
+  .manifesto::after{
+    content:"";position:absolute;bottom:-60px;right:-60px;width:200px;height:200px;
+    background:radial-gradient(circle,rgba(109,219,160,.18),transparent 70%);
+    pointer-events:none;
+  }
+  .manifesto-quote{
+    font-size:clamp(18px,2.4vw,23px);line-height:1.5;font-weight:600;
+    color:var(--text);margin-bottom:26px;position:relative;padding-left:24px;
+  }
+  .manifesto-quote::before{
+    content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;
+    background:linear-gradient(180deg,var(--maqui),var(--green-glow));
+    border-radius:2px;
+  }
+  .manifesto-body{color:var(--muted);font-size:15.5px;line-height:1.85;margin-bottom:18px}
+  .manifesto-body strong{color:var(--text);font-weight:600}
+  .manifesto-body em{color:var(--celadon-2);font-style:italic}
+  .manifesto-sign{
+    display:flex;align-items:center;gap:12px;margin-top:26px;
+    font-family:serif;font-size:14px;letter-spacing:.18em;
+    color:var(--green-glow);opacity:.85;
+  }
+  .manifesto-sign::before{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--green-glow),transparent)}
+
+  /* STEPS */
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-  .step{background:linear-gradient(160deg,rgba(20,28,52,.9),rgba(20,28,52,.5));
+  .step{background:linear-gradient(160deg,rgba(16,28,48,.9),rgba(16,28,48,.5));
     border:1px solid var(--line);border-radius:var(--radius);padding:34px 26px;
     transition:.35s;position:relative;overflow:hidden;backdrop-filter:blur(10px)}
   .step::before{content:"";position:absolute;top:14px;left:14px;width:22px;height:22px;
     border-top:1.5px solid var(--celadon);border-left:1.5px solid var(--celadon);
-    border-top-left-radius:6px;opacity:.55}
+    border-top-left-radius:6px;opacity:.6}
   .step::after{content:"";position:absolute;bottom:14px;right:14px;width:22px;height:22px;
     border-bottom:1.5px solid var(--maqui);border-right:1.5px solid var(--maqui);
-    border-bottom-right-radius:6px;opacity:.55}
+    border-bottom-right-radius:6px;opacity:.6}
   .step:nth-child(2)::before{border-color:var(--maqui)}
-  .step:nth-child(2)::after{border-color:var(--indigo-2)}
-  .step:nth-child(3)::before{border-color:var(--indigo-2)}
+  .step:nth-child(2)::after{border-color:var(--green-glow)}
+  .step:nth-child(3)::before{border-color:var(--green-glow)}
   .step:nth-child(3)::after{border-color:var(--celadon)}
   .step:nth-child(4)::before{border-color:var(--gold)}
   .step:nth-child(4)::after{border-color:var(--maqui)}
-  .step:hover{border-color:rgba(244,163,199,.45);transform:translateY(-4px)}
+  .step:hover{border-color:rgba(109,219,160,.5);transform:translateY(-4px);box-shadow:0 14px 44px rgba(109,219,160,.12)}
   .step .ico-wrap{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;
     margin-bottom:22px;background:linear-gradient(135deg,rgba(244,163,199,.16),rgba(244,163,199,.04));
     border:1px solid rgba(244,163,199,.3)}
   .step .ico-wrap svg{width:28px;height:28px;stroke:var(--maqui);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-  .step:nth-child(2) .ico-wrap{background:linear-gradient(135deg,rgba(143,191,168,.16),rgba(143,191,168,.04));border-color:rgba(143,191,168,.3)}
-  .step:nth-child(2) .ico-wrap svg{stroke:var(--celadon)}
-  .step:nth-child(3) .ico-wrap{background:linear-gradient(135deg,rgba(91,125,209,.16),rgba(91,125,209,.04));border-color:rgba(91,125,209,.3)}
-  .step:nth-child(3) .ico-wrap svg{stroke:var(--indigo-2)}
+  .step:nth-child(2) .ico-wrap{background:linear-gradient(135deg,rgba(109,219,160,.18),rgba(109,219,160,.04));border-color:rgba(109,219,160,.35)}
+  .step:nth-child(2) .ico-wrap svg{stroke:var(--green-glow)}
+  .step:nth-child(3) .ico-wrap{background:linear-gradient(135deg,rgba(143,191,168,.18),rgba(143,191,168,.04));border-color:rgba(143,191,168,.35)}
+  .step:nth-child(3) .ico-wrap svg{stroke:var(--celadon)}
   .step:nth-child(4) .ico-wrap{background:linear-gradient(135deg,rgba(201,167,90,.16),rgba(201,167,90,.04));border-color:rgba(201,167,90,.3)}
   .step:nth-child(4) .ico-wrap svg{stroke:var(--gold)}
   .step .num{font-size:11.5px;font-weight:800;color:var(--maqui);letter-spacing:1.7px;margin-bottom:8px;opacity:.85}
+  .step:nth-child(2) .num{color:var(--green-glow)}
+  .step:nth-child(3) .num{color:var(--celadon)}
   .step h3{font-size:18px;margin-bottom:10px;font-weight:700;letter-spacing:-.2px}
   .step p{color:var(--muted);font-size:14.5px;line-height:1.65}
 
-  /* NUEVA SECCIÓN: FUSIÓN CULTURAL */
-  .fusion{position:relative}
+  /* FUSIÓN */
   .fusion-intro{max-width:780px;margin:0 auto 56px;text-align:center;color:var(--muted);font-size:16.5px;line-height:1.8}
   .fusion-intro em{color:var(--maqui-2);font-style:italic}
   .fusion-intro strong{color:var(--text);font-weight:600}
 
   .parallels{display:grid;grid-template-columns:1fr auto 1fr;gap:0;max-width:920px;margin:0 auto;align-items:stretch}
   @media(max-width:720px){.parallels{grid-template-columns:1fr;gap:20px}}
-
-  .side{padding:28px 26px;background:linear-gradient(160deg,rgba(20,28,52,.9),rgba(20,28,52,.5));
+  .side{padding:28px 26px;background:linear-gradient(160deg,rgba(16,28,48,.9),rgba(16,28,48,.5));
     border:1px solid var(--line);border-radius:var(--radius);backdrop-filter:blur(10px);position:relative}
   .side.izq{border-right:none;border-top-right-radius:0;border-bottom-right-radius:0}
-  .side.der{border-left:none;border-top-left-radius:0;border-bottom-left-radius:0}
-  @media(max-width:720px){
-    .side.izq,.side.der{border-radius:var(--radius);border:1px solid var(--line)}
-  }
+  .side.der{border-left:none;border-top-left-radius:0;border-bottom-left-radius:0;border-color:rgba(143,191,168,.35)}
+  @media(max-width:720px){.side.izq,.side.der{border-radius:var(--radius);border:1px solid var(--line)}}
   .side h4{font-size:12px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;margin-bottom:16px;
     display:flex;align-items:center;gap:10px}
   .side.izq h4{color:var(--maqui)}
-  .side.der h4{color:var(--celadon-2)}
+  .side.der h4{color:var(--green-glow)}
   .side h4::before{content:"";width:18px;height:1px}
   .side.izq h4::before{background:var(--maqui)}
-  .side.der h4::before{background:var(--celadon-2)}
+  .side.der h4::before{background:var(--green-glow)}
   .side p{color:var(--muted);font-size:14.5px;line-height:1.7;margin-bottom:14px}
   .side p:last-child{margin-bottom:0}
   .side .korean{font-family:serif;color:var(--celadon-2);font-size:15px;font-weight:600;letter-spacing:.05em}
 
-  .bridge{display:flex;align-items:center;justify-content:center;padding:0 12px;position:relative}
-  .bridge svg{width:46px;height:46px;stroke:var(--gold);fill:none;stroke-width:1.4;
-    filter:drop-shadow(0 0 12px rgba(201,167,90,.4));animation:spin 30s linear infinite}
+  .bridge{display:flex;align-items:center;justify-content:center;padding:0 12px}
+  .bridge svg{width:46px;height:46px;stroke:var(--green-glow);fill:none;stroke-width:1.4;
+    filter:drop-shadow(0 0 12px rgba(109,219,160,.5));animation:spin 30s linear infinite}
   @media(max-width:720px){.bridge{padding:12px 0}.bridge svg{transform:rotate(90deg)}}
 
   .pairs{display:grid;grid-template-columns:1fr auto 1fr;gap:0;max-width:920px;margin:24px auto 0;align-items:stretch}
   @media(max-width:720px){.pairs{grid-template-columns:1fr;gap:14px}}
-  .pair-cell{padding:22px 26px;background:rgba(20,28,52,.55);border:1px solid var(--line);
+  .pair-row{display:contents}
+  .pair-cell{padding:22px 26px;background:rgba(16,28,48,.55);border:1px solid var(--line);
     display:flex;flex-direction:column;justify-content:center}
   .pair-cell.left{border-right:none;border-top-left-radius:12px;border-bottom-left-radius:12px}
-  .pair-cell.right{border-left:none;border-top-right-radius:12px;border-bottom-right-radius:12px}
-  @media(max-width:720px){
-    .pair-cell.left,.pair-cell.right{border-radius:12px;border:1px solid var(--line)}
-  }
+  .pair-cell.right{border-left:none;border-top-right-radius:12px;border-bottom-right-radius:12px;border-color:rgba(143,191,168,.3)}
+  @media(max-width:720px){.pair-cell.left,.pair-cell.right{border-radius:12px;border:1px solid var(--line)}}
   .pair-cell .icon{width:26px;height:26px;margin-bottom:10px;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .pair-cell.left .icon{stroke:var(--maqui)}
-  .pair-cell.right .icon{stroke:var(--celadon)}
+  .pair-cell.right .icon{stroke:var(--green-glow)}
   .pair-cell h5{font-size:14.5px;font-weight:700;margin-bottom:6px;letter-spacing:-.1px}
   .pair-cell.left h5{color:var(--maqui-2)}
-  .pair-cell.right h5{color:var(--celadon-2)}
+  .pair-cell.right h5{color:var(--green-glow)}
   .pair-cell p{font-size:13px;color:var(--muted);line-height:1.6}
   .pair-mid{display:flex;align-items:center;justify-content:center;width:44px;
-    background:rgba(20,28,52,.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .pair-mid svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round}
+    background:rgba(16,28,48,.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .pair-mid svg{width:18px;height:18px;stroke:var(--green-glow);fill:none;stroke-width:1.8;stroke-linecap:round}
   @media(max-width:720px){.pair-mid{display:none}}
 
-  .pair-row{display:contents}
-
   .fusion-closing{max-width:780px;margin:56px auto 0;text-align:center;padding:32px 36px;
-    background:linear-gradient(135deg,rgba(244,163,199,.08),rgba(143,191,168,.06));
-    border:1px solid rgba(201,167,90,.3);border-radius:var(--radius);position:relative}
-  .fusion-closing::before,.fusion-closing::after{content:"";position:absolute;width:30px;height:30px;border:1.5px solid var(--gold);opacity:.5}
+    background:linear-gradient(135deg,rgba(244,163,199,.08),rgba(109,219,160,.1));
+    border:1px solid rgba(143,191,168,.4);border-radius:var(--radius);position:relative}
+  .fusion-closing::before,.fusion-closing::after{content:"";position:absolute;width:30px;height:30px;border:1.5px solid var(--green-glow);opacity:.6}
   .fusion-closing::before{top:12px;left:12px;border-right:none;border-bottom:none;border-top-left-radius:6px}
   .fusion-closing::after{bottom:12px;right:12px;border-left:none;border-top:none;border-bottom-right-radius:6px}
   .fusion-closing p{color:var(--text);font-size:16px;line-height:1.8;font-style:italic}
   .fusion-closing p + p{margin-top:14px;font-size:14.5px;color:var(--muted);font-style:normal}
-  .fusion-closing .sign{font-family:serif;color:var(--celadon-2);font-size:14px;letter-spacing:.15em;margin-top:18px;display:block}
+  .fusion-closing .sign{font-family:serif;color:var(--green-glow);font-size:14px;letter-spacing:.15em;margin-top:18px;display:block}
 
+  /* CATEGORÍAS */
   .cats{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:880px;margin:0 auto}
   .cat{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;padding:12px 22px;border-radius:999px;
-    background:rgba(20,28,52,.7);border:1px solid var(--line);color:var(--muted);
+    background:rgba(16,28,48,.7);border:1px solid var(--line);color:var(--muted);
     transition:.25s;backdrop-filter:blur(6px);cursor:default}
-  .cat:hover{border-color:var(--maqui);color:var(--maqui-2);transform:translateY(-2px);box-shadow:0 0 22px rgba(244,163,199,.2)}
+  .cat:hover{border-color:var(--green-glow);color:var(--green-glow);transform:translateY(-2px);box-shadow:0 0 22px rgba(109,219,160,.2)}
   .cat .dot{width:7px;height:7px;border-radius:50%;background:var(--maqui);flex-shrink:0}
-  .cat:nth-child(2n) .dot{background:var(--celadon)}
-  .cat:nth-child(3n) .dot{background:var(--gold)}
-  .cat:nth-child(4n) .dot{background:var(--indigo-2)}
+  .cat:nth-child(2n) .dot{background:var(--green-glow)}
+  .cat:nth-child(3n) .dot{background:var(--celadon)}
+  .cat:nth-child(4n) .dot{background:var(--gold)}
 
-  .note{background:linear-gradient(135deg,rgba(244,163,199,.1),rgba(143,191,168,.06));
-    border-left:3px solid var(--maqui);padding:24px 28px;border-radius:12px;font-size:14.5px;
+  .note{background:linear-gradient(135deg,rgba(109,219,160,.1),rgba(143,191,168,.06));
+    border-left:3px solid var(--green-glow);padding:24px 28px;border-radius:12px;font-size:14.5px;
     color:var(--muted);max-width:840px;margin:56px auto 0;line-height:1.75;
     display:flex;gap:16px;align-items:flex-start}
-  .note svg{width:22px;height:22px;flex-shrink:0;stroke:var(--maqui);fill:none;stroke-width:1.8;margin-top:2px}
+  .note svg{width:22px;height:22px;flex-shrink:0;stroke:var(--green-glow);fill:none;stroke-width:1.8;margin-top:2px}
   .note strong{color:var(--text)}
 
-  details{background:linear-gradient(160deg,rgba(20,28,52,.9),rgba(20,28,52,.5));
+  details{background:linear-gradient(160deg,rgba(16,28,48,.9),rgba(16,28,48,.5));
     border:1px solid var(--line);border-radius:var(--radius);padding:22px 28px;margin-bottom:12px;
     max-width:900px;margin-left:auto;margin-right:auto;transition:.3s;backdrop-filter:blur(10px)}
-  details:hover{border-color:rgba(244,163,199,.35)}
-  details[open]{padding-bottom:28px;border-color:rgba(244,163,199,.4)}
+  details:hover{border-color:rgba(109,219,160,.4)}
+  details[open]{padding-bottom:28px;border-color:rgba(109,219,160,.5)}
   summary{cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";color:var(--maqui);font-size:26px;font-weight:300;flex-shrink:0;transition:.3s}
+  summary::after{content:"+";color:var(--green-glow);font-size:26px;font-weight:300;flex-shrink:0;transition:.3s}
   details[open] summary::after{content:"–";transform:rotate(180deg)}
   details p, details ul{color:var(--muted);font-size:14px;margin-top:18px;line-height:1.75}
   details ul{padding-left:22px}
   details li{margin-bottom:8px}
-  details li::marker{color:var(--celadon)}
+  details li::marker{color:var(--green-glow)}
 
   .cta-final{text-align:center;padding:120px 0;border-bottom:none;position:relative}
   .cta-final::before{content:"";position:absolute;inset:0;
-    background:radial-gradient(700px 340px at 50% 50%,rgba(244,163,199,.1),transparent 70%);pointer-events:none}
+    background:radial-gradient(700px 340px at 50% 50%,rgba(109,219,160,.12),transparent 70%);pointer-events:none}
   .cta-final h2{margin-bottom:22px}
   .cta-final .slogan{margin-bottom:30px;font-size:18px}
   .cta-final p{color:var(--muted);max-width:580px;margin:0 auto 42px;font-size:16px}
@@ -294,8 +378,8 @@
   footer{padding:60px 0 76px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line);position:relative;z-index:2}
   footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
   footer a{color:var(--muted)}
-  footer a:hover{color:var(--maqui)}
-  footer .hangul-foot{font-family:serif;font-weight:700;color:var(--celadon);opacity:.65;letter-spacing:.15em;font-size:14px}
+  footer a:hover{color:var(--green-glow)}
+  footer .hangul-foot{font-family:serif;font-weight:700;color:var(--green-glow);opacity:.7;letter-spacing:.15em;font-size:14px}
 </style>
 </head>
 <body>
@@ -303,9 +387,12 @@
 <div class="hangul-bg">개화</div>
 <div class="anil-pattern"></div>
 <div class="bojagi-pattern"></div>
+<div class="green-band"></div>
+<div class="green-band two"></div>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
+<div class="orb orb-4"></div>
 <canvas id="petals"></canvas>
 
 <nav>
@@ -317,17 +404,17 @@
         <path d="M20 16c3.5-2.5 7.5-2.5 9.5 1-3 2.5-7 2.5-9.5-1z" stroke="#f4a3c7"/>
         <path d="M20 16c-1.5-3.5-1.5-7.5 2-9.5 1.5 3 1.5 7-2 9.5z" stroke="#f4a3c7"/>
         <path d="M20 16c1.5 3.5 1.5 7.5-2 9.5-1.5-3-1.5-7 2-9.5z" stroke="#f4a3c7"/>
-        <path d="M20 24v10" stroke="#8fbfa8"/>
-        <path d="M20 28c-2.5-1-4-2-5-4" stroke="#8fbfa8"/>
-        <path d="M20 32c2.5-1 4-2 5-4" stroke="#8fbfa8"/>
+        <path d="M20 24v10" stroke="#6ddba0"/>
+        <path d="M20 28c-2.5-1-4-2-5-4" stroke="#6ddba0"/>
+        <path d="M20 32c2.5-1 4-2 5-4" stroke="#6ddba0"/>
       </svg>
       FLORECIMIENTO<span>·</span>KEY
     </div>
     <div class="nav-links">
+      <a href="#manifiesto">Manifiesto</a>
       <a href="#fusion">Fusión</a>
       <a href="#como">Proceso</a>
       <a href="#categorias">Categorías</a>
-      <a href="#bases">Bases</a>
       <a href="postular.html" class="nav-cta">Postular</a>
     </div>
   </div>
@@ -353,13 +440,13 @@
     <path d="M50 12v16M50 72v16M12 50h16M72 50h16" opacity=".6"/>
   </svg>
 
-  <svg class="doodle gold" style="bottom:22%;left:8%" width="60" height="60" viewBox="0 0 60 60">
-    <path d="M30 8v44M8 30h44"/>
-    <rect x="20" y="20" width="20" height="20" rx="3" transform="rotate(45 30 30)"/>
-    <circle cx="30" cy="30" r="5"/>
+  <svg class="doodle green-2" style="bottom:22%;left:8%" width="64" height="64" viewBox="0 0 64 64">
+    <path d="M32 8v48M8 32h48"/>
+    <rect x="22" y="22" width="20" height="20" rx="3" transform="rotate(45 32 32)"/>
+    <circle cx="32" cy="32" r="5"/>
   </svg>
 
-  <svg class="doodle indigo sway" style="bottom:26%;right:7%" width="72" height="72" viewBox="0 0 72 72">
+  <svg class="doodle green sway" style="bottom:26%;right:7%" width="72" height="72" viewBox="0 0 72 72">
     <path d="M36 64V36"/>
     <path d="M36 36c-10 0-18-8-18-18 10 0 18 8 18 18z"/>
     <path d="M36 36c10 0 18-8 18-18-10 0-18 8-18 18z"/>
@@ -368,34 +455,46 @@
   </svg>
 
   <div class="wrap">
+    <!-- FILA 1: badge edición -->
     <span class="edition-badge">Primera edición · 2026</span>
-    <br>
+
+    <!-- FILA 2: tag convocatoria -->
     <span class="tag">Convocatoria abierta · Anónima</span>
+
+    <!-- FILA 3: título -->
     <div class="title-block">
       <h1>Florecimiento <em>Key</em></h1>
+      <!-- FILA 4: hangul -->
       <span class="hangul-mark">개화</span>
     </div>
+
+    <!-- FILA 5: slogan -->
     <p class="slogan">It's time to FloreSer</p>
+
+    <!-- FILA 6: lead -->
     <p class="lead">
       Como el maquilishuat que florece en seco y como el mugunghwa que nunca se marchita,
       las buenas ideas nacen cuando deberían rendirse. Envía la tuya sin registro, sin correo,
       sin contacto. Key evalúa a ciegas y ejecuta las que florecen.
     </p>
+
+    <!-- FILA 7: CTAs -->
     <div class="cta-row">
-      <a href="postular.html" class="btn btn-primary">
+      <a href="postular.html" class="btn btn-green">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
         </svg>
         Enviar una idea
       </a>
-      <a href="#fusion" class="btn btn-ghost">
+      <a href="#manifiesto" class="btn btn-ghost">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
         </svg>
-        Por qué esta fusión
+        Por qué esta temática
       </a>
     </div>
 
+    <!-- FILA 8: facts -->
     <div class="facts">
       <div class="fact">
         <div class="ico"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
@@ -424,23 +523,86 @@
     <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
       <defs>
         <linearGradient id="volcGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f4a3c7" stop-opacity=".28"/>
+          <stop offset="0%" stop-color="#6ddba0" stop-opacity=".28"/>
           <stop offset="100%" stop-color="#0a0f1c" stop-opacity="0"/>
         </linearGradient>
       </defs>
       <path d="M0,130 L0,95 L120,55 L200,80 L320,30 L430,72 L520,45 L640,20 L760,68 L860,38 L980,75 L1080,42 L1200,72 L1300,50 L1440,90 L1440,130 Z"
-            fill="url(#volcGrad)" stroke="#f4a3c7" stroke-width="0.6" stroke-opacity=".3"/>
+            fill="url(#volcGrad)" stroke="#6ddba0" stroke-width="0.6" stroke-opacity=".35"/>
     </svg>
   </div>
 </header>
 
+<!-- ===== MANIFIESTO: POR QUÉ CONVOCAMOS ASÍ ===== -->
+<section id="manifiesto">
+  <svg class="doodle green spin-slow" style="top:8%;right:5%" width="90" height="90" viewBox="0 0 90 90">
+    <circle cx="45" cy="45" r="34" stroke-dasharray="4 8"/>
+    <circle cx="45" cy="45" r="18"/>
+    <path d="M45 11v18M45 61v18M11 45h18M61 45h18" opacity=".5"/>
+  </svg>
+  <svg class="doodle green-2 sway" style="bottom:10%;left:5%" width="76" height="76" viewBox="0 0 76 76">
+    <path d="M38 66V38"/>
+    <path d="M38 38c-9 0-16-7-16-16 9 0 16 7 16 16z"/>
+    <path d="M38 38c9 0 16-7 16-16-9 0-16 7-16 16z"/>
+  </svg>
+
+  <div class="wrap">
+    <div class="sec-label">Manifiesto</div>
+    <h2>Por qué convocamos <em class="green">así</em></h2>
+    <p class="sec-intro">
+      Esta es la primera convocatoria de Key como fundación. Elegimos una temática que dice algo
+      sobre quiénes somos, qué queremos construir y con quiénes queremos hacerlo.
+    </p>
+
+    <div class="manifesto">
+      <p class="manifesto-quote">
+        "Convocamos con esta temática porque El Salvador y Corea del Sur nos enseñaron
+        que florecer no es un privilegio, sino una decisión que se toma incluso en la sequía."
+      </p>
+
+      <p class="manifesto-body">
+        <strong>No usamos la cultura como decoración.</strong> Usamos el maquilishuat porque abre
+        en la estación seca, cuando todo lo demás se rinde. Usamos el mugunghwa porque significa
+        literalmente <em>"la flor que nunca se marchita"</em>. Ambos son símbolos nacionales de
+        pueblos que aprendieron a florecer después de la guerra, de la diáspora, de la
+        reconstrucción.
+      </p>
+
+      <p class="manifesto-body">
+        <strong>Convocamos a quienes quieren florecer sin pedir permiso.</strong> Esta convocatoria
+        no busca ideas perfectas: busca ideas que germinen en la adversidad. Ideas de jóvenes que
+        quieren quedarse en su país, de adultos mayores que aún tienen qué enseñar, de comunidades
+        que quieren resolver lo que el Estado no resuelve.
+      </p>
+
+      <p class="manifesto-body">
+        <strong>Y lo hacemos en silencio.</strong> Sin registro, sin correo, sin contacto. Porque
+        creemos que las mejores ideas no necesitan vitrina, sino tierra. El jurado evalúa a ciegas.
+        El código de reclamación es tu única prueba de autoría. Florecer aquí no es un concurso de
+        popularidad: es un acto de confianza.
+      </p>
+
+      <span class="manifesto-sign">개화 · 두 땅, 한 꽃 · Florecimiento</span>
+    </div>
+
+    <div class="note">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <div>
+        <strong>Esta es nuestra primera edición.</strong> Estamos construyendo el estándar de lo que
+        será la convocatoria anual de Key. Si algo se puede mejorar, lo mejoraremos en la próxima.
+        Pero empezamos aquí, con esta fusión, porque es la que nos representa.
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FUSIÓN CULTURAL -->
-<section id="fusion" class="fusion">
-  <svg class="doodle indigo spin-rev" style="top:10%;right:5%" width="80" height="80" viewBox="0 0 80 80">
+<section id="fusion">
+  <svg class="doodle green spin-rev" style="top:10%;right:5%" width="80" height="80" viewBox="0 0 80 80">
     <circle cx="40" cy="40" r="28" stroke-dasharray="3 6"/>
     <rect x="24" y="24" width="32" height="32" rx="3" transform="rotate(45 40 40)" opacity=".5"/>
   </svg>
-  <svg class="doodle gold sway" style="bottom:12%;left:5%" width="70" height="70" viewBox="0 0 70 70">
+  <svg class="doodle green sway" style="bottom:12%;left:5%" width="70" height="70" viewBox="0 0 70 70">
     <path d="M35 60V36"/>
     <path d="M35 36c-9 0-15-7-15-15 9 0 15 7 15 15z"/>
     <path d="M35 36c9 0 15-7 15-15-9 0-15 7-15 15z"/>
@@ -448,15 +610,12 @@
 
   <div class="wrap">
     <div class="sec-label">Dos tierras, una flor</div>
-    <h2>Por qué <em>esta fusión</em></h2>
+    <h2>El <em>puente</em> cultural</h2>
     <p class="fusion-intro">
-      Florecimiento Key no mezcla dos culturas por decoración. Las une porque comparten algo esencial:
-      <strong>ambas florecen cuando deberían rendirse</strong>. El maquilishuat abre en la estación seca.
-      El mugunghwa es <em>"la flor que nunca se marchita"</em>. En ambos pueblos, florecer no es un lujo:
-      es un acto de resistencia.
+      Seis paralelos entre El Salvador y Corea del Sur que explican por qué esta fusión no es
+      arbitraria, sino <strong>necesaria</strong>.
     </p>
 
-    <!-- Bloque 1: Flores nacionales -->
     <div class="parallels">
       <div class="side izq">
         <h4>El Salvador</h4>
@@ -468,23 +627,19 @@
       </div>
       <div class="side der">
         <h4>Corea del Sur</h4>
-        <p><strong style="color:var(--celadon-2)">Mugunghwa</strong> — flor nacional, rosa de Siria. Llamada <span class="korean">무궁화</span>, "la flor que nunca se marchita". Florece desde julio hasta octubre, resistiendo plagas, sequías y heladas.</p>
-        <p><strong style="color:var(--celadon-2)">Beotkkot</strong> — flor de cerezo. Cae en primavera en pocos días, recordando que la belleza es breve y por eso se celebra con más intensidad.</p>
+        <p><strong style="color:var(--green-glow)">Mugunghwa</strong> — flor nacional, rosa de Siria. Llamada <span class="korean">무궁화</span>, "la flor que nunca se marchita". Florece desde julio hasta octubre, resistiendo plagas, sequías y heladas.</p>
+        <p><strong style="color:var(--green-glow)">Beotkkot</strong> — flor de cerezo. Cae en primavera en pocos días, recordando que la belleza es breve y por eso se celebra con más intensidad.</p>
       </div>
     </div>
 
-    <!-- Pares comparativos -->
     <div class="pairs">
-      <!-- Par 1: Añil ↔ Celadón -->
       <div class="pair-row">
         <div class="pair-cell left">
           <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
           <h5>Añil salvadoreño</h5>
-          <p>El índigo que durante la colonia fue el mayor exportación del país. Pigmento azul profundo extraído por fermentación lenta de la planta de xiquilite. Requiere tiempo, oficio y paciencia.</p>
+          <p>El índigo que durante la colonia fue la mayor exportación del país. Pigmento azul profundo extraído por fermentación lenta de la planta de xiquilite. Requiere tiempo, oficio y paciencia.</p>
         </div>
-        <div class="pair-mid">
-          <svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg>
-        </div>
+        <div class="pair-mid"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg></div>
         <div class="pair-cell right">
           <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
           <h5>Celadón coreano</h5>
@@ -492,16 +647,13 @@
         </div>
       </div>
 
-      <!-- Par 2: Volcanes ↔ Montañas -->
       <div class="pair-row">
         <div class="pair-cell left">
           <svg class="icon" viewBox="0 0 24 24"><path d="M3 20l6-10 4 6 3-4 5 8z"/><circle cx="9" cy="6" r="2"/></svg>
           <h5>Volcanes y Ruta de las Flores</h5>
           <p>El Salvador es tierra de volcanes activos. La Ruta de las Flores recorre pueblos entre cafetales, donde el maquilishuat crece junto al fuego dormido de la tierra.</p>
         </div>
-        <div class="pair-mid">
-          <svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg>
-        </div>
+        <div class="pair-mid"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg></div>
         <div class="pair-cell right">
           <svg class="icon" viewBox="0 0 24 24"><path d="M3 20l6-10 4 6 3-4 5 8z"/><circle cx="9" cy="6" r="2"/></svg>
           <h5>Montañas y Han</h5>
@@ -509,16 +661,13 @@
         </div>
       </div>
 
-      <!-- Par 3: Curtido ↔ Kimchi -->
       <div class="pair-row">
         <div class="pair-cell left">
           <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
           <h5>Curtido y pupusas</h5>
           <p>La fermentación salvadoreña: repollo, zanahoria y orégano que se agrian con el tiempo. La pupusa no existe sin curtido. Lo simple, fermentado, se vuelve imprescindible.</p>
         </div>
-        <div class="pair-mid">
-          <svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg>
-        </div>
+        <div class="pair-mid"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg></div>
         <div class="pair-cell right">
           <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
           <h5>Kimchi y banchan</h5>
@@ -526,16 +675,13 @@
         </div>
       </div>
 
-      <!-- Par 4: Comunidad ↔ Jeong -->
       <div class="pair-row">
         <div class="pair-cell left">
           <svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M14 14c2 0 5 1.5 5 4"/></svg>
           <h5>El pueblo y la cofradía</h5>
           <p>La comunidad salvadoreña se organiza en cofradías, directivas comunales y familia extendida. El "nosotros" pesa más que el "yo". Florecer solo no cuenta si no florece el pueblo.</p>
         </div>
-        <div class="pair-mid">
-          <svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg>
-        </div>
+        <div class="pair-mid"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg></div>
         <div class="pair-cell right">
           <svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M14 14c2 0 5 1.5 5 4"/></svg>
           <h5>정 (jeong)</h5>
@@ -543,16 +689,13 @@
         </div>
       </div>
 
-      <!-- Par 5: Resiliencia -->
       <div class="pair-row">
         <div class="pair-cell left">
           <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="6"/></svg>
           <h5>Después de Chapultepec</h5>
           <p>Doce años de guerra civil (1980–1992) y una diáspora enorme. El país aprendió a reconstruirse sin olvidar. La paz se firmó, pero la memoria se conserva.</p>
         </div>
-        <div class="pair-mid">
-          <svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg>
-        </div>
+        <div class="pair-mid"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg></div>
         <div class="pair-cell right">
           <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="6"/></svg>
           <h5>Después del Han</h5>
@@ -561,7 +704,6 @@
       </div>
     </div>
 
-    <!-- Cierre poético -->
     <div class="fusion-closing">
       <p>
         "Florecimiento Key no elige entre El Salvador y Corea del Sur.
@@ -584,14 +726,14 @@
     <path d="M35 34c-9 0-16-7-16-16 9 0 16 7 16 16z"/>
     <path d="M35 34c9 0 16-7 16-16-9 0-16 7-16 16z"/>
   </svg>
-  <svg class="doodle" style="bottom:12%;left:4%" width="58" height="58" viewBox="0 0 58 58">
+  <svg class="doodle green-2" style="bottom:12%;left:4%" width="58" height="58" viewBox="0 0 58 58">
     <circle cx="29" cy="29" r="7"/>
     <path d="M29 22V8M29 50V36M22 29H8M50 29H36"/>
   </svg>
 
   <div class="wrap">
     <div class="sec-label">El proceso</div>
-    <h2>Cómo <em>funciona</em></h2>
+    <h2>Cómo <em class="green">funciona</em></h2>
     <p class="sec-intro">
       Un flujo asíncrono y sin fricción. Tú envías, nosotros evaluamos. No hay reuniones,
       no hay llamadas, no hay respuestas automáticas.
@@ -636,12 +778,12 @@
 
 <!-- CATEGORÍAS -->
 <section id="categorias">
-  <svg class="doodle indigo spin-rev" style="top:14%;left:6%" width="88" height="88" viewBox="0 0 88 88">
+  <svg class="doodle green spin-rev" style="top:14%;left:6%" width="88" height="88" viewBox="0 0 88 88">
     <circle cx="44" cy="44" r="32" stroke-dasharray="3 6"/>
     <rect x="26" y="26" width="36" height="36" rx="3" transform="rotate(45 44 44)" opacity=".5"/>
     <circle cx="44" cy="44" r="8"/>
   </svg>
-  <svg class="doodle gold sway" style="bottom:14%;right:7%" width="72" height="72" viewBox="0 0 72 72">
+  <svg class="doodle green sway" style="bottom:14%;right:7%" width="72" height="72" viewBox="0 0 72 72">
     <path d="M36 62V36"/>
     <path d="M36 36c-9 0-15-7-15-15 9 0 15 7 15 15z"/>
     <path d="M36 36c9 0 15-7 15-15-9 0-15 7-15 15z"/>
@@ -669,7 +811,7 @@
 <section id="bases">
   <div class="wrap">
     <div class="sec-label">Legal</div>
-    <h2>Bases de la <em>convocatoria</em></h2>
+    <h2>Bases de la <em class="green">convocatoria</em></h2>
     <p class="sec-intro">Al enviar tu propuesta aceptas los siguientes términos. Léelos con atención.</p>
 
     <details open>
@@ -747,22 +889,22 @@
 
 <!-- CTA FINAL -->
 <section class="cta-final">
-  <svg class="doodle spin-slow" style="top:14%;left:8%" width="110" height="110" viewBox="0 0 110 110">
+  <svg class="doodle green spin-slow" style="top:14%;left:8%" width="110" height="110" viewBox="0 0 110 110">
     <circle cx="55" cy="55" r="44" stroke-dasharray="4 8"/>
     <circle cx="55" cy="55" r="28"/>
     <circle cx="55" cy="55" r="12"/>
   </svg>
-  <svg class="doodle green sway" style="bottom:14%;right:9%" width="88" height="88" viewBox="0 0 88 88">
+  <svg class="doodle green-2 sway" style="bottom:14%;right:9%" width="88" height="88" viewBox="0 0 88 88">
     <path d="M44 76V42"/>
     <path d="M44 42c-11 0-19-8-19-19 11 0 19 8 19 19z"/>
     <path d="M44 42c11 0 19-8 19-19-11 0-19 8-19 19z"/>
   </svg>
 
   <div class="wrap">
-    <h2>¿Tienes una <em>idea</em>?</h2>
+    <h2>¿Tienes una <em class="green">idea</em>?</h2>
     <p class="slogan">It's time to FloreSer</p>
     <p>No necesitas registro, no necesitas correo, no necesitas hablar con nadie. Solo envía.</p>
-    <a href="postular.html" class="btn btn-primary">
+    <a href="postular.html" class="btn btn-green">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
       </svg>
@@ -788,21 +930,20 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* ===== CANVAS: maquilishuat + flor de izote + mugunghwa + hoja ===== */
+  /* ===== CANVAS: maquilishuat + izote + mugunghwa + hoja (más verde) ===== */
   (function(){
     const c = document.getElementById('petals');
     const ctx = c.getContext('2d');
     let w, h, items = [];
     const MAQUI = ['#f4a3c7','#ffc9e0','#e88ab5','#ffb3d1'];
     const IZOTE = ['#fdf6e3','#f5ede0','#efe4cb'];
-    const HOJA = ['#8fbfa8','#b5d8c3'];
-    const COUNT = window.innerWidth < 720 ? 18 : 32;
+    const HOJA = ['#6ddba0','#8fbfa8','#b5d8c3','#4a8f70'];
+    const COUNT = window.innerWidth < 720 ? 20 : 36;
 
     function resize(){ w = c.width = innerWidth; h = c.height = innerHeight; }
     resize();
     addEventListener('resize', resize);
 
-    // Maquilishuat: flor trompeta
     function drawMaqui(ctx, size, color){
       ctx.fillStyle = color;
       ctx.beginPath();
@@ -818,7 +959,6 @@
       ctx.globalAlpha = 1;
     }
 
-    // Flor de izote: estrella de 6 pétalos blancos, en racimo
     function drawIzote(ctx, size, color){
       for (let k = 0; k < 3; k++){
         ctx.save();
@@ -836,7 +976,7 @@
           ctx.fill();
           ctx.restore();
         }
-        ctx.fillStyle = '#c9a75a';
+        ctx.fillStyle = '#6ddba0';
         ctx.beginPath();
         ctx.arc(0, 0, size * .14, 0, Math.PI * 2);
         ctx.fill();
@@ -844,7 +984,6 @@
       }
     }
 
-    // Mugunghwa / flor de cerezo: 5 pétalos
     function drawBlossom(ctx, size, color){
       ctx.fillStyle = color;
       for (let i = 0; i < 5; i++){
@@ -855,7 +994,7 @@
         ctx.fill();
         ctx.restore();
       }
-      ctx.fillStyle = '#c9a75a';
+      ctx.fillStyle = '#6ddba0';
       ctx.beginPath();
       ctx.arc(0, 0, size * .18, 0, Math.PI * 2);
       ctx.fill();
@@ -871,9 +1010,9 @@
     function P(){ this.reset(true); }
     P.prototype.reset = function(init){
       const r = Math.random();
-      if (r < .42) this.type = 'maqui';
-      else if (r < .68) this.type = 'blossom';
-      else if (r < .85) this.type = 'izote';
+      if (r < .38) this.type = 'maqui';
+      else if (r < .60) this.type = 'blossom';
+      else if (r < .74) this.type = 'izote';
       else this.type = 'leaf';
       this.x = Math.random() * w;
       this.y = init ? Math.random() * h : -30;
