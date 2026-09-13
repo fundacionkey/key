@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Florecimiento Key · Convocatoria Anónima de Ideas</title>
+<meta name="description" content="Florecimiento Key: convocatoria anónima de ideas para El Salvador. Envía tu propuesta sin registro, sin correo, sin contacto. It's time to FloreSer.">
+<style>
+  :root{
+    --bg:#0b0f1a; --bg-2:#111726; --card:#151c2e; --line:#232c44;
+    --text:#e8ecf4; --muted:#8b95ad; --accent:#e8b04b; --accent-2:#f2c56b;
+    --radius:14px; --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,15,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-weight:700;letter-spacing:.4px;font-size:15px}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:22px;font-size:14px;align-items:center}
+  .nav-links a{color:var(--muted)}
+  .nav-links a:hover{color:var(--text);text-decoration:none}
+  .nav-cta{background:var(--accent);color:#0b0f1a !important;padding:8px 18px;border-radius:999px;font-weight:600}
+  .nav-cta:hover{background:var(--accent-2);text-decoration:none !important}
+  @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+
+  header.hero{
+    padding:100px 0 80px;
+    background:
+      radial-gradient(900px 420px at 15% 0%, rgba(232,176,75,.11), transparent 60%),
+      radial-gradient(700px 360px at 90% 15%, rgba(96,165,250,.06), transparent 60%);
+    border-bottom:1px solid var(--line);text-align:center;
+  }
+  .tag{display:inline-block;font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(232,176,75,.35);padding:7px 15px;border-radius:999px;margin-bottom:28px}
+  h1{font-size:clamp(38px,6.4vw,68px);line-height:1.02;font-weight:800;letter-spacing:-1.5px;margin-bottom:18px}
+  h1 em{font-style:normal;color:var(--accent)}
+  .slogan{font-size:clamp(15px,2vw,19px);font-style:italic;color:var(--accent);letter-spacing:.4px;margin-bottom:28px;font-weight:500}
+  .lead{font-size:17.5px;color:var(--muted);max-width:660px;margin:0 auto 42px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .btn{display:inline-block;padding:15px 32px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.2s;font-family:inherit}
+  .btn-primary{background:var(--accent);color:#0b0f1a}
+  .btn-primary:hover{background:var(--accent-2);text-decoration:none;transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent);text-decoration:none}
+
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:16px;max-width:840px;margin:60px auto 0}
+  .fact{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;text-align:center}
+  .fact .n{font-size:15px;font-weight:700;color:var(--accent);margin-bottom:6px;letter-spacing:.3px}
+  .fact .l{font-size:12.5px;color:var(--muted);line-height:1.45}
+
+  section{padding:84px 0;border-bottom:1px solid var(--line)}
+  .sec-label{font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600;text-align:center}
+  h2{font-size:clamp(26px,3.8vw,38px);font-weight:700;letter-spacing:-.5px;margin-bottom:16px;text-align:center}
+  .sec-intro{color:var(--muted);max-width:620px;margin:0 auto 54px;text-align:center;font-size:16px}
+
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:20px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 24px}
+  .step .num{font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:1.5px;margin-bottom:14px}
+  .step h3{font-size:17px;margin-bottom:9px;font-weight:600}
+  .step p{color:var(--muted);font-size:14.5px;line-height:1.6}
+
+  .cats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:800px;margin:0 auto}
+  .cat{font-size:13.5px;padding:10px 19px;border-radius:999px;background:var(--bg-2);border:1px solid var(--line);color:var(--muted)}
+
+  .note{background:rgba(232,176,75,.07);border-left:3px solid var(--accent);padding:18px 22px;border-radius:10px;font-size:14px;color:var(--muted);max-width:780px;margin:48px auto 0;text-align:left;line-height:1.65}
+  .note strong{color:var(--text)}
+
+  details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 24px;margin-bottom:12px;max-width:860px;margin-left:auto;margin-right:auto}
+  details[open]{padding-bottom:24px}
+  summary{cursor:pointer;font-weight:600;font-size:15.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--accent);font-size:22px;font-weight:400;flex-shrink:0}
+  details[open] summary::after{content:"–"}
+  details p, details ul{color:var(--muted);font-size:14px;margin-top:14px;line-height:1.7}
+  details ul{padding-left:20px}
+  details li{margin-bottom:7px}
+
+  .cta-final{text-align:center;padding:96px 0;border-bottom:none}
+  .cta-final h2{margin-bottom:18px}
+  .cta-final .slogan{margin-bottom:26px}
+  .cta-final p{color:var(--muted);max-width:540px;margin:0 auto 36px;font-size:16px}
+
+  footer{padding:48px 0 64px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+  footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">FLORECIMIENTO<span>·</span>KEY</div>
+    <div class="nav-links">
+      <a href="#como">Cómo funciona</a>
+      <a href="#categorias">Categorías</a>
+      <a href="#bases">Bases</a>
+      <a href="postular.html" class="nav-cta">Postular</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">Convocatoria abierta · Anónima</span>
+    <h1>Florecimiento <em>Key</em></h1>
+    <p class="slogan">It's time to FloreSer</p>
+    <p class="lead">
+      Envía tu idea sin registro, sin correo y sin contacto. Key recibe propuestas anónimas,
+      las evalúa a ciegas y ejecuta las que considera viables. Tú no hablas con nadie.
+      Nosotros no te escribimos.
+    </p>
+    <div class="cta-row">
+      <a href="postular.html" class="btn btn-primary">Enviar una idea</a>
+      <a href="#como" class="btn btn-ghost">Cómo funciona</a>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><div class="n">Sin registro</div><div class="l">No pedimos nombre, correo ni teléfono</div></div>
+      <div class="fact"><div class="n">Sin contacto</div><div class="l">No hay llamadas, reuniones ni notificaciones</div></div>
+      <div class="fact"><div class="n">Evaluación ciega</div><div class="l">El jurado no sabe quién envió cada idea</div></div>
+      <div class="fact"><div class="n">Código de reclamación</div><div class="l">Tu única vía para reclamar crédito</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como">
+  <div class="wrap">
+    <div class="sec-label">El proceso</div>
+    <h2>Cómo funciona</h2>
+    <p class="sec-intro">
+      Un flujo asíncrono y sin fricción. Tú envías, nosotros evaluamos. No hay reuniones,
+      no hay llamadas, no hay respuestas automáticas.
+    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <h3>Envías</h3>
+        <p>Llenas el formulario. Sin nombre, sin email, sin cuenta. Solo la idea.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h3>Recibes un código</h3>
+        <p>El sistema genera un código único. Guárdalo: es tu única forma de reclamar crédito.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h3>Evaluamos a ciegas</h3>
+        <p>El jurado lee la idea sin saber quién la envió. Solo importa el contenido.</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h3>Publicamos y ejecutamos</h3>
+        <p>Las ideas seleccionadas se publican y se implementan. Si reclamaste crédito, apareces con tu alias.</p>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Importante:</strong> no habrá contacto directo contigo en ningún momento. Ni por correo,
+      ni por teléfono, ni por redes. Si tu idea es seleccionada, se publica en este sitio. Si quieres
+      crédito, usas tu código. Si no, la idea se ejecuta igual.
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORÍAS -->
+<section id="categorias">
+  <div class="wrap">
+    <div class="sec-label">Líneas temáticas</div>
+    <h2>Categorías</h2>
+    <p class="sec-intro">Elige la categoría que mejor describa tu propuesta.</p>
+    <div class="cats">
+      <span class="cat">Empleabilidad juvenil</span>
+      <span class="cat">Educación y formación</span>
+      <span class="cat">Adultos mayores</span>
+      <span class="cat">Inclusión y diversidad</span>
+      <span class="cat">Medioambiente</span>
+      <span class="cat">Bienestar y salud</span>
+      <span class="cat">Tecnología cívica</span>
+      <span class="cat">Cultura y comunidad</span>
+      <span class="cat">Otra</span>
+    </div>
+  </div>
+</section>
+
+<!-- BASES -->
+<section id="bases">
+  <div class="wrap">
+    <div class="sec-label">Legal</div>
+    <h2>Bases de la convocatoria</h2>
+    <p class="sec-intro">
+      Al enviar tu propuesta aceptas los siguientes términos. Léelos con atención.
+    </p>
+
+    <details open>
+      <summary>1. Organizador</summary>
+      <p>
+        Florecimiento Key es una iniciativa de Key · Fundación Hernández, en articulación con sus
+        proyectos administrados (Windsor, Heliot Media y Programa Cosecha). Key actúa como
+        administrador operativo. La implementación de las ideas seleccionadas puede ser ejecutada
+        por Key o por los proyectos de su ecosistema.
+      </p>
+    </details>
+
+    <details>
+      <summary>2. Participación</summary>
+      <ul>
+        <li>Abierta a personas mayores de edad, sin importar nacionalidad ni residencia.</li>
+        <li>No se permite participación de menores de edad.</li>
+        <li>Un participante puede enviar más de una idea.</li>
+        <li>No hay costo de participación.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>3. Anonimato y datos</summary>
+      <ul>
+        <li>No se solicita nombre, correo, teléfono, dirección ni institución.</li>
+        <li>Solo se recoge el alias opcional, la categoría y el contenido de la idea.</li>
+        <li>No habrá contacto directo con los participantes en ningún momento.</li>
+        <li>No se enviarán correos de confirmación, notificaciones ni respuestas personalizadas.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>4. Código de reclamación</summary>
+      <ul>
+        <li>Al enviar la idea, el sistema genera un código único en tu navegador.</li>
+        <li>Ese código es la única forma de reclamar autoría sobre la idea.</li>
+        <li>Si lo pierdes, no podrás reclamar crédito. La idea se implementará igual.</li>
+        <li>El código no está vinculado a ningún dato personal.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>5. Propiedad intelectual y licencia</summary>
+      <ul>
+        <li>La idea sigue siendo tuya.</li>
+        <li>Al enviarla, otorgas a Key una licencia amplia, gratuita, no exclusiva y transferible
+            para usar, adaptar, modificar, combinar y ejecutar la idea, en cualquier territorio
+            y sin límite de tiempo.</li>
+        <li>No hay compensación económica por el uso de la idea.</li>
+        <li>El crédito se otorga únicamente si el autor lo reclama con su código.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>6. Evaluación</summary>
+      <ul>
+        <li>El jurado evalúa a ciegas, sin acceso a datos del autor.</li>
+        <li>Criterios: originalidad, viabilidad, impacto y alineación con la misión de Key.</li>
+        <li>La decisión del jurado es inapelable.</li>
+        <li>Key puede declarar desierta la convocatoria total o parcialmente.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>7. Implementación</summary>
+      <ul>
+        <li>Key puede implementar total o parcialmente las ideas seleccionadas.</li>
+        <li>No está obligada a implementar ninguna idea.</li>
+        <li>Puede adaptar, modificar o combinar ideas con otras propuestas.</li>
+        <li>Los resultados se publican en este sitio sin notificación individual.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>8. Responsabilidad</summary>
+      <ul>
+        <li>El participante declara que la idea es original y no infringe derechos de terceros.</li>
+        <li>El participante libera a Key de cualquier reclamación derivada del uso de la idea.</li>
+        <li>Key no se responsabiliza por ideas enviadas por terceros sin autorización.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>9. Modificaciones</summary>
+      <p>
+        Key puede modificar estas bases en cualquier momento. La versión vigente es la publicada
+        en este sitio. El envío de una idea implica la aceptación de la versión vigente al momento
+        del envío.
+      </p>
+    </details>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="wrap">
+    <h2>¿Tienes una idea?</h2>
+    <p class="slogan">It's time to FloreSer</p>
+    <p>No necesitas registro, no necesitas correo, no necesitas hablar con nadie. Solo envía.</p>
+    <a href="postular.html" class="btn btn-primary">Postular ahora</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="year"></span> Key · Fundación Hernández · Florecimiento Key</div>
+    <div>
+      <a href="https://windsor-one.github.io/key/">Key</a> ·
+      <a href="https://windsor-one.github.io/windsor/">Windsor</a> ·
+      <a href="https://windsor-one.github.io/Heliot-Media/">Heliot Media</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
