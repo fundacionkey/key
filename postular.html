@@ -1,615 +1,643 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Postular · Florecimiento Key</title>
-<meta name="description" content="Envía tu idea a Florecimiento Key. It's time to FloreSer.">
-<style>
-  :root{
-    --night:#0a0f1c; --night-2:#0d1826; --card:#101c30; --line:#243a52;
-    --hanji:#f5ede0; --text:#f2ece1; --muted:#a8a390;
-    --maqui:#f4a3c7; --maqui-2:#ffc9e0; --maqui-deep:#d9558a;
-    --indigo:#3a5da8; --indigo-2:#5b7dd1;
-    --celadon:#8fbfa8; --celadon-2:#b5d8c3; --celadon-deep:#4a8f70;
-    --green-glow:#6ddba0; --green-deep:#1f6b4a;
-    --gold:#c9a75a; --gold-2:#e8c680;
-    --izote:#fdf6e3;
-    --ok:#7ed4a3; --warn:#ef7d7d;
-    --radius:16px; --max:940px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--night);color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
-  a{color:var(--maqui);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;position:relative;z-index:3}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Postular · Florecimiento Key</title>
+    <meta name="description" content="Envía tu idea a Florecimiento Key. It's time to FloreSer.">
+    <link rel="icon" href="./assets/logo-simbolo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    body.event-page{
+      --night:#0a0f1c; --card:#101c30; --line:#243a52;
+      --text:#f2ece1; --muted:#a8a390;
+      --maqui:#f4a3c7; --maqui-2:#ffc9e0;
+      --celadon:#8fbfa8; --celadon-2:#b5d8c3;
+      --green-glow:#6ddba0;
+      --gold:#c9a75a;
+      --ok:#7ed4a3; --warn:#ef7d7d;
+      --izote:#fdf6e3;
+      background:var(--night);
+    }
+    body.event-page .flor-main{color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
+    body.event-page .flor-main a{color:var(--maqui);text-decoration:none}
+    body.event-page .flor-main a:hover{text-decoration:underline}
+    body.event-page .flor-wrap{max-width:940px;margin:0 auto;padding:0 24px;position:relative;z-index:3}
 
-  .hangul-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
-    font-family:serif;font-weight:900;color:rgba(143,191,168,.05);
-    font-size:min(40vw,540px);display:flex;align-items:center;justify-content:center;
-    letter-spacing:-.05em;user-select:none;overflow:hidden}
+    body.event-page .hangul-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+      font-family:serif;font-weight:900;color:rgba(143,191,168,.05);
+      font-size:min(40vw,540px);display:flex;align-items:center;justify-content:center;
+      letter-spacing:-.05em;user-select:none;overflow:hidden}
+    body.event-page .anil-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.07;
+      background-image:
+        repeating-linear-gradient(45deg,transparent 0 14px,rgba(91,125,209,.5) 14px 15px),
+        repeating-linear-gradient(-45deg,transparent 0 14px,rgba(91,125,209,.5) 14px 15px);
+      background-size:28px 28px;
+      mask-image:radial-gradient(ellipse at 80% 50%,#000 0%,transparent 55%);
+      -webkit-mask-image:radial-gradient(ellipse at 80% 50%,#000 0%,transparent 55%)}
+    body.event-page .bojagi-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.06;
+      background-image:
+        linear-gradient(rgba(143,191,168,.7) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(143,191,168,.7) 1px,transparent 1px);
+      background-size:120px 120px,120px 120px;
+      mask-image:radial-gradient(ellipse at 20% 50%,#000 0%,transparent 55%);
+      -webkit-mask-image:radial-gradient(ellipse at 20% 50%,#000 0%,transparent 55%)}
+    body.event-page .green-band{position:fixed;left:0;right:0;top:38%;height:2px;z-index:0;pointer-events:none;
+      background:linear-gradient(90deg,transparent,rgba(143,191,168,.35),rgba(109,219,160,.5),rgba(143,191,168,.35),transparent);
+      filter:blur(1px);animation:florBandShift 14s ease-in-out infinite}
+    body.event-page .green-band.two{top:72%;opacity:.6;animation-duration:20s;animation-direction:reverse}
+    @keyframes florBandShift{0%,100%{transform:translateY(0) scaleX(1);opacity:.4}50%{transform:translateY(-20px) scaleX(1.05);opacity:.75}}
+    body.event-page #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.8}
+    body.event-page .orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+    body.event-page .orb-1{width:520px;height:520px;background:radial-gradient(circle,rgba(244,163,199,.32),transparent 70%);top:-160px;left:-120px;animation:florFloat1 26s ease-in-out infinite;opacity:.42}
+    body.event-page .orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(109,219,160,.34),transparent 70%);bottom:80px;right:-140px;animation:florFloat2 30s ease-in-out infinite;opacity:.55}
+    @keyframes florFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,40px)}}
+    @keyframes florFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,50px)}}
 
-  .anil-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.07;
-    background-image:
-      repeating-linear-gradient(45deg,transparent 0 14px,rgba(91,125,209,.5) 14px 15px),
-      repeating-linear-gradient(-45deg,transparent 0 14px,rgba(91,125,209,.5) 14px 15px);
-    background-size:28px 28px;
-    mask-image:radial-gradient(ellipse at 80% 50%,#000 0%,transparent 55%);
-    -webkit-mask-image:radial-gradient(ellipse at 80% 50%,#000 0%,transparent 55%)}
+    body.event-page .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.22;
+      stroke:var(--maqui);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    body.event-page .doodle.green{stroke:var(--celadon);opacity:.28}
+    body.event-page .doodle.green-2{stroke:var(--green-glow);opacity:.26}
+    body.event-page .spin-slow{animation:florSpin 50s linear infinite}
+    body.event-page .sway{animation:florSway 9s ease-in-out infinite}
+    @keyframes florSpin{to{transform:rotate(360deg)}}
+    @keyframes florSway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
 
-  .bojagi-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.06;
-    background-image:
-      linear-gradient(rgba(143,191,168,.7) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(143,191,168,.7) 1px,transparent 1px);
-    background-size:120px 120px,120px 120px;
-    mask-image:radial-gradient(ellipse at 20% 50%,#000 0%,transparent 55%);
-    -webkit-mask-image:radial-gradient(ellipse at 20% 50%,#000 0%,transparent 55%)}
+    /* BREADCRUMB */
+    body.event-page .flor-breadcrumb{background:rgba(10,15,28,.8);border-bottom:1px solid var(--line);padding:12px 0;position:relative;z-index:5}
+    body.event-page .flor-breadcrumb .flor-wrap{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);letter-spacing:.5px}
+    body.event-page .flor-breadcrumb a{color:var(--muted)}
+    body.event-page .flor-breadcrumb a:hover{color:var(--green-glow);text-decoration:none}
+    body.event-page .flor-breadcrumb .sep{opacity:.4}
+    body.event-page .flor-breadcrumb .current{color:var(--green-glow);font-weight:600}
 
-  .green-band{position:fixed;left:0;right:0;top:38%;height:2px;z-index:0;pointer-events:none;
-    background:linear-gradient(90deg,transparent,rgba(143,191,168,.35),rgba(109,219,160,.5),rgba(143,191,168,.35),transparent);
-    filter:blur(1px);animation:bandShift 14s ease-in-out infinite}
-  .green-band.two{top:72%;opacity:.6;animation-duration:20s;animation-direction:reverse}
-  @keyframes bandShift{0%,100%{transform:translateY(0) scaleX(1);opacity:.4}50%{transform:translateY(-20px) scaleX(1.05);opacity:.75}}
+    /* HEADER FORM */
+    body.event-page .form-head{position:relative;padding:80px 0 50px;overflow:hidden;border-bottom:1px solid var(--line)}
+    body.event-page .form-head .flor-wrap{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+    body.event-page .flor-tag{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;
+      text-transform:uppercase;color:var(--celadon-2);border:1px solid rgba(143,191,168,.4);
+      padding:9px 18px;border-radius:999px;margin-bottom:26px;
+      background:rgba(143,191,168,.06);backdrop-filter:blur(8px)}
+    body.event-page .flor-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green-glow);
+      box-shadow:0 0 12px var(--green-glow);animation:florPulse 2s ease-in-out infinite}
+    @keyframes florPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
 
-  #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.8}
+    body.event-page h1.form-title{font-size:clamp(34px,5.6vw,56px);line-height:1.02;font-weight:900;letter-spacing:-1.6px;
+      margin-bottom:18px;
+      background:linear-gradient(135deg,#fff 15%,var(--maqui-2) 45%,var(--maqui) 65%,var(--celadon-2) 85%,var(--green-glow) 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    body.event-page h1.form-title em{font-style:normal}
+    body.event-page .slogan{font-size:15px;font-style:italic;color:var(--maqui);letter-spacing:.5px;margin-bottom:22px;font-weight:500;
+      display:inline-flex;align-items:center;gap:12px}
+    body.event-page .slogan::before,body.event-page .slogan::after{content:"";width:30px;height:1px;
+      background:linear-gradient(90deg,transparent,var(--maqui),transparent)}
+    body.event-page .flor-lead{color:var(--muted);font-size:16px;max-width:640px}
 
-  .orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
-  .orb-1{width:520px;height:520px;background:radial-gradient(circle,rgba(244,163,199,.32),transparent 70%);top:-160px;left:-120px;animation:float1 26s ease-in-out infinite;opacity:.42}
-  .orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(109,219,160,.34),transparent 70%);bottom:80px;right:-140px;animation:float2 30s ease-in-out infinite;opacity:.55}
-  .orb-3{width:420px;height:420px;background:radial-gradient(circle,rgba(74,143,112,.3),transparent 70%);top:40%;left:10%;animation:float3 34s ease-in-out infinite;opacity:.45}
-  @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,40px)}}
-  @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,50px)}}
-  @keyframes float3{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-50px)}}
+    body.event-page .form-section{padding:60px 0 90px;position:relative}
+    body.event-page .form-shell{background:linear-gradient(160deg,rgba(16,28,48,.92),rgba(16,28,48,.55));
+      border:1px solid var(--line);border-radius:16px;padding:44px;
+      backdrop-filter:blur(12px);box-shadow:0 24px 70px rgba(0,0,0,.4);
+      position:relative;overflow:hidden}
+    body.event-page .form-shell::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+      width:70%;height:1px;background:linear-gradient(90deg,transparent,var(--green-glow),transparent)}
+    body.event-page .form-shell::after{content:"";position:absolute;bottom:16px;right:16px;width:26px;height:26px;
+      border-bottom:1.5px solid var(--green-glow);border-right:1.5px solid var(--green-glow);
+      border-bottom-right-radius:6px;opacity:.6}
+    @media(max-width:600px){body.event-page .form-shell{padding:28px}}
 
-  .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.22;
-    stroke:var(--maqui);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .doodle.green{stroke:var(--celadon);opacity:.28}
-  .doodle.green-2{stroke:var(--green-glow);opacity:.26}
-  .spin-slow{animation:spin 50s linear infinite}
-  .sway{animation:sway 9s ease-in-out infinite}
-  @keyframes spin{to{transform:rotate(360deg)}}
-  @keyframes sway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
+    body.event-page .field{margin-bottom:28px}
+    body.event-page .field label{display:block;font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text)}
+    body.event-page .field label .opt{color:var(--muted);font-weight:400;font-size:12.5px;margin-left:6px}
+    body.event-page .hint{font-size:12.5px;color:var(--muted);margin-top:8px;display:block;line-height:1.5}
+    body.event-page input[type=text],body.event-page textarea,body.event-page select{width:100%;background:rgba(10,15,28,.65);
+      border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--text);
+      font-size:15px;font-family:inherit;transition:.2s}
+    body.event-page input[type=text]:focus,body.event-page textarea:focus,body.event-page select:focus{outline:none;border-color:var(--green-glow);
+      box-shadow:0 0 0 4px rgba(109,219,160,.14);background:rgba(10,15,28,.9)}
+    body.event-page textarea{min-height:120px;resize:vertical;line-height:1.65}
+    body.event-page select{cursor:pointer;appearance:none;
+      background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a8a390' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:right 16px center;background-size:18px;padding-right:46px}
+    body.event-page .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    @media(max-width:600px){body.event-page .row{grid-template-columns:1fr}}
 
-  nav{position:sticky;top:0;z-index:50;background:rgba(10,15,28,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px;font-size:15px}
-  .brand .mark{width:32px;height:32px;flex-shrink:0}
-  .brand span{color:var(--maqui)}
-  .nav-links{display:flex;gap:22px;font-size:14px;align-items:center}
-  .nav-links a{color:var(--muted)}
-  .nav-links a:hover{color:var(--text);text-decoration:none}
-  .nav-cta{background:rgba(143,191,168,.06);color:var(--text) !important;padding:10px 22px;border-radius:999px;border:1px solid rgba(143,191,168,.3);font-weight:700;transition:.25s}
-  .nav-cta:hover{border-color:var(--green-glow);color:var(--green-glow) !important;text-decoration:none !important}
-  @media(max-width:800px){.nav-links a:not(.nav-cta){display:none}}
+    body.event-page .checks{border-top:1px solid var(--line);padding-top:30px;margin-top:12px}
+    body.event-page .checks > label{font-size:15px;margin-bottom:20px;display:block;font-weight:700;color:var(--text)}
+    body.event-page .check{display:flex;gap:13px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin-bottom:16px;line-height:1.65}
+    body.event-page .check input{margin-top:3px;accent-color:var(--green-glow);flex-shrink:0;width:17px;height:17px;cursor:pointer}
+    body.event-page .check label{font-weight:400;margin:0;font-size:13.5px;color:var(--muted);cursor:pointer}
+    body.event-page .check a{color:var(--green-glow)}
 
-  header.form-head{position:relative;padding:90px 0 60px;overflow:hidden;border-bottom:1px solid var(--line)}
-  header.form-head .wrap{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
-  .tag{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;
-    text-transform:uppercase;color:var(--celadon-2);border:1px solid rgba(143,191,168,.4);
-    padding:9px 18px;border-radius:999px;margin-bottom:26px;
-    background:rgba(143,191,168,.06);backdrop-filter:blur(8px)}
-  .tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green-glow);
-    box-shadow:0 0 12px var(--green-glow);animation:pulse 2s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+    body.event-page .form-actions{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+    body.event-page .btn-flor{display:inline-flex;align-items:center;gap:10px;padding:17px 36px;border-radius:999px;
+      font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
+    body.event-page .btn-flor-green{background:linear-gradient(135deg,var(--celadon),var(--green-glow));color:#0a1f14;
+      box-shadow:0 8px 34px rgba(109,219,160,.35)}
+    body.event-page .btn-flor-green:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 14px 44px rgba(109,219,160,.55)}
+    body.event-page .btn-flor-green:disabled{opacity:.55;cursor:not-allowed;transform:none}
+    body.event-page .btn-flor-ghost{background:rgba(143,191,168,.06);color:var(--text);border-color:rgba(143,191,168,.3)}
+    body.event-page .btn-flor-ghost:hover{border-color:var(--green-glow);color:var(--green-glow);text-decoration:none}
+    body.event-page .btn-flor svg{width:18px;height:18px}
+    body.event-page #status{font-size:14px}
 
-  h1{font-size:clamp(34px,5.6vw,56px);line-height:1.02;font-weight:900;letter-spacing:-1.6px;
-    margin-bottom:18px;
-    background:linear-gradient(135deg,#fff 15%,var(--maqui-2) 45%,var(--maqui) 65%,var(--celadon-2) 85%,var(--green-glow) 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  h1 em{font-style:normal}
-  .slogan{font-size:15px;font-style:italic;color:var(--maqui);letter-spacing:.5px;margin-bottom:22px;font-weight:500;
-    display:inline-flex;align-items:center;gap:12px}
-  .slogan::before,.slogan::after{content:"";width:30px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--maqui),transparent)}
-  .lead{color:var(--muted);font-size:16px;max-width:640px}
-
-  section{padding:68px 0 100px;position:relative}
-
-  .form-shell{background:linear-gradient(160deg,rgba(16,28,48,.92),rgba(16,28,48,.55));
-    border:1px solid var(--line);border-radius:var(--radius);padding:44px;
-    backdrop-filter:blur(12px);box-shadow:0 24px 70px rgba(0,0,0,.4);
-    position:relative;overflow:hidden}
-  .form-shell::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
-    width:70%;height:1px;background:linear-gradient(90deg,transparent,var(--green-glow),transparent)}
-  .form-shell::after{content:"";position:absolute;bottom:16px;right:16px;width:26px;height:26px;
-    border-bottom:1.5px solid var(--green-glow);border-right:1.5px solid var(--green-glow);
-    border-bottom-right-radius:6px;opacity:.6}
-  @media(max-width:600px){.form-shell{padding:28px}}
-
-  .field{margin-bottom:28px}
-  label{display:block;font-size:14px;font-weight:700;margin-bottom:10px}
-  label .opt{color:var(--muted);font-weight:400;font-size:12.5px;margin-left:6px}
-  .hint{font-size:12.5px;color:var(--muted);margin-top:8px;display:block;line-height:1.5}
-  input[type=text],textarea,select{width:100%;background:rgba(10,15,28,.65);
-    border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--text);
-    font-size:15px;font-family:inherit;transition:.2s}
-  input[type=text]:focus,textarea:focus,select:focus{outline:none;border-color:var(--green-glow);
-    box-shadow:0 0 0 4px rgba(109,219,160,.14);background:rgba(10,15,28,.9)}
-  textarea{min-height:120px;resize:vertical;line-height:1.65}
-  select{cursor:pointer;appearance:none;
-    background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a8a390' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:right 16px center;background-size:18px;padding-right:46px}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  @media(max-width:600px){.row{grid-template-columns:1fr}}
-
-  .checks{border-top:1px solid var(--line);padding-top:30px;margin-top:12px}
-  .checks > label{font-size:15px;margin-bottom:20px}
-  .check{display:flex;gap:13px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin-bottom:16px;line-height:1.65}
-  .check input{margin-top:3px;accent-color:var(--green-glow);flex-shrink:0;width:17px;height:17px;cursor:pointer}
-  .check label{font-weight:400;margin:0;font-size:13.5px;color:var(--muted);cursor:pointer}
-  .check a{color:var(--green-glow)}
-
-  .form-actions{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:17px 36px;border-radius:999px;
-    font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
-  .btn-green{background:linear-gradient(135deg,var(--celadon),var(--green-glow));color:#0a1f14;
-    box-shadow:0 8px 34px rgba(109,219,160,.35)}
-  .btn-green:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 14px 44px rgba(109,219,160,.55)}
-  .btn-green:disabled{opacity:.55;cursor:not-allowed;transform:none}
-  .btn-ghost{background:rgba(143,191,168,.06);color:var(--text);border-color:rgba(143,191,168,.3)}
-  .btn-ghost:hover{border-color:var(--green-glow);color:var(--green-glow);text-decoration:none}
-  .btn svg{width:18px;height:18px}
-  #status{font-size:14px}
-
-  .result{display:none;margin-top:38px;
-    background:linear-gradient(180deg,rgba(126,212,163,.1),transparent);
-    border:1px solid rgba(126,212,163,.35);border-radius:var(--radius);padding:36px;
-    position:relative;overflow:hidden;animation:reveal .6s ease-out}
-  @keyframes reveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-  .result.show{display:block}
-  .result::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,transparent,var(--ok),transparent);animation:shine 2.5s ease-in-out infinite}
-  @keyframes shine{0%,100%{opacity:.4}50%{opacity:1}}
-  .result h3{color:var(--ok);font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-  .result h3 svg{width:22px;height:22px;stroke:var(--ok);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-  .result p{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.7}
-  .code-box{display:flex;align-items:center;gap:12px;
-    background:rgba(10,15,28,.75);border:1px dashed var(--green-glow);
-    border-radius:12px;padding:18px;flex-wrap:wrap}
-  .code-box code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:16px;color:var(--green-glow);word-break:break-all;flex:1;
-    min-width:200px;letter-spacing:.6px;font-weight:600}
-  .copy-btn{background:linear-gradient(135deg,var(--celadon),var(--green-glow));
-    color:#0a1f14;border:none;padding:11px 22px;border-radius:9px;font-size:13px;font-weight:700;
-    cursor:pointer;font-family:inherit;transition:.2s;
-    display:inline-flex;align-items:center;gap:7px}
-  .copy-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(109,219,160,.45)}
-  .copy-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .result .fine{font-size:13px;color:var(--muted);margin-top:22px;margin-bottom:0}
-
-  .char-count{font-variant-numeric:tabular-nums;color:var(--green-glow)}
-
-  footer{padding:60px 0 76px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line);position:relative;z-index:2}
-  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
-  footer a{color:var(--muted)}
-  footer a:hover{color:var(--green-glow)}
-  footer .hangul-foot{font-family:serif;font-weight:700;color:var(--green-glow);opacity:.7;letter-spacing:.15em;font-size:14px}
-</style>
+    body.event-page .result{display:none;margin-top:38px;
+      background:linear-gradient(180deg,rgba(126,212,163,.1),transparent);
+      border:1px solid rgba(126,212,163,.35);border-radius:16px;padding:36px;
+      position:relative;overflow:hidden;animation:florReveal .6s ease-out}
+    @keyframes florReveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    body.event-page .result.show{display:block}
+    body.event-page .result::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
+      background:linear-gradient(90deg,transparent,var(--ok),transparent);animation:florShine 2.5s ease-in-out infinite}
+    @keyframes florShine{0%,100%{opacity:.4}50%{opacity:1}}
+    body.event-page .result h3{color:var(--ok);font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+    body.event-page .result h3 svg{width:22px;height:22px;stroke:var(--ok);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    body.event-page .result p{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.7}
+    body.event-page .code-box{display:flex;align-items:center;gap:12px;
+      background:rgba(10,15,28,.75);border:1px dashed var(--green-glow);
+      border-radius:12px;padding:18px;flex-wrap:wrap}
+    body.event-page .code-box code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+      font-size:16px;color:var(--green-glow);word-break:break-all;flex:1;
+      min-width:200px;letter-spacing:.6px;font-weight:600}
+    body.event-page .copy-btn{background:linear-gradient(135deg,var(--celadon),var(--green-glow));
+      color:#0a1f14;border:none;padding:11px 22px;border-radius:9px;font-size:13px;font-weight:700;
+      cursor:pointer;font-family:inherit;transition:.2s;
+      display:inline-flex;align-items:center;gap:7px}
+    body.event-page .copy-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(109,219,160,.45)}
+    body.event-page .copy-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    body.event-page .result .fine{font-size:13px;color:var(--muted);margin-top:22px;margin-bottom:0}
+    body.event-page .char-count{font-variant-numeric:tabular-nums;color:var(--green-glow)}
+    </style>
 </head>
-<body>
+<body class="event-page">
 
-<div class="hangul-bg">개화</div>
-<div class="anil-pattern"></div>
-<div class="bojagi-pattern"></div>
-<div class="green-band"></div>
-<div class="green-band two"></div>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-<canvas id="petals"></canvas>
-
-<nav>
-  <div class="wrap">
-    <div class="brand">
-      <svg class="mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="20" cy="16" r="3.5" stroke="#c9a75a"/>
-        <path d="M20 16c-3.5-2.5-7.5-2.5-9.5 1 3 2.5 7 2.5 9.5-1z" stroke="#f4a3c7"/>
-        <path d="M20 16c3.5-2.5 7.5-2.5 9.5 1-3 2.5-7 2.5-9.5-1z" stroke="#f4a3c7"/>
-        <path d="M20 16c-1.5-3.5-1.5-7.5 2-9.5 1.5 3 1.5 7-2 9.5z" stroke="#f4a3c7"/>
-        <path d="M20 16c1.5 3.5 1.5 7.5-2 9.5-1.5-3-1.5-7 2-9.5z" stroke="#f4a3c7"/>
-        <path d="M20 24v10" stroke="#6ddba0"/>
-        <path d="M20 28c-2.5-1-4-2-5-4" stroke="#6ddba0"/>
-        <path d="M20 32c2.5-1 4-2 5-4" stroke="#6ddba0"/>
-      </svg>
-      FLORECIMIENTO<span>·</span>KEY
+<!-- ===== HEADER DE KEY ===== -->
+<header>
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="menu-sup">
+                <a href="oportunidades.html">OPORTUNIDADES</a>
+                <a href="cosecha.html">COSECHA</a>
+                <a href="https://windsor-one.github.io/windsor/" target="_blank" rel="noopener noreferrer">WINDSOR</a>
+                <a href="https://windsor-one.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer">HELIOT</a>
+                <a href="donar.html" style="background: var(--orange); color: #fff; padding: 4px 16px; border-radius: 30px; font-weight: 700;">DONAR</a>
+            </div>
+        </div>
     </div>
-    <div class="nav-links">
-      <a href="#formulario">Formulario</a>
-      <a href="florecimiento.html#bases">Bases</a>
-      <a href="florecimiento.html" class="nav-cta">← Volver al evento</a>
+    <div class="main-header container">
+        <div class="logo">
+            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key · Fundación Hernández"></a>
+        </div>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <nav class="nav-principal" id="mainNav">
+            <div class="submenu">
+                <a href="sobre-nosotros.html">Sobre nosotros <i class="fas fa-chevron-down"></i></a>
+                <div class="submenu-content">
+                    <a href="sobre-nosotros.html#trayectoria">Nuestra Trayectoria</a>
+                    <a href="sobre-nosotros.html#areas">Áreas de Interés</a>
+                    <a href="sobre-nosotros.html#jovenes-key">Jóvenes Key</a>
+                    <a href="sobre-nosotros.html#vision">Visión de Futuro</a>
+                </div>
+            </div>
+            <div class="submenu">
+                <a href="oportunidades.html">Oportunidades <i class="fas fa-chevron-down"></i></a>
+                <div class="submenu-content">
+                    <a href="oportunidades.html#empleo">Empleo</a>
+                    <a href="oportunidades.html#educacion">Educación y formación</a>
+                    <a href="oportunidades.html#becas">Becas y oportunidades</a>
+                </div>
+            </div>
+            <a href="administrados.html">Administrados</a>
+            <a href="florecimiento.html" class="active">Florecimiento</a>
+            <a href="blog.html">Blog</a>
+            <a href="contactanos.html">Contáctanos</a>
+            <div class="search-box">
+                <input type="text" placeholder="BUSCAR...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
     </div>
-  </div>
-</nav>
-
-<header class="form-head">
-  <svg class="doodle sway" style="top:16%;right:5%" width="86" height="86" viewBox="0 0 86 86">
-    <circle cx="43" cy="38" r="6"/>
-    <path d="M43 32c-6-5-14-5-17 2 5 5 13 5 17-2z"/>
-    <path d="M43 32c6-5 14-5 17 2-5 5-13 5-17-2z"/>
-    <path d="M43 44c-6 5-14 5-17-2 5-5 13-5 17 2z"/>
-    <path d="M43 44c6 5 14 5 17-2-5-5-13-5-17 2z"/>
-    <path d="M37 38c-5-6-5-14 2-17 5 5 5 13-2 17z"/>
-    <path d="M49 38c5-6 5-14-2-17-5 5-5 13 2 17z"/>
-    <path d="M43 50v26" opacity=".5"/>
-  </svg>
-  <svg class="doodle green spin-slow" style="bottom:12%;left:4%" width="80" height="80" viewBox="0 0 80 80">
-    <circle cx="40" cy="40" r="28" stroke-dasharray="3 6"/>
-    <circle cx="40" cy="40" r="14"/>
-    <path d="M40 12v12M40 56v12M12 40h12M56 40h12" opacity=".5"/>
-  </svg>
-
-  <div class="wrap">
-    <span class="tag">Postulación · 2026</span>
-    <h1>Envía tu <em>idea</em></h1>
-    <p class="slogan">It's time to FloreSer</p>
-    <p class="lead">
-      Comparte tu idea con nosotros. Al enviar, recibirás un código de autoría que respalda
-      tu crédito cuando el proyecto se haga realidad.
-    </p>
-  </div>
 </header>
 
-<section id="formulario">
-  <div class="wrap">
-    <div class="form-shell">
-      <form id="ideaForm" novalidate>
+<!-- ===== BREADCRUMB ===== -->
+<div class="flor-breadcrumb">
+  <div class="flor-wrap">
+    <a href="index.html">Inicio</a>
+    <span class="sep">›</span>
+    <a href="florecimiento.html">Florecimiento Key</a>
+    <span class="sep">›</span>
+    <span class="current">Postular</span>
+  </div>
+</div>
 
-        <div class="field">
-          <label for="titulo">Título de la idea</label>
-          <input type="text" id="titulo" name="titulo" maxlength="120" required
-                 placeholder="Ej: Red de mentoría entre jóvenes y adultos mayores">
-          <span class="hint">Máximo 120 caracteres. Sé específico y claro.</span>
-        </div>
+<!-- ===== CONTENIDO ===== -->
+<main class="flor-main">
 
-        <div class="row">
+  <div class="hangul-bg">개화</div>
+  <div class="anil-pattern"></div>
+  <div class="bojagi-pattern"></div>
+  <div class="green-band"></div>
+  <div class="green-band two"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <canvas id="petals"></canvas>
+
+  <header class="form-head">
+    <svg class="doodle sway" style="top:16%;right:5%" width="86" height="86" viewBox="0 0 86 86">
+      <circle cx="43" cy="38" r="6"/>
+      <path d="M43 32c-6-5-14-5-17 2 5 5 13 5 17-2z"/>
+      <path d="M43 32c6-5 14-5 17 2-5 5-13 5-17-2z"/>
+      <path d="M43 44c-6 5-14 5-17-2 5-5 13-5 17 2z"/>
+      <path d="M43 44c6 5 14 5 17-2-5-5-13-5-17 2z"/>
+    </svg>
+    <svg class="doodle green spin-slow" style="bottom:12%;left:4%" width="80" height="80" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="28" stroke-dasharray="3 6"/>
+      <circle cx="40" cy="40" r="14"/>
+    </svg>
+
+    <div class="flor-wrap">
+      <span class="flor-tag">Postulación · 2026</span>
+      <h1 class="form-title">Envía tu <em>idea</em></h1>
+      <p class="slogan">It's time to FloreSer</p>
+      <p class="flor-lead">
+        Comparte tu idea con nosotros. Al enviar, recibirás un código de autoría que respalda
+        tu crédito cuando el proyecto se haga realidad.
+      </p>
+    </div>
+  </header>
+
+  <section class="form-section">
+    <div class="flor-wrap">
+      <div class="form-shell">
+        <form id="ideaForm" novalidate>
+
           <div class="field">
-            <label for="categoria">Categoría</label>
-            <select id="categoria" name="categoria" required>
-              <option value="">Selecciona una</option>
-              <option>Empleabilidad juvenil</option>
-              <option>Educación y formación</option>
-              <option>Adultos mayores</option>
-              <option>Inclusión y diversidad</option>
-              <option>Medioambiente</option>
-              <option>Bienestar y salud</option>
-              <option>Tecnología cívica</option>
-              <option>Cultura y comunidad</option>
-              <option>Otra</option>
-            </select>
+            <label for="titulo">Título de la idea</label>
+            <input type="text" id="titulo" name="titulo" maxlength="120" required
+                   placeholder="Ej: Red de mentoría entre jóvenes y adultos mayores">
+            <span class="hint">Máximo 120 caracteres. Sé específico y claro.</span>
           </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="categoria">Categoría</label>
+              <select id="categoria" name="categoria" required>
+                <option value="">Selecciona una</option>
+                <option>Empleabilidad juvenil</option>
+                <option>Educación y formación</option>
+                <option>Adultos mayores</option>
+                <option>Inclusión y diversidad</option>
+                <option>Medioambiente</option>
+                <option>Bienestar y salud</option>
+                <option>Tecnología cívica</option>
+                <option>Cultura y comunidad</option>
+                <option>Otra</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="alias">Alias público <span class="opt">(opcional)</span></label>
+              <input type="text" id="alias" name="alias" maxlength="40"
+                     placeholder="Ej: CosechaVerde">
+              <span class="hint">Si tu idea es seleccionada, se publicará con este alias.</span>
+            </div>
+          </div>
+
           <div class="field">
-            <label for="alias">Alias público <span class="opt">(opcional)</span></label>
-            <input type="text" id="alias" name="alias" maxlength="40"
-                   placeholder="Ej: CosechaVerde">
-            <span class="hint">Si tu idea es seleccionada, se publicará con este alias.</span>
+            <label for="problema">¿Qué problema resuelve?</label>
+            <textarea id="problema" name="problema" maxlength="900" required
+                      placeholder="Describe el problema o necesidad concreta que tu idea aborda."></textarea>
+            <span class="hint"><span id="cProblema" class="char-count">0</span> / 900 · mínimo 40</span>
           </div>
-        </div>
 
-        <div class="field">
-          <label for="problema">¿Qué problema resuelve?</label>
-          <textarea id="problema" name="problema" maxlength="900" required
-                    placeholder="Describe el problema o necesidad concreta que tu idea aborda. Contexto, a quién afecta, por qué importa."></textarea>
-          <span class="hint"><span id="cProblema" class="char-count">0</span> / 900 · mínimo 40</span>
-        </div>
-
-        <div class="field">
-          <label for="solucion">¿Cómo lo resuelve tu idea?</label>
-          <textarea id="solucion" name="solucion" maxlength="1400" required
-                    placeholder="Explica la solución: qué se hace, cómo se implementa, quién participa, qué recursos necesita."></textarea>
-          <span class="hint"><span id="cSolucion" class="char-count">0</span> / 1400 · mínimo 60</span>
-        </div>
-
-        <div class="field">
-          <label for="impacto">Impacto esperado <span class="opt">(opcional)</span></label>
-          <textarea id="impacto" name="impacto" maxlength="600"
-                    placeholder="¿A cuántas personas beneficiaría? ¿Qué cambiaría si se implementa?"></textarea>
-          <span class="hint"><span id="cImpacto" class="char-count">0</span> / 600</span>
-        </div>
-
-        <div class="checks">
-          <label>Antes de enviar</label>
-          <div class="check">
-            <input type="checkbox" id="terminos" required>
-            <label for="terminos">
-              He leído y acepto las <a href="florecimiento.html#bases" target="_blank">bases de la convocatoria</a>.
-              Entiendo que Key puede implementar, adaptar o modificar mi idea sin compensación económica,
-              y que el crédito se otorga cuando el proyecto se hace realidad.
-            </label>
+          <div class="field">
+            <label for="solucion">¿Cómo lo resuelve tu idea?</label>
+            <textarea id="solucion" name="solucion" maxlength="1400" required
+                      placeholder="Explica la solución: qué se hace, cómo se implementa, quién participa, qué recursos necesita."></textarea>
+            <span class="hint"><span id="cSolucion" class="char-count">0</span> / 1400 · mínimo 60</span>
           </div>
-          <div class="check">
-            <input type="checkbox" id="original" required>
-            <label for="original">Declaro que esta idea es original y no infringe derechos de terceros.</label>
-          </div>
-          <div class="check">
-            <input type="checkbox" id="mayor" required>
-            <label for="mayor">Declaro ser mayor de edad.</label>
-          </div>
-        </div>
 
-        <div class="form-actions">
-          <button type="submit" class="btn btn-green" id="submitBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-            </svg>
-            Enviar idea
-          </button>
-          <a href="florecimiento.html" class="btn btn-ghost">Cancelar</a>
-          <span id="status"></span>
-        </div>
-      </form>
+          <div class="field">
+            <label for="impacto">Impacto esperado <span class="opt">(opcional)</span></label>
+            <textarea id="impacto" name="impacto" maxlength="600"
+                      placeholder="¿A cuántas personas beneficiaría? ¿Qué cambiaría si se implementa?"></textarea>
+            <span class="hint"><span id="cImpacto" class="char-count">0</span> / 600</span>
+          </div>
 
-      <div class="result" id="result">
-        <h3>
-          <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-          Idea recibida
-        </h3>
-        <p>
-          Guarda este código. Es tu identificador de autoría: con él podrás reclamar crédito
-          cuando tu idea pase a la etapa de implementación.
-        </p>
-        <div class="code-box">
-          <code id="codeOut">—</code>
-          <button class="copy-btn" id="copyBtn" type="button">
-            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            Copiar
-          </button>
+          <div class="checks">
+            <label>Antes de enviar</label>
+            <div class="check">
+              <input type="checkbox" id="terminos" required>
+              <label for="terminos">
+                He leído y acepto las <a href="florecimiento.html#bases" target="_blank">bases de la convocatoria</a>.
+                Entiendo que Key puede implementar, adaptar o modificar mi idea sin compensación económica,
+                y que el crédito se otorga cuando el proyecto se hace realidad.
+              </label>
+            </div>
+            <div class="check">
+              <input type="checkbox" id="original" required>
+              <label for="original">Declaro que esta idea es original y no infringe derechos de terceros.</label>
+            </div>
+            <div class="check">
+              <input type="checkbox" id="mayor" required>
+              <label for="mayor">Declaro ser mayor de edad.</label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-flor btn-flor-green" id="submitBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              Enviar idea
+            </button>
+            <a href="florecimiento.html" class="btn-flor btn-flor-ghost">Cancelar</a>
+            <span id="status"></span>
+          </div>
+        </form>
+
+        <div class="result" id="result">
+          <h3><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Idea recibida</h3>
+          <p>Guarda este código. Es tu identificador de autoría: con él podrás reclamar crédito cuando tu idea pase a la etapa de implementación.</p>
+          <div class="code-box">
+            <code id="codeOut">—</code>
+            <button class="copy-btn" id="copyBtn" type="button">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <p class="fine">Los resultados se publican en el sitio del evento. Mantén tu código a mano.</p>
         </div>
-        <p class="fine">
-          Los resultados se publican en el sitio del evento. Mantén tu código a mano.
-        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="wrap">
-    <div>
-      © <span id="year"></span> Key · Fundación Hernández · Florecimiento Key
-      <span class="hangul-foot"> · 개화 · 두 땅, 한 꽃</span>
+</main>
+
+<!-- ===== FOOTER DE KEY ===== -->
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="col-logo">
+            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key · Fundación Hernández"></a>
+        </div>
+        <div class="col-enlaces">
+            <p><strong>Organización</strong></p>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="oportunidades.html">Oportunidades</a>
+            <a href="administrados.html">Administrados</a>
+            <a href="cosecha.html">Programa Cosecha</a>
+            <a href="blog.html">Blog</a>
+            <a href="contactanos.html">Contáctanos</a>
+            <a href="donar.html" style="font-weight: 700; color: var(--orange);">Donar</a>
+        </div>
+        <div class="col-enlaces">
+            <p><strong>Transparencia y legal</strong></p>
+            <a href="legal.html#naturaleza">Naturaleza de Key</a>
+            <a href="legal.html#aviso-legal">Aviso Legal</a>
+            <a href="legal.html#politica-editorial">Política Editorial</a>
+            <a href="legal.html#politica-privacidad">Política de Privacidad</a>
+            <a href="legal.html#politica-cookies">Política de Cookies</a>
+            <a href="legal.html#terminos-condiciones">Términos y Condiciones</a>
+            <a href="legal.html#propiedad-intelectual">Propiedad Intelectual</a>
+        </div>
     </div>
-    <div>
-      <a href="florecimiento.html">Evento</a> ·
-      <a href="florecimiento.html#bases">Bases</a> ·
-      <a href="https://windsor-one.github.io/key/">Key</a>
+    <div class="social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
-  </div>
+    <div class="copyright">Key · Fundación Hernández · 2026 · Florecimiento Key · 개화</div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+/* PÉTALOS */
+(function(){
+  const c = document.getElementById('petals');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  let w, h, items = [];
+  const MAQUI = ['#f4a3c7','#ffc9e0','#e88ab5','#ffb3d1'];
+  const IZOTE = ['#fdf6e3','#f5ede0','#efe4cb'];
+  const HOJA = ['#6ddba0','#8fbfa8','#b5d8c3','#4a8f70'];
+  const COUNT = window.innerWidth < 720 ? 16 : 28;
 
-  (function(){
-    const c = document.getElementById('petals');
-    const ctx = c.getContext('2d');
-    let w, h, items = [];
-    const MAQUI = ['#f4a3c7','#ffc9e0','#e88ab5','#ffb3d1'];
-    const IZOTE = ['#fdf6e3','#f5ede0','#efe4cb'];
-    const HOJA = ['#6ddba0','#8fbfa8','#b5d8c3','#4a8f70'];
-    const COUNT = window.innerWidth < 720 ? 16 : 28;
+  function resize(){ w = c.width = innerWidth; h = c.height = innerHeight; }
+  resize();
+  addEventListener('resize', resize);
 
-    function resize(){ w = c.width = innerWidth; h = c.height = innerHeight; }
-    resize();
-    addEventListener('resize', resize);
-
-    function drawMaqui(ctx, size, color){
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.moveTo(0, -size * .9);
-      ctx.bezierCurveTo(size * .7, -size * .5, size * .8, size * .4, 0, size);
-      ctx.bezierCurveTo(-size * .8, size * .4, -size * .7, -size * .5, 0, -size * .9);
-      ctx.fill();
-      ctx.globalAlpha = .4;
-      ctx.fillStyle = '#fff';
-      ctx.beginPath();
-      ctx.ellipse(-size * .15, -size * .25, size * .18, size * .4, -.2, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.globalAlpha = 1;
-    }
-
-    function drawIzote(ctx, size, color){
-      for (let k = 0; k < 3; k++){
+  function drawMaqui(ctx, size, color){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(0, -size * .9);
+    ctx.bezierCurveTo(size * .7, -size * .5, size * .8, size * .4, 0, size);
+    ctx.bezierCurveTo(-size * .8, size * .4, -size * .7, -size * .5, 0, -size * .9);
+    ctx.fill();
+    ctx.globalAlpha = .4;
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.ellipse(-size * .15, -size * .25, size * .18, size * .4, -.2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  function drawIzote(ctx, size, color){
+    for (let k = 0; k < 3; k++){
+      ctx.save();
+      ctx.translate((k - 1) * size * .7, Math.abs(k - 1) * size * .3);
+      for (let i = 0; i < 6; i++){
         ctx.save();
-        ctx.translate((k - 1) * size * .7, Math.abs(k - 1) * size * .3);
-        for (let i = 0; i < 6; i++){
-          ctx.save();
-          ctx.rotate((Math.PI * 2 / 6) * i);
-          ctx.fillStyle = color;
-          ctx.beginPath();
-          ctx.moveTo(0, 0);
-          ctx.lineTo(-size * .18, -size * .55);
-          ctx.lineTo(0, -size * .95);
-          ctx.lineTo(size * .18, -size * .55);
-          ctx.closePath();
-          ctx.fill();
-          ctx.restore();
-        }
-        ctx.fillStyle = '#6ddba0';
+        ctx.rotate((Math.PI * 2 / 6) * i);
+        ctx.fillStyle = color;
         ctx.beginPath();
-        ctx.arc(0, 0, size * .14, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    function drawBlossom(ctx, size, color){
-      ctx.fillStyle = color;
-      for (let i = 0; i < 5; i++){
-        ctx.save();
-        ctx.rotate((Math.PI * 2 / 5) * i);
-        ctx.beginPath();
-        ctx.ellipse(0, -size * .55, size * .4, size * .65, 0, 0, Math.PI * 2);
+        ctx.moveTo(0, 0);
+        ctx.lineTo(-size * .18, -size * .55);
+        ctx.lineTo(0, -size * .95);
+        ctx.lineTo(size * .18, -size * .55);
+        ctx.closePath();
         ctx.fill();
         ctx.restore();
       }
       ctx.fillStyle = '#6ddba0';
       ctx.beginPath();
-      ctx.arc(0, 0, size * .18, 0, Math.PI * 2);
+      ctx.arc(0, 0, size * .14, 0, Math.PI * 2);
       ctx.fill();
-    }
-
-    function drawLeaf(ctx, size, color){
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, size * .35, size, 0, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    function P(){ this.reset(true); }
-    P.prototype.reset = function(init){
-      const r = Math.random();
-      if (r < .38) this.type = 'maqui';
-      else if (r < .60) this.type = 'blossom';
-      else if (r < .74) this.type = 'izote';
-      else this.type = 'leaf';
-      this.x = Math.random() * w;
-      this.y = init ? Math.random() * h : -30;
-      this.size = 5 + Math.random() * 8;
-      this.vy = .22 + Math.random() * .5;
-      this.vx = (Math.random() - .5) * .45;
-      this.rot = Math.random() * Math.PI * 2;
-      this.rs = (Math.random() - .5) * .02;
-      this.op = .32 + Math.random() * .4;
-      this.ph = Math.random() * Math.PI * 2;
-      this.ps = .01 + Math.random() * .02;
-      if (this.type === 'leaf') this.color = HOJA[Math.floor(Math.random() * HOJA.length)];
-      else if (this.type === 'izote') this.color = IZOTE[Math.floor(Math.random() * IZOTE.length)];
-      else this.color = MAQUI[Math.floor(Math.random() * MAQUI.length)];
-    };
-    P.prototype.draw = function(){
-      ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.rotate(this.rot);
-      ctx.globalAlpha = this.op;
-      if (this.type === 'maqui') drawMaqui(ctx, this.size, this.color);
-      else if (this.type === 'blossom') drawBlossom(ctx, this.size * .8, this.color);
-      else if (this.type === 'izote') drawIzote(ctx, this.size * .55, this.color);
-      else drawLeaf(ctx, this.size, this.color);
       ctx.restore();
-    };
-    P.prototype.update = function(){
-      this.ph += this.ps;
-      this.x += this.vx + Math.sin(this.ph) * .45;
-      this.y += this.vy;
-      this.rot += this.rs;
-      if (this.y > h + 30) this.reset(false);
-      if (this.x < -30) this.x = w + 20;
-      if (this.x > w + 30) this.x = -20;
-    };
-
-    for (let i = 0; i < COUNT; i++) items.push(new P());
-    (function loop(){
-      ctx.clearRect(0, 0, w, h);
-      items.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(loop);
-    })();
-  })();
-
-  /* FORM */
-  const form = document.getElementById('ideaForm');
-  const status = document.getElementById('status');
-  const result = document.getElementById('result');
-  const codeOut = document.getElementById('codeOut');
-  const submitBtn = document.getElementById('submitBtn');
-
-  const bind = (id, out) => {
-    const el = document.getElementById(id);
-    const o = document.getElementById(out);
-    el.addEventListener('input', () => { o.textContent = el.value.length; });
+    }
+  }
+  function drawBlossom(ctx, size, color){
+    ctx.fillStyle = color;
+    for (let i = 0; i < 5; i++){
+      ctx.save();
+      ctx.rotate((Math.PI * 2 / 5) * i);
+      ctx.beginPath();
+      ctx.ellipse(0, -size * .55, size * .4, size * .65, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+    ctx.fillStyle = '#6ddba0';
+    ctx.beginPath();
+    ctx.arc(0, 0, size * .18, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  function drawLeaf(ctx, size, color){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, size * .35, size, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  function P(){ this.reset(true); }
+  P.prototype.reset = function(init){
+    const r = Math.random();
+    if (r < .38) this.type = 'maqui';
+    else if (r < .60) this.type = 'blossom';
+    else if (r < .74) this.type = 'izote';
+    else this.type = 'leaf';
+    this.x = Math.random() * w;
+    this.y = init ? Math.random() * h : -30;
+    this.size = 5 + Math.random() * 8;
+    this.vy = .22 + Math.random() * .5;
+    this.vx = (Math.random() - .5) * .45;
+    this.rot = Math.random() * Math.PI * 2;
+    this.rs = (Math.random() - .5) * .02;
+    this.op = .32 + Math.random() * .4;
+    this.ph = Math.random() * Math.PI * 2;
+    this.ps = .01 + Math.random() * .02;
+    if (this.type === 'leaf') this.color = HOJA[Math.floor(Math.random() * HOJA.length)];
+    else if (this.type === 'izote') this.color = IZOTE[Math.floor(Math.random() * IZOTE.length)];
+    else this.color = MAQUI[Math.floor(Math.random() * MAQUI.length)];
   };
-  bind('problema','cProblema');
-  bind('solucion','cSolucion');
-  bind('impacto','cImpacto');
+  P.prototype.draw = function(){
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rot);
+    ctx.globalAlpha = this.op;
+    if (this.type === 'maqui') drawMaqui(ctx, this.size, this.color);
+    else if (this.type === 'blossom') drawBlossom(ctx, this.size * .8, this.color);
+    else if (this.type === 'izote') drawIzote(ctx, this.size * .55, this.color);
+    else drawLeaf(ctx, this.size, this.color);
+    ctx.restore();
+  };
+  P.prototype.update = function(){
+    this.ph += this.ps;
+    this.x += this.vx + Math.sin(this.ph) * .45;
+    this.y += this.vy;
+    this.rot += this.rs;
+    if (this.y > h + 30) this.reset(false);
+    if (this.x < -30) this.x = w + 20;
+    if (this.x > w + 30) this.x = -20;
+  };
+  for (let i = 0; i < COUNT; i++) items.push(new P());
+  (function loop(){
+    ctx.clearRect(0, 0, w, h);
+    items.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  })();
+})();
 
-  async function generarCodigo(payload){
-    const data = new TextEncoder().encode(payload);
-    const buf = await crypto.subtle.digest('SHA-256', data);
-    const bytes = new Uint8Array(buf);
-    const alpha = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    let raw = '';
-    for (let i = 0; i < 16; i++) raw += alpha[bytes[i] % alpha.length];
-    return 'KEY-' + raw.match(/.{1,4}/g).join('-');
+/* FORM */
+const form = document.getElementById('ideaForm');
+const status = document.getElementById('status');
+const result = document.getElementById('result');
+const codeOut = document.getElementById('codeOut');
+const submitBtn = document.getElementById('submitBtn');
+
+const bind = (id, out) => {
+  const el = document.getElementById(id);
+  const o = document.getElementById(out);
+  el.addEventListener('input', () => { o.textContent = el.value.length; });
+};
+bind('problema','cProblema');
+bind('solucion','cSolucion');
+bind('impacto','cImpacto');
+
+async function generarCodigo(payload){
+  const data = new TextEncoder().encode(payload);
+  const buf = await crypto.subtle.digest('SHA-256', data);
+  const bytes = new Uint8Array(buf);
+  const alpha = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let raw = '';
+  for (let i = 0; i < 16; i++) raw += alpha[bytes[i] % alpha.length];
+  return 'KEY-' + raw.match(/.{1,4}/g).join('-');
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const titulo = form.titulo.value.trim();
+  const categoria = form.categoria.value;
+  const problema = form.problema.value.trim();
+  const solucion = form.solucion.value.trim();
+  const alias = form.alias.value.trim();
+  const impacto = form.impacto.value.trim();
+  const ok = form.terminos.checked && form.original.checked && form.mayor.checked;
+
+  const fail = (m) => { status.textContent = m; status.style.color = 'var(--warn)'; };
+
+  if (!titulo || !categoria || !problema || !solucion) return fail('Completa los campos obligatorios.');
+  if (problema.length < 40) return fail('Desarrolla más el problema (mín. 40).');
+  if (solucion.length < 60) return fail('Desarrolla más la solución (mín. 60).');
+  if (!ok) return fail('Debes aceptar las tres declaraciones.');
+
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Enviando…';
+  status.textContent = '';
+
+  const payload = JSON.stringify({
+    t: titulo, c: categoria, p: problema, s: solucion, a: alias, i: impacto,
+    ts: Date.now(), r: Math.random().toString(36).slice(2)
+  });
+
+  let codigo;
+  try { codigo = await generarCodigo(payload); }
+  catch {
+    const seg = () => Math.random().toString(36).slice(2,6).toUpperCase();
+    codigo = `KEY-${seg()}-${seg()}-${seg()}-${seg()}`;
   }
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const titulo = form.titulo.value.trim();
-    const categoria = form.categoria.value;
-    const problema = form.problema.value.trim();
-    const solucion = form.solucion.value.trim();
-    const alias = form.alias.value.trim();
-    const impacto = form.impacto.value.trim();
-    const ok = form.terminos.checked && form.original.checked && form.mayor.checked;
+  // ENVÍO REAL — descomenta cuando conectes Formspree:
+  // await fetch('https://formspree.io/f/TU_ID', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+  //   body: JSON.stringify({ titulo, categoria, problema, solucion, alias, impacto, codigo })
+  // });
 
-    const fail = (m) => { status.textContent = m; status.style.color = 'var(--warn)'; };
+  console.log('[Florecimiento Key] Propuesta:', { titulo, categoria, codigo });
 
-    if (!titulo || !categoria || !problema || !solucion) return fail('Completa los campos obligatorios.');
-    if (problema.length < 40) return fail('Desarrolla más el problema (mín. 40).');
-    if (solucion.length < 60) return fail('Desarrolla más la solución (mín. 60).');
-    if (!ok) return fail('Debes aceptar las tres declaraciones.');
+  codeOut.textContent = codigo;
+  result.classList.add('show');
+  submitBtn.textContent = 'Enviada';
+  status.textContent = 'Guarda tu código.';
+  status.style.color = 'var(--ok)';
 
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = 'Enviando…';
-    status.textContent = '';
-
-    const payload = JSON.stringify({
-      t: titulo, c: categoria, p: problema, s: solucion, a: alias, i: impacto,
-      ts: Date.now(), r: Math.random().toString(36).slice(2)
-    });
-
-    let codigo;
-    try { codigo = await generarCodigo(payload); }
-    catch {
-      const seg = () => Math.random().toString(36).slice(2,6).toUpperCase();
-      codigo = `KEY-${seg()}-${seg()}-${seg()}-${seg()}`;
-    }
-
-    // ENVÍO REAL — descomenta cuando conectes Formspree:
-    // await fetch('https://formspree.io/f/TU_ID', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    //   body: JSON.stringify({ titulo, categoria, problema, solucion, alias, impacto, codigo })
-    // });
-
-    console.log('[Florecimiento Key] Propuesta:', { titulo, categoria, codigo });
-
-    codeOut.textContent = codigo;
-    result.classList.add('show');
-    submitBtn.textContent = 'Enviada';
-    status.textContent = 'Guarda tu código.';
-    status.style.color = 'var(--ok)';
-
-    form.querySelectorAll('input, textarea, select').forEach(el => {
-      if (el.type === 'checkbox') el.checked = false;
-      else el.value = '';
-    });
-    ['cProblema','cSolucion','cImpacto'].forEach(id => document.getElementById(id).textContent = '0');
-
-    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  form.querySelectorAll('input, textarea, select').forEach(el => {
+    if (el.type === 'checkbox') el.checked = false;
+    else el.value = '';
   });
+  ['cProblema','cSolucion','cImpacto'].forEach(id => document.getElementById(id).textContent = '0');
 
-  document.getElementById('copyBtn').addEventListener('click', async () => {
-    const texto = codeOut.textContent;
-    const btn = document.getElementById('copyBtn');
-    const original = btn.innerHTML;
-    try {
-      await navigator.clipboard.writeText(texto);
-      btn.textContent = '¡Copiado!';
-      setTimeout(() => btn.innerHTML = original, 1800);
-    } catch {
-      const ta = document.createElement('textarea');
-      ta.value = texto;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      btn.textContent = '¡Copiado!';
-      setTimeout(() => btn.innerHTML = original, 1800);
-    }
-  });
+  result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const texto = codeOut.textContent;
+  const btn = document.getElementById('copyBtn');
+  const original = btn.innerHTML;
+  try {
+    await navigator.clipboard.writeText(texto);
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.innerHTML = original, 1800);
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = texto;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.innerHTML = original, 1800);
+  }
+});
 </script>
 
 </body>
