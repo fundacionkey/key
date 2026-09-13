@@ -20,6 +20,21 @@
       --izote:#fdf6e3;
       background:var(--night);
     }
+    /* FIX header sobre fondo oscuro */
+    body.event-page > header{
+      background: #ffffff !important;
+      position: relative;
+      z-index: 100;
+      width: 100%;
+    }
+    body.event-page > header .top-bar{
+      background: var(--primary);
+      width: 100%;
+    }
+    body.event-page > header .main-header{
+      background: #ffffff;
+    }
+
     body.event-page .flor-main{color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
       line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
@@ -182,7 +197,6 @@
                 <a href="cosecha.html">COSECHA</a>
                 <a href="https://windsor-one.github.io/windsor/" target="_blank" rel="noopener noreferrer">WINDSOR</a>
                 <a href="https://windsor-one.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer">HELIOT</a>
-                <a href="donar.html" style="background: var(--orange); color: #fff; padding: 4px 16px; border-radius: 30px; font-weight: 700;">DONAR</a>
             </div>
         </div>
     </div>
@@ -207,10 +221,10 @@
                     <a href="oportunidades.html#empleo">Empleo</a>
                     <a href="oportunidades.html#educacion">Educación y formación</a>
                     <a href="oportunidades.html#becas">Becas y oportunidades</a>
+                    <a href="florecimiento.html">Florecimiento Key</a>
                 </div>
             </div>
             <a href="administrados.html">Administrados</a>
-            <a href="florecimiento.html" class="active">Florecimiento</a>
             <a href="blog.html">Blog</a>
             <a href="contactanos.html">Contáctanos</a>
             <div class="search-box">
@@ -225,6 +239,8 @@
 <div class="flor-breadcrumb">
   <div class="flor-wrap">
     <a href="index.html">Inicio</a>
+    <span class="sep">›</span>
+    <a href="oportunidades.html">Oportunidades</a>
     <span class="sep">›</span>
     <a href="florecimiento.html">Florecimiento Key</a>
     <span class="sep">›</span>
@@ -387,7 +403,6 @@
             <a href="cosecha.html">Programa Cosecha</a>
             <a href="blog.html">Blog</a>
             <a href="contactanos.html">Contáctanos</a>
-            <a href="donar.html" style="font-weight: 700; color: var(--orange);">Donar</a>
         </div>
         <div class="col-enlaces">
             <p><strong>Transparencia y legal</strong></p>
