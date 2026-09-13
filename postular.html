@@ -4,116 +4,219 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Postular · Florecimiento Key</title>
-<meta name="description" content="Envía tu idea a Florecimiento Key. Sin registro, sin correo, sin contacto. Recibe un código de reclamación.">
+<meta name="description" content="Envía tu idea a Florecimiento Key. Sin registro, sin correo, sin contacto.">
 <style>
   :root{
-    --bg:#0b0f1a; --bg-2:#111726; --card:#151c2e; --line:#232c44;
-    --text:#e8ecf4; --muted:#8b95ad; --accent:#e8b04b; --accent-2:#f2c56b;
+    --bg:#070b14; --bg-2:#0d1424; --card:#101a2e; --line:#1e2b47;
+    --text:#eef2f9; --muted:#8b98b5;
+    --accent:#e8b04b; --accent-2:#f5cd7c;
+    --green:#4ecb8f; --green-2:#7ee8b8;
+    --blue:#5eb8ff;
     --ok:#4ade80; --warn:#f87171;
-    --radius:14px; --max:880px;
+    --radius:16px; --max:920px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;position:relative;
+  }
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;position:relative;z-index:2}
 
-  nav{position:sticky;top:0;z-index:50;background:rgba(11,15,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{font-weight:700;letter-spacing:.4px;font-size:15px}
+  #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.7}
+  .grid-bg{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(78,203,143,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(78,203,143,.045) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse at 50% 20%, #000 30%, transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse at 50% 20%, #000 30%, transparent 80%);
+  }
+  .orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.45}
+  .orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(232,176,75,.28),transparent 70%);top:-150px;left:-100px;animation:float1 22s ease-in-out infinite}
+  .orb-2{width:440px;height:440px;background:radial-gradient(circle,rgba(78,203,143,.22),transparent 70%);bottom:100px;right:-140px;animation:float2 26s ease-in-out infinite}
+  @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,40px)}}
+  @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,50px)}}
+
+  .doodle{
+    position:absolute;pointer-events:none;z-index:1;opacity:.16;
+    stroke:var(--accent);fill:none;stroke-width:1.6;
+    stroke-linecap:round;stroke-linejoin:round;
+  }
+  .doodle.green{stroke:var(--green);opacity:.2}
+  .doodle.blue{stroke:var(--blue);opacity:.14}
+  .spin-slow{animation:spin 45s linear infinite}
+  .sway{animation:sway 8s ease-in-out infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes sway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
+
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(7,11,20,.78);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px;font-size:15px}
+  .brand .mark{width:26px;height:26px;flex-shrink:0}
   .brand span{color:var(--accent)}
-  .nav-links{display:flex;gap:22px;font-size:14px;align-items:center}
+  .nav-links{display:flex;gap:24px;font-size:14px;align-items:center}
   .nav-links a{color:var(--muted)}
   .nav-links a:hover{color:var(--text);text-decoration:none}
-  .nav-cta{background:transparent;color:var(--text) !important;padding:8px 18px;border-radius:999px;border:1px solid var(--line);font-weight:600}
-  .nav-cta:hover{border-color:var(--accent);text-decoration:none !important}
+  .nav-cta{
+    background:rgba(255,255,255,.03);color:var(--text) !important;
+    padding:9px 20px;border-radius:999px;border:1px solid var(--line);
+    font-weight:700;transition:.25s;
+  }
+  .nav-cta:hover{border-color:var(--green);color:var(--green-2) !important;text-decoration:none !important}
   @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
 
   header.form-head{
-    padding:72px 0 48px;
-    background:
-      radial-gradient(800px 380px at 20% 0%, rgba(232,176,75,.10), transparent 60%);
+    position:relative;padding:84px 0 56px;overflow:hidden;
     border-bottom:1px solid var(--line);
   }
-  .tag{display:inline-block;font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(232,176,75,.35);padding:6px 14px;border-radius:999px;margin-bottom:22px}
-  h1{font-size:clamp(30px,4.8vw,46px);line-height:1.08;font-weight:800;letter-spacing:-1px;margin-bottom:14px}
-  h1 em{font-style:normal;color:var(--accent)}
-  .slogan{font-size:15px;font-style:italic;color:var(--accent);letter-spacing:.3px;margin-bottom:20px;font-weight:500}
-  .lead{color:var(--muted);font-size:16px;max-width:600px}
+  .tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);
+    border:1px solid rgba(232,176,75,.4);padding:8px 16px;border-radius:999px;margin-bottom:26px;
+    background:rgba(232,176,75,.06);backdrop-filter:blur(8px);
+  }
+  .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
 
-  section{padding:56px 0 80px}
+  h1{
+    font-size:clamp(32px,5.4vw,52px);line-height:1.05;font-weight:900;letter-spacing:-1.4px;
+    margin-bottom:16px;
+    background:linear-gradient(135deg,#fff 20%,var(--accent) 60%,var(--green-2) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  h1 em{font-style:normal}
+  .slogan{
+    font-size:15px;font-style:italic;color:var(--accent);letter-spacing:.4px;
+    margin-bottom:22px;font-weight:500;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .slogan::before,.slogan::after{content:"";width:26px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+  .lead{color:var(--muted);font-size:16px;max-width:620px}
+
+  section{padding:64px 0 96px;position:relative}
 
   .form-shell{
-    background:var(--card);
+    background:linear-gradient(160deg,rgba(16,26,46,.85),rgba(16,26,46,.5));
     border:1px solid var(--line);
     border-radius:var(--radius);
-    padding:38px;
+    padding:42px;
+    backdrop-filter:blur(12px);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    position:relative;
+    overflow:hidden;
   }
-  @media(max-width:600px){.form-shell{padding:24px}}
+  .form-shell::before{
+    content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:70%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  }
+  @media(max-width:600px){.form-shell{padding:26px}}
 
-  .field{margin-bottom:24px}
-  label{display:block;font-size:14px;font-weight:600;margin-bottom:9px}
+  .field{margin-bottom:26px}
+  label{display:block;font-size:14px;font-weight:700;margin-bottom:10px}
   label .opt{color:var(--muted);font-weight:400;font-size:12.5px;margin-left:6px}
-  .hint{font-size:12.5px;color:var(--muted);margin-top:7px;display:block;line-height:1.5}
+  .hint{font-size:12.5px;color:var(--muted);margin-top:8px;display:block;line-height:1.5}
   input[type=text],textarea,select{
-    width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;
-    padding:13px 15px;color:var(--text);font-size:15px;font-family:inherit;transition:.15s;
+    width:100%;background:rgba(7,11,20,.6);
+    border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;color:var(--text);font-size:15px;font-family:inherit;transition:.2s;
   }
   input[type=text]:focus,textarea:focus,select:focus{
     outline:none;border-color:var(--accent);
-    box-shadow:0 0 0 3px rgba(232,176,75,.12);
+    box-shadow:0 0 0 4px rgba(232,176,75,.12);
+    background:rgba(7,11,20,.85);
   }
-  textarea{min-height:112px;resize:vertical;line-height:1.6}
+  textarea{min-height:118px;resize:vertical;line-height:1.65}
   select{cursor:pointer;appearance:none;
-    background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b95ad' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:right 14px center;background-size:18px;padding-right:44px;
+    background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b98b5' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 16px center;background-size:18px;padding-right:46px;
   }
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
   @media(max-width:600px){.row{grid-template-columns:1fr}}
 
-  .checks{border-top:1px solid var(--line);padding-top:26px;margin-top:8px}
-  .checks > label{font-size:15px;margin-bottom:18px}
-  .check{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin-bottom:15px;line-height:1.6}
-  .check input{margin-top:3px;accent-color:var(--accent);flex-shrink:0;width:16px;height:16px;cursor:pointer}
+  .checks{
+    border-top:1px solid var(--line);
+    padding-top:28px;margin-top:10px;
+  }
+  .checks > label{font-size:15px;margin-bottom:20px}
+  .check{display:flex;gap:13px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin-bottom:16px;line-height:1.65}
+  .check input{
+    margin-top:3px;accent-color:var(--accent);flex-shrink:0;
+    width:17px;height:17px;cursor:pointer;
+  }
   .check label{font-weight:400;margin:0;font-size:13.5px;color:var(--muted);cursor:pointer}
 
-  .form-actions{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-  .btn{display:inline-block;padding:15px 32px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.2s;font-family:inherit}
-  .btn-primary{background:var(--accent);color:#0b0f1a}
-  .btn-primary:hover:not(:disabled){background:var(--accent-2);transform:translateY(-1px)}
-  .btn-primary:disabled{opacity:.55;cursor:not-allowed}
-  .btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
-  .btn-ghost:hover{border-color:var(--accent);text-decoration:none}
+  .form-actions{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 34px;border-radius:999px;font-weight:700;font-size:15px;
+    border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:#070b14;box-shadow:0 8px 30px rgba(232,176,75,.35);
+  }
+  .btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 40px rgba(232,176,75,.55)}
+  .btn-primary:disabled{opacity:.55;cursor:not-allowed;transform:none}
+  .btn-ghost{background:rgba(255,255,255,.03);color:var(--text);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green-2);text-decoration:none}
+  .btn svg{width:18px;height:18px}
   #status{font-size:14px}
 
   .result{
-    display:none;margin-top:34px;
-    background:linear-gradient(180deg,rgba(74,222,128,.08),transparent);
-    border:1px solid rgba(74,222,128,.3);
-    border-radius:var(--radius);padding:30px;
+    display:none;margin-top:36px;
+    background:linear-gradient(180deg,rgba(78,222,128,.08),transparent);
+    border:1px solid rgba(78,222,128,.3);
+    border-radius:var(--radius);padding:34px;
+    position:relative;overflow:hidden;
+    animation:reveal .6s ease-out;
   }
+  @keyframes reveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
   .result.show{display:block}
-  .result h3{color:var(--ok);font-size:17px;margin-bottom:12px}
-  .result p{color:var(--muted);font-size:14px;margin-bottom:18px;line-height:1.65}
+  .result::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--ok),transparent);
+    animation:shine 2.5s ease-in-out infinite;
+  }
+  @keyframes shine{0%,100%{opacity:.4}50%{opacity:1}}
+  .result h3{color:var(--ok);font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  .result h3 svg{width:22px;height:22px;stroke:var(--ok);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+  .result p{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.7}
   .code-box{
     display:flex;align-items:center;gap:12px;
-    background:var(--bg);border:1px dashed var(--accent);
-    border-radius:10px;padding:16px;flex-wrap:wrap;
+    background:rgba(7,11,20,.7);border:1px dashed var(--accent);
+    border-radius:12px;padding:18px;flex-wrap:wrap;
   }
   .code-box code{
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:15.5px;color:var(--accent);word-break:break-all;flex:1;min-width:200px;letter-spacing:.5px;
+    font-size:16px;color:var(--accent);word-break:break-all;flex:1;
+    min-width:200px;letter-spacing:.6px;font-weight:600;
   }
   .copy-btn{
-    background:var(--accent);color:#0b0f1a;border:none;
-    padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;
-    cursor:pointer;font-family:inherit;transition:.15s;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:#070b14;border:none;
+    padding:10px 20px;border-radius:9px;font-size:13px;font-weight:700;
+    cursor:pointer;font-family:inherit;transition:.2s;
+    display:inline-flex;align-items:center;gap:7px;
   }
-  .copy-btn:hover{background:var(--accent-2)}
-  .result .fine{font-size:13px;color:var(--muted);margin-top:20px;margin-bottom:0}
+  .copy-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,176,75,.4)}
+  .copy-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .result .fine{font-size:13px;color:var(--muted);margin-top:22px;margin-bottom:0}
 
-  footer{padding:48px 0 64px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+  /* Contador char */
+  .char-count{font-variant-numeric:tabular-nums}
+
+  footer{padding:56px 0 72px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line);position:relative;z-index:2}
   footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   footer a{color:var(--muted)}
   footer a:hover{color:var(--accent)}
@@ -121,9 +224,24 @@
 </head>
 <body>
 
+<div class="grid-bg"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<canvas id="petals"></canvas>
+
 <nav>
   <div class="wrap">
-    <div class="brand">FLORECIMIENTO<span>·</span>KEY</div>
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="16" cy="12" r="4" stroke="#e8b04b"/>
+        <path d="M16 12c-3-3-7-3-9 0 2 3 6 3 9 0z" stroke="#4ecb8f"/>
+        <path d="M16 12c3-3 7-3 9 0-2 3-6 3-9 0z" stroke="#4ecb8f"/>
+        <path d="M16 16v10" stroke="#e8b04b"/>
+        <path d="M16 20c-3 0-5-1-6-3" stroke="#4ecb8f"/>
+        <path d="M16 24c3 0 5-1 6-3" stroke="#4ecb8f"/>
+      </svg>
+      FLORECIMIENTO<span>·</span>KEY
+    </div>
     <div class="nav-links">
       <a href="#formulario">Formulario</a>
       <a href="florecimiento.html#bases">Bases</a>
@@ -133,6 +251,18 @@
 </nav>
 
 <header class="form-head">
+  <svg class="doodle sway" style="top:14%;right:6%" width="80" height="80" viewBox="0 0 80 80">
+    <circle cx="40" cy="40" r="9"/>
+    <path d="M40 31c-5-7-14-7-16 0 5 6 12 6 16 0z"/>
+    <path d="M40 31c5-7 14-7 16 0-5 6-12 6-16 0z"/>
+    <path d="M40 49c-5 7-14 7-16 0 5-6 12-6 16 0z"/>
+    <path d="M40 49c5 7 14 7 16 0-5-6-12-6-16 0z"/>
+  </svg>
+  <svg class="doodle green spin-slow" style="bottom:10%;left:4%" width="70" height="70" viewBox="0 0 70 70">
+    <circle cx="35" cy="35" r="24" stroke-dasharray="3 6"/>
+    <circle cx="35" cy="35" r="12"/>
+  </svg>
+
   <div class="wrap">
     <span class="tag">Postulación · Anónima</span>
     <h1>Envía tu <em>idea</em></h1>
@@ -184,21 +314,21 @@
           <label for="problema">¿Qué problema resuelve?</label>
           <textarea id="problema" name="problema" maxlength="900" required
                     placeholder="Describe el problema o necesidad concreta que tu idea aborda. Contexto, a quién afecta, por qué importa."></textarea>
-          <span class="hint"><span id="cProblema">0</span> / 900 caracteres · mínimo 40</span>
+          <span class="hint"><span id="cProblema" class="char-count">0</span> / 900 · mínimo 40</span>
         </div>
 
         <div class="field">
           <label for="solucion">¿Cómo lo resuelve tu idea?</label>
           <textarea id="solucion" name="solucion" maxlength="1400" required
                     placeholder="Explica la solución: qué se hace, cómo se implementa, quién participa, qué recursos necesita."></textarea>
-          <span class="hint"><span id="cSolucion">0</span> / 1400 caracteres · mínimo 60</span>
+          <span class="hint"><span id="cSolucion" class="char-count">0</span> / 1400 · mínimo 60</span>
         </div>
 
         <div class="field">
           <label for="impacto">Impacto esperado <span class="opt">(opcional)</span></label>
           <textarea id="impacto" name="impacto" maxlength="600"
                     placeholder="¿A cuántas personas beneficiaría? ¿Qué cambiaría si se implementa?"></textarea>
-          <span class="hint"><span id="cImpacto">0</span> / 600 caracteres</span>
+          <span class="hint"><span id="cImpacto" class="char-count">0</span> / 600</span>
         </div>
 
         <div class="checks">
@@ -212,38 +342,43 @@
               que no habrá contacto directo conmigo y que el crédito solo se otorga si reclamo con mi código.
             </label>
           </div>
-
           <div class="check">
             <input type="checkbox" id="original" required>
-            <label for="original">
-              Declaro que esta idea es original y no infringe derechos de terceros.
-            </label>
+            <label for="original">Declaro que esta idea es original y no infringe derechos de terceros.</label>
           </div>
-
           <div class="check">
             <input type="checkbox" id="mayor" required>
-            <label for="mayor">
-              Declaro ser mayor de edad.
-            </label>
+            <label for="mayor">Declaro ser mayor de edad.</label>
           </div>
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary" id="submitBtn">Enviar idea</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+            Enviar idea
+          </button>
           <a href="florecimiento.html" class="btn btn-ghost">Cancelar</a>
           <span id="status"></span>
         </div>
       </form>
 
       <div class="result" id="result">
-        <h3>✓ Idea recibida</h3>
+        <h3>
+          <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          Idea recibida
+        </h3>
         <p>
           Guarda este código. Es tu única forma de reclamar crédito si tu idea es seleccionada.
           No lo compartas con nadie. Si lo pierdes, no podremos identificarte.
         </p>
         <div class="code-box">
           <code id="codeOut">—</code>
-          <button class="copy-btn" id="copyBtn" type="button">Copiar</button>
+          <button class="copy-btn" id="copyBtn" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
         </div>
         <p class="fine">
           No recibirás correos ni notificaciones. Los resultados se publican en el sitio del evento.
@@ -267,13 +402,68 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  /* ===== PÉTALOS ===== */
+  (function(){
+    const c = document.getElementById('petals');
+    const ctx = c.getContext('2d');
+    let w, h, petals = [];
+    const COLORS = ['#e8b04b','#f5cd7c','#4ecb8f','#7ee8b8','#5eb8ff'];
+    const COUNT = window.innerWidth < 720 ? 12 : 22;
+
+    function resize(){ w = c.width = innerWidth; h = c.height = innerHeight; }
+    resize();
+    addEventListener('resize', resize);
+
+    function P(){ this.reset(true); }
+    P.prototype.reset = function(init){
+      this.x = Math.random() * w;
+      this.y = init ? Math.random() * h : -20;
+      this.size = 4 + Math.random() * 6;
+      this.vy = .22 + Math.random() * .5;
+      this.vx = (Math.random() - .5) * .4;
+      this.rot = Math.random() * Math.PI * 2;
+      this.rs = (Math.random() - .5) * .02;
+      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      this.op = .3 + Math.random() * .35;
+      this.ph = Math.random() * Math.PI * 2;
+      this.ps = .01 + Math.random() * .02;
+    };
+    P.prototype.draw = function(){
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rot);
+      ctx.globalAlpha = this.op;
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, this.size, this.size * .55, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    };
+    P.prototype.update = function(){
+      this.ph += this.ps;
+      this.x += this.vx + Math.sin(this.ph) * .45;
+      this.y += this.vy;
+      this.rot += this.rs;
+      if (this.y > h + 30) this.reset(false);
+      if (this.x < -30) this.x = w + 20;
+      if (this.x > w + 30) this.x = -20;
+    };
+
+    for (let i = 0; i < COUNT; i++) petals.push(new P());
+    (function loop(){
+      ctx.clearRect(0, 0, w, h);
+      petals.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(loop);
+    })();
+  })();
+
+  /* ===== FORM ===== */
   const form = document.getElementById('ideaForm');
   const status = document.getElementById('status');
   const result = document.getElementById('result');
   const codeOut = document.getElementById('codeOut');
   const submitBtn = document.getElementById('submitBtn');
 
-  // Contadores de caracteres
   const bind = (id, out) => {
     const el = document.getElementById(id);
     const o = document.getElementById(out);
@@ -283,39 +473,35 @@
   bind('solucion','cSolucion');
   bind('impacto','cImpacto');
 
-  // Genera código de reclamación (SHA-256 en el navegador)
-  async function generarCodigo(payload) {
+  async function generarCodigo(payload){
     const data = new TextEncoder().encode(payload);
     const buf = await crypto.subtle.digest('SHA-256', data);
     const bytes = new Uint8Array(buf);
-    const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // sin I, O, 0, 1
+    const alpha = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
     let raw = '';
-    for (let i = 0; i < 16; i++) raw += alphabet[bytes[i] % alphabet.length];
+    for (let i = 0; i < 16; i++) raw += alpha[bytes[i] % alpha.length];
     return 'KEY-' + raw.match(/.{1,4}/g).join('-');
   }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const titulo   = form.titulo.value.trim();
-    const categoria= form.categoria.value;
+    const titulo = form.titulo.value.trim();
+    const categoria = form.categoria.value;
     const problema = form.problema.value.trim();
     const solucion = form.solucion.value.trim();
-    const alias    = form.alias.value.trim();
-    const impacto  = form.impacto.value.trim();
-    const terminos = form.terminos.checked;
-    const original = form.original.checked;
-    const mayor    = form.mayor.checked;
+    const alias = form.alias.value.trim();
+    const impacto = form.impacto.value.trim();
+    const ok = form.terminos.checked && form.original.checked && form.mayor.checked;
 
-    const fail = (msg) => { status.textContent = msg; status.style.color = 'var(--warn)'; };
+    const fail = (m) => { status.textContent = m; status.style.color = 'var(--warn)'; };
 
     if (!titulo || !categoria || !problema || !solucion) return fail('Completa los campos obligatorios.');
-    if (problema.length < 40) return fail('Desarrolla un poco más el problema (mínimo 40 caracteres).');
-    if (solucion.length < 60) return fail('Desarrolla un poco más la solución (mínimo 60 caracteres).');
-    if (!terminos || !original || !mayor) return fail('Debes aceptar las tres declaraciones.');
+    if (problema.length < 40) return fail('Desarrolla más el problema (mín. 40).');
+    if (solucion.length < 60) return fail('Desarrolla más la solución (mín. 60).');
+    if (!ok) return fail('Debes aceptar las tres declaraciones.');
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando…';
+    submitBtn.innerHTML = 'Enviando…';
     status.textContent = '';
 
     const payload = JSON.stringify({
@@ -324,27 +510,23 @@
     });
 
     let codigo;
-    try {
-      codigo = await generarCodigo(payload);
-    } catch {
+    try { codigo = await generarCodigo(payload); }
+    catch {
       const seg = () => Math.random().toString(36).slice(2,6).toUpperCase();
       codigo = `KEY-${seg()}-${seg()}-${seg()}-${seg()}`;
     }
 
     // =================================================================
-    // ENVÍO REAL — descomenta cuando conectes Formspree
+    // ENVÍO REAL — descomenta cuando conectes Formspree:
     //
     // await fetch('https://formspree.io/f/TU_ID', {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    //   body: JSON.stringify({
-    //     titulo, categoria, problema, solucion, alias, impacto, codigo
-    //   })
+    //   body: JSON.stringify({ titulo, categoria, problema, solucion, alias, impacto, codigo })
     // });
     // =================================================================
 
-    // Simulación local (quitar cuando conectes el backend)
-    console.log('[Florecimiento Key] Propuesta recibida:', { titulo, categoria, codigo });
+    console.log('[Florecimiento Key] Propuesta:', { titulo, categoria, codigo });
 
     codeOut.textContent = codigo;
     result.classList.add('show');
@@ -364,10 +546,11 @@
   document.getElementById('copyBtn').addEventListener('click', async () => {
     const texto = codeOut.textContent;
     const btn = document.getElementById('copyBtn');
+    const original = btn.innerHTML;
     try {
       await navigator.clipboard.writeText(texto);
-      btn.textContent = 'Copiado';
-      setTimeout(() => btn.textContent = 'Copiar', 1800);
+      btn.textContent = '¡Copiado!';
+      setTimeout(() => btn.innerHTML = original, 1800);
     } catch {
       const ta = document.createElement('textarea');
       ta.value = texto;
@@ -375,8 +558,8 @@
       ta.select();
       document.execCommand('copy');
       document.body.removeChild(ta);
-      btn.textContent = 'Copiado';
-      setTimeout(() => btn.textContent = 'Copiar', 1800);
+      btn.textContent = '¡Copiado!';
+      setTimeout(() => btn.innerHTML = original, 1800);
     }
   });
 </script>
