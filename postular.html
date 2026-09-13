@@ -7,177 +7,209 @@
 <meta name="description" content="Envía tu idea a Florecimiento Key. Sin registro, sin correo, sin contacto.">
 <style>
   :root{
-    --bg:#070b14; --bg-2:#0d1424; --card:#101a2e; --line:#1e2b47;
-    --text:#eef2f9; --muted:#8b98b5;
-    --accent:#e8b04b; --accent-2:#f5cd7c;
-    --green:#4ecb8f; --green-2:#7ee8b8;
-    --blue:#5eb8ff;
-    --ok:#4ade80; --warn:#f87171;
-    --radius:16px; --max:920px;
+    --night:#0a0f1c;
+    --night-2:#111832;
+    --card:#141c34;
+    --line:#2a3452;
+    --hanji:#f5ede0;
+    --text:#f2ece1;
+    --muted:#a8a390;
+
+    --maqui:#f4a3c7;
+    --maqui-2:#ffc9e0;
+    --maqui-deep:#d9558a;
+
+    --indigo:#3a5da8;
+    --indigo-2:#5b7dd1;
+
+    --celadon:#8fbfa8;
+    --celadon-2:#b5d8c3;
+    --celadon-deep:#4a8f70;
+
+    --gold:#c9a75a;
+    --gold-2:#e8c680;
+
+    --ok:#7ed4a3;
+    --warn:#ef7d7d;
+    --radius:16px;
+    --max:940px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
-    background:var(--bg);color:var(--text);
+    background:var(--night);color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
     line-height:1.65;-webkit-font-smoothing:antialiased;
     overflow-x:hidden;position:relative;
   }
-  a{color:var(--accent);text-decoration:none}
+  a{color:var(--maqui);text-decoration:none}
   a:hover{text-decoration:underline}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;position:relative;z-index:2}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;position:relative;z-index:3}
 
-  #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.7}
-  .grid-bg{
+  .hangul-bg{
     position:fixed;inset:0;z-index:0;pointer-events:none;
-    background-image:
-      linear-gradient(rgba(78,203,143,.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(78,203,143,.045) 1px, transparent 1px);
-    background-size:64px 64px;
-    mask-image:radial-gradient(ellipse at 50% 20%, #000 30%, transparent 80%);
-    -webkit-mask-image:radial-gradient(ellipse at 50% 20%, #000 30%, transparent 80%);
+    font-family:serif;font-weight:900;
+    color:rgba(244,163,199,.035);
+    font-size:min(40vw,540px);
+    display:flex;align-items:center;justify-content:center;
+    letter-spacing:-.05em;user-select:none;overflow:hidden;
   }
-  .orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.45}
-  .orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(232,176,75,.28),transparent 70%);top:-150px;left:-100px;animation:float1 22s ease-in-out infinite}
-  .orb-2{width:440px;height:440px;background:radial-gradient(circle,rgba(78,203,143,.22),transparent 70%);bottom:100px;right:-140px;animation:float2 26s ease-in-out infinite}
+
+  #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.8}
+
+  .orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0;opacity:.4}
+  .orb-1{width:520px;height:520px;background:radial-gradient(circle,rgba(244,163,199,.34),transparent 70%);top:-160px;left:-120px;animation:float1 26s ease-in-out infinite}
+  .orb-2{width:460px;height:460px;background:radial-gradient(circle,rgba(143,191,168,.28),transparent 70%);bottom:80px;right:-140px;animation:float2 30s ease-in-out infinite}
   @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,40px)}}
   @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,50px)}}
 
   .doodle{
-    position:absolute;pointer-events:none;z-index:1;opacity:.16;
-    stroke:var(--accent);fill:none;stroke-width:1.6;
+    position:absolute;pointer-events:none;z-index:1;opacity:.2;
+    stroke:var(--maqui);fill:none;stroke-width:1.6;
     stroke-linecap:round;stroke-linejoin:round;
   }
-  .doodle.green{stroke:var(--green);opacity:.2}
-  .doodle.blue{stroke:var(--blue);opacity:.14}
-  .spin-slow{animation:spin 45s linear infinite}
-  .sway{animation:sway 8s ease-in-out infinite}
+  .doodle.green{stroke:var(--celadon);opacity:.24}
+  .doodle.gold{stroke:var(--gold);opacity:.22}
+  .spin-slow{animation:spin 50s linear infinite}
+  .sway{animation:sway 9s ease-in-out infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   @keyframes sway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
 
   nav{
     position:sticky;top:0;z-index:50;
-    background:rgba(7,11,20,.78);backdrop-filter:blur(14px);
+    background:rgba(10,15,28,.82);backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line);
   }
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px;font-size:15px}
-  .brand .mark{width:26px;height:26px;flex-shrink:0}
-  .brand span{color:var(--accent)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px;font-size:15px}
+  .brand .mark{width:32px;height:32px;flex-shrink:0}
+  .brand span{color:var(--maqui)}
   .nav-links{display:flex;gap:24px;font-size:14px;align-items:center}
   .nav-links a{color:var(--muted)}
   .nav-links a:hover{color:var(--text);text-decoration:none}
   .nav-cta{
-    background:rgba(255,255,255,.03);color:var(--text) !important;
-    padding:9px 20px;border-radius:999px;border:1px solid var(--line);
+    background:rgba(245,237,224,.04);color:var(--text) !important;
+    padding:10px 22px;border-radius:999px;border:1px solid var(--line);
     font-weight:700;transition:.25s;
   }
-  .nav-cta:hover{border-color:var(--green);color:var(--green-2) !important;text-decoration:none !important}
-  @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+  .nav-cta:hover{border-color:var(--celadon);color:var(--celadon-2) !important;text-decoration:none !important}
+  @media(max-width:800px){.nav-links a:not(.nav-cta){display:none}}
 
   header.form-head{
-    position:relative;padding:84px 0 56px;overflow:hidden;
+    position:relative;padding:90px 0 60px;overflow:hidden;
     border-bottom:1px solid var(--line);
   }
   .tag{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);
-    border:1px solid rgba(232,176,75,.4);padding:8px 16px;border-radius:999px;margin-bottom:26px;
-    background:rgba(232,176,75,.06);backdrop-filter:blur(8px);
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11.5px;letter-spacing:1.9px;text-transform:uppercase;
+    color:var(--celadon-2);
+    border:1px solid rgba(143,191,168,.4);
+    padding:9px 18px;border-radius:999px;margin-bottom:28px;
+    background:rgba(143,191,168,.06);backdrop-filter:blur(8px);
   }
-  .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s ease-in-out infinite}
+  .tag::before{
+    content:"";width:7px;height:7px;border-radius:50%;
+    background:var(--maqui);box-shadow:0 0 12px var(--maqui);
+    animation:pulse 2s ease-in-out infinite;
+  }
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
 
   h1{
-    font-size:clamp(32px,5.4vw,52px);line-height:1.05;font-weight:900;letter-spacing:-1.4px;
-    margin-bottom:16px;
-    background:linear-gradient(135deg,#fff 20%,var(--accent) 60%,var(--green-2) 100%);
+    font-size:clamp(34px,5.6vw,56px);line-height:1.02;font-weight:900;letter-spacing:-1.6px;
+    margin-bottom:18px;
+    background:linear-gradient(135deg,#fff 15%,var(--maqui-2) 45%,var(--maqui) 65%,var(--celadon-2) 100%);
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   }
   h1 em{font-style:normal}
   .slogan{
-    font-size:15px;font-style:italic;color:var(--accent);letter-spacing:.4px;
-    margin-bottom:22px;font-weight:500;
-    display:inline-flex;align-items:center;gap:10px;
+    font-size:15px;font-style:italic;color:var(--maqui);
+    letter-spacing:.5px;margin-bottom:24px;font-weight:500;
+    display:inline-flex;align-items:center;gap:12px;
   }
-  .slogan::before,.slogan::after{content:"";width:26px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-  .lead{color:var(--muted);font-size:16px;max-width:620px}
+  .slogan::before,.slogan::after{
+    content:"";width:30px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--maqui),transparent);
+  }
+  .lead{color:var(--muted);font-size:16px;max-width:640px}
 
-  section{padding:64px 0 96px;position:relative}
+  section{padding:68px 0 100px;position:relative}
 
   .form-shell{
-    background:linear-gradient(160deg,rgba(16,26,46,.85),rgba(16,26,46,.5));
+    background:linear-gradient(160deg,rgba(20,28,52,.92),rgba(20,28,52,.55));
     border:1px solid var(--line);
     border-radius:var(--radius);
-    padding:42px;
+    padding:44px;
     backdrop-filter:blur(12px);
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
-    position:relative;
-    overflow:hidden;
+    box-shadow:0 24px 70px rgba(0,0,0,.4);
+    position:relative;overflow:hidden;
   }
   .form-shell::before{
     content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
     width:70%;height:1px;
-    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+    background:linear-gradient(90deg,transparent,var(--maqui),transparent);
   }
-  @media(max-width:600px){.form-shell{padding:26px}}
+  /* Esquinas dancheong */
+  .form-shell::after{
+    content:"";position:absolute;bottom:16px;right:16px;
+    width:26px;height:26px;
+    border-bottom:1.5px solid var(--celadon);
+    border-right:1.5px solid var(--celadon);
+    border-bottom-right-radius:6px;opacity:.55;
+  }
+  @media(max-width:600px){.form-shell{padding:28px}}
 
-  .field{margin-bottom:26px}
+  .field{margin-bottom:28px}
   label{display:block;font-size:14px;font-weight:700;margin-bottom:10px}
   label .opt{color:var(--muted);font-weight:400;font-size:12.5px;margin-left:6px}
   .hint{font-size:12.5px;color:var(--muted);margin-top:8px;display:block;line-height:1.5}
   input[type=text],textarea,select{
-    width:100%;background:rgba(7,11,20,.6);
+    width:100%;background:rgba(10,15,28,.65);
     border:1px solid var(--line);border-radius:12px;
     padding:14px 16px;color:var(--text);font-size:15px;font-family:inherit;transition:.2s;
   }
   input[type=text]:focus,textarea:focus,select:focus{
-    outline:none;border-color:var(--accent);
-    box-shadow:0 0 0 4px rgba(232,176,75,.12);
-    background:rgba(7,11,20,.85);
+    outline:none;border-color:var(--maqui);
+    box-shadow:0 0 0 4px rgba(244,163,199,.14);
+    background:rgba(10,15,28,.9);
   }
-  textarea{min-height:118px;resize:vertical;line-height:1.65}
+  textarea{min-height:120px;resize:vertical;line-height:1.65}
   select{cursor:pointer;appearance:none;
-    background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b98b5' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a8a390' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat:no-repeat;background-position:right 16px center;background-size:18px;padding-right:46px;
   }
   .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
   @media(max-width:600px){.row{grid-template-columns:1fr}}
 
-  .checks{
-    border-top:1px solid var(--line);
-    padding-top:28px;margin-top:10px;
-  }
+  .checks{border-top:1px solid var(--line);padding-top:30px;margin-top:12px}
   .checks > label{font-size:15px;margin-bottom:20px}
   .check{display:flex;gap:13px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin-bottom:16px;line-height:1.65}
-  .check input{
-    margin-top:3px;accent-color:var(--accent);flex-shrink:0;
-    width:17px;height:17px;cursor:pointer;
-  }
+  .check input{margin-top:3px;accent-color:var(--maqui);flex-shrink:0;width:17px;height:17px;cursor:pointer}
   .check label{font-weight:400;margin:0;font-size:13.5px;color:var(--muted);cursor:pointer}
+  .check a{color:var(--maqui)}
 
-  .form-actions{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .form-actions{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
   .btn{
     display:inline-flex;align-items:center;gap:10px;
-    padding:16px 34px;border-radius:999px;font-weight:700;font-size:15px;
+    padding:17px 36px;border-radius:999px;font-weight:700;font-size:15px;
     border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit;
   }
   .btn-primary{
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    color:#070b14;box-shadow:0 8px 30px rgba(232,176,75,.35);
+    background:linear-gradient(135deg,var(--maqui),var(--maqui-2));
+    color:#2a0f1c;
+    box-shadow:0 8px 34px rgba(244,163,199,.4);
   }
-  .btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 40px rgba(232,176,75,.55)}
+  .btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 14px 44px rgba(244,163,199,.6)}
   .btn-primary:disabled{opacity:.55;cursor:not-allowed;transform:none}
-  .btn-ghost{background:rgba(255,255,255,.03);color:var(--text);border-color:var(--line)}
-  .btn-ghost:hover{border-color:var(--green);color:var(--green-2);text-decoration:none}
+  .btn-ghost{background:rgba(245,237,224,.04);color:var(--text);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--celadon);color:var(--celadon-2);text-decoration:none}
   .btn svg{width:18px;height:18px}
   #status{font-size:14px}
 
   .result{
-    display:none;margin-top:36px;
-    background:linear-gradient(180deg,rgba(78,222,128,.08),transparent);
-    border:1px solid rgba(78,222,128,.3);
-    border-radius:var(--radius);padding:34px;
+    display:none;margin-top:38px;
+    background:linear-gradient(180deg,rgba(126,212,163,.1),transparent);
+    border:1px solid rgba(126,212,163,.35);
+    border-radius:var(--radius);padding:36px;
     position:relative;overflow:hidden;
     animation:reveal .6s ease-out;
   }
@@ -189,42 +221,42 @@
     animation:shine 2.5s ease-in-out infinite;
   }
   @keyframes shine{0%,100%{opacity:.4}50%{opacity:1}}
-  .result h3{color:var(--ok);font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  .result h3{color:var(--ok);font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
   .result h3 svg{width:22px;height:22px;stroke:var(--ok);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
   .result p{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.7}
   .code-box{
     display:flex;align-items:center;gap:12px;
-    background:rgba(7,11,20,.7);border:1px dashed var(--accent);
+    background:rgba(10,15,28,.75);border:1px dashed var(--maqui);
     border-radius:12px;padding:18px;flex-wrap:wrap;
   }
   .code-box code{
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:16px;color:var(--accent);word-break:break-all;flex:1;
+    font-size:16px;color:var(--maqui);word-break:break-all;flex:1;
     min-width:200px;letter-spacing:.6px;font-weight:600;
   }
   .copy-btn{
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    color:#070b14;border:none;
-    padding:10px 20px;border-radius:9px;font-size:13px;font-weight:700;
+    background:linear-gradient(135deg,var(--maqui),var(--maqui-2));
+    color:#2a0f1c;border:none;
+    padding:11px 22px;border-radius:9px;font-size:13px;font-weight:700;
     cursor:pointer;font-family:inherit;transition:.2s;
     display:inline-flex;align-items:center;gap:7px;
   }
-  .copy-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,176,75,.4)}
+  .copy-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(244,163,199,.45)}
   .copy-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .result .fine{font-size:13px;color:var(--muted);margin-top:22px;margin-bottom:0}
 
-  /* Contador char */
-  .char-count{font-variant-numeric:tabular-nums}
+  .char-count{font-variant-numeric:tabular-nums;color:var(--maqui)}
 
-  footer{padding:56px 0 72px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line);position:relative;z-index:2}
-  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer{padding:60px 0 76px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line);position:relative;z-index:2}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
   footer a{color:var(--muted)}
-  footer a:hover{color:var(--accent)}
+  footer a:hover{color:var(--maqui)}
+  footer .hangul-foot{font-family:serif;font-weight:700;color:var(--celadon);opacity:.65;letter-spacing:.15em;font-size:14px}
 </style>
 </head>
 <body>
 
-<div class="grid-bg"></div>
+<div class="hangul-bg">개화</div>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <canvas id="petals"></canvas>
@@ -232,13 +264,15 @@
 <nav>
   <div class="wrap">
     <div class="brand">
-      <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="16" cy="12" r="4" stroke="#e8b04b"/>
-        <path d="M16 12c-3-3-7-3-9 0 2 3 6 3 9 0z" stroke="#4ecb8f"/>
-        <path d="M16 12c3-3 7-3 9 0-2 3-6 3-9 0z" stroke="#4ecb8f"/>
-        <path d="M16 16v10" stroke="#e8b04b"/>
-        <path d="M16 20c-3 0-5-1-6-3" stroke="#4ecb8f"/>
-        <path d="M16 24c3 0 5-1 6-3" stroke="#4ecb8f"/>
+      <svg class="mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="20" cy="16" r="3.5" stroke="#c9a75a"/>
+        <path d="M20 16c-3.5-2.5-7.5-2.5-9.5 1 3 2.5 7 2.5 9.5-1z" stroke="#f4a3c7"/>
+        <path d="M20 16c3.5-2.5 7.5-2.5 9.5 1-3 2.5-7 2.5-9.5-1z" stroke="#f4a3c7"/>
+        <path d="M20 16c-1.5-3.5-1.5-7.5 2-9.5 1.5 3 1.5 7-2 9.5z" stroke="#f4a3c7"/>
+        <path d="M20 16c1.5 3.5 1.5 7.5-2 9.5-1.5-3-1.5-7 2-9.5z" stroke="#f4a3c7"/>
+        <path d="M20 24v10" stroke="#8fbfa8"/>
+        <path d="M20 28c-2.5-1-4-2-5-4" stroke="#8fbfa8"/>
+        <path d="M20 32c2.5-1 4-2 5-4" stroke="#8fbfa8"/>
       </svg>
       FLORECIMIENTO<span>·</span>KEY
     </div>
@@ -251,16 +285,20 @@
 </nav>
 
 <header class="form-head">
-  <svg class="doodle sway" style="top:14%;right:6%" width="80" height="80" viewBox="0 0 80 80">
-    <circle cx="40" cy="40" r="9"/>
-    <path d="M40 31c-5-7-14-7-16 0 5 6 12 6 16 0z"/>
-    <path d="M40 31c5-7 14-7 16 0-5 6-12 6-16 0z"/>
-    <path d="M40 49c-5 7-14 7-16 0 5-6 12-6 16 0z"/>
-    <path d="M40 49c5 7 14 7 16 0-5-6-12-6-16 0z"/>
+  <svg class="doodle sway" style="top:16%;right:5%" width="86" height="86" viewBox="0 0 86 86">
+    <circle cx="43" cy="38" r="6"/>
+    <path d="M43 32c-6-5-14-5-17 2 5 5 13 5 17-2z"/>
+    <path d="M43 32c6-5 14-5 17 2-5 5-13 5-17-2z"/>
+    <path d="M43 44c-6 5-14 5-17-2 5-5 13-5 17 2z"/>
+    <path d="M43 44c6 5 14 5 17-2-5-5-13-5-17 2z"/>
+    <path d="M37 38c-5-6-5-14 2-17 5 5 5 13-2 17z"/>
+    <path d="M49 38c5-6 5-14-2-17-5 5-5 13 2 17z"/>
+    <path d="M43 50v26" opacity=".5"/>
   </svg>
-  <svg class="doodle green spin-slow" style="bottom:10%;left:4%" width="70" height="70" viewBox="0 0 70 70">
-    <circle cx="35" cy="35" r="24" stroke-dasharray="3 6"/>
-    <circle cx="35" cy="35" r="12"/>
+  <svg class="doodle green spin-slow" style="bottom:12%;left:4%" width="80" height="80" viewBox="0 0 80 80">
+    <circle cx="40" cy="40" r="28" stroke-dasharray="3 6"/>
+    <circle cx="40" cy="40" r="14"/>
+    <path d="M40 12v12M40 56v12M12 40h12M56 40h12" opacity=".5"/>
   </svg>
 
   <div class="wrap">
@@ -333,7 +371,6 @@
 
         <div class="checks">
           <label>Antes de enviar</label>
-
           <div class="check">
             <input type="checkbox" id="terminos" required>
             <label for="terminos">
@@ -390,7 +427,10 @@
 
 <footer>
   <div class="wrap">
-    <div>© <span id="year"></span> Key · Fundación Hernández · Florecimiento Key</div>
+    <div>
+      © <span id="year"></span> Key · Fundación Hernández · Florecimiento Key
+      <span class="hangul-foot"> · 개화 · 꽃 · 희망</span>
+    </div>
     <div>
       <a href="florecimiento.html">Evento</a> ·
       <a href="florecimiento.html#bases">Bases</a> ·
@@ -402,41 +442,82 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* ===== PÉTALOS ===== */
+  /* ===== PÉTALOS con maquilishuat + flor de cerezo ===== */
   (function(){
     const c = document.getElementById('petals');
     const ctx = c.getContext('2d');
-    let w, h, petals = [];
-    const COLORS = ['#e8b04b','#f5cd7c','#4ecb8f','#7ee8b8','#5eb8ff'];
-    const COUNT = window.innerWidth < 720 ? 12 : 22;
+    let w, h, items = [];
+    const MAQUI = ['#f4a3c7','#ffc9e0','#e88ab5','#ffb3d1'];
+    const HOJA = ['#8fbfa8','#b5d8c3'];
+    const COUNT = window.innerWidth < 720 ? 14 : 24;
 
     function resize(){ w = c.width = innerWidth; h = c.height = innerHeight; }
     resize();
     addEventListener('resize', resize);
 
+    function drawMaqui(ctx, size, color){
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(0, -size * .9);
+      ctx.bezierCurveTo(size * .7, -size * .5, size * .8, size * .4, 0, size);
+      ctx.bezierCurveTo(-size * .8, size * .4, -size * .7, -size * .5, 0, -size * .9);
+      ctx.fill();
+      ctx.globalAlpha = .4;
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.ellipse(-size * .15, -size * .25, size * .18, size * .4, -.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    function drawBlossom(ctx, size, color){
+      ctx.fillStyle = color;
+      for (let i = 0; i < 5; i++){
+        ctx.save();
+        ctx.rotate((Math.PI * 2 / 5) * i);
+        ctx.beginPath();
+        ctx.ellipse(0, -size * .55, size * .4, size * .65, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+      ctx.fillStyle = '#c9a75a';
+      ctx.beginPath();
+      ctx.arc(0, 0, size * .18, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function drawLeaf(ctx, size, color){
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, size * .35, size, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
     function P(){ this.reset(true); }
     P.prototype.reset = function(init){
+      const r = Math.random();
+      this.type = r < .55 ? 'maqui' : (r < .85 ? 'blossom' : 'leaf');
       this.x = Math.random() * w;
-      this.y = init ? Math.random() * h : -20;
-      this.size = 4 + Math.random() * 6;
+      this.y = init ? Math.random() * h : -30;
+      this.size = 5 + Math.random() * 8;
       this.vy = .22 + Math.random() * .5;
-      this.vx = (Math.random() - .5) * .4;
+      this.vx = (Math.random() - .5) * .45;
       this.rot = Math.random() * Math.PI * 2;
       this.rs = (Math.random() - .5) * .02;
-      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-      this.op = .3 + Math.random() * .35;
+      this.op = .32 + Math.random() * .4;
       this.ph = Math.random() * Math.PI * 2;
       this.ps = .01 + Math.random() * .02;
+      if (this.type === 'leaf') this.color = HOJA[Math.floor(Math.random() * HOJA.length)];
+      else this.color = MAQUI[Math.floor(Math.random() * MAQUI.length)];
     };
     P.prototype.draw = function(){
       ctx.save();
       ctx.translate(this.x, this.y);
       ctx.rotate(this.rot);
       ctx.globalAlpha = this.op;
-      ctx.fillStyle = this.color;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, this.size, this.size * .55, 0, 0, Math.PI * 2);
-      ctx.fill();
+      if (this.type === 'maqui') drawMaqui(ctx, this.size, this.color);
+      else if (this.type === 'blossom') drawBlossom(ctx, this.size * .8, this.color);
+      else drawLeaf(ctx, this.size, this.color);
       ctx.restore();
     };
     P.prototype.update = function(){
@@ -449,10 +530,10 @@
       if (this.x > w + 30) this.x = -20;
     };
 
-    for (let i = 0; i < COUNT; i++) petals.push(new P());
+    for (let i = 0; i < COUNT; i++) items.push(new P());
     (function loop(){
       ctx.clearRect(0, 0, w, h);
-      petals.forEach(p => { p.update(); p.draw(); });
+      items.forEach(p => { p.update(); p.draw(); });
       requestAnimationFrame(loop);
     })();
   })();
