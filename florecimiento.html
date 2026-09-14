@@ -3,35 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Florecimiento Key · Convocatoria 2026</title>
-    <meta name="description" content="Florecimiento Key: primera convocatoria de ideas de Key · Fundación Hernández. El Salvador y Corea del Sur. It's time to FloreSer.">
+    <title>Postular · Florecimiento Key · Key Code</title>
+    <meta name="description" content="Envía tu idea a Florecimiento Key. It's time to FloreSer.">
     <link rel="icon" href="./assets/logo-simbolo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-    /* =================================================================
-       FLORECIMIENTO KEY — tema claro, scope bajo .flor-main
-       ================================================================= */
     .flor-main{
       --flor-bg:#fbf8f1;
-      --flor-bg-2:#ffffff;
       --flor-cream:#f5efdf;
       --flor-line:#e8e0ce;
       --flor-line-2:#d9cfb8;
       --flor-text:#1a1f2e;
       --flor-muted:#5c6478;
-      --flor-muted-2:#8b93a5;
       --maqui:#d9558a; --maqui-2:#e88ab5; --maqui-3:#f4a3c7; --maqui-bg:#fce7f0;
-      --indigo:#3a5da8; --indigo-2:#5b7dd1; --indigo-bg:#e8efff;
+      --indigo:#3a5da8; --indigo-bg:#e8efff;
       --celadon:#4a8f70; --celadon-2:#6ddba0; --celadon-3:#8fbfa8; --celadon-bg:#e3f5ea;
-      --gold:#b8912e; --gold-2:#c9a75a; --gold-bg:#fbf3dc;
+      --gold:#b8912e; --gold-bg:#fbf3dc;
+      --ok:#4a8f70;
+      --warn:#c94a5a;
       color:var(--flor-text);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
-      line-height:1.65;
-      -webkit-font-smoothing:antialiased;
-      position:relative;
-      overflow-x:hidden;
+      line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;
       background:#ffffff;
     }
     .flor-main a{color:var(--maqui);text-decoration:none}
@@ -40,12 +33,11 @@
     .flor-main .btn-flor:hover{text-decoration:none}
     .flor-main .btn-flor-ghost{color:var(--flor-text)}
     .flor-main .btn-flor-ghost:hover{text-decoration:none}
-    .flor-wrap{max-width:1140px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+    .flor-wrap{max-width:940px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
 
-    /* FONDOS DECORATIVOS */
-    .flor-main .hangul-bg{position:absolute;top:200px;left:50%;transform:translateX(-50%);
+    .flor-main .hangul-bg{position:absolute;top:60px;left:50%;transform:translateX(-50%);
       font-family:serif;font-weight:900;color:rgba(217,85,138,.04);
-      font-size:min(34vw,460px);line-height:1;user-select:none;pointer-events:none;
+      font-size:min(38vw,480px);line-height:1;user-select:none;pointer-events:none;
       letter-spacing:-.05em;z-index:0;overflow:hidden}
     .flor-main .anil-pattern{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.05;
       background-image:
@@ -61,282 +53,136 @@
       background-size:120px 120px,120px 120px;
       mask-image:radial-gradient(ellipse at 15% 30%,#000 0%,transparent 60%);
       -webkit-mask-image:radial-gradient(ellipse at 15% 30%,#000 0%,transparent 60%)}
-    .flor-main #petals{position:absolute;top:0;left:0;width:100%;height:100%;
-      pointer-events:none;z-index:1;opacity:.55}
+    .flor-main #petals{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.55}
     .flor-main .orb{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
-    .flor-main .orb-1{width:520px;height:520px;background:radial-gradient(circle,rgba(244,163,199,.28),transparent 70%);top:60px;left:-180px;opacity:.55}
-    .flor-main .orb-2{width:560px;height:560px;background:radial-gradient(circle,rgba(109,219,160,.24),transparent 70%);top:600px;right:-220px;opacity:.5}
-    .flor-main .orb-3{width:480px;height:480px;background:radial-gradient(circle,rgba(91,125,209,.16),transparent 70%);top:1600px;left:-160px;opacity:.4}
-    .flor-main .orb-4{width:520px;height:520px;background:radial-gradient(circle,rgba(201,167,90,.16),transparent 70%);top:2600px;right:-180px;opacity:.4}
+    .flor-main .orb-1{width:480px;height:480px;background:radial-gradient(circle,rgba(244,163,199,.28),transparent 70%);top:80px;left:-180px;opacity:.55}
+    .flor-main .orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(109,219,160,.24),transparent 70%);bottom:-100px;right:-200px;opacity:.5}
 
     .flor-main .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.28;
       stroke:var(--maqui);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
     .flor-main .doodle.green{stroke:var(--celadon);opacity:.32}
-    .flor-main .doodle.gold{stroke:var(--gold);opacity:.28}
-    .flor-main .doodle.indigo{stroke:var(--indigo);opacity:.26}
     .flor-main .spin-slow{animation:florSpin 60s linear infinite}
     .flor-main .sway{animation:florSway 10s ease-in-out infinite}
     @keyframes florSpin{to{transform:rotate(360deg)}}
     @keyframes florSway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
 
-    /* HERO */
-    .flor-hero{position:relative;padding:90px 0 80px;overflow:hidden;
-      background:linear-gradient(180deg,#ffffff 0%,var(--flor-bg) 60%,#ffffff 100%);
+    /* HEADER FORM */
+    .form-head{position:relative;padding:76px 0 48px;overflow:hidden;
+      background:linear-gradient(180deg,#ffffff 0%,var(--flor-bg) 100%);
       border-bottom:1px solid var(--flor-line)}
-    .flor-hero .flor-wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
-
-    .edition-badge{display:inline-flex;align-items:center;gap:8px;
-      font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
-      color:var(--celadon);border:1px solid rgba(74,143,112,.35);
-      padding:7px 16px;border-radius:999px;margin-bottom:14px;
-      background:var(--celadon-bg);font-weight:700}
-    .edition-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--celadon)}
-
-    .flor-tag{display:inline-flex;align-items:center;gap:10px;
-      font-size:11.5px;letter-spacing:1.9px;text-transform:uppercase;
-      color:var(--maqui);border:1px solid rgba(217,85,138,.3);
-      padding:9px 18px;border-radius:999px;margin-bottom:28px;
+    .form-head .flor-wrap{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+    .flor-tag{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;
+      text-transform:uppercase;color:var(--maqui);border:1px solid rgba(217,85,138,.3);
+      padding:9px 18px;border-radius:999px;margin-bottom:24px;
       background:var(--maqui-bg);font-weight:600}
     .flor-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--maqui)}
 
-    .title-block{display:flex;flex-direction:column;align-items:center;margin-bottom:18px;width:100%}
-    .flor-title{font-size:clamp(42px,7.4vw,82px);line-height:1;font-weight:900;letter-spacing:-2.4px;
+    .form-title{font-size:clamp(34px,5.6vw,56px);line-height:1.05;font-weight:900;letter-spacing:-1.6px;
+      margin-bottom:16px;color:var(--flor-text)}
+    .form-title em{font-style:normal;
       background:linear-gradient(135deg,#d9558a 0%,#e88ab5 40%,#4a8f70 100%);
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:0}
-    .flor-title em{font-style:normal}
-    .hangul-mark{display:block;margin-top:14px;font-family:serif;font-weight:900;
-      font-size:clamp(18px,2.4vw,26px);color:var(--celadon);opacity:.9;
-      letter-spacing:.4em;line-height:1;text-align:center}
-
-    .slogan{display:inline-flex;align-items:center;gap:14px;
-      font-size:clamp(15px,2.1vw,20px);font-style:italic;color:var(--maqui);
-      letter-spacing:.6px;margin-bottom:26px;font-weight:500}
-    .slogan::before,.slogan::after{content:"";width:36px;height:1px;
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .slogan{font-size:15px;font-style:italic;color:var(--maqui);letter-spacing:.5px;margin-bottom:20px;font-weight:500;
+      display:inline-flex;align-items:center;gap:12px}
+    .slogan::before,.slogan::after{content:"";width:30px;height:1px;
       background:linear-gradient(90deg,transparent,var(--maqui),transparent)}
-    .flor-lead{font-size:17.5px;color:var(--flor-muted);max-width:720px;margin:0 0 42px}
-    .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:0}
+    .flor-lead{color:var(--flor-muted);font-size:16px;max-width:640px}
 
-    .btn-flor{display:inline-flex;align-items:center;gap:10px;padding:16px 34px;border-radius:999px;
-      font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
-    .btn-flor-green{background:linear-gradient(135deg,var(--celadon),var(--celadon-2));color:#0a1f14;border:none}
-    .btn-flor-green:hover{transform:translateY(-2px)}
-    .btn-flor-ghost{background:#ffffff;color:var(--flor-text);border:1px solid var(--flor-line-2)}
-    .btn-flor-ghost:hover{border-color:var(--celadon);color:var(--celadon)}
-    .btn-flor svg{width:18px;height:18px}
-
-    /* VOLCANES */
-    .volcanoes{position:absolute;bottom:-1px;left:0;right:0;height:120px;pointer-events:none;z-index:1;opacity:.55}
-    .volcanoes svg{width:100%;height:100%;display:block}
-
-    /* FACTS */
-    .facts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:820px;margin:56px auto 0}
-    .fact{display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border-radius:999px;
-      background:#ffffff;border:1px solid var(--flor-line);font-size:13.5px;color:var(--flor-text);
-      font-weight:500;transition:.25s}
-    .fact:hover{border-color:var(--celadon);transform:translateY(-2px)}
-    .fact svg{width:16px;height:16px;flex-shrink:0;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-    .fact:nth-child(1) svg{stroke:var(--maqui)}
-    .fact:nth-child(2) svg{stroke:var(--celadon)}
-    .fact:nth-child(3) svg{stroke:var(--indigo)}
-    .fact:nth-child(4) svg{stroke:var(--gold)}
-
-    /* SECCIONES */
-    .flor-section{padding:96px 0;position:relative;overflow:hidden;background:#ffffff}
-    .flor-section.cream{background:var(--flor-bg)}
-    .sec-label{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;
-      text-transform:uppercase;color:var(--celadon);margin-bottom:16px;font-weight:700;
-      position:relative;left:50%;transform:translateX(-50%)}
-    .sec-label::before{content:"";width:22px;height:1px;background:var(--celadon)}
-    .flor-h2{font-size:clamp(28px,4.2vw,44px);font-weight:800;letter-spacing:-.9px;margin-bottom:16px;
-      text-align:center;color:var(--flor-text)}
-    .flor-h2 em{font-style:normal;color:var(--maqui)}
-    .flor-h2 em.green{color:var(--celadon)}
-    .sec-intro{color:var(--flor-muted);max-width:680px;margin:0 auto 54px;text-align:center;font-size:16px}
-
-    /* MANIFIESTO */
-    .manifesto{max-width:880px;margin:0 auto;padding:44px 40px;
-      background:#ffffff;border:1px solid var(--flor-line);border-radius:16px;
+    .form-section{padding:56px 0 80px;position:relative;background:var(--flor-bg)}
+    .form-shell{background:#ffffff;border:1px solid var(--flor-line);border-radius:16px;padding:42px;
       position:relative;overflow:hidden;
       box-shadow:0 4px 24px rgba(26,31,46,.04)}
-    .manifesto::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    .form-shell::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
       background:linear-gradient(90deg,var(--maqui),var(--gold),var(--celadon))}
-    .manifesto-quote{font-size:clamp(18px,2.4vw,23px);line-height:1.5;font-weight:600;
-      color:var(--flor-text);margin-bottom:24px;position:relative;padding-left:24px}
-    .manifesto-quote::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;
-      background:linear-gradient(180deg,var(--maqui),var(--celadon));border-radius:2px}
-    .manifesto-body{color:var(--flor-muted);font-size:15.5px;line-height:1.85;margin-bottom:18px}
-    .manifesto-body strong{color:var(--flor-text);font-weight:600}
-    .manifesto-body em{color:var(--celadon);font-style:italic}
-    .manifesto-sign{display:flex;align-items:center;gap:12px;margin-top:24px;
-      font-family:serif;font-size:14px;letter-spacing:.18em;color:var(--celadon);opacity:.9}
-    .manifesto-sign::before{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--celadon),transparent)}
+    @media(max-width:600px){.form-shell{padding:26px}}
 
-    /* NOTA */
-    .flor-note{background:var(--celadon-bg);
-      border-left:3px solid var(--celadon);padding:22px 26px;border-radius:12px;font-size:14.5px;
-      color:var(--flor-muted);max-width:840px;margin:48px auto 0;line-height:1.75;
-      display:flex;gap:16px;align-items:flex-start}
-    .flor-note svg{width:22px;height:22px;flex-shrink:0;stroke:var(--celadon);fill:none;stroke-width:1.8;margin-top:2px}
-    .flor-note strong{color:var(--flor-text)}
+    .field{margin-bottom:26px}
+    .field label{display:block;font-size:14px;font-weight:700;margin-bottom:10px;color:var(--flor-text)}
+    .field label .opt{color:var(--flor-muted);font-weight:400;font-size:12.5px;margin-left:6px}
+    .hint{font-size:12.5px;color:var(--flor-muted);margin-top:8px;display:block;line-height:1.5}
+    .flor-main input[type=text],.flor-main textarea,.flor-main select{
+      width:100%;background:#ffffff;border:1px solid var(--flor-line-2);border-radius:12px;
+      padding:14px 16px;color:var(--flor-text);font-size:15px;font-family:inherit;transition:.2s}
+    .flor-main input[type=text]:focus,.flor-main textarea:focus,.flor-main select:focus{
+      outline:none;border-color:var(--celadon);box-shadow:0 0 0 4px rgba(74,143,112,.12)}
+    .flor-main textarea{min-height:118px;resize:vertical;line-height:1.65}
+    .flor-main select{cursor:pointer;appearance:none;
+      background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235c6478' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:right 16px center;background-size:18px;padding-right:46px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    @media(max-width:600px){.row{grid-template-columns:1fr}}
 
-    /* STEPS */
-    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-    .step{background:#ffffff;border:1px solid var(--flor-line);border-radius:16px;padding:32px 26px;
-      transition:.3s;position:relative;overflow:hidden;
-      box-shadow:0 2px 12px rgba(26,31,46,.03)}
-    .step::before{content:"";position:absolute;top:14px;left:14px;width:22px;height:22px;
-      border-top:1.5px solid var(--celadon);border-left:1.5px solid var(--celadon);
-      border-top-left-radius:6px;opacity:.7}
-    .step::after{content:"";position:absolute;bottom:14px;right:14px;width:22px;height:22px;
-      border-bottom:1.5px solid var(--maqui);border-right:1.5px solid var(--maqui);
-      border-bottom-right-radius:6px;opacity:.7}
-    .step:nth-child(2)::before{border-color:var(--maqui)}
-    .step:nth-child(2)::after{border-color:var(--celadon)}
-    .step:nth-child(3)::before{border-color:var(--indigo)}
-    .step:nth-child(3)::after{border-color:var(--celadon)}
-    .step:nth-child(4)::before{border-color:var(--gold)}
-    .step:nth-child(4)::after{border-color:var(--maqui)}
-    .step:hover{border-color:var(--celadon);transform:translateY(-4px);
-      box-shadow:0 8px 30px rgba(26,31,46,.06)}
-    .step .ico-wrap{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;
-      margin-bottom:20px;background:var(--maqui-bg);border:1px solid rgba(217,85,138,.2)}
-    .step .ico-wrap svg{width:26px;height:26px;stroke:var(--maqui);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .step:nth-child(2) .ico-wrap{background:var(--celadon-bg);border-color:rgba(74,143,112,.2)}
-    .step:nth-child(2) .ico-wrap svg{stroke:var(--celadon)}
-    .step:nth-child(3) .ico-wrap{background:var(--indigo-bg);border-color:rgba(58,93,168,.2)}
-    .step:nth-child(3) .ico-wrap svg{stroke:var(--indigo)}
-    .step:nth-child(4) .ico-wrap{background:var(--gold-bg);border-color:rgba(184,145,46,.25)}
-    .step:nth-child(4) .ico-wrap svg{stroke:var(--gold)}
-    .step .num{font-size:11.5px;font-weight:800;color:var(--maqui);letter-spacing:1.7px;margin-bottom:8px}
-    .step:nth-child(2) .num{color:var(--celadon)}
-    .step:nth-child(3) .num{color:var(--indigo)}
-    .step:nth-child(4) .num{color:var(--gold)}
-    .step h3{font-size:18px;margin-bottom:8px;font-weight:700;letter-spacing:-.2px;color:var(--flor-text)}
-    .step p{color:var(--flor-muted);font-size:14.5px;line-height:1.65}
+    .checks{border-top:1px solid var(--flor-line);padding-top:28px;margin-top:10px}
+    .checks > label{font-size:15px;margin-bottom:20px;display:block;font-weight:700;color:var(--flor-text)}
+    .check{display:flex;gap:13px;align-items:flex-start;font-size:13.5px;color:var(--flor-muted);margin-bottom:16px;line-height:1.65}
+    .check input{margin-top:3px;accent-color:var(--celadon);flex-shrink:0;width:17px;height:17px;cursor:pointer}
+    .check label{font-weight:400;margin:0;font-size:13.5px;color:var(--flor-muted);cursor:pointer}
+    .check a{color:var(--celadon);text-decoration:underline}
 
-    /* FUSIÓN */
-    .fusion-intro{max-width:780px;margin:0 auto 52px;text-align:center;color:var(--flor-muted);font-size:16.5px;line-height:1.8}
-    .fusion-intro strong{color:var(--flor-text);font-weight:600}
+    .form-actions{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+    .btn-flor{display:inline-flex;align-items:center;gap:10px;padding:17px 36px;border-radius:999px;
+      font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
+    .btn-flor-green{background:linear-gradient(135deg,var(--celadon),var(--celadon-2));color:#0a1f14;border:none}
+    .btn-flor-green:hover:not(:disabled){transform:translateY(-2px)}
+    .btn-flor-green:disabled{opacity:.55;cursor:not-allowed;transform:none}
+    .btn-flor-ghost{background:#ffffff;color:var(--flor-text);border:1px solid var(--flor-line-2)}
+    .btn-flor-ghost:hover{border-color:var(--celadon);color:var(--celadon);text-decoration:none}
+    .btn-flor svg{width:18px;height:18px}
+    #status{font-size:14px}
 
-    .parallels{display:grid;grid-template-columns:1fr auto 1fr;gap:0;max-width:920px;margin:0 auto;align-items:stretch}
-    @media(max-width:720px){.parallels{grid-template-columns:1fr;gap:20px}}
-    .side{padding:28px 26px;background:#ffffff;border:1px solid var(--flor-line);border-radius:16px}
-    .side.izq{border-right:none;border-top-right-radius:0;border-bottom-right-radius:0}
-    .side.der{border-left:none;border-top-left-radius:0;border-bottom-left-radius:0}
-    @media(max-width:720px){.side.izq,.side.der{border-radius:16px;border:1px solid var(--flor-line)}}
-    .side h4{font-size:12px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;margin-bottom:16px;
-      display:flex;align-items:center;gap:10px}
-    .side.izq h4{color:var(--maqui)}
-    .side.der h4{color:var(--celadon)}
-    .side h4::before{content:"";width:18px;height:1px}
-    .side.izq h4::before{background:var(--maqui)}
-    .side.der h4::before{background:var(--celadon)}
-    .side p{color:var(--flor-muted);font-size:14.5px;line-height:1.7;margin-bottom:14px}
-    .side p:last-child{margin-bottom:0}
-    .side p strong{color:var(--flor-text)}
-    .side .korean{font-family:serif;color:var(--celadon);font-size:15px;font-weight:600;letter-spacing:.05em}
-    .bridge{display:flex;align-items:center;justify-content:center;padding:0 12px}
-    .bridge svg{width:46px;height:46px;stroke:var(--celadon);fill:none;stroke-width:1.4;animation:florSpin 30s linear infinite}
-    @media(max-width:720px){.bridge{padding:12px 0}.bridge svg{transform:rotate(90deg)}}
-
-    .pairs{display:grid;grid-template-columns:1fr auto 1fr;gap:0;max-width:920px;margin:22px auto 0;align-items:stretch}
-    @media(max-width:720px){.pairs{grid-template-columns:1fr;gap:14px}}
-    .pair-row{display:contents}
-    .pair-cell{padding:22px 26px;background:#ffffff;border:1px solid var(--flor-line);
-      display:flex;flex-direction:column;justify-content:center}
-    .pair-cell.left{border-right:none;border-top-left-radius:12px;border-bottom-left-radius:12px}
-    .pair-cell.right{border-left:none;border-top-right-radius:12px;border-bottom-right-radius:12px}
-    @media(max-width:720px){.pair-cell.left,.pair-cell.right{border-radius:12px;border:1px solid var(--flor-line)}}
-    .pair-cell .icon{width:24px;height:24px;margin-bottom:10px;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-    .pair-cell.left .icon{stroke:var(--maqui)}
-    .pair-cell.right .icon{stroke:var(--celadon)}
-    .pair-cell h5{font-size:14.5px;font-weight:700;margin-bottom:6px;letter-spacing:-.1px}
-    .pair-cell.left h5{color:var(--maqui)}
-    .pair-cell.right h5{color:var(--celadon)}
-    .pair-cell p{font-size:13px;color:var(--flor-muted);line-height:1.6}
-    .pair-mid{display:flex;align-items:center;justify-content:center;width:44px;
-      background:var(--flor-bg);border-top:1px solid var(--flor-line);border-bottom:1px solid var(--flor-line)}
-    .pair-mid svg{width:18px;height:18px;stroke:var(--celadon);fill:none;stroke-width:1.8;stroke-linecap:round}
-    @media(max-width:720px){.pair-mid{display:none}}
-
-    .fusion-closing{max-width:780px;margin:52px auto 0;text-align:center;padding:32px 36px;
-      background:linear-gradient(135deg,var(--maqui-bg),var(--celadon-bg));
-      border:1px solid var(--flor-line);border-radius:16px;position:relative}
-    .fusion-closing::before,.fusion-closing::after{content:"";position:absolute;width:30px;height:30px;border:1.5px solid var(--celadon);opacity:.55}
-    .fusion-closing::before{top:12px;left:12px;border-right:none;border-bottom:none;border-top-left-radius:6px}
-    .fusion-closing::after{bottom:12px;right:12px;border-left:none;border-top:none;border-bottom-right-radius:6px}
-    .fusion-closing p{color:var(--flor-text);font-size:16px;line-height:1.8;font-style:italic}
-    .fusion-closing p + p{margin-top:14px;font-size:14.5px;color:var(--flor-muted);font-style:normal}
-    .fusion-closing .sign{font-family:serif;color:var(--celadon);font-size:14px;letter-spacing:.15em;margin-top:18px;display:block}
-
-    /* CATEGORÍAS */
-    .cats{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:880px;margin:0 auto}
-    .cat{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;padding:12px 22px;border-radius:999px;
-      background:#ffffff;border:1px solid var(--flor-line);color:var(--flor-muted);
-      transition:.25s;cursor:default}
-    .cat:hover{border-color:var(--celadon);color:var(--celadon);transform:translateY(-2px)}
-    .cat .dot{width:7px;height:7px;border-radius:50%;background:var(--maqui);flex-shrink:0}
-    .cat:nth-child(2n) .dot{background:var(--celadon)}
-    .cat:nth-child(3n) .dot{background:var(--indigo)}
-    .cat:nth-child(4n) .dot{background:var(--gold)}
-
-    /* BASES */
-    .flor-main details{background:#ffffff;border:1px solid var(--flor-line);border-radius:16px;
-      padding:20px 26px;margin-bottom:12px;max-width:900px;margin-left:auto;margin-right:auto;
-      transition:.25s}
-    .flor-main details:hover{border-color:var(--celadon)}
-    .flor-main details[open]{padding-bottom:26px;border-color:var(--celadon)}
-    .flor-main summary{cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;
-      display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--flor-text)}
-    .flor-main summary::-webkit-details-marker{display:none}
-    .flor-main summary::after{content:"+";color:var(--celadon);font-size:24px;font-weight:300;flex-shrink:0;transition:.3s}
-    .flor-main details[open] summary::after{content:"–";transform:rotate(180deg)}
-    .flor-main details p,.flor-main details ul{color:var(--flor-muted);font-size:14px;margin-top:16px;line-height:1.75}
-    .flor-main details ul{padding-left:22px}
-    .flor-main details li{margin-bottom:8px}
-    .flor-main details li::marker{color:var(--celadon)}
-
-    /* CTA FINAL */
-    .cta-final{text-align:center;padding:100px 0;position:relative;background:var(--flor-bg);
-      border-top:1px solid var(--flor-line)}
-    .cta-final h2.flor-h2{margin-bottom:20px}
-    .cta-final .slogan{margin-bottom:24px;font-size:18px}
-    .cta-final p{color:var(--flor-muted);max-width:580px;margin:0 auto 36px;font-size:16px}
-
-    @media(max-width:768px){
-      .flor-hero{padding:60px 0 60px}
-      .flor-section{padding:68px 0}
-      .cta-final{padding:76px 0}
-    }
+    .result{display:none;margin-top:36px;
+      background:var(--celadon-bg);border:1px solid rgba(74,143,112,.3);
+      border-radius:16px;padding:34px;position:relative;overflow:hidden;
+      animation:florReveal .5s ease-out}
+    @keyframes florReveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    .result.show{display:block}
+    .result::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--celadon),var(--celadon-2))}
+    .result h3{color:var(--celadon);font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+    .result h3 svg{width:22px;height:22px;stroke:var(--celadon);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .result p{color:var(--flor-muted);font-size:14px;margin-bottom:18px;line-height:1.7}
+    .code-box{display:flex;align-items:center;gap:12px;
+      background:#ffffff;border:1px dashed var(--celadon);
+      border-radius:12px;padding:18px;flex-wrap:wrap}
+    .code-box code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+      font-size:16px;color:var(--celadon);word-break:break-all;flex:1;
+      min-width:200px;letter-spacing:.6px;font-weight:700}
+    .copy-btn{background:linear-gradient(135deg,var(--celadon),var(--celadon-2));
+      color:#0a1f14;border:none;padding:11px 22px;border-radius:9px;font-size:13px;font-weight:700;
+      cursor:pointer;font-family:inherit;transition:.2s;
+      display:inline-flex;align-items:center;gap:7px}
+    .copy-btn:hover{transform:translateY(-1px)}
+    .copy-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .result .fine{font-size:13px;color:var(--flor-muted);margin-top:22px;margin-bottom:0}
+    .char-count{font-variant-numeric:tabular-nums;color:var(--celadon);font-weight:600}
     </style>
 </head>
 <body>
 
-<!-- ===== HEADER DE KEY ===== -->
 <header>
     <div class="top-bar">
         <div class="container top-bar-inner">
             <div class="menu-sup">
                 <a href="oportunidades.html">OPORTUNIDADES</a>
-                <a href="cosecha.html">COSECHA</a>
-                <a href="https://windsor-one.github.io/windsor/" target="_blank" rel="noopener noreferrer">WINDSOR</a>
-                <a href="https://windsor-one.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer">HELIOT</a>
+                <a href="administrados.html">PROYECTOS</a>
+                <a href="https://keycodeonline.github.io/windsor/" target="_blank" rel="noopener noreferrer">WINDSOR</a>
+                <a href="https://keycodeonline.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer">HELIOT</a>
             </div>
         </div>
     </div>
     <div class="main-header container">
         <div class="logo">
-            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key · Fundación Hernández"></a>
+            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key Code"></a>
         </div>
         <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
         <nav class="nav-principal" id="mainNav">
             <div class="submenu">
                 <a href="sobre-nosotros.html">Sobre nosotros <i class="fas fa-chevron-down"></i></a>
                 <div class="submenu-content">
-                    <a href="sobre-nosotros.html#trayectoria">Nuestra Trayectoria</a>
-                    <a href="sobre-nosotros.html#areas">Áreas de Interés</a>
-                    <a href="sobre-nosotros.html#jovenes-key">Jóvenes Key</a>
-                    <a href="sobre-nosotros.html#vision">Visión de Futuro</a>
+                    <a href="sobre-nosotros.html#plataforma">Qué es Key Code</a>
+                    <a href="sobre-nosotros.html#areas">Áreas de trabajo</a>
+                    <a href="sobre-nosotros.html#modelo">Cómo trabajamos</a>
+                    <a href="sobre-nosotros.html#vision">Visión de futuro</a>
                 </div>
             </div>
             <div class="submenu">
@@ -348,7 +194,7 @@
                     <a href="florecimiento.html">Florecimiento Key</a>
                 </div>
             </div>
-            <a href="administrados.html">Administrados</a>
+            <a href="administrados.html">Proyectos</a>
             <a href="blog.html">Blog</a>
             <a href="contactanos.html">Contáctanos</a>
             <div class="search-box">
@@ -359,7 +205,6 @@
     </div>
 </header>
 
-<!-- ===== CONTENIDO DEL EVENTO ===== -->
 <main class="flor-main">
 
   <div class="hangul-bg">개화</div>
@@ -367,367 +212,153 @@
   <div class="bojagi-pattern"></div>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="orb orb-4"></div>
 
-  <!-- HERO -->
-  <header class="flor-hero">
+  <header class="form-head">
     <canvas id="petals"></canvas>
-
-    <svg class="doodle sway" style="top:14%;left:5%" width="80" height="80" viewBox="0 0 80 80">
-      <circle cx="40" cy="34" r="6"/>
-      <path d="M40 28c-6-5-13-5-16 2 5 5 12 5 16-2z"/>
-      <path d="M40 28c6-5 13-5 16 2-5 5-12 5-16-2z"/>
-      <path d="M40 40c-6 5-13 5-16-2 5-5 12-5 16 2z"/>
-      <path d="M40 40c6 5 13 5 16-2-5-5-12-5-16 2z"/>
-      <path d="M34 34c-5-6-5-13 2-16 5 5 5 12-2 16z"/>
-      <path d="M46 34c5-6 5-13-2-16-5 5-5 12 2 16z"/>
+    <svg class="doodle sway" style="top:16%;right:5%" width="86" height="86" viewBox="0 0 86 86">
+      <circle cx="43" cy="38" r="6"/>
+      <path d="M43 32c-6-5-14-5-17 2 5 5 13 5 17-2z"/>
+      <path d="M43 32c6-5 14-5 17 2-5 5-13 5-17-2z"/>
+      <path d="M43 44c-6 5-14 5-17-2 5-5 13-5 17 2z"/>
+      <path d="M43 44c6 5 14 5 17-2-5-5-13-5-17 2z"/>
     </svg>
-    <svg class="doodle green spin-slow" style="top:16%;right:6%" width="100" height="100" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="38" stroke-dasharray="4 8"/>
-      <circle cx="50" cy="50" r="26"/>
-      <circle cx="50" cy="50" r="14" stroke-dasharray="2 4"/>
-    </svg>
-    <svg class="doodle indigo" style="bottom:22%;left:8%" width="64" height="64" viewBox="0 0 64 64">
-      <path d="M32 8v48M8 32h48"/>
-      <rect x="22" y="22" width="20" height="20" rx="3" transform="rotate(45 32 32)"/>
-      <circle cx="32" cy="32" r="5"/>
-    </svg>
-    <svg class="doodle green sway" style="bottom:26%;right:7%" width="72" height="72" viewBox="0 0 72 72">
-      <path d="M36 64V36"/>
-      <path d="M36 36c-10 0-18-8-18-18 10 0 18 8 18 18z"/>
-      <path d="M36 36c10 0 18-8 18-18-10 0-18 8-18 18z"/>
+    <svg class="doodle green spin-slow" style="bottom:12%;left:4%" width="80" height="80" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="28" stroke-dasharray="3 6"/>
+      <circle cx="40" cy="40" r="14"/>
     </svg>
 
     <div class="flor-wrap">
-      <span class="edition-badge">Primera edición · 2026</span>
-      <span class="flor-tag">Convocatoria abierta · 2026</span>
-
-      <div class="title-block">
-        <h1 class="flor-title">Florecimiento <em>Key</em></h1>
-        <span class="hangul-mark">개화</span>
-      </div>
-
+      <span class="flor-tag">Postulación · 2026</span>
+      <h1 class="form-title">Envía tu <em>idea</em></h1>
       <p class="slogan">It's time to FloreSer</p>
-
       <p class="flor-lead">
-        Como el maquilishuat que florece en seco y como el mugunghwa que nunca se marchita,
-        las buenas ideas nacen cuando deberían rendirse. Envía la tuya. Key evalúa por su mérito
-        y convierte en proyectos las que puedan florecer.
+        Comparte tu idea con nosotros. Al enviar, recibirás un código de autoría que respalda
+        tu crédito cuando el proyecto se haga realidad.
       </p>
-
-      <div class="cta-row">
-        <a href="postular.html" class="btn-flor btn-flor-green">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          Enviar una idea
-        </a>
-        <a href="#manifiesto" class="btn-flor btn-flor-ghost">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          Por qué esta temática
-        </a>
-      </div>
-
-      <div class="facts">
-        <div class="fact">
-          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          Postulación directa
-        </div>
-        <div class="fact">
-          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-6M2 12h6M22 12h-6"/><circle cx="12" cy="12" r="4"/></svg>
-          Evaluación por mérito
-        </div>
-        <div class="fact">
-          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Autoría protegida
-        </div>
-        <div class="fact">
-          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5L12 2z"/></svg>
-          Ejecución real
-        </div>
-      </div>
-    </div>
-
-    <div class="volcanoes">
-      <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="volcGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#8fbfa8" stop-opacity=".35"/>
-            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <path d="M0,130 L0,95 L120,55 L200,80 L320,30 L430,72 L520,45 L640,20 L760,68 L860,38 L980,75 L1080,42 L1200,72 L1300,50 L1440,90 L1440,130 Z"
-              fill="url(#volcGrad)" stroke="#8fbfa8" stroke-width="0.6" stroke-opacity=".45"/>
-      </svg>
     </div>
   </header>
 
-  <!-- MANIFIESTO -->
-  <section id="manifiesto" class="flor-section">
+  <section class="form-section">
     <div class="flor-wrap">
-      <div class="sec-label">Manifiesto</div>
-      <h2 class="flor-h2">Por qué convocamos <em class="green">así</em></h2>
-      <p class="sec-intro">
-        Esta es la primera convocatoria de Key como fundación. Elegimos una temática que dice algo
-        sobre quiénes somos, qué queremos construir y con quiénes queremos hacerlo.
-      </p>
+      <div class="form-shell">
+        <form id="ideaForm" novalidate>
 
-      <div class="manifesto">
-        <p class="manifesto-quote">
-          "Convocamos con esta temática porque El Salvador y Corea del Sur nos enseñaron
-          que florecer no es un privilegio, sino una decisión que se toma incluso en la sequía."
-        </p>
-        <p class="manifesto-body">
-          <strong>No usamos la cultura como decoración.</strong> Usamos el maquilishuat porque abre
-          en la estación seca, cuando todo lo demás se rinde. Usamos el mugunghwa porque significa
-          literalmente <em>"la flor que nunca se marchita"</em>. Ambos son símbolos nacionales de
-          pueblos que aprendieron a florecer después de la guerra, de la diáspora, de la
-          reconstrucción.
-        </p>
-        <p class="manifesto-body">
-          <strong>Convocamos a quienes quieren florecer sin pedir permiso.</strong> Esta convocatoria
-          no busca ideas perfectas: busca ideas que germinen en la adversidad. Ideas de jóvenes que
-          quieren quedarse en su país, de adultos mayores que aún tienen qué enseñar, de comunidades
-          que quieren resolver lo que el Estado no resuelve.
-        </p>
-        <p class="manifesto-body">
-          <strong>Y lo hacemos con respeto por quien comparte.</strong> Las ideas se evalúan por su
-          mérito, no por quién las envía. Cada participante recibe un código de autoría, y las
-          propuestas seleccionadas pasan a la etapa de implementación con reconocimiento a quien
-          corresponda. Florecer aquí no es un concurso de popularidad: es una apuesta por ideas que
-          puedan convertirse en realidad.
-        </p>
-        <span class="manifesto-sign">개화 · 두 땅, 한 꽃 · Florecimiento</span>
-      </div>
+          <div class="field">
+            <label for="titulo">Título de la idea</label>
+            <input type="text" id="titulo" name="titulo" maxlength="120" required
+                   placeholder="Ej: Red de mentoría entre jóvenes y adultos mayores">
+            <span class="hint">Máximo 120 caracteres. Sé específico y claro.</span>
+          </div>
 
-      <div class="flor-note">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        <div>
-          <strong>Esta es nuestra primera edición.</strong> Estamos construyendo el estándar de lo que
-          será la convocatoria anual de Key. Empezamos con esta fusión cultural porque es la que
-          nos representa: dos tierras que florecen en la sequía.
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="row">
+            <div class="field">
+              <label for="categoria">Categoría</label>
+              <select id="categoria" name="categoria" required>
+                <option value="">Selecciona una</option>
+                <option>Empleabilidad juvenil</option>
+                <option>Educación y formación</option>
+                <option>Adultos mayores</option>
+                <option>Inclusión y diversidad</option>
+                <option>Medioambiente</option>
+                <option>Bienestar y salud</option>
+                <option>Tecnología cívica</option>
+                <option>Cultura y comunidad</option>
+                <option>Otra</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="alias">Alias público <span class="opt">(opcional)</span></label>
+              <input type="text" id="alias" name="alias" maxlength="40"
+                     placeholder="Ej: CosechaVerde">
+              <span class="hint">Si tu idea es seleccionada, se publicará con este alias.</span>
+            </div>
+          </div>
 
-  <!-- FUSIÓN -->
-  <section id="fusion" class="flor-section cream">
-    <div class="flor-wrap">
-      <div class="sec-label">Dos tierras, una flor</div>
-      <h2 class="flor-h2">El <em class="green">puente</em> cultural</h2>
-      <p class="fusion-intro">
-        Paralelos entre El Salvador y Corea del Sur que explican por qué esta fusión no es
-        arbitraria, sino <strong>necesaria</strong>.
-      </p>
+          <div class="field">
+            <label for="problema">¿Qué problema resuelve?</label>
+            <textarea id="problema" name="problema" maxlength="900" required
+                      placeholder="Describe el problema o necesidad concreta que tu idea aborda."></textarea>
+            <span class="hint"><span id="cProblema" class="char-count">0</span> / 900 · mínimo 40</span>
+          </div>
 
-      <div class="parallels">
-        <div class="side izq">
-          <h4>El Salvador</h4>
-          <p><strong>Maquilishuat</strong> — árbol nacional. Florece entre febrero y abril, en plena estación seca. Sus flores rosadas caen como lluvia.</p>
-          <p><strong>Flor de Izote</strong> — flor nacional. Blanca, en racimos, comestible. Belleza que también nutre.</p>
-        </div>
-        <div class="bridge">
-          <svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="20" stroke-dasharray="3 6"/><circle cx="23" cy="23" r="10"/></svg>
-        </div>
-        <div class="side der">
-          <h4>Corea del Sur</h4>
-          <p><strong>Mugunghwa</strong> — flor nacional. Llamada <span class="korean">무궁화</span>, "la flor que nunca se marchita".</p>
-          <p><strong>Beotkkot</strong> — flor de cerezo. Cae en primavera en pocos días, recordando que la belleza es breve.</p>
-        </div>
-      </div>
+          <div class="field">
+            <label for="solucion">¿Cómo lo resuelve tu idea?</label>
+            <textarea id="solucion" name="solucion" maxlength="1400" required
+                      placeholder="Explica la solución: qué se hace, cómo se implementa, quién participa, qué recursos necesita."></textarea>
+            <span class="hint"><span id="cSolucion" class="char-count">0</span> / 1400 · mínimo 60</span>
+          </div>
 
-      <div class="pairs">
-        <div class="pair-row">
-          <div class="pair-cell left">
-            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
-            <h5>Añil salvadoreño</h5>
-            <p>El índigo que fue la mayor exportación del país. Pigmento azul extraído por fermentación lenta de la planta de xiquilite.</p>
+          <div class="field">
+            <label for="impacto">Impacto esperado <span class="opt">(opcional)</span></label>
+            <textarea id="impacto" name="impacto" maxlength="600"
+                      placeholder="¿A cuántas personas beneficiaría? ¿Qué cambiaría si se implementa?"></textarea>
+            <span class="hint"><span id="cImpacto" class="char-count">0</span> / 600</span>
           </div>
-          <div class="pair-mid"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg></div>
-          <div class="pair-cell right">
-            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
-            <h5>Celadón coreano</h5>
-            <p>La cerámica verde jade de Goryeo. Su color nace de la reducción del hierro en hornos de leña durante días.</p>
+
+          <div class="checks">
+            <label>Antes de enviar</label>
+            <div class="check">
+              <input type="checkbox" id="terminos" required>
+              <label for="terminos">
+                He leído y acepto las <a href="florecimiento.html#bases" target="_blank">bases de la convocatoria</a>.
+                Entiendo que Key Code puede implementar, adaptar o modificar mi idea sin compensación económica,
+                y que el crédito se otorga cuando el proyecto se hace realidad.
+              </label>
+            </div>
+            <div class="check">
+              <input type="checkbox" id="original" required>
+              <label for="original">Declaro que esta idea es original y no infringe derechos de terceros.</label>
+            </div>
+            <div class="check">
+              <input type="checkbox" id="mayor" required>
+              <label for="mayor">Declaro ser mayor de edad.</label>
+            </div>
           </div>
-        </div>
-        <div class="pair-row">
-          <div class="pair-cell left">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M3 20l6-10 4 6 3-4 5 8z"/><circle cx="9" cy="6" r="2"/></svg>
-            <h5>Volcanes y Ruta de las Flores</h5>
-            <p>El Salvador es tierra de volcanes activos. La Ruta de las Flores recorre pueblos entre cafetales.</p>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-flor btn-flor-green" id="submitBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              Enviar idea
+            </button>
+            <a href="florecimiento.html" class="btn-flor btn-flor-ghost">Cancelar</a>
+            <span id="status"></span>
           </div>
-          <div class="pair-mid"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg></div>
-          <div class="pair-cell right">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M3 20l6-10 4 6 3-4 5 8z"/><circle cx="9" cy="6" r="2"/></svg>
-            <h5>Montañas y Han</h5>
-            <p>Corea es 70% montaña. El <span class="korean">한 (han)</span> es ese dolor profundo y digno que atraviesa su cultura.</p>
+        </form>
+
+        <div class="result" id="result">
+          <h3><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Idea recibida</h3>
+          <p>Guarda este código. Es tu identificador de autoría: con él podrás reclamar crédito cuando tu idea pase a la etapa de implementación.</p>
+          <div class="code-box">
+            <code id="codeOut">—</code>
+            <button class="copy-btn" id="copyBtn" type="button">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copiar
+            </button>
           </div>
-        </div>
-        <div class="pair-row">
-          <div class="pair-cell left">
-            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
-            <h5>Curtido y pupusas</h5>
-            <p>La fermentación salvadoreña: repollo, zanahoria y orégano que se agrian con el tiempo.</p>
-          </div>
-          <div class="pair-mid"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg></div>
-          <div class="pair-cell right">
-            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
-            <h5>Kimchi y banchan</h5>
-            <p>La fermentación coreana: col, rábano, chile y tiempo. El kimchi es memoria en un frasco.</p>
-          </div>
-        </div>
-        <div class="pair-row">
-          <div class="pair-cell left">
-            <svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M14 14c2 0 5 1.5 5 4"/></svg>
-            <h5>El pueblo y la cofradía</h5>
-            <p>La comunidad salvadoreña se organiza en cofradías, directivas comunales y familia extendida.</p>
-          </div>
-          <div class="pair-mid"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg></div>
-          <div class="pair-cell right">
-            <svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M14 14c2 0 5 1.5 5 4"/></svg>
-            <h5>정 (jeong)</h5>
-            <p>El <span class="korean">정 (jeong)</span> es ese vínculo afectivo profundo que se teje con el tiempo.</p>
-          </div>
-        </div>
-        <div class="pair-row">
-          <div class="pair-cell left">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="6"/></svg>
-            <h5>Después de Chapultepec</h5>
-            <p>Doce años de guerra civil (1980–1992) y una diáspora enorme. El país aprendió a reconstruirse.</p>
-          </div>
-          <div class="pair-mid"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8l4 4-4 4"/></svg></div>
-          <div class="pair-cell right">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="6"/></svg>
-            <h5>Después del Han</h5>
-            <p>La guerra de Corea (1950–1953) dejó un país dividido. En tres décadas, Corea del Sur pasó al milagro.</p>
-          </div>
+          <p class="fine">Los resultados se publican en el sitio del evento. Mantén tu código a mano.</p>
         </div>
       </div>
-
-      <div class="fusion-closing">
-        <p>"Florecimiento Key no elige entre El Salvador y Corea del Sur. Los convoca juntos porque ambos saben que florecer no es un privilegio: es un acto de rebeldía paciente."</p>
-        <p>Esta primera convocatoria es un puente entre dos tierras que comparten flores que resisten, pigmentos que requieren tiempo y comunidades que florecen juntas.</p>
-        <span class="sign">개화 · 두 땅, 한 꽃 · Florecimiento</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CÓMO FUNCIONA -->
-  <section id="como" class="flor-section">
-    <div class="flor-wrap">
-      <div class="sec-label">El proceso</div>
-      <h2 class="flor-h2">Cómo <em class="green">funciona</em></h2>
-      <p class="sec-intro">Un flujo claro, sin fricción. Tú envías, nosotros evaluamos.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="ico-wrap"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
-          <div class="num">PASO 01</div>
-          <h3>Envías</h3>
-          <p>Llenas el formulario. Solo la idea.</p>
-        </div>
-        <div class="step">
-          <div class="ico-wrap"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
-          <div class="num">PASO 02</div>
-          <h3>Recibes un código</h3>
-          <p>Tu código de autoría respalda tu crédito cuando el proyecto se haga realidad.</p>
-        </div>
-        <div class="step">
-          <div class="ico-wrap"><svg viewBox="0 0 24 24"><path d="M12 2v6M12 22v-6M2 12h6M22 12h-6"/><circle cx="12" cy="12" r="4"/></svg></div>
-          <div class="num">PASO 03</div>
-          <h3>Evaluación por mérito</h3>
-          <p>El jurado revisa cada propuesta de forma individual.</p>
-        </div>
-        <div class="step">
-          <div class="ico-wrap"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5L12 2z"/></svg></div>
-          <div class="num">PASO 04</div>
-          <h3>Publicación e implementación</h3>
-          <p>Las ideas seleccionadas se publican y pasan a la etapa de implementación.</p>
-        </div>
-      </div>
-
-      <div class="flor-note">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        <div>
-          Cada propuesta se evalúa de forma individual. Las ideas seleccionadas se publican
-          aquí y pasan a la etapa de implementación. Cada participante recibe un código de
-          autoría que respalda su crédito cuando el proyecto se hace realidad.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CATEGORÍAS -->
-  <section id="categorias" class="flor-section cream">
-    <div class="flor-wrap">
-      <div class="sec-label">Líneas temáticas</div>
-      <h2 class="flor-h2">Categorías</h2>
-      <p class="sec-intro">Elige la categoría que mejor describa tu propuesta.</p>
-      <div class="cats">
-        <span class="cat"><span class="dot"></span>Empleabilidad juvenil</span>
-        <span class="cat"><span class="dot"></span>Educación y formación</span>
-        <span class="cat"><span class="dot"></span>Adultos mayores</span>
-        <span class="cat"><span class="dot"></span>Inclusión y diversidad</span>
-        <span class="cat"><span class="dot"></span>Medioambiente</span>
-        <span class="cat"><span class="dot"></span>Bienestar y salud</span>
-        <span class="cat"><span class="dot"></span>Tecnología cívica</span>
-        <span class="cat"><span class="dot"></span>Cultura y comunidad</span>
-        <span class="cat"><span class="dot"></span>Otra</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- BASES -->
-  <section id="bases" class="flor-section">
-    <div class="flor-wrap">
-      <div class="sec-label">Legal</div>
-      <h2 class="flor-h2">Bases de la <em class="green">convocatoria</em></h2>
-      <p class="sec-intro">Al enviar tu propuesta aceptas los siguientes términos. Léelos con atención.</p>
-
-      <details open><summary>1. Organizador</summary><p>Florecimiento Key es una iniciativa de Key · Fundación Hernández, en articulación con sus proyectos administrados (Windsor, Heliot Media y Programa Cosecha). Key actúa como administrador operativo. La implementación de las ideas seleccionadas puede ser ejecutada por Key o por los proyectos de su ecosistema.</p></details>
-      <details><summary>2. Participación</summary><ul><li>Abierta a personas mayores de edad, sin importar nacionalidad ni residencia.</li><li>No se permite participación de menores de edad.</li><li>Un participante puede enviar más de una idea.</li><li>No hay costo de participación.</li></ul></details>
-      <details><summary>3. Anonimato y datos</summary><ul><li>No se solicita nombre, correo, teléfono, dirección ni institución.</li><li>Solo se recoge el alias opcional, la categoría y el contenido de la idea.</li><li>No habrá contacto directo con los participantes en ningún momento.</li><li>No se enviarán correos de confirmación, notificaciones ni respuestas personalizadas.</li></ul></details>
-      <details><summary>4. Código de reclamación</summary><ul><li>Al enviar la idea, el sistema genera un código único en tu navegador.</li><li>Ese código es la única forma de reclamar autoría sobre la idea.</li><li>Si lo pierdes, no podrás reclamar crédito. La idea se implementará igual.</li><li>El código no está vinculado a ningún dato personal.</li></ul></details>
-      <details><summary>5. Propiedad intelectual y licencia</summary><ul><li>La idea sigue siendo tuya.</li><li>Al enviarla, otorgas a Key una licencia amplia, gratuita, no exclusiva y transferible para usar, adaptar, modificar, combinar y ejecutar la idea.</li><li>No hay compensación económica por el uso de la idea.</li><li>El crédito se otorga únicamente si el autor lo reclama con su código.</li></ul></details>
-      <details><summary>6. Evaluación</summary><ul><li>El jurado evalúa a ciegas, sin acceso a datos del autor.</li><li>Criterios: originalidad, viabilidad, impacto y alineación con la misión de Key.</li><li>La decisión del jurado es inapelable.</li><li>Key puede declarar desierta la convocatoria total o parcialmente.</li></ul></details>
-      <details><summary>7. Implementación</summary><ul><li>Key puede implementar total o parcialmente las ideas seleccionadas.</li><li>No está obligada a implementar ninguna idea.</li><li>Puede adaptar, modificar o combinar ideas con otras propuestas.</li><li>Los resultados se publican en este sitio sin notificación individual.</li></ul></details>
-      <details><summary>8. Responsabilidad</summary><ul><li>El participante declara que la idea es original y no infringe derechos de terceros.</li><li>El participante libera a Key de cualquier reclamación derivada del uso de la idea.</li><li>Key no se responsabiliza por ideas enviadas por terceros sin autorización.</li></ul></details>
-      <details><summary>9. Modificaciones</summary><p>Key puede modificar estas bases en cualquier momento. La versión vigente es la publicada en este sitio. El envío de una idea implica la aceptación de la versión vigente al momento del envío.</p></details>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta-final">
-    <div class="flor-wrap">
-      <h2 class="flor-h2">¿Tienes una <em class="green">idea</em>?</h2>
-      <p class="slogan">It's time to FloreSer</p>
-      <p>Envía tu idea. Las mejores se convierten en proyectos reales.</p>
-      <a href="postular.html" class="btn-flor btn-flor-green">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-        Postular ahora
-      </a>
     </div>
   </section>
 
 </main>
 
-<!-- ===== FOOTER DE KEY ===== -->
 <footer class="footer">
     <div class="container footer-grid">
         <div class="col-logo">
-            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key · Fundación Hernández"></a>
+            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key Code"></a>
         </div>
         <div class="col-enlaces">
-            <p><strong>Organización</strong></p>
+            <p><strong>Plataforma</strong></p>
             <a href="sobre-nosotros.html">Sobre nosotros</a>
             <a href="oportunidades.html">Oportunidades</a>
-            <a href="administrados.html">Administrados</a>
-            <a href="cosecha.html">Programa Cosecha</a>
+            <a href="administrados.html">Proyectos</a>
             <a href="blog.html">Blog</a>
             <a href="contactanos.html">Contáctanos</a>
         </div>
         <div class="col-enlaces">
             <p><strong>Transparencia y legal</strong></p>
-            <a href="legal.html#naturaleza">Naturaleza de Key</a>
+            <a href="legal.html#naturaleza">Naturaleza de Key Code</a>
             <a href="legal.html#aviso-legal">Aviso Legal</a>
             <a href="legal.html#politica-editorial">Política Editorial</a>
             <a href="legal.html#politica-privacidad">Política de Privacidad</a>
@@ -743,7 +374,7 @@
         <a href="#"><i class="fab fa-tiktok"></i></a>
         <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
-    <div class="copyright">Key · Fundación Hernández · 2026 · Florecimiento Key · 개화</div>
+    <div class="copyright">Key Code · 2026 · Florecimiento Key · 개화</div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
@@ -759,7 +390,7 @@
   const MAQUI = ['#d9558a','#e88ab5','#f4a3c7','#ffc9e0'];
   const HOJA = ['#4a8f70','#6ddba0','#8fbfa8','#7ec9a3'];
   const GOLD = ['#b8912e','#c9a75a'];
-  const COUNT = window.innerWidth < 720 ? 16 : 28;
+  const COUNT = window.innerWidth < 720 ? 14 : 24;
 
   function resize(){
     w = c.width = host.offsetWidth;
@@ -835,7 +466,7 @@
   };
   P.prototype.update = function(){
     this.ph += this.ps;
-    this.x += this.vx + Math.sin(this.ph) * .5;
+    this.x += this.vx + Math.sin(this.ph) * .45;
     this.y += this.vy;
     this.rot += this.rs;
     if (this.y > h + 30) this.reset(false);
@@ -849,6 +480,109 @@
     requestAnimationFrame(loop);
   })();
 })();
+
+/* ===== FORM ===== */
+const form = document.getElementById('ideaForm');
+const status = document.getElementById('status');
+const result = document.getElementById('result');
+const codeOut = document.getElementById('codeOut');
+const submitBtn = document.getElementById('submitBtn');
+
+const bind = (id, out) => {
+  const el = document.getElementById(id);
+  const o = document.getElementById(out);
+  el.addEventListener('input', () => { o.textContent = el.value.length; });
+};
+bind('problema','cProblema');
+bind('solucion','cSolucion');
+bind('impacto','cImpacto');
+
+async function generarCodigo(payload){
+  const data = new TextEncoder().encode(payload);
+  const buf = await crypto.subtle.digest('SHA-256', data);
+  const bytes = new Uint8Array(buf);
+  const alpha = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let raw = '';
+  for (let i = 0; i < 16; i++) raw += alpha[bytes[i] % alpha.length];
+  return 'KEY-' + raw.match(/.{1,4}/g).join('-');
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const titulo = form.titulo.value.trim();
+  const categoria = form.categoria.value;
+  const problema = form.problema.value.trim();
+  const solucion = form.solucion.value.trim();
+  const alias = form.alias.value.trim();
+  const impacto = form.impacto.value.trim();
+  const ok = form.terminos.checked && form.original.checked && form.mayor.checked;
+
+  const fail = (m) => { status.textContent = m; status.style.color = 'var(--warn)'; };
+
+  if (!titulo || !categoria || !problema || !solucion) return fail('Completa los campos obligatorios.');
+  if (problema.length < 40) return fail('Desarrolla más el problema (mín. 40).');
+  if (solucion.length < 60) return fail('Desarrolla más la solución (mín. 60).');
+  if (!ok) return fail('Debes aceptar las tres declaraciones.');
+
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Enviando…';
+  status.textContent = '';
+
+  const payload = JSON.stringify({
+    t: titulo, c: categoria, p: problema, s: solucion, a: alias, i: impacto,
+    ts: Date.now(), r: Math.random().toString(36).slice(2)
+  });
+
+  let codigo;
+  try { codigo = await generarCodigo(payload); }
+  catch {
+    const seg = () => Math.random().toString(36).slice(2,6).toUpperCase();
+    codigo = `KEY-${seg()}-${seg()}-${seg()}-${seg()}`;
+  }
+
+  // ENVÍO REAL — descomenta cuando conectes Formspree:
+  // await fetch('https://formspree.io/f/TU_ID', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+  //   body: JSON.stringify({ titulo, categoria, problema, solucion, alias, impacto, codigo })
+  // });
+
+  console.log('[Florecimiento Key] Propuesta:', { titulo, categoria, codigo });
+
+  codeOut.textContent = codigo;
+  result.classList.add('show');
+  submitBtn.textContent = 'Enviada';
+  status.textContent = 'Guarda tu código.';
+  status.style.color = 'var(--ok)';
+
+  form.querySelectorAll('input, textarea, select').forEach(el => {
+    if (el.type === 'checkbox') el.checked = false;
+    else el.value = '';
+  });
+  ['cProblema','cSolucion','cImpacto'].forEach(id => document.getElementById(id).textContent = '0');
+
+  result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const texto = codeOut.textContent;
+  const btn = document.getElementById('copyBtn');
+  const original = btn.innerHTML;
+  try {
+    await navigator.clipboard.writeText(texto);
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.innerHTML = original, 1800);
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = texto;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.innerHTML = original, 1800);
+  }
+});
 </script>
 
 </body>
