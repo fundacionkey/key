@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Hernández — Presentación Clínica Completa</title>
+<style>
+  :root{
+    --bg:#0b0f19;--bg-2:#111827;--card:#151c2c;--card-2:#1b2438;
+    --text:#e6ecff;--muted:#9aa7c7;--accent:#7c9cff;--accent-2:#a78bfa;
+    --green:#34d399;--red:#f87171;--amber:#fbbf24;--pink:#f472b6;--cyan:#22d3ee;
+    --border:rgba(124,156,255,.18);--shadow:0 20px 60px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;
+    background:radial-gradient(1200px 800px at 10% -10%,#1a2450 0%,transparent 60%),
+               radial-gradient(1000px 700px at 110% 110%,#2a1a4a 0%,transparent 55%),
+               var(--bg);
+    color:var(--text);overflow:hidden;
+  }
+  .progress{position:fixed;top:0;left:0;height:3px;width:0%;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    z-index:100;transition:width .35s ease;box-shadow:0 0 12px rgba(124,156,255,.6);}
+
+  .deck{position:relative;height:100vh;width:100%;display:flex;align-items:center;justify-content:center;}
+  .slide{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    padding:56px 32px 110px;opacity:0;transform:translateY(28px) scale(.98);
+    pointer-events:none;transition:opacity .5s ease,transform .5s ease;overflow-y:auto;
+  }
+  .slide.active{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+
+  .card{
+    width:min(1150px,100%);
+    background:linear-gradient(160deg,var(--card),var(--card-2));
+    border:1px solid var(--border);border-radius:24px;padding:42px 46px;
+    box-shadow:var(--shadow);backdrop-filter:blur(8px);
+  }
+
+  h1{font-size:clamp(26px,3.6vw,44px);font-weight:800;letter-spacing:-.5px;line-height:1.15}
+  h2{font-size:clamp(20px,2.4vw,30px);font-weight:700;margin-bottom:16px;letter-spacing:-.3px}
+  h3{font-size:clamp(15px,1.4vw,18px);font-weight:700;color:var(--accent);margin-bottom:8px}
+  h4{font-size:14px;font-weight:700;margin-bottom:4px}
+  p,li{font-size:clamp(13px,1.05vw,15px);line-height:1.6;color:var(--text)}
+  .muted{color:var(--muted)}
+  .small{font-size:12.5px;color:var(--muted)}
+
+  .eyebrow{
+    display:inline-block;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin-bottom:12px;padding:6px 14px;
+    border:1px solid var(--border);border-radius:999px;background:rgba(124,156,255,.07);
+  }
+
+  /* Cover */
+  .cover{text-align:center}
+  .cover .avatar{
+    width:110px;height:110px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;
+    font-size:44px;font-weight:800;color:#0b0f19;margin:0 auto 20px;
+    box-shadow:0 12px 40px rgba(124,156,255,.35);animation:pulse 4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);box-shadow:0 12px 40px rgba(124,156,255,.35)}
+    50%{transform:scale(1.04);box-shadow:0 16px 55px rgba(167,139,250,.5)}
+  }
+  .cover .subtitle{font-size:clamp(14px,1.4vw,17px);color:var(--muted);margin-top:14px;max-width:760px;margin-left:auto;margin-right:auto}
+  .cover .meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+
+  .chip{
+    padding:7px 14px;border-radius:999px;font-size:12.5px;font-weight:600;
+    border:1px solid var(--border);background:rgba(124,156,255,.07);color:var(--text);
+  }
+  .chip.green{border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.1);color:var(--green)}
+  .chip.red{border-color:rgba(248,113,113,.35);background:rgba(248,113,113,.1);color:var(--red)}
+  .chip.amber{border-color:rgba(251,191,36,.35);background:rgba(251,191,36,.1);color:var(--amber)}
+  .chip.pink{border-color:rgba(244,114,182,.35);background:rgba(244,114,182,.1);color:var(--pink)}
+  .chip.cyan{border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.1);color:var(--cyan)}
+
+  .grid{display:grid;gap:14px}
+  .grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .grid-3{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+  .grid-4{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+  .grid-5{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+
+  .tile{
+    background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;
+    padding:16px 18px;transition:transform .25s ease,border-color .25s ease,background .25s ease;
+  }
+  .tile:hover{transform:translateY(-3px);border-color:rgba(124,156,255,.45);background:rgba(124,156,255,.06)}
+  .tile .label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .tile .value{font-size:15px;font-weight:600;line-height:1.4}
+  .tile .value.big{font-size:20px;font-weight:800;color:var(--accent)}
+  .tile p{margin-top:6px;font-size:13.5px;color:var(--muted)}
+
+  ul.clean{list-style:none;padding:0}
+  ul.clean li{position:relative;padding-left:20px;margin-bottom:8px;font-size:14px;line-height:1.55}
+  ul.clean li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;
+    border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(124,156,255,.6)}
+  ul.green li::before{background:var(--green);box-shadow:0 0 8px rgba(52,211,153,.6)}
+  ul.red li::before{background:var(--red);box-shadow:0 0 8px rgba(248,113,113,.6)}
+  ul.amber li::before{background:var(--amber);box-shadow:0 0 8px rgba(251,191,36,.6)}
+  ul.pink li::before{background:var(--pink);box-shadow:0 0 8px rgba(244,114,182,.6)}
+  ul.cyan li::before{background:var(--cyan);box-shadow:0 0 8px rgba(34,211,238,.6)}
+
+  .quote{border-left:3px solid var(--accent-2);padding:12px 18px;margin:16px 0;
+    background:rgba(167,139,250,.06);border-radius:0 12px 12px 0;
+    font-style:italic;color:#d8def5;font-size:14px;line-height:1.6}
+
+  .section-title{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  .section-title .icon{
+    width:44px;height:44px;border-radius:12px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:22px;
+    background:linear-gradient(135deg,rgba(124,156,255,.2),rgba(167,139,250,.2));
+    border:1px solid var(--border);
+  }
+
+  .timeline{position:relative;padding-left:26px;margin-top:10px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;
+    background:linear-gradient(180deg,var(--accent),var(--accent-2),transparent)}
+  .timeline .item{position:relative;margin-bottom:16px}
+  .timeline .item::before{content:"";position:absolute;left:-26px;top:6px;
+    width:14px;height:14px;border-radius:50%;background:var(--bg-2);
+    border:2px solid var(--accent);box-shadow:0 0 10px rgba(124,156,255,.6)}
+  .timeline .item h4{font-size:14.5px;font-weight:700;margin-bottom:3px}
+  .timeline .item p{font-size:13.5px;color:var(--muted)}
+
+  .flag-card{border-radius:14px;padding:18px;border:1px solid var(--border);
+    background:rgba(255,255,255,.03);transition:transform .25s ease}
+  .flag-card:hover{transform:translateY(-3px)}
+  .flag-card.red{border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.05)}
+  .flag-card.green{border-color:rgba(52,211,153,.3);background:rgba(52,211,153,.05)}
+  .flag-card.amber{border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.05)}
+  .flag-card.pink{border-color:rgba(244,114,182,.3);background:rgba(244,114,182,.05)}
+  .flag-card.cyan{border-color:rgba(34,211,238,.3);background:rgba(34,211,238,.05)}
+  .flag-card.red h3{color:var(--red)}
+  .flag-card.green h3{color:var(--green)}
+  .flag-card.amber h3{color:var(--amber)}
+  .flag-card.pink h3{color:var(--pink)}
+  .flag-card.cyan h3{color:var(--cyan)}
+
+  .survival{display:grid;gap:12px}
+  .survival .rule{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;
+    border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--border);
+    transition:border-color .25s ease,transform .25s ease}
+  .survival .rule:hover{border-color:rgba(124,156,255,.5);transform:translateX(4px)}
+  .survival .num{flex-shrink:0;width:32px;height:32px;border-radius:9px;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b0f19}
+  .survival .rule h4{font-size:14.5px;font-weight:700;margin-bottom:3px}
+  .survival .rule p{font-size:13px;color:var(--muted);margin:0;line-height:1.5}
+
+  /* Index */
+  .index-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .index-item{padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.03);
+    border:1px solid var(--border);cursor:pointer;transition:all .2s ease}
+  .index-item:hover{background:rgba(124,156,255,.1);border-color:var(--accent);transform:translateX(4px)}
+  .index-item .num{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:1.5px}
+  .index-item .name{font-size:14px;font-weight:600;margin-top:2px}
+
+  /* Nav */
+  .nav{
+    position:fixed;bottom:18px;left:50%;transform:translateX(-50%);
+    display:flex;align-items:center;gap:12px;background:rgba(15,20,34,.88);
+    border:1px solid var(--border);padding:9px 14px;border-radius:999px;
+    backdrop-filter:blur(14px);z-index:90;box-shadow:0 12px 40px rgba(0,0,0,.5);
+  }
+  .nav button{background:rgba(124,156,255,.12);color:var(--text);border:1px solid var(--border);
+    border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:15px;
+    display:flex;align-items:center;justify-content:center;transition:all .2s ease}
+  .nav button:hover:not(:disabled){background:var(--accent);color:#0b0f19;transform:scale(1.08)}
+  .nav button:disabled{opacity:.35;cursor:not-allowed}
+  .nav .counter{font-size:13px;font-weight:700;color:var(--muted);min-width:80px;text-align:center}
+  .nav .counter span{color:var(--accent)}
+
+  .dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);
+    display:flex;flex-direction:column;gap:6px;z-index:90;max-height:80vh;overflow-y:auto;padding:4px}
+  .dots::-webkit-scrollbar{width:0}
+  .dots .dot{width:8px;height:8px;border-radius:50%;background:rgba(124,156,255,.22);
+    cursor:pointer;transition:all .25s ease;position:relative;flex-shrink:0}
+  .dots .dot:hover{transform:scale(1.5);background:var(--accent)}
+  .dots .dot.active{background:var(--accent);box-shadow:0 0 10px var(--accent);transform:scale(1.4)}
+  .dots .dot::after{content:attr(data-label);position:absolute;right:18px;top:50%;
+    transform:translateY(-50%);background:rgba(15,20,34,.95);border:1px solid var(--border);
+    padding:4px 10px;border-radius:7px;font-size:11px;white-space:nowrap;opacity:0;
+    pointer-events:none;transition:opacity .2s ease;color:var(--text)}
+  .dots .dot:hover::after{opacity:1}
+
+  .hint{position:fixed;bottom:22px;right:18px;font-size:11px;color:var(--muted);
+    letter-spacing:1px;z-index:80;opacity:.65;text-align:right;line-height:1.5}
+
+  @media (max-width:768px){
+    .slide{padding:36px 14px 120px}
+    .card{padding:26px 20px;border-radius:18px}
+    .dots{display:none}
+    .nav{gap:8px;padding:8px 12px}
+    .nav button{width:34px;height:34px}
+    .hint{display:none}
+  }
+
+  .slide::-webkit-scrollbar{width:8px}
+  .slide::-webkit-scrollbar-track{background:transparent}
+  .slide::-webkit-scrollbar-thumb{background:rgba(124,156,255,.25);border-radius:4px}
+  .slide::-webkit-scrollbar-thumb:hover{background:rgba(124,156,255,.5)}
+
+  .slide.active .fade{animation:fadeUp .55s ease both}
+  .slide.active .fade:nth-child(1){animation-delay:.04s}
+  .slide.active .fade:nth-child(2){animation-delay:.10s}
+  .slide.active .fade:nth-child(3){animation-delay:.16s}
+  .slide.active .fade:nth-child(4){animation-delay:.22s}
+  .slide.active .fade:nth-child(5){animation-delay:.28s}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media (max-width:700px){.two-col{grid-template-columns:1fr}}
+
+  .badge{display:inline-block;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:700;
+    letter-spacing:.5px;text-transform:uppercase;margin-right:6px}
+  .badge.green{background:rgba(52,211,153,.15);color:var(--green)}
+  .badge.red{background:rgba(248,113,113,.15);color:var(--red)}
+  .badge.amber{background:rgba(251,191,36,.15);color:var(--amber)}
+  .badge.pink{background:rgba(244,114,182,.15);color:var(--pink)}
+  .badge.cyan{background:rgba(34,211,238,.15);color:var(--cyan)}
+
+  .kbd{display:inline-block;padding:2px 8px;border-radius:5px;font-size:11px;
+    background:rgba(124,156,255,.15);border:1px solid var(--border);font-family:monospace;color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck"></div>
+
+<nav class="nav">
+  <button id="prev" aria-label="Anterior" title="Anterior (←)">◀</button>
+  <div class="counter"><span id="current">1</span> / <span id="total">0</span></div>
+  <button id="next" aria-label="Siguiente" title="Siguiente (→)">▶</button>
+</nav>
+
+<div class="dots" id="dots"></div>
+<div class="hint">
+  <span class="kbd">←</span> <span class="kbd">→</span> navegar<br>
+  <span class="kbd">Espacio</span> avanzar
+</div>
+
+<script>
+/* ============================================================
+   DATOS DE LAS DIAPOSITIVAS
+   ============================================================ */
+const SLIDES = [
+
+/* ---------- SECCIÓN 1: APERTURA ---------- */
+{
+  label:"Portada", section:"Apertura",
+  html:`
+  <div class="card cover">
+    <div class="avatar">A</div>
+    <div class="eyebrow">Presentación Clínica Completa</div>
+    <h1>Alex Hernández</h1>
+    <p class="subtitle">Análisis documental exhaustivo de 18 sesiones terapéuticas: identidad, entorno, dinámicas relacionales, factores de riesgo y protección, y guía práctica de acompañamiento clínico.</p>
+    <div class="meta">
+      <span class="chip">18 años</span>
+      <span class="chip">Bachillerato · UGB</span>
+      <span class="chip">Enfoque integrador</span>
+      <span class="chip green">Alta introspección</span>
+      <span class="chip red">Riesgo familiar</span>
+      <span class="chip cyan">55 diapositivas</span>
+    </div>
+    <p class="small" style="margin-top:24px">Documento descriptivo-orientativo · No constituye diagnóstico clínico definitivo</p>
+  </div>`
+},
+{
+  label:"Índice", section:"Apertura",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🗺️</div><h2>Mapa de navegación</h2></div>
+    <p class="small fade" style="margin-bottom:16px">Haz clic en cualquier sección para saltar directamente. También puedes usar las flechas del teclado.</p>
+    <div class="index-grid fade" id="indexGrid"></div>
+  </div>`
+},
+{
+  label:"Nota metodológica", section:"Apertura",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">📋</div><h2>Nota metodológica</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card cyan">
+        <h3>Fuentes utilizadas</h3>
+        <ul class="clean cyan">
+          <li>18 expedientes de sesión terapéutica.</li>
+          <li>Documento complementario de información no registrada.</li>
+          <li>Resultados del Test Anderi Profesional.</li>
+          <li>Análisis documental retrospectivo.</li>
+        </ul>
+      </div>
+      <div class="flag-card amber">
+        <h3>Limitaciones</h3>
+        <ul class="clean amber">
+          <li>No hay entrevista directa ni observación conductual.</li>
+          <li>No se administraron pruebas estandarizadas con baremos.</li>
+          <li>El Test Anderi carece de criterios oficiales de interpretación.</li>
+          <li>Posible sesgo de autoinforme y deseabilidad social.</li>
+          <li>Discrepancia en el nombre entre documentos (Alex / Kevin Alexander).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">Este material es una aproximación descriptiva y orientativa. No sustituye evaluación clínica directa ni juicio profesional.</div>
+  </div>`
+},
+
+/* ---------- SECCIÓN 2: IDENTIDAD Y CONTEXTO ---------- */
+{
+  label:"Datos personales", section:"Identidad y contexto",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">👤</div><h2>Datos personales</h2></div>
+    <div class="grid grid-3 fade">
+      <div class="tile"><div class="label">Nombre</div><div class="value">Alex Hernández of Windsor</div></div>
+      <div class="tile"><div class="label">Edad</div><div class="value big">18</div></div>
+      <div class="tile"><div class="label">Nacimiento</div><div class="value">03 / Feb / 2008</div></div>
+      <div class="tile"><div class="label">Escolaridad</div><div class="value">3.º año bachillerato</div></div>
+      <div class="tile"><div class="label">Instituto</div><div class="value">Nacional de Yamabal, Morazán</div></div>
+      <div class="tile"><div class="label">Programa</div><div class="value">Oportunidades · FGK</div></div>
+      <div class="tile"><div class="label">Sede</div><div class="value">San Miguel</div></div>
+      <div class="tile"><div class="label">Universidad</div><div class="value">Gerardo Barrios (UGB)</div></div>
+      <div class="tile"><div class="label">Carrera deseada</div><div class="value">Psicología</div></div>
+      <div class="tile"><div class="label">Orientación</div><div class="value">Homosexual</div></div>
+      <div class="tile"><div class="label">Modalidad</div><div class="value">Sesiones escritas</div></div>
+      <div class="tile"><div class="label">Enfoque</div><div class="value">Integrador</div></div>
+    </div>
+  </div>`
+},
+{
+  label:"Contexto geográfico", section:"Identidad y contexto",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🌎</div><h2>Contexto geográfico y socioeconómico</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>Ubicación</h3>
+        <ul class="clean">
+          <li>Yamabal, departamento de Morazán, El Salvador.</li>
+          <li>Zona rural, con acceso limitado a servicios especializados.</li>
+          <li>Traslados frecuentes a San Miguel (sede Oportunidades).</li>
+          <li>Intercentro en San Salvador (UCA).</li>
+        </ul>
+        <h3 style="margin-top:16px">Economía familiar</h3>
+        <ul class="clean amber">
+          <li>Padre desempleado; albañilería ocasional.</li>
+          <li>Madre ama de casa; recibe remesas para la bisabuela.</li>
+          <li>Dependencia de becas y apoyo institucional.</li>
+          <li>Gastos imprevistos: taxi, deuda académica, graduación.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Implicaciones</h3>
+        <ul class="clean cyan">
+          <li>Acceso limitado a servicios de salud mental.</li>
+          <li>Distancia geográfica como barrera para redes de apoyo.</li>
+          <li>Dependencia económica de los padres → dificultad para independizarse.</li>
+          <li>La universidad implica mudanza a otra ciudad.</li>
+          <li>Contexto rural conservador → mayor riesgo de rechazo social.</li>
+        </ul>
+        <div class="quote" style="margin-top:16px">"Quiero comprar un apartamento y mudarme para ir a la universidad desde ahí."</div>
+      </div>
+    </div>
+  </div>`
+},
+{
+  label:"Rutina diaria", section:"Identidad y contexto",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🕐</div><h2>Rutina diaria y vida cotidiana</h2></div>
+    <div class="grid grid-3 fade">
+      <div class="tile"><div class="label">Lunes a viernes</div><div class="value">Instituto + traslados</div><p>Desayuno ~8:00, almuerzo ~17:00, regreso a casa con pan y fresco.</p></div>
+      <div class="tile"><div class="label">Sábados</div><div class="value">Programa Oportunidades</div><p>Alimentación estructurada en el programa. Único día con horarios regulares.</p></div>
+      <div class="tile"><div class="label">Domingos</div><div class="value">Descanso en casa</div><p>Desayuno tardío ~12:00. Tiempo para series, música, soledad.</p></div>
+      <div class="tile"><div class="label">Sueño</div><div class="value">~00:00</div><p>Horario irregular. Somnolencia diurna, cansancio, cefaleas.</p></div>
+      <div class="tile"><div class="label">Tiempo libre</div><div class="value">Música y series</div><p>Taylor Swift, Netflix, Instagram, Spotify.</p></div>
+      <div class="tile"><div class="label">Actividad física</div><div class="value">No reportada</div><p>No se menciona ejercicio regular.</p></div>
+    </div>
+  </div>`
+},
+{
+  label:"Historia clínica", section:"Identidad y contexto",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">📖</div><h2>Antecedentes e historia clínica</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>Antecedentes personales</h3>
+        <ul class="clean">
+          <li>Sin tratamiento psicológico previo reportado.</li>
+          <li>Sin medicación psiquiátrica reportada.</li>
+          <li>Sin autolesiones ni ideación suicida reportadas.</li>
+          <li>Episodios de cefalea y cansancio físico.</li>
+          <li>Posible alteración de conducta alimentaria (en evaluación).</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Antecedentes familiares</h3>
+        <ul class="clean amber">
+          <li>Madre percibida con posible problema de salud mental (no confirmado).</li>
+          <li>Bisabuela con enfermedad reciente (ocupó su habitación 2-3 años).</li>
+          <li>Sin otros antecedentes reportados.</li>
+        </ul>
+        <h3 style="margin-top:16px">Antecedentes relacionales</h3>
+        <ul class="clean pink">
+          <li>Dos relaciones sentimentales previas.</li>
+          <li>Divulgación no consentida de su orientación.</li>
+          <li>Episodio de secreto infantil con su hermana.</li>
+        </ul>
+      </div>
+    </div>
+  </div>`
+},
+{
+  label:"Motivo de consulta", section:"Identidad y contexto",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🎯</div><h2>Motivo de consulta inicial</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card cyan">
+        <h3>Demanda explícita</h3>
+        <ul class="clean cyan">
+          <li>Espacio seguro para expresar pensamientos y emociones.</li>
+          <li>Exploración personal de la orientación sexual.</li>
+          <li>Temor al rechazo familiar.</li>
+          <li>Deseo vocacional: estudiar Psicología.</li>
+        </ul>
+      </div>
+      <div class="flag-card pink">
+        <h3>Necesidades implícitas</h3>
+        <ul class="clean pink">
+          <li>Validación emocional no recibida en el hogar.</li>
+          <li>Estrategias para manejar la ansiedad anticipatoria.</li>
+          <li>Planificación de independencia económica y residencial.</li>
+          <li>Consolidación de identidad y autoconcepto.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">El paciente inicia el proceso por iniciativa propia, sin derivación externa.</div>
+  </div>`
+},
+
+/* ---------- SECCIÓN 3: ENTORNO FAMILIAR ---------- */
+{
+  label:"Composición familiar", section:"Entorno familiar",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🏠</div><h2>Composición familiar</h2></div>
+    <div class="grid grid-3 fade">
+      <div class="tile"><div class="label">Madre</div><div class="value">Ama de casa</div><p>Recibe remesas para la bisabuela. Impredecible emocionalmente.</p></div>
+      <div class="tile"><div class="label">Padre</div><div class="value">Albañil ocasional</div><p>Desempleado. Figura estable instrumentalmente. Distancia emocional.</p></div>
+      <div class="tile"><div class="label">Hermana — Sahir</div><div class="value">19 años (1 año mayor)</div><p>Comunicativa. Ha insinuado la orientación de Alex.</p></div>
+      <div class="tile"><div class="label">Bisabuela — Lucía</div><div class="value">Figura de apego</div><p>Única persona a quien abraza con frecuencia.</p></div>
+      <div class="tile"><div class="label">Mascota — Rangi</div><div class="value">Perrito</div><p>Mencionado en tono humorístico sobre venderlo para la beca.</p></div>
+      <div class="tile"><div class="label">Gatito</div><div class="value">Recién llegado</div><p>~1 semana antes del 6 de agosto. Sexo desconocido.</p></div>
+    </div>
+  </div>`
+},
+{
+  label:"Madre", section:"Entorno familiar",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">👩</div><h2>La madre — análisis detallado</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>Conductas observadas</h3>
+        <ul class="clean red">
+          <li>Elogia en público, critica en privado ("doble cara").</li>
+          <li>Frases invalidantes: "Vos todo lo querés de una", "¿Creés que el dinero crece en los árboles?", "Sos muy perfeccionista".</li>
+          <li>Reacción defensiva cuando se le pide ayuda.</li>
+          <li>"Haya tu problema" ante la beca, luego ofrece ayuda con carga emocional.</li>
+          <li>Comentarios sobre roles de género: "Vos parecés mamayita", "Vos sos hombre".</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Evento crítico (sesión 17)</h3>
+        <ul class="clean red">
+          <li>Mencionó a un hombre homosexual de la comunidad.</li>
+          <li>Expresó temor de que Alex "salga como él".</li>
+          <li>Amenazó con echarlo de la casa si esto sucedía.</li>
+          <li>Usó argumentos religiosos para desaprobar relaciones entre hombres.</li>
+        </ul>
+        <div class="quote" style="margin-top:14px">Alex respondió: "¿Por qué tiene que meter la religión en todo?" — primera confrontación directa.</div>
+      </div>
+    </div>
+  </div>`
+},
+{
+  label:"Padre", section:"Entorno familiar",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">👨</div><h2>El padre — análisis detallado</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>Rol percibido</h3>
+        <ul class="clean green">
+          <li>Apoyo estable y confiable según Alex.</li>
+          <li>Colabora en trámites de beca.</li>
+          <li>Provee lo necesario dentro de sus posibilidades.</li>
+          <li>Figura instrumental, no emocional.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Distancia emocional</h3>
+        <ul class="clean amber">
+          <li>Episodio del teléfono a los 14 años: Alex buscó porno gay en su dispositivo.</li>
+          <li>Desde entonces no se abrazan.</li>
+          <li>Alex cree que el padre "lo sabe" y espera confirmación.</li>
+          <li>"Me da cosa" abrazarlo.</li>
+        </ul>
+        <div class="quote" style="margin-top:14px">El tema "ya quedó en el pasado" según Alex, pero la distancia física persiste.</div>
+      </div>
+    </div>
+  </div>`
+},
+{
+  label:"Hermana Sahir", section:"Entorno familiar",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">👧</div><h2>Sahir — hermana mayor</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>Relación actual</h3>
+        <ul class="clean">
+          <li>1 año mayor que Alex (19 años).</li>
+          <li>Comparte taxi con Alex y Odalys.</li>
+          <li>Está en el mismo instituto.</li>
+          <li>Sin conflictos graves.</li>
+          <li>Alex no ha hablado con ella sobre su sexualidad.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Eventos significativos</h3>
+        <ul class="clean amber">
+          <li>Ha insinuado la orientación de Alex frente a los padres.</li>
+          <li>Estuvo presente cuando Stefani hizo un comentario al respecto.</li>
+          <li>En el incidente de la pulsera, confirmó que Odalys y Stefani "se iban riendo".</li>
+          <li>Gestionó la compra del nuevo teléfono Samsung.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">Episodio infantil (3-4 años): conductas exploratorias con ropa puesta, sin exposición corporal. Alex lo vivió como "trauma" durante años. Lo verbalizó en sesión 4 y pidió no volver a hablarlo.</div>
+  </div>`
+},
+{
+  label:"Bisabuela Lucía", section:"Entorno familiar",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">👵</div><h2>Lucía — bisabuela</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>Rol en la vida de Alex</h3>
+        <ul class="clean green">
+          <li>Única persona a quien abraza con frecuencia.</li>
+          <li>Figura de contacto físico seguro.</li>
+          <li>Representa el afecto no condicionado.</li>
+          <li>Vivió con la familia tras enfermarse hace 2-3 años.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Impacto en la dinámica familiar</h3>
+        <ul class="clean amber">
+          <li>Ocupó la habitación de Alex durante 2-3 años.</li>
+          <li>Alex recuperó su espacio el 5 de agosto de 2026.</li>
+          <li>Este hecho lo simbolizó como "Welcome to my New York".</li>
+        </ul>
+        <div class="quote" style="margin-top:14px">"La única persona a quien abrazo con frecuencia."</div>
+      </div>
+    </div>
+  </div>`
+},
+{
+  label:"Dinámicas familiares", section:"Entorno familiar",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🔁</div><h2>Dinámicas familiares</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card red">
+        <h3>Patrones disfuncionales</h3>
+        <ul class="clean red">
+          <li>Validación condicionada: apoyo mientras no se aborde la identidad sexual.</li>
+          <li>Mensajes de escasez en la infancia.</li>
+          <li>Culpa por recibir ayuda económica.</li>
+          <li>Doble discurso: imagen pública positiva / crítica privada.</li>
+          <li>Ocultamiento prolongado de la orientación.</li>
+          <li>Amenaza de expulsión como forma de control.</li>
+        </ul>
+      </div>
+      <div class="flag-card green">
+        <h3>Recursos familiares</h3>
+        <ul class="clean green">
+          <li>Apoyo instrumental en estudios.</li>
+          <li>Provisión de lo indispensable.</li>
+          <li>Padre colabora en trámites.</li>
+          <li>Bisabuela como figura de afecto.</li>
+          <li>Hermana como apoyo práctico.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">"No me sobra, pero tampoco me falta." — Alex sobre el apoyo familiar</div>
+  </div>`
+},
+{
+  label:"Episodio teléfono", section:"Entorno familiar",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">📱</div><h2>El episodio del teléfono (14 años)</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>Hechos</h3>
+        <ul class="clean">
+          <li>Alex usó el teléfono de su padre para buscar porno gay.</li>
+          <li>Descargó una app para guardar las búsquedas.</li>
+          <li>El padre probablemente descubrió el historial.</li>
+          <li>Nunca hablaron directamente del tema.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Consecuencias</h3>
+        <ul class="clean amber">
+          <li>Distancia física y emocional entre padre e hijo.</li>
+          <li>Dejaron de abrazarse.</li>
+          <li>Alex cree que el padre "lo sabe" y espera confirmación.</li>
+          <li>El tema "ya quedó en el pasado" pero la distancia persiste.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">Este evento marca un antes y un después en la relación padre-hijo, aunque nunca se ha abordado abiertamente.</div>
+  </div>`
+},
+{
+  label:"Secreto de infancia", section:"Entorno familiar",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🔒</div><h2>El secreto de la infancia (3-4 años)</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>El episodio</h3>
+        <ul class="clean pink">
+          <li>Alex tenía 3-4 años; su hermana Sahir, 1 año mayor.</li>
+          <li>Conductas exploratorias infantiles de naturaleza corporal.</li>
+          <li>Con ropa puesta, sin exposición corporal.</li>
+          <li>Nunca volvió a repetirse.</li>
+          <li>Sin repercusiones en la relación fraterna actual.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Impacto emocional</h3>
+        <ul class="clean amber">
+          <li>Alex lo vivió como "trauma" durante años.</li>
+          <li>Vergüenza de mantenerlo en secreto.</li>
+          <li>Lo verbalizó por primera vez en sesión 4.</li>
+          <li>Experimentó alivio inmediato.</li>
+          <li>Pidió explícitamente no volver a hablar del tema.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">El respeto a este límite fortaleció la confianza terapéutica.</div>
+  </div>`
+},
+{
+  label:"Escasez económica", section:"Entorno familiar",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">💸</div><h2>Infancia y escasez económica</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card amber">
+        <h3>Frases parentales recurrentes</h3>
+        <ul class="clean amber">
+          <li>"Vos todo lo querés de una."</li>
+          <li>"¿Creés que el dinero crece en los árboles?"</li>
+          <li>"¿Creés que soy millonaria?"</li>
+          <li>"Sos muy perfeccionista."</li>
+        </ul>
+      </div>
+      <div class="flag-card red">
+        <h3>Impacto psicológico</h3>
+        <ul class="clean red">
+          <li>Dificultad para pedir y aceptar ayuda.</li>
+          <li>Culpa al recibir apoyo económico.</li>
+          <li>Minimización de necesidades propias.</li>
+          <li>Temor a ser "carga" para la familia.</li>
+          <li>Esquema cognitivo de escasez.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">"Siento culpa porque mis padres hacen un esfuerzo económico por mí."</div>
+  </div>`
+},
+
+/* ---------- SECCIÓN 4: RED SOCIAL ---------- */
+{
+  label:"Red de apoyo", section:"Red social",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🕸️</div><h2>Red de apoyo general</h2></div>
+    <div class="grid grid-3 fade">
+      <div class="tile"><div class="label">Confianza alta</div><div class="value">Vicky · Lucía · Kevin</div><p>Espacios seguros, validación, aceptación completa.</p></div>
+      <div class="tile"><div class="label">Confianza media</div><div class="value">Natt · Bessy · Merelin</div><p>Relación funcional con límites claros.</p></div>
+      <div class="tile"><div class="label">Confianza limitada</div><div class="value">Fidelia · José · Lily</div><p>Vínculos en exploración o con reservas.</p></div>
+      <div class="tile"><div class="label">No seguros</div><div class="value">Odalys · Stefani · Orfania</div><p>Divulgación no consentida, comentarios hostiles.</p></div>
+      <div class="tile"><div class="label">Distancia funcional</div><div class="value">Daniel · Jhostin · Adiel</div><p>Vínculos cerrados o redefinidos sin retorno.</p></div>
+      <div class="tile"><div class="label">Interés romántico</div><div class="value">José</div><p>Ilusión, inseguridad, reciprocidad no confirmada.</p></div>
+    </div>
+  </div>`
+},
+{
+  label:"Vicky", section:"Red social",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">💚</div><h2>Vicky — la figura central</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>La relación</h3>
+        <ul class="clean green">
+          <li>Mejor amiga desde 8.º grado.</li>
+          <li>Confianza absoluta, honestidad, apoyo mutuo.</li>
+          <li>Conoce completamente su orientación sexual.</li>
+          <li>Se dicen "gracias por escucharme" al final de conversaciones importantes.</li>
+          <li>Pacto de "matrimonio lavanda" si ambos llegan solteros a los 40.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Historia afectiva</h3>
+        <ul class="clean pink">
+          <li>Alex le confesó su gusto en 9.º grado.</li>
+          <li>Ella respondió "esperemos un tiempo".</li>
+          <li>Intentaron noviazgo a distancia en 1.º de bachillerato: duró 1 día.</li>
+          <li>Actualmente ambos lo recuerdan con humor.</li>
+          <li>Estudia una carrera que la mantiene ocupada; casi no hablan.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">"Una Vicky, pero en versión hombre." — modelo relacional deseado</div>
+  </div>`
+},
+{
+  label:"Adiel / Manfre", section:"Red social",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">💔</div><h2>Adiel / Manfre — exnovio</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>La relación</h3>
+        <ul class="clean pink">
+          <li>15-16 años, mismo instituto, diferente año.</li>
+          <li>Antes de la relación, Alex lo escuchaba y apoyaba.</li>
+          <li>Adiel le contó sobre autolesiones, intento suicida y atención psicológica.</li>
+          <li>Al comenzar el noviazgo, Adiel se cerró.</li>
+          <li>Dejó de compartir problemas y ocultaba estados de WhatsApp.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Dinámica y cierre</h3>
+        <ul class="clean red">
+          <li>Celos, desconfianza, acusaciones, indirectas.</li>
+          <li>Conflictos relacionados con terceras personas (Daniel, Gilberto).</li>
+          <li>Alex también participó en dinámicas de provocación.</li>
+          <li>Cierre tras el período acordado, sin confrontación final.</li>
+          <li>Contacto posterior en agosto: Alex no desea retomar.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">"Creo que fui mucho para él. No estaba a mi nivel." — reconocimiento de valor personal</div>
+  </div>`
+},
+{
+  label:"Daniel", section:"Red social",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">💙</div><h2>Daniel — enamoramiento no correspondido</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>La relación</h3>
+        <ul class="clean cyan">
+          <li>Exmejor amigo del programa Oportunidades.</li>
+          <li>Heterosexual.</li>
+          <li>Alex estuvo enamorado pero nunca se lo dijo.</li>
+          <li>La amistad le generaba ansiedad: esperaba respuestas con estrés.</li>
+          <li>Se distanció cuando supo que Alex era gay.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Estado actual</h3>
+        <ul class="clean">
+          <li>Intercambio ocasional de reels en Instagram.</li>
+          <li>Alex no desea retomar la amistad.</li>
+          <li>Encuentro casual en autobús (sesión 17): sin ansiedad.</li>
+          <li>Referencia: "Ahora ya digo 'qué loco'."</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">La relación pasó de generar ansiedad intensa a una indiferencia funcional.</div>
+  </div>`
+},
+{
+  label:"Jhostin", section:"Red social",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🤍</div><h2>Jhostin — interés previo</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>La relación</h3>
+        <ul class="clean">
+          <li>Chico del programa Oportunidades que le gustaba a Alex.</li>
+          <li>Presidente de Gobierno estudiantil del instituto.</li>
+          <li>Le pidió a Alex plantar un árbol juntos como símbolo de amistad.</li>
+          <li>Se acercó a Edwin a pesar de las advertencias de Alex.</li>
+          <li>Alex le dejó de hablar sin especificar el motivo.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Estado actual</h3>
+        <ul class="clean amber">
+          <li>Nunca hubo reunión formal.</li>
+          <li>Alex sospecha posible interés mutuo no confirmado.</li>
+          <li>Actualmente: neutralidad emocional.</li>
+          <li>La palabra elegida para definirlo es "And?".</li>
+          <li>Ya no representa una figura emocionalmente significativa.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">"And?" — desapego emocional estable, no indiferencia hostil.</div>
+  </div>`
+},
+{
+  label:"José", section:"Red social",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">💗</div><h2>José — interés romántico actual</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>La relación</h3>
+        <ul class="clean pink">
+          <li>Compañero del instituto, reconectaron recientemente.</li>
+          <li>Alex le hizo "cara fea" en 1.º año pensando que era gay.</li>
+          <li>José es directo, creativo, sin filtros.</li>
+          <li>Defiende a otras personas, incluyendo a Lily.</li>
+          <li>Comparten series, influencers, chistes, códigos.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Señales percibidas</h3>
+        <ul class="clean cyan">
+          <li>José voltea a verlo después de comentarios polémicos.</li>
+          <li>Convirtió una expresión de Alex en chiste recurrente.</li>
+          <li>Complicidad y entendimiento mutuo.</li>
+          <li>Alex usa "hojas en el estómago" (Heartstopper) para describir lo que siente.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">Alex reconoce sentimientos románticos, pero duda de la reciprocidad y de la orientación de José. Valora conservar la amistad si no hay posibilidad romántica.</div>
+  </div>`
+},
+{
+  label:"Odalys", section:"Red social",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">⚡</div><h2>Odalys — conflicto y límites</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>Antecedentes</h3>
+        <ul class="clean red">
+          <li>Compañera del instituto.</li>
+          <li>Divulgó la orientación de Alex sin autorización.</li>
+          <li>Lo expuso frente a 2 compañeros diciendo que era gay.</li>
+          <li>Habla mal de otros y luego les habla normal ("doble cara").</li>
+          <li>Alex decidió dejar de contarle cosas personales.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Incidente de la pulsera</h3>
+        <ul class="clean amber">
+          <li>30 de julio de 2026.</li>
+          <li>Odalys le jaló el pelo tras un gesto ofensivo de Alex.</li>
+          <li>Alex la tomó del brazo; su mano se deslizó y rompió la pulsera.</li>
+          <li>No fue intencional según Alex.</li>
+          <li>Odalys se fue riendo con Stefani.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">"Yo no necesito nada de nadie; todo lo que tengo y lo que quiero llegar a tener me lo puedo dar yo en el futuro."</div>
+  </div>`
+},
+{
+  label:"Otras amistades", section:"Red social",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">👥</div><h2>Otras amistades y conocidos</h2></div>
+    <div class="grid grid-3 fade">
+      <div class="tile"><div class="label">Natt</div><div class="value">Amiga, prima de Jhostin</div><p>Se ofreció a mediar. Define a Jhostin como "jochis".</p></div>
+      <div class="tile"><div class="label">Kevin</div><div class="value">Amigo gay del programa</div><p>Hablaron de Heartstopper. Alex puso límite al contacto físico con humor.</p></div>
+      <div class="tile"><div class="label">Bessy</div><div class="value">Amiga evangélica</div><p>Comprensiva. Incomodidad durante charla LGBTQ+, aclaró que miraba la hora.</p></div>
+      <div class="tile"><div class="label">Fidelia</div><div class="value">Amiga del programa</div><p>Dijo "yo tolero a los gay, pero no podría ser uno de ellos". Alex lo llamó homofóbico.</p></div>
+      <div class="tile"><div class="label">Lily</div><div class="value">Compañera del instituto</div><p>La invitó a integrarse al grupo. Amiga de José y Damaris.</p></div>
+      <div class="tile"><div class="label">Merelin</div><div class="value">Amiga, prima de Jhostin</div><p>En el mismo grupo de amigos.</p></div>
+      <div class="tile"><div class="label">Edwin</div><div class="value">Compañero con conflicto previo</div><p>Le sugirió vestuario para fotos de graduación. Relación ambivalente.</p></div>
+      <div class="tile"><div class="label">Stefania</div><div class="value">Presidenta 3.º técnico</div><p>Quedó por relación con la maestra madrina. Relación problemática.</p></div>
+      <div class="tile"><div class="label">Erick</div><div class="value">Exnovio de Adiel</div><p>Le envió solicitud en Instagram. Alex la aceptó.</p></div>
+    </div>
+  </div>`
+},
+{
+  label:"Dinámicas instituto", section:"Red social",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🏫</div><h2>Dinámicas sociales del instituto</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>Grupos y tensiones</h3>
+        <ul class="clean">
+          <li>José, Edwin, Orfania y Stefania: tensiones y rupturas.</li>
+          <li>Orfania: enemiga en común de Alex y Jhostin.</li>
+          <li>Stefani: compañera que insinuó su orientación frente a Sahir.</li>
+          <li>Stefania: presidenta por relación con la maestra madrina.</li>
+          <li>Maestra Jacqueline Flores: orientadora y madrina de Stefania.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Evolución de Alex</h3>
+        <ul class="clean green">
+          <li>Pasa de "soy el excluido" a "soy el integrado".</li>
+          <li>Elegido segundo por Eduardo Romero en actividad de inglés.</li>
+          <li>José lo eligió para comenzar partida de UNO.</li>
+          <li>Lily lo invitó a integrarse a su grupo.</li>
+          <li>Puede moverse entre distintos círculos sin justificarse.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">"Ahora no me gusta excluir a nadie porque yo fui excluido antes."</div>
+  </div>`
+},
+
+/* ---------- SECCIÓN 5: ÁREAS DE FUNCIONAMIENTO ---------- */
+{
+  label:"Área académica", section:"Áreas de funcionamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🎓</div><h2>Área académica y vocacional</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card cyan">
+        <h3>Logros</h3>
+        <ul class="clean cyan">
+          <li>Solicitud de beca enviada el 30/07/2026.</li>
+          <li>Proyecto de Innovación y Tecnología resuelto.</li>
+          <li>Confianza en inglés como área fuerte.</li>
+          <li>Examen de Formación Lingüística realizado el 1/08/2026.</li>
+          <li>Organización académica destacada (Test Anderi: 5/5).</li>
+        </ul>
+      </div>
+      <div class="flag-card amber">
+        <h3>Desafíos</h3>
+        <ul class="clean amber">
+          <li>Examen de matemáticas para beca: preocupación por resultado.</li>
+          <li>Pendientes: carta de recomendación del director, carta de ingresos del padre.</li>
+          <li>Presión económica para graduación.</li>
+          <li>Transición a la universidad: emoción y miedo simultáneos.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">"The end" — cierre de una etapa académica y psicológica.</div>
+  </div>`
+},
+{
+  label:"Área afectiva", section:"Áreas de funcionamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">💫</div><h2>Patrones en relaciones amorosas</h2></div>
+    <div class="grid grid-2 fade">
+      <ul class="clean">
+        <li><strong>Amistad como puerta de entrada:</strong> Vicky, Daniel, Adiel, Jhostin, José.</li>
+        <li><strong>Idealización inicial:</strong> confianza rápida.</li>
+        <li><strong>Desequilibrio afectivo:</strong> él da más de lo que recibe.</li>
+        <li><strong>Elección de personas con orientación ambigua.</strong></li>
+        <li><strong>Ansiedad anticipatoria</strong> y necesidad de validación.</li>
+        <li><strong>Secrecía:</strong> vínculos no públicos para la familia.</li>
+      </ul>
+      <ul class="clean amber">
+        <li><strong>Rol de confidente/salvador.</strong></li>
+        <li><strong>Estrategias de control:</strong> inventar chismes, analizar como "tablero de ajedrez".</li>
+        <li><strong>Retirada defensiva:</strong> "no vale la pena".</li>
+        <li><strong>Idealización de Vicky</strong> como modelo relacional.</li>
+        <li><strong>Inseguridad corporal.</strong></li>
+        <li><strong>Dificultad con el contacto físico</strong> salvo con figuras seguras.</li>
+      </ul>
+    </div>
+    <div class="quote fade">"Confío demasiado rápido… y siento que confío mucho más profundamente de lo que los demás confían en mí."</div>
+  </div>`
+},
+{
+  label:"Área emocional", section:"Áreas de funcionamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🎭</div><h2>Área emocional y sintomatología</h2></div>
+    <div class="grid grid-3 fade">
+      <div class="tile"><div class="label">Tristeza</div><div class="value">Sesión 1</div><p>Emoción más presente al inicio del proceso.</p></div>
+      <div class="tile"><div class="label">Ansiedad</div><div class="value">Anticipatoria</div><p>Miedo al rechazo, espera de respuestas, incertidumbre.</p></div>
+      <div class="tile"><div class="label">Rabia</div><div class="value">Odalys, maestra, madre</div><p>Emoción reactiva ante provocaciones o invalidación.</p></div>
+      <div class="tile"><div class="label">Alivio</div><div class="value">Tras la beca</div><p>Estado "My moment" de tranquilidad y satisfacción.</p></div>
+      <div class="tile"><div class="label">Culpa</div><div class="value">Por recibir</div><p>Esquema desarrollado en la infancia por escasez económica.</p></div>
+      <div class="tile"><div class="label">Cansancio</div><div class="value">Emocional</div><p>"Ya me cansé de querer ponerle nombre a todo lo que siento."</p></div>
+      <div class="tile"><div class="label">Felicidad</div><div class="value">Por su habitación</div><p>Recuperó su espacio el 5 de agosto.</p></div>
+      <div class="tile"><div class="label">Esperanza</div><div class="value">Orientada al futuro</div><p>"Siento que todo va a estar bien, al menos cuando me vaya."</p></div>
+      <div class="tile"><div class="label">Miedo</div><div class="value">Al rechazo</div><p>Al rechazo familiar y violencia.</p></div>
+    </div>
+  </div>`
+},
+{
+  label:"Área identidad", section:"Áreas de funcionamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🪞</div><h2>Identidad y autoconcepto</h2></div>
+    <div class="two-col fade">
+      <div>
+        <h3>Narrativas por fase</h3>
+        <ul class="clean">
+          <li><strong>Sesiones 1-3:</strong> "Soy el excluido".</li>
+          <li><strong>Sesiones 4-8:</strong> Establecimiento de límites.</li>
+          <li><strong>Sesiones 9-12:</strong> Conciencia moral, culpa.</li>
+          <li><strong>Sesiones 13-16:</strong> "The Change".</li>
+          <li><strong>Sesiones 17-18:</strong> "Only Me / Just Me".</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Pilares de la nueva identidad</h3>
+        <ul class="clean green">
+          <li>Autonomía.</li>
+          <li>Validez personal independiente de aprobación externa.</li>
+          <li>Autoconfianza.</li>
+          <li>Resiliencia.</li>
+          <li>Capacidad de "romper el patrón" familiar.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">"Soy alguien que conecta fácilmente, deja huella y procura que nadie vuelva a sentirse como yo me sentí."</div>
+  </div>`
+},
+{
+  label:"Salud física", section:"Áreas de funcionamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🩺</div><h2>Salud física y hábitos</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card red">
+        <h3>Conducta alimentaria</h3>
+        <ul class="clean red">
+          <li>Desayuno tardío (~8:00 L-S, ~12:00 D).</li>
+          <li>Almuerzo tardío (~17:00).</li>
+          <li>Pan y fresco al regresar a casa.</li>
+          <li>Episodios descritos como atracones.</li>
+          <li>Pensamientos de restricción para adelgazar.</li>
+          <li>Insatisfacción corporal ("gordo").</li>
+          <li>Creencia: "los delgados son más guapos".</li>
+        </ul>
+      </div>
+      <div class="flag-card amber">
+        <h3>Sueño y cansancio</h3>
+        <ul class="clean amber">
+          <li>Se duerme ~00:00.</li>
+          <li>Somnolencia diurna.</li>
+          <li>Se queda dormido en el autobús.</li>
+          <li>Cefaleas recurrentes.</li>
+          <li>Posible deshidratación.</li>
+          <li>Cansancio acumulado.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">Se recomienda evaluación nutricional y médica si los síntomas persisten.</div>
+  </div>`
+},
+{
+  label:"Consumo cultural", section:"Áreas de funcionamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🎵</div><h2>Consumo cultural y referentes</h2></div>
+    <div class="grid grid-3 fade">
+      <div class="tile"><div class="label">Taylor Swift</div><div class="value">Referente emocional</div><p>"Welcome to New York" es su canción para el nuevo comienzo. Se define "bien swiftie".</p></div>
+      <div class="tile"><div class="label">Heartstopper</div><div class="value">Serie de referencia</div><p>Identificación con la comunidad LGBTQ+. "Por delante soy Intensamente y por detrás soy Heartstopper."</p></div>
+      <div class="tile"><div class="label">Alerta, ¿Amistad o amor?</div><div class="value">Serie de Netflix</div><p>En emisión. La ve después del instituto.</p></div>
+      <div class="tile"><div class="label">El Proyecto Adam</div><div class="value">Película</div><p>Proyectada en el instituto. La recuerda con humor.</p></div>
+      <div class="tile"><div class="label">María Camila</div><div class="value">TikToker</div><p>Su filosofía "qué loco" resuena con Alex.</p></div>
+      <div class="tile"><div class="label">Joséan Log</div><div class="value">Música</div><p>La canción "Chachachá" le transmite tranquilidad.</p></div>
+      <div class="tile"><div class="label">Spotify Wrapped</div><div class="value">Entusiasmo</div><p>Espera con ilusión su resumen anual.</p></div>
+      <div class="tile"><div class="label">Instagram / WhatsApp</div><div class="value">Redes principales</div><p>Primeras apps que instalará en su nuevo teléfono.</p></div>
+      <div class="tile"><div class="label">Familia real británica</div><div class="value">Interés</div><p>Contenido que consume ocasionalmente.</p></div>
+    </div>
+  </div>`
+},
+
+/* ---------- SECCIÓN 6: EVOLUCIÓN TERAPÉUTICA ---------- */
+{
+  label:"Línea de tiempo", section:"Evolución terapéutica",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">📈</div><h2>Línea de tiempo emocional</h2></div>
+    <div class="timeline fade">
+      <div class="item"><h4>Sesiones 1-3 · "Soy el excluido"</h4><p>Tristeza, ansiedad anticipatoria, miedo al rechazo, idealización.</p></div>
+      <div class="item"><h4>Sesiones 4-8 · Límites y resignificación</h4><p>Alivio tras revelar secreto, establecimiento de límites, autoeficacia.</p></div>
+      <div class="item"><h4>Sesiones 9-12 · Conciencia moral y agotamiento</h4><p>Culpa por recibir, cuestionamiento ético, cansancio emocional.</p></div>
+      <div class="item"><h4>Sesiones 13-16 · "The Change"</h4><p>Integración social, resiliencia, "estoy logrando", autoestima basada en evidencia.</p></div>
+      <div class="item"><h4>Sesiones 17-18 · "Only Me / Just Me"</h4><p>Confrontación con la madre, "romper el patrón", apertura romántica hacia José.</p></div>
+    </div>
+  </div>`
+},
+{
+  label:"Hitos 1-6", section:"Evolución terapéutica",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">1️⃣</div><h2>Hitos por sesión (1-6)</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="tile"><div class="label">Sesión 1</div><div class="value">Revelación de orientación</div><p>Primera expresión de identidad homosexual. "Welcome to New York".</p></div>
+      <div class="tile"><div class="label">Sesión 2</div><div class="value">Límites y planificación</div><p>Decisión de reducir información con Odalys. Inicio de plan de ahorro.</p></div>
+      <div class="tile"><div class="label">Sesión 3</div><div class="value">Reencuentro con Jhostin</div><p>Reflexión sobre tipo de amistad deseada. Decisión de enviar solicitud.</p></div>
+      <div class="tile"><div class="label">Sesión 4</div><div class="value">Revelación del secreto</div><p>Comparte episodio infantil. Alivio emocional inmediato. Pide no volver a hablarlo.</p></div>
+      <div class="tile"><div class="label">Sesión 5</div><div class="value">Reflexión sobre Vicky</div><p>Análisis del vínculo. "Una Vicky, pero en versión hombre".</p></div>
+      <div class="tile"><div class="label">Sesión 6</div><div class="value">Beca y dinámicas</div><p>Conflicto con la madre. Reconexión con José. Decisión de no buscar a Jhostin.</p></div>
+    </div>
+  </div>`
+},
+{
+  label:"Hitos 7-12", section:"Evolución terapéutica",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">2️⃣</div><h2>Hitos por sesión (7-12)</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="tile"><div class="label">Sesión 7</div><div class="value">Estrategia social</div><p>Revela que inventó un chisme para obtener información. Cuestionamiento ético.</p></div>
+      <div class="tile"><div class="label">Sesión 8</div><div class="value">Conflicto con Odalys</div><p>Incidente de la pulsera. Envío de la beca. "My moment".</p></div>
+      <div class="tile"><div class="label">Sesión 9</div><div class="value">Conciencia moral</div><p>Cuestiona si es "mala persona". Empatía cognitiva.</p></div>
+      <div class="tile"><div class="label">Sesión 10</div><div class="value">Culpa por recibir</div><p>Diálogo con su "niño interior". Origen del esquema de culpa.</p></div>
+      <div class="tile"><div class="label">Sesión 11</div><div class="value">Desapego de Jhostin</div><p>"And?". Diferencia entre segunda oportunidad y obligación.</p></div>
+      <div class="tile"><div class="label">Sesión 12</div><div class="value">Agotamiento emocional</div><p>Conflicto familiar. "Ya me cansé de ponerle nombre a todo."</p></div>
+    </div>
+  </div>`
+},
+{
+  label:"Hitos 13-18", section:"Evolución terapéutica",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">3️⃣</div><h2>Hitos por sesión (13-18)</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="tile"><div class="label">Sesión 13</div><div class="value">"The Change"</div><p>Recupera su habitación. "Welcome to my New York". Nueva narrativa social.</p></div>
+      <div class="tile"><div class="label">Sesión 14</div><div class="value">Integración social</div><p>Lily lo invita a su grupo. José lo elige en UNO. "Estoy logrando".</p></div>
+      <div class="tile"><div class="label">Sesión 15</div><div class="value">Chat con Adiel</div><p>Comparte historial completo. No desea retomar el vínculo.</p></div>
+      <div class="tile"><div class="label">Sesión 16</div><div class="value">"The end"</div><p>Fotos de graduación. Autonomía, validez, autoconfianza, resiliencia.</p></div>
+      <div class="tile"><div class="label">Sesión 17</div><div class="value">Confrontación con la madre</div><p>Primera vez que responde sobre su orientación. "Only Me / Just Me".</p></div>
+      <div class="tile"><div class="label">Sesión 18</div><div class="value">Apertura romántica</div><p>Reconoce sentimientos hacia José. "Hojas en el estómago".</p></div>
+    </div>
+  </div>`
+},
+{
+  label:"Narrativas emergentes", section:"Evolución terapéutica",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🌱</div><h2>Narrativas emergentes</h2></div>
+    <div class="two-col fade">
+      <div class="flag-card red">
+        <h3>Narrativas antiguas</h3>
+        <ul class="clean red">
+          <li>"Soy el excluido."</li>
+          <li>"Confío demasiado rápido."</li>
+          <li>"No necesito a nadie."</li>
+          <li>"Todo lo que tengo me lo puedo dar yo."</li>
+          <li>"Nadie es fiel a nadie."</li>
+        </ul>
+      </div>
+      <div class="flag-card green">
+        <h3>Narrativas emergentes</h3>
+        <ul class="clean green">
+          <li>"Soy alguien que conecta fácilmente y deja huella."</li>
+          <li>"Estoy logrando" (no "logré").</li>
+          <li>"Puedo romper el patrón."</li>
+          <li>"Only Me / Just Me."</li>
+          <li>"Buscar mi propio yo sin culpas."</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">La transformación narrativa es uno de los indicadores más positivos del proceso.</div>
+  </div>`
+},
+{
+  label:"Frases y símbolos", section:"Evolución terapéutica",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">💬</div><h2>Frases y símbolos de Alex</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="tile"><div class="label">"Qué loco"</div><p>Filosofía de vida. Estrategia cognitiva para reducir la carga emocional.</p></div>
+      <div class="tile"><div class="label">"And?"</div><p>Neutralidad emocional hacia Jhostin. Desapego estable.</p></div>
+      <div class="tile"><div class="label">"Welcome to my New York"</div><p>Nuevo comienzo simbólico. Taylor Swift. Recuperación de su habitación.</p></div>
+      <div class="tile"><div class="label">"The Change"</div><p>Nombre de su etapa de transformación identitaria.</p></div>
+      <div class="tile"><div class="label">"My moment"</div><p>Estado de tranquilidad tras el envío de la beca.</p></div>
+      <div class="tile"><div class="label">"Only Me / Just Me"</div><p>Independencia y autenticidad. "Buscar mi propio yo sin culpas."</p></div>
+      <div class="tile"><div class="label">"Estoy logrando"</div><p>Concepción procesual, no de meta final.</p></div>
+      <div class="tile"><div class="label">"Romper el patrón"</div><p>Deseo de no repetir dinámicas familiares.</p></div>
+      <div class="tile"><div class="label">"Hojas en el estómago"</div><p>Referencia a Heartstopper. Sensación al pensar en José.</p></div>
+      <div class="tile"><div class="label">"Tres hectáreas de papalo quelite"</div><p>Expresión para decir que algo no le importa.</p></div>
+      <div class="tile"><div class="label">"Boca suelta"</div><p>Se define como alguien que habla más de lo que quisiera.</p></div>
+      <div class="tile"><div class="label">"Cat vives"</div><p>Mostrarse desinteresado o frío.</p></div>
+    </div>
+  </div>`
+},
+
+/* ---------- SECCIÓN 7: EVALUACIÓN ---------- */
+{
+  label:"Test Anderi", section:"Evaluación",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">📊</div><h2>Test Anderi — Resultados</h2></div>
+    <div class="grid grid-4 fade">
+      <div class="tile"><div class="label">Cognitivas</div><div class="value big">16/20</div></div>
+      <div class="tile"><div class="label">Personalidad</div><div class="value big">14/20</div></div>
+      <div class="tile"><div class="label">Emocional</div><div class="value big">16/20</div></div>
+      <div class="tile"><div class="label">Competencias</div><div class="value big">17/20</div></div>
+    </div>
+    <div class="grid grid-2 fade" style="margin-top:16px">
+      <div class="flag-card green">
+        <h3>Fortalezas destacadas</h3>
+        <ul class="clean green">
+          <li>Liderazgo e iniciativa (5/5).</li>
+          <li>Organización y priorización (5/5).</li>
+          <li>Satisfacción con logros (5/5).</li>
+          <li>Seguimiento de reglas (5/5).</li>
+          <li>Exposición social (5/5).</li>
+          <li>Curiosidad intelectual (4/5).</li>
+          <li>Energía (4/5).</li>
+          <li>Control emocional (4/5).</li>
+        </ul>
+      </div>
+      <div class="flag-card amber">
+        <h3>Áreas de desarrollo</h3>
+        <ul class="clean amber">
+          <li>Resolución rápida de problemas (3/5).</li>
+          <li>Reacción bajo presión (3/5).</li>
+          <li>Explicación de ideas complejas (3/5).</li>
+          <li>Persistencia en tareas monótonas (3/5).</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small fade" style="margin-top:14px">Puntaje global descriptivo: 63/80 (78.75%). Perfil: Organizador · Líder · Estructurado · Sociable · Iniciativa.</p>
+  </div>`
+},
+{
+  label:"Brechas Anderi", section:"Evaluación",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">📉</div><h2>Test Anderi — Análisis de brechas</h2></div>
+    <div class="survival fade">
+      <div class="rule"><div class="num">1</div><div><h4>Organización vs. Improvisación</h4><p>Organización 5/5, pero resolución rápida de problemas 3/5. Su fortaleza está en anticipar, no en improvisar.</p></div></div>
+      <div class="rule"><div class="num">2</div><div><h4>Liderazgo vs. Presión</h4><p>Liderazgo 5/5, pero reacción a presión 3/5. El desarrollo de tolerancia al estrés es clave para un liderazgo sostenible.</p></div></div>
+      <div class="rule"><div class="num">3</div><div><h4>Liderazgo vs. Comunicación</h4><p>Liderazgo 5/5, pero explicar ideas complejas 3/5. Fortalecer la comunicación ejecutiva potenciaría su capacidad de liderazgo.</p></div></div>
+      <div class="rule"><div class="num">4</div><div><h4>Estructura vs. Perseverancia</h4><p>Prefiere orden y reglas (5/5), pero persistencia en tareas aburridas 3/5. La estructura externa ayuda, pero las tareas monótonas disminuyen su motivación.</p></div></div>
+      <div class="rule"><div class="num">5</div><div><h4>Capacidad vs. Satisfacción</h4><p>Satisfacción con logros 5/5, alineada con capacidades cognitivas altas. Existe una alineación positiva entre autopercepción y satisfacción.</p></div></div>
+    </div>
+    <p class="small fade" style="margin-top:14px">El Test Anderi no cuenta con baremos normativos oficiales. Los resultados son descriptivos, no diagnósticos.</p>
+  </div>`
+},
+{
+  label:"Hipótesis central", section:"Evaluación",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🧠</div><h2>Hipótesis descriptiva central</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card cyan">
+        <h3>Núcleo del perfil</h3>
+        <ul class="clean cyan">
+          <li>Proceso de individuación y consolidación identitaria en curso.</li>
+          <li>Conflicto familia-identidad no resuelto.</li>
+          <li>Esquema de culpa por recibir.</li>
+          <li>Patrón de vinculación ansiosa con retirada defensiva.</li>
+          <li>Alta capacidad de introspección y análisis interpersonal.</li>
+        </ul>
+      </div>
+      <div class="flag-card green">
+        <h3>Evolución positiva</h3>
+        <ul class="clean green">
+          <li>Disminución de ansiedad anticipatoria.</li>
+          <li>Mayor regulación emocional.</li>
+          <li>Establecimiento progresivo de límites.</li>
+          <li>Resignificación de experiencias.</li>
+          <li>Nuevas narrativas identitarias.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">No se identifican alteraciones del pensamiento, juicio o percepción. No hay indicadores de riesgo inminente (suicidio, autolesión, psicosis).</div>
+  </div>`
+},
+{
+  label:"Factores protectores", section:"Evaluación",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🛡️</div><h2>Factores protectores consolidados</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card green">
+        <h3>Personales</h3>
+        <ul class="clean green">
+          <li>Elevada capacidad de introspección.</li>
+          <li>Pensamiento organizado y coherente.</li>
+          <li>Humor como recurso de afrontamiento.</li>
+          <li>Empatía cognitiva.</li>
+          <li>Conciencia moral.</li>
+          <li>Resiliencia.</li>
+          <li>Autoconfianza creciente.</li>
+        </ul>
+      </div>
+      <div class="flag-card cyan">
+        <h3>Contextuales</h3>
+        <ul class="clean cyan">
+          <li>Red de apoyo significativa (Vicky, Kevin, Lucía).</li>
+          <li>Proyecto de vida claro (Psicología, UGB).</li>
+          <li>Motivación académica.</li>
+          <li>Compromiso terapéutico.</li>
+          <li>Capacidad de integración social.</li>
+          <li>Habilidades de liderazgo (Test Anderi).</li>
+        </ul>
+      </div>
+    </div>
+  </div>`
+},
+{
+  label:"Factores de riesgo", section:"Evaluación",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">⚠️</div><h2>Factores de riesgo consolidados</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card red">
+        <h3>Familiares</h3>
+        <ul class="clean red">
+          <li>Amenaza real de expulsión.</li>
+          <li>Argumentos religiosos usados para desaprobar.</li>
+          <li>Temor a violencia verbal o física.</li>
+          <li>Ocultamiento prolongado de la orientación.</li>
+          <li>Aislamiento emocional en el hogar.</li>
+        </ul>
+      </div>
+      <div class="flag-card amber">
+        <h3>Personales</h3>
+        <ul class="clean amber">
+          <li>Conducta alimentaria irregular.</li>
+          <li>Pensamientos de restricción para adelgazar.</li>
+          <li>Insatisfacción corporal.</li>
+          <li>Sueño irregular y cansancio.</li>
+          <li>Rumiación y sobreanálisis.</li>
+          <li>Dificultad para mostrarse vulnerable.</li>
+          <li>Estrés financiero y académico.</li>
+        </ul>
+      </div>
+    </div>
+  </div>`
+},
+{
+  label:"Red Flags", section:"Evaluación",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🚩</div><h2>Red Flags — Síntesis</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card red"><h3>Riesgo familiar</h3><ul class="clean red"><li>Amenaza explícita de expulsión.</li><li>Argumentos religiosos descalificadores.</li><li>Temor a violencia.</li></ul></div>
+      <div class="flag-card red"><h3>Conducta alimentaria</h3><ul class="clean red"><li>Atracones.</li><li>Restricción para adelgazar.</li><li>Insatisfacción corporal.</li></ul></div>
+      <div class="flag-card red"><h3>Salud física</h3><ul class="clean red"><li>Sueño irregular.</li><li>Cefaleas.</li><li>Cansancio crónico.</li></ul></div>
+      <div class="flag-card red"><h3>Vulnerabilidad emocional</h3><ul class="clean red"><li>Rumiación.</li><li>Confianza rápida.</li><li>Dificultad para la vulnerabilidad.</li></ul></div>
+      <div class="flag-card red"><h3>Transición vital</h3><ul class="clean red"><li>Graduación inminente.</li><li>Mudanza a otra ciudad.</li><li>Presión económica.</li></ul></div>
+      <div class="flag-card red"><h3>Exposición social</h3><ul class="clean red"><li>Divulgación no consentida previa.</li><li>Riesgo de que la familia se entere.</li></ul></div>
+    </div>
+  </div>`
+},
+{
+  label:"Green Flags", section:"Evaluación",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">✅</div><h2>Green Flags — Síntesis</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card green"><h3>Cognitivas</h3><ul class="clean green"><li>Alta introspección.</li><li>Pensamiento organizado.</li><li>Análisis interpersonal.</li><li>Resignificación.</li></ul></div>
+      <div class="flag-card green"><h3>Emocionales</h3><ul class="clean green"><li>Empatía.</li><li>Humor.</li><li>Conciencia moral.</li><li>Esperanza.</li></ul></div>
+      <div class="flag-card green"><h3>Sociales</h3><ul class="clean green"><li>Red de apoyo.</li><li>Integración social.</li><li>Límites progresivos.</li><li>Conexión con afines.</li></ul></div>
+      <div class="flag-card green"><h3>Proyecto de vida</h3><ul class="clean green"><li>Vocación clara.</li><li>Plan de independencia.</li><li>Motivación académica.</li><li>Resiliencia.</li></ul></div>
+      <div class="flag-card green"><h3>Identidad</h3><ul class="clean green"><li>Autoaceptación.</li><li>Nuevas narrativas.</li><li>"Estoy logrando".</li><li>"Only Me / Just Me".</li></ul></div>
+      <div class="flag-card green"><h3>Terapéuticas</h3><ul class="clean green"><li>Compromiso con el proceso.</li><li>Apertura emocional.</li><li>Capacidad de pedir y respetar límites.</li></ul></div>
+    </div>
+  </div>`
+},
+
+/* ---------- SECCIÓN 8: GUÍA DE ACOMPAÑAMIENTO ---------- */
+{
+  label:"Qué cuidar de él", section:"Guía de acompañamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🛡️</div><h2>Qué debes cuidar de Alex</h2></div>
+    <div class="survival fade">
+      <div class="rule"><div class="num">1</div><div><h4>Su seguridad familiar</h4><p>Amenaza real de expulsión. Planificar red de apoyo, alternativas de alojamiento y contactos de emergencia.</p></div></div>
+      <div class="rule"><div class="num">2</div><div><h4>Su conducta alimentaria</h4><p>Vigilar atracones, restricción y pensamientos de adelgazar. Derivar a valoración nutricional si persiste.</p></div></div>
+      <div class="rule"><div class="num">3</div><div><h4>Su salud física</h4><p>Cefaleas, cansancio, sueño irregular. Recomendar descanso, hidratación y evaluación médica.</p></div></div>
+      <div class="rule"><div class="num">4</div><div><h4>Su autoestima corporal</h4><p>Se compara físicamente, se percibe "gordo". Reforzar autoconcepto no basado en apariencia.</p></div></div>
+      <div class="rule"><div class="num">5</div><div><h4>Su duelo familiar</h4><p>Elaborar la pérdida de la familia idealizada y la tensión no resuelta con los padres.</p></div></div>
+      <div class="rule"><div class="num">6</div><div><h4>Su vínculo con José</h4><p>Acompañar sin asumir reciprocidad ni orientación. Promover acercamiento gradual y respetuoso.</p></div></div>
+      <div class="rule"><div class="num">7</div><div><h4>Su transición a la universidad</h4><p>Graduación, mudanza, independencia. Emoción y miedo simultáneos.</p></div></div>
+      <div class="rule"><div class="num">8</div><div><h4>Su exposición en redes</h4><p>Creciente visibilidad digital. Observar cómo influye en su autopercepción.</p></div></div>
+    </div>
+  </div>`
+},
+{
+  label:"De qué cuidarte", section:"Guía de acompañamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">⚠️</div><h2>De qué debes cuidarte como terapeuta</h2></div>
+    <div class="survival fade">
+      <div class="rule"><div class="num">1</div><div><h4>De su alta inteligencia social</h4><p>Puede diseñar estrategias interpersonales deliberadas. No es manipulación patológica, pero conviene nombrarla y trabajarla abiertamente.</p></div></div>
+      <div class="rule"><div class="num">2</div><div><h4>De la idealización hacia ti</h4><p>Puede idealizar el espacio terapéutico como único lugar seguro. Mantener límites claros y fomentar redes externas.</p></div></div>
+      <div class="rule"><div class="num">3</div><div><h4>De la seducción narrativa</h4><p>Su discurso es coherente, articulado y autocrítico. Verificar consistencia con hechos, no solo con relato.</p></div></div>
+      <div class="rule"><div class="num">4</div><div><h4>De la contratransferencia protectora</h4><p>Su historia genera deseo de rescatar. Mantener rol profesional, evitar sobreimplicación.</p></div></div>
+      <div class="rule"><div class="num">5</div><div><h4>De asumir sus decisiones</h4><p>Él decide sobre sus vínculos. No imponer criterios ni condicionar reconciliaciones.</p></div></div>
+      <div class="rule"><div class="num">6</div><div><h4>De la confusión de roles</h4><p>Él quiere ser psicólogo. Diferenciar claramente el espacio terapéutico del formativo.</p></div></div>
+      <div class="rule"><div class="num">7</div><div><h4>De la sobreinterpretación</h4><p>Su discurso es rico en matices. No patologizar cada expresión, metáfora o cambio de humor.</p></div></div>
+      <div class="rule"><div class="num">8</div><div><h4>De la dependencia emocional</h4><p>Él expresa sentirse solo. Fomentar su autonomía y red externa, evitando ser su único sostén.</p></div></div>
+    </div>
+  </div>`
+},
+{
+  label:"Sobrevivir pt1", section:"Guía de acompañamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🧭</div><h2>Cómo sobrevivir con y de Alex (1/2)</h2></div>
+    <div class="survival fade">
+      <div class="rule"><div class="num">01</div><div><h4>Valida sin sobreproteger</h4><p>Reconoce su dolor, pero no lo trates como víctima. Él se percibe resiliente y agradece que se le devuelva esa imagen.</p></div></div>
+      <div class="rule"><div class="num">02</div><div><h4>Nombra lo que observas</h4><p>Su discurso es analítico. Devuélvele patrones ("noto que cuando alguien te importa, aparecen dudas"). Le ayuda a verse desde fuera.</p></div></div>
+      <div class="rule"><div class="num">03</div><div><h4>Respeta sus silencios y sus "no"</h4><p>Pidió explícitamente no volver a hablar del episodio infantil con su hermana. Honra esos límites; fortalecen la confianza.</p></div></div>
+      <div class="rule"><div class="num">04</div><div><h4>Diferencia hechos de interpretaciones</h4><p>Tiende a construir hipótesis sobre intenciones ajenas. Ayúdalo a separar evidencia de suposición.</p></div></div>
+      <div class="rule"><div class="num">05</div><div><h4>Refuerza la autonomía, no la dependencia</h4><p>Su meta es independizarse. Apoya el plan sin convertirte en su único sostén emocional.</p></div></div>
+      <div class="rule"><div class="num">06</div><div><h4>Cuida el humor</h4><p>Usa expresiones como "qué loco", "tres hectáreas de papalo quelite". El humor es su válvula de escape; no lo patologices.</p></div></div>
+    </div>
+  </div>`
+},
+{
+  label:"Sobrevivir pt2", section:"Guía de acompañamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🧭</div><h2>Cómo sobrevivir con y de Alex (2/2)</h2></div>
+    <div class="survival fade">
+      <div class="rule"><div class="num">07</div><div><h4>Anticipa la transición</h4><p>Graduación, universidad, mudanza. Son fuentes de emoción y miedo simultáneos. Acompáñalas como parte del proceso.</p></div></div>
+      <div class="rule"><div class="num">08</div><div><h4>Ten un plan de seguridad</h4><p>Si la familia descubre su orientación, puede necesitar alojamiento, contactos legales y apoyo inmediato. Tenlo preparado.</p></div></div>
+      <div class="rule"><div class="num">09</div><div><h4>No interpretes cada señal como prueba</h4><p>Con José, con Jhostin, con Daniel: ayúdalo a observar sin convertir cada gesto en evidencia de atracción o rechazo.</p></div></div>
+      <div class="rule"><div class="num">10</div><div><h4>Recuérdale que "está logrando"</h4><p>Él mismo corrigió "logré" por "estoy logrando". Esa es su narrativa emergente. Refuérzala.</p></div></div>
+      <div class="rule"><div class="num">11</div><div><h4>Diferencia estrategia de autenticidad</h4><p>Ha usado estrategias sociales deliberadas. Ayúdalo a equilibrar influencia, persuasión y autenticidad.</p></div></div>
+      <div class="rule"><div class="num">12</div><div><h4>Cuida su autoestima corporal</h4><p>Evita reforzar ideales de delgadez. Promueve una relación saludable con la comida y el cuerpo.</p></div></div>
+      <div class="rule"><div class="num">13</div><div><h4>Observa la rumiación</h4><p>Su alta introspección puede volverse sobreanálisis. Enseña a soltar cuando el análisis ya no aporta.</p></div></div>
+      <div class="rule"><div class="num">14</div><div><h4>Refuerza la red externa</h4><p>Vicky, Kevin, Lucía, José, Lily. Fomenta la conexión más allá del espacio terapéutico.</p></div></div>
+    </div>
+  </div>`
+},
+{
+  label:"Plan de seguridad", section:"Guía de acompañamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🚨</div><h2>Plan de seguridad sugerido</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="flag-card red">
+        <h3>Antes de cualquier revelación</h3>
+        <ul class="clean red">
+          <li>Identificar contactos de confianza fuera del hogar.</li>
+          <li>Alternativas de alojamiento temporal.</li>
+          <li>Recursos legales y de protección en El Salvador.</li>
+          <li>Documentos personales en lugar seguro.</li>
+          <li>Ahorro de emergencia.</li>
+        </ul>
+      </div>
+      <div class="flag-card amber">
+        <h3>Si la familia descubre la orientación</h3>
+        <ul class="clean amber">
+          <li>Activar red de apoyo inmediata.</li>
+          <li>Espacio seguro donde pueda estar.</li>
+          <li>Acompañamiento psicológico de crisis.</li>
+          <li>Evaluación de riesgo de violencia.</li>
+          <li>Contacto con organizaciones LGBTQ+ de El Salvador.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">La preparación anticipada reduce el riesgo y fortalece la sensación de control del paciente.</div>
+  </div>`
+},
+{
+  label:"Recomendaciones", section:"Guía de acompañamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">📝</div><h2>Recomendaciones terapéuticas</h2></div>
+    <div class="grid grid-2 fade">
+      <div>
+        <h3>Continuar el proceso</h3>
+        <ul class="clean">
+          <li>Manejo de ansiedad anticipatoria.</li>
+          <li>Fortalecimiento de autocompasión.</li>
+          <li>Reducción de culpa por recibir.</li>
+          <li>Planificación de independencia.</li>
+          <li>Elaboración del duelo familiar.</li>
+          <li>Acompañamiento en vinculación afectiva.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Evaluación complementaria</h3>
+        <ul class="clean amber">
+          <li>Valoración nutricional y de conducta alimentaria.</li>
+          <li>Evaluación médica por cefaleas y cansancio.</li>
+          <li>Si se accede a entrevista directa: BDI-II, BAI, IDARE, escalas de autoestima.</li>
+          <li>Intervención familiar solo si el paciente lo autoriza.</li>
+          <li>Plan de seguridad activo.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote fade">El pronóstico es favorable si continúa el proceso, se fortalece la red de apoyo y se planifica la independencia de manera realista.</div>
+  </div>`
+},
+{
+  label:"Pronóstico", section:"Guía de acompañamiento",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">🔮</div><h2>Pronóstico</h2></div>
+    <div class="grid grid-3 fade">
+      <div class="tile"><div class="label">Favorable</div><div class="value big" style="color:var(--green)">Sí</div><p>Alta motivación, introspección, compromiso terapéutico.</p></div>
+      <div class="tile"><div class="label">Condiciones</div><div class="value">Red de apoyo + plan de seguridad</div><p>Mantener red externa y planificar independencia.</p></div>
+      <div class="tile"><div class="label">Áreas críticas</div><div class="value">Familia + alimentación</div><p>Requieren atención sostenida.</p></div>
+    </div>
+    <div class="two-col fade" style="margin-top:20px">
+      <div class="flag-card green">
+        <h3>Indicadores positivos</h3>
+        <ul class="clean green">
+          <li>Evolución narrativa consistente.</li>
+          <li>Nuevas estrategias de afrontamiento.</li>
+          <li>Autonomía y autoconfianza crecientes.</li>
+          <li>Integración social satisfactoria.</li>
+          <li>Capacidad de resignificación.</li>
+        </ul>
+      </div>
+      <div class="flag-card amber">
+        <h3>Indicadores a vigilar</h3>
+        <ul class="clean amber">
+          <li>Conducta alimentaria.</li>
+          <li>Sueño y cansancio.</li>
+          <li>Tensión familiar.</li>
+          <li>Transición a la universidad.</li>
+          <li>Vínculo con José.</li>
+        </ul>
+      </div>
+    </div>
+  </div>`
+},
+
+/* ---------- SECCIÓN 9: CIERRE ---------- */
+{
+  label:"Síntesis final", section:"Cierre",
+  html:`
+  <div class="card cover">
+    <div class="eyebrow">Síntesis final</div>
+    <h1>Un proceso en transición</h1>
+    <p class="subtitle">Alex es un joven con recursos personales notables, alta introspección y un proyecto de vida claro. Su principal desafío no es la falta de capacidades, sino la tensión no resuelta con su núcleo familiar en torno a su identidad sexual, junto con señales de sobrecarga que requieren atención.</p>
+    <div class="meta">
+      <span class="chip green">Pronóstico favorable</span>
+      <span class="chip">Compromiso terapéutico</span>
+      <span class="chip amber">Requiere red de seguridad</span>
+      <span class="chip cyan">Evolución consistente</span>
+    </div>
+    <div class="quote" style="text-align:left;max-width:820px;margin:28px auto 0">
+      "Soy alguien que conecta fácilmente, deja huella y procura que nadie vuelva a sentirse como yo me sentí."
+    </div>
+    <p class="small" style="margin-top:24px">Documento elaborado a partir del análisis documental de 18 sesiones · No sustituye evaluación clínica directa</p>
+  </div>`
+},
+{
+  label:"Glosario", section:"Cierre",
+  html:`
+  <div class="card">
+    <div class="section-title fade"><div class="icon">📚</div><h2>Glosario de términos</h2></div>
+    <div class="grid grid-2 fade">
+      <div class="tile"><div class="label">Ansiedad anticipatoria</div><p>Miedo intenso a situaciones futuras o posibles rechazos.</p></div>
+      <div class="tile"><div class="label">Resignificación</div><p>Proceso de dar un nuevo significado a experiencias pasadas.</p></div>
+      <div class="tile"><div class="label">Red flags</div><p>Señales de alerta o factores de riesgo.</p></div>
+      <div class="tile"><div class="label">Green flags</div><p>Indicadores positivos o factores protectores.</p></div>
+      <div class="tile"><div class="label">Duelo familiar</div><p>Elaboración de la pérdida de la familia idealizada.</p></div>
+      <div class="tile"><div class="label">Contratransferencia</div><p>Reacciones emocionales del terapeuta hacia el paciente.</p></div>
+      <div class="tile"><div class="label">Rumiación</div><p>Pensamiento repetitivo y persistente sobre problemas.</p></div>
+      <div class="tile"><div class="label">Individuación</div><p>Proceso de construcción de identidad autónoma.</p></div>
+      <div class="tile"><div class="label">Matrimonio lavanda</div><p>Acuerdo simbólico de compañía y amistad, no romántico.</p></div>
+      <div class="tile"><div class="label">Heartstopper</div><p>Serie de referencia LGBTQ+ para Alex. "Hojas en el estómago".</p></div>
+    </div>
+  </div>`
+},
+{
+  label:"Cierre", section:"Cierre",
+  html:`
+  <div class="card cover">
+    <div class="avatar">A</div>
+    <div class="eyebrow">Fin de la presentación</div>
+    <h1>Gracias</h1>
+    <p class="subtitle">Esta presentación integra el análisis documental de 18 sesiones, el documento complementario y los resultados del Test Anderi. Su objetivo es orientar el acompañamiento clínico y la comprensión integral del caso.</p>
+    <div class="meta">
+      <span class="chip">55 diapositivas</span>
+      <span class="chip">9 secciones</span>
+      <span class="chip green">Análisis documental</span>
+    </div>
+    <p class="small" style="margin-top:28px">Atajos: <span class="kbd">←</span> <span class="kbd">→</span> <span class="kbd">Espacio</span> <span class="kbd">Home</span> <span class="kbd">End</span></p>
+  </div>`
+}
+];
+
+/* ============================================================
+   RENDERIZADO
+   ============================================================ */
+const deck = document.getElementById('deck');
+const dotsContainer = document.getElementById('dots');
+const currentSpan = document.getElementById('current');
+const totalSpan = document.getElementById('total');
+const progress = document.getElementById('progress');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+let index = 0;
+
+// Crear slides
+SLIDES.forEach((s, i) => {
+  const section = document.createElement('section');
+  section.className = 'slide' + (i === 0 ? ' active' : '');
+  section.dataset.label = s.label;
+  section.innerHTML = s.html;
+  deck.appendChild(section);
+
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i === 0 ? ' active' : '');
+  dot.dataset.label = s.label;
+  dot.addEventListener('click', () => goTo(i));
+  dotsContainer.appendChild(dot);
+});
+
+totalSpan.textContent = SLIDES.length;
+
+// Índice dinámico (solo si existe el contenedor)
+const indexGrid = document.getElementById('indexGrid');
+if (indexGrid) {
+  const sections = [...new Set(SLIDES.map(s => s.section))];
+  sections.forEach(sec => {
+    const firstIdx = SLIDES.findIndex(s => s.section === sec);
+    const item = document.createElement('div');
+    item.className = 'index-item';
+    item.innerHTML = `<div class="num">${String(firstIdx + 1).padStart(2,'0')}</div><div class="name">${sec}</div>`;
+    item.addEventListener('click', () => goTo(firstIdx));
+    indexGrid.appendChild(item);
+  });
+}
+
+const slides = Array.from(document.querySelectorAll('.slide'));
+const dots = Array.from(document.querySelectorAll('.dot'));
+
+function update(){
+  slides.forEach((s, i) => s.classList.toggle('active', i === index));
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  currentSpan.textContent = index + 1;
+  progress.style.width = ((index + 1) / slides.length * 100) + '%';
+  prevBtn.disabled = index === 0;
+  nextBtn.disabled = index === slides.length - 1;
+  // Scroll al inicio del slide
+  slides[index].scrollTop = 0;
+}
+
+function goTo(i){
+  if (i < 0 || i >= slides.length) return;
+  index = i;
+  update();
+}
+function next(){ goTo(index + 1); }
+function prev(){ goTo(index - 1); }
+
+nextBtn.addEventListener('click', next);
+prevBtn.addEventListener('click', prev);
+
+// ============================================================
+// NAVEGACIÓN POR TECLADO — COMPLETA
+// ============================================================
+document.addEventListener('keydown', (e) => {
+  switch(e.key){
+    case 'ArrowRight':
+    case 'ArrowDown':
+    case ' ':
+    case 'Spacebar':
+    case 'PageDown':
+    case 'n':
+    case 'N':
+    case 'j':
+    case 'J':
+      e.preventDefault(); next(); break;
+    case 'ArrowLeft':
+    case 'ArrowUp':
+    case 'PageUp':
+    case 'p':
+    case 'P':
+    case 'k':
+    case 'K':
+      e.preventDefault(); prev(); break;
+    case 'Home':
+      e.preventDefault(); goTo(0); break;
+    case 'End':
+      e.preventDefault(); goTo(slides.length - 1); break;
+    case 'f':
+    case 'F':
+      e.preventDefault();
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+      break;
+  }
+});
+
+// Swipe táctil
+let touchStartX = 0, touchStartY = 0;
+document.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+}, {passive:true});
+document.addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].screenX - touchStartX;
+  const dy = e.changedTouches[0].screenY - touchStartY;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)){
+    if (dx < 0) next(); else prev();
+  }
+}, {passive:true});
+
+// Rueda del ratón
+let wheelLock = false;
+document.addEventListener('wheel', (e) => {
+  const slide = slides[index];
+  const atTop = slide.scrollTop <= 0;
+  const atBottom = slide.scrollTop + slide.clientHeight >= slide.scrollHeight - 2;
+  if (e.deltaY > 0 && !atBottom) return;
+  if (e.deltaY < 0 && !atTop) return;
+  if (wheelLock) return;
+  wheelLock = true;
+  setTimeout(() => wheelLock = false, 700);
+  if (e.deltaY > 0) next(); else prev();
+}, {passive:true});
+
+update();
+</script>
+
+</body>
+</html>
