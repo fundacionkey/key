@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contáctanos · Key · Fundación Hernández</title>
-    <meta name="description" content="Ponte en contacto con Key · Fundación Hernández. Estamos aquí para escucharte.">
+    <title>Contáctanos · Key Code</title>
+    <meta name="description" content="Contacta a Key Code. Toda nuestra comunicación es por correo y mensajería.">
     <link rel="icon" href="./assets/logo-simbolo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
@@ -17,25 +17,25 @@
         <div class="container top-bar-inner">
             <div class="menu-sup">
                 <a href="oportunidades.html">OPORTUNIDADES</a>
-                <a href="cosecha.html">COSECHA</a>
-                <a href="https://windsor-one.github.io/windsor/" target="_blank" rel="noopener noreferrer">WINDSOR</a>
-                <a href="https://windsor-one.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer">HELIOT</a>
+                <a href="administrados.html">PROYECTOS</a>
+                <a href="https://keycodeonline.github.io/windsor/" target="_blank" rel="noopener noreferrer">WINDSOR</a>
+                <a href="https://keycodeonline.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer">HELIOT</a>
             </div>
         </div>
     </div>
     <div class="main-header container">
         <div class="logo">
-            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key · Fundación Hernández"></a>
+            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key Code"></a>
         </div>
         <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
         <nav class="nav-principal" id="mainNav">
             <div class="submenu">
                 <a href="sobre-nosotros.html">Sobre nosotros <i class="fas fa-chevron-down"></i></a>
                 <div class="submenu-content">
-                    <a href="sobre-nosotros.html#trayectoria">Nuestra Trayectoria</a>
-                    <a href="sobre-nosotros.html#areas">Áreas de Interés</a>
-                    <a href="sobre-nosotros.html#jovenes-key">Jóvenes Key</a>
-                    <a href="sobre-nosotros.html#vision">Visión de Futuro</a>
+                    <a href="sobre-nosotros.html#plataforma">Qué es Key Code</a>
+                    <a href="sobre-nosotros.html#areas">Áreas de trabajo</a>
+                    <a href="sobre-nosotros.html#modelo">Cómo trabajamos</a>
+                    <a href="sobre-nosotros.html#vision">Visión de futuro</a>
                 </div>
             </div>
             <div class="submenu">
@@ -47,7 +47,7 @@
                     <a href="florecimiento.html">Florecimiento Key</a>
                 </div>
             </div>
-            <a href="administrados.html">Administrados</a>
+            <a href="administrados.html">Proyectos</a>
             <a href="blog.html">Blog</a>
             <a href="contactanos.html" class="active">Contáctanos</a>
             <div class="search-box">
@@ -62,7 +62,7 @@
     <div class="container">
         <h1>CONTÁCTANOS</h1>
         <div class="hero-line"></div>
-        <p class="hero-subtitle">Estamos aquí para escucharte. Cuéntanos tus inquietudes, sugerencias o cómo podemos ayudarte.</p>
+        <p class="hero-subtitle">Toda nuestra comunicación es por correo y mensajería. Cuéntanos qué necesitas y te responderemos por escrito.</p>
     </div>
 </section>
 
@@ -71,7 +71,7 @@
         <h2 class="section-title"><i class="fas fa-pencil-alt" style="margin-right: 12px; color: var(--secondary);"></i> Envíanos un mensaje</h2>
 
         <form id="formContacto" class="form-contacto" action="https://formsubmit.co/alexhrnndz32@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde Key">
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde Key Code">
             <input type="hidden" name="_captcha" value="true">
             <input type="hidden" name="_template" value="table">
 
@@ -82,6 +82,18 @@
             <div class="form-group">
                 <label for="correo">Correo electrónico</label>
                 <input type="email" id="correo" name="email" placeholder="tucorreo@ejemplo.com" required>
+            </div>
+            <div class="form-group">
+                <label for="asunto">Asunto</label>
+                <select id="asunto" name="asunto" required style="width:100%; padding:12px 16px; border:1px solid #ccc; border-radius:8px; font-size:1rem; font-family:var(--font); background:#fff;">
+                    <option value="">Selecciona una opción</option>
+                    <option value="consulta">Consulta general</option>
+                    <option value="proyecto">Propuesta de proyecto</option>
+                    <option value="florecimiento">Florecimiento Key</option>
+                    <option value="autoría">Reclamación de autoría</option>
+                    <option value="prensa">Prensa o difusión</option>
+                    <option value="otro">Otro</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="mensaje">Mensaje</label>
@@ -95,8 +107,24 @@
 <section class="contacto-aviso">
     <div class="container">
         <div class="aviso-block" style="border-left: 6px solid var(--orange); padding: 25px 30px; max-width: 100%; background: #fff; border-radius: 0 8px 8px 0;">
+            <p style="margin-bottom: 12px; font-size: 1rem; color: #333;">
+                <strong>Cómo trabajamos:</strong>
+            </p>
+            <ul style="margin: 0; padding-left: 20px; color:#333; line-height:1.8;">
+                <li>Respondemos <strong>por escrito</strong>, normalmente por correo electrónico.</li>
+                <li>No agendamos videollamadas obligatorias.</li>
+                <li>No contamos con oficinas ni horarios de atención presencial.</li>
+                <li>No ofrecemos respuesta inmediata: trabajamos de forma asíncrona.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="contacto-aviso" style="padding-top:0;">
+    <div class="container">
+        <div class="aviso-block" style="border-left: 6px solid var(--secondary); padding: 25px 30px; max-width: 100%; background: #f9f9f9; border-radius: 0 8px 8px 0;">
             <p style="margin-bottom: 0; font-size: 1rem; color: #333;">
-                <strong>Importante:</strong> Este formulario está destinado a consultas generales, sugerencias y comunicaciones relacionadas con Key. Para postularte a una beca, empleo, curso u otra oportunidad, utiliza los enlaces oficiales disponibles en <a href="oportunidades.html" style="color: var(--secondary);">Oportunidades</a>.
+                <strong>Importante:</strong> Este formulario está destinado a consultas generales, propuestas y comunicaciones relacionadas con Key Code. Para postularte a una beca, empleo, curso u otra oportunidad, utiliza los enlaces oficiales disponibles en <a href="oportunidades.html" style="color: var(--secondary);">Oportunidades</a>. Para reclamar autoría en Florecimiento Key, usa la página de <a href="reclamar.html" style="color: var(--secondary);">reclamación</a>.
             </p>
         </div>
     </div>
@@ -105,20 +133,19 @@
 <footer class="footer">
     <div class="container footer-grid">
         <div class="col-logo">
-            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key · Fundación Hernández"></a>
+            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key Code"></a>
         </div>
         <div class="col-enlaces">
-            <p><strong>Organización</strong></p>
+            <p><strong>Plataforma</strong></p>
             <a href="sobre-nosotros.html">Sobre nosotros</a>
             <a href="oportunidades.html">Oportunidades</a>
-            <a href="administrados.html">Administrados</a>
-            <a href="cosecha.html">Programa Cosecha</a>
+            <a href="administrados.html">Proyectos</a>
             <a href="blog.html">Blog</a>
             <a href="contactanos.html">Contáctanos</a>
         </div>
         <div class="col-enlaces">
             <p><strong>Transparencia y legal</strong></p>
-            <a href="legal.html#naturaleza">Naturaleza de Key</a>
+            <a href="legal.html#naturaleza">Naturaleza de Key Code</a>
             <a href="legal.html#aviso-legal">Aviso Legal</a>
             <a href="legal.html#politica-editorial">Política Editorial</a>
             <a href="legal.html#politica-privacidad">Política de Privacidad</a>
@@ -134,7 +161,7 @@
         <a href="#"><i class="fab fa-tiktok"></i></a>
         <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
-    <div class="copyright">Key · Fundación Hernández · 2026</div>
+    <div class="copyright">Key Code · 2026</div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
