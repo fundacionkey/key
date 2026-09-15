@@ -1,69 +1,56 @@
-// ===== MENÚ MÓVIL =====
-const menuToggle = document.getElementById('menuToggle');
-if (menuToggle) {
-    menuToggle.addEventListener('click', function() {
-        document.getElementById('mainNav').classList.toggle('open');
-    });
-}
+/* ============================================================
+   KEY WORKSPACE — Interacciones
+   ============================================================ */
 
-// Cerrar menú al hacer clic en un enlace (para móvil)
-document.querySelectorAll('.nav-principal a').forEach(link => {
-    link.addEventListener('click', function() {
-        const nav = document.getElementById('mainNav');
-        if (nav) nav.classList.remove('open');
-    });
-});
+(function () {
+  'use strict';
 
-// ===== SWIPER HERO =====
-if (document.querySelector('.mySwiperHero')) {
-    const heroSwiper = new Swiper('.mySwiperHero', {
-        loop: true,
-        autoplay: { delay: 5000 },
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        pagination: { el: '.swiper-pagination', clickable: true }
-    });
-}
+  /* --- Menú móvil --- */
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
 
-// ===== SWIPER TRAYECTORIA =====
-if (document.querySelector('.mySwiperHistorias')) {
-    const historiasSwiper = new Swiper('.mySwiperHistorias', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        breakpoints: {
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }
-        },
-        pagination: {
-            el: '.swiper-pagination-historias',
-            clickable: true
-        },
-        autoplay: { delay: 5000 },
-        loop: true
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
     });
-}
 
-// ===== CONTADORES ANIMADOS (solo para index) =====
-const counters = document.querySelectorAll('.numero[data-target]');
-if (counters.length > 0) {
-    const observer = new IntersectionObserver((entries) => {
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* --- Año actual en el footer --- */
+  const yearTargets = document.querySelectorAll('[data-year]');
+  if (yearTargets.length) {
+    const y = new Date().getFullYear();
+    yearTargets.forEach(el => { el.textContent = y; });
+  }
+
+  /* --- Reveal on scroll --- */
+  if ('IntersectionObserver' in window) {
+    const reveals = document.querySelectorAll('.area-card, .project-card, .model-item, .timeline-list li, .featured-card');
+    if (reveals.length) {
+      reveals.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+        el.style.transition = 'opacity 0.6s var(--transition), transform 0.6s var(--transition)';
+      });
+
+      const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const target = parseInt(el.dataset.target);
-                let current = 0;
-                const step = Math.ceil(target / 60);
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        clearInterval(timer);
-                        el.textContent = target;
-                    } else {
-                        el.textContent = Math.floor(current);
-                    }
-                }, 30);
-                observer.unobserve(el);
-            }
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            io.unobserve(entry.target);
+          }
         });
-    }, { threshold: 0.5 });
-    counters.forEach(c => observer.observe(c));
-}
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(el => io.observe(el));
+    }
+  }
+})();
