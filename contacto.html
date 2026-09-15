@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto · Key Workspace</title>
+  <meta name="description" content="Contacta a Key Workspace. Te respondemos por escrito.">
+  <meta name="theme-color" content="#0C1F33">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Key Workspace
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="sobre.html">Sobre</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="oportunidades.html">Oportunidades</a>
+        <a href="florecimiento.html">Florecimiento</a>
+        <a href="contacto.html" class="nav-cta">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">
+      <div class="hero-grid"></div>
+      <div class="hero-glow hero-glow-2"></div>
+    </div>
+    <div class="container page-hero-content">
+      <p class="eyebrow"><span class="eyebrow-dot"></span>Contacto</p>
+      <h1 class="page-hero-title">
+        Escríbenos.<br>
+        <em>Te respondemos por escrito.</em>
+      </h1>
+      <p class="page-hero-sub">
+        Usa el formulario o escríbenos directo al correo. No agendamos llamadas.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container form-container">
+      <form class="contact-form" action="https://formsubmit.co/alexhrnndz32@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde Key Workspace">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="asunto">Asunto</label>
+          <select id="asunto" name="asunto" required>
+            <option value="">Selecciona una opción</option>
+            <option value="consulta">Consulta general</option>
+            <option value="proyecto">Propuesta de proyecto</option>
+            <option value="florecimiento">Florecimiento Key</option>
+            <option value="autoria">Reclamación de autoría</option>
+            <option value="prensa">Prensa o difusión</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="6" placeholder="Cuéntanos qué necesitas." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          Enviar mensaje
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+
+      <aside class="contact-aside">
+        <div class="contact-block">
+          <h3>Correo directo</h3>
+          <a href="mailto:alexhrnndz32@gmail.com" class="contact-link">alexhrnndz32@gmail.com</a>
+        </div>
+
+        <div class="contact-block">
+          <h3>Cómo respondemos</h3>
+          <ul class="clean-list">
+            <li>Por escrito, normalmente por correo.</li>
+            <li>Sin llamadas ni videollamadas obligatorias.</li>
+            <li>Sin respuesta inmediata: trabajamos de forma asíncrona.</li>
+          </ul>
+        </div>
+
+        <div class="contact-block">
+          <h3>Antes de escribir</h3>
+          <p>
+            Para postular a Florecimiento Key usa la página
+            <a href="postular.html" class="inline-link">postular</a>.
+            Para reclamar autoría usa
+            <a href="reclamar.html" class="inline-link">reclamar</a>.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Key Workspace</span>
+        <p class="footer-sub">Un espacio digital para aprender, crear y crecer.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Espacio</h4>
+        <a href="sobre.html">Sobre</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="oportunidades.html">Oportunidades</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h4>Convocatoria</h4>
+        <a href="florecimiento.html">Florecimiento Key</a>
+        <a href="postular.html">Enviar idea</a>
+        <a href="seleccionadas.html">Seleccionadas</a>
+        <a href="reclamar.html">Reclamar autoría</a>
+      </div>
+      <div class="footer-col">
+        <h4>Proyectos</h4>
+        <a href="https://keyworkspace.github.io/windsor/">Windsor</a>
+        <a href="https://keyworkspace.github.io/thenewkey/">The New Key</a>
+        <a href="https://keyworkspace.github.io/artsandculture/">Arts &amp; Culture</a>
+        <a href="https://keyworkspace.github.io/blog/">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="legal.html#naturaleza">Naturaleza</a>
+        <a href="legal.html#aviso">Aviso legal</a>
+        <a href="legal.html#privacidad">Privacidad</a>
+        <a href="legal.html#terminos">Términos</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>Key Workspace · 2026</span>
+      <span>Un espacio digital independiente.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
