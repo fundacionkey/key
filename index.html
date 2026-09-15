@@ -1,285 +1,291 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Key Code · Plataforma digital de educación, empleabilidad y cultura</title>
-    <meta name="description" content="Key Code es una plataforma digital 100% online. Trabajamos por correo y mensajería en proyectos de educación, empleabilidad y cultura.">
-    <link rel="icon" href="./assets/logo-simbolo.png" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Key Workspace — Un espacio digital para aprender, crear y crecer</title>
+  <meta name="description" content="Key Workspace trabaja educación, empleabilidad y cultura 100% online, por correo y mensajería. Sin sedes, sin fronteras, sin horarios.">
+  <meta name="theme-color" content="#FAF7F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <!-- ===== HEADER ===== -->
-<header>
-    <div class="top-bar">
-        <div class="container top-bar-inner">
-            <div class="menu-sup">
-                <a href="oportunidades.html">OPORTUNIDADES</a>
-                <a href="administrados.html">PROYECTOS</a>
-                <a href="https://windsor-one.github.io/windsor/" target="_blank" rel="noopener noreferrer">WINDSOR</a>
-                <a href="https://windsor-one.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer">HELIOT</a>
-            </div>
-        </div>
-    </div>
-    <div class="main-header container">
-        <div class="logo">
-            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key Code"></a>
-        </div>
-        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <nav class="nav-principal" id="mainNav">
-            <div class="submenu">
-                <a href="sobre-nosotros.html">Sobre nosotros <i class="fas fa-chevron-down"></i></a>
-                <div class="submenu-content">
-                    <a href="sobre-nosotros.html#plataforma">Qué es Key Code</a>
-                    <a href="sobre-nosotros.html#areas">Áreas de trabajo</a>
-                    <a href="sobre-nosotros.html#modelo">Cómo trabajamos</a>
-                    <a href="sobre-nosotros.html#vision">Visión de futuro</a>
-                </div>
-            </div>
-            <div class="submenu">
-                <a href="oportunidades.html">Oportunidades <i class="fas fa-chevron-down"></i></a>
-                <div class="submenu-content">
-                    <a href="oportunidades.html#empleo">Empleo</a>
-                    <a href="oportunidades.html#educacion">Educación y formación</a>
-                    <a href="oportunidades.html#becas">Becas y oportunidades</a>
-                    <a href="florecimiento.html">Florecimiento Key</a>
-                </div>
-            </div>
-            <a href="administrados.html">Proyectos</a>
-            <a href="blog.html">Blog</a>
-            <a href="contactanos.html">Contáctanos</a>
-            <div class="search-box">
-                <input type="text" placeholder="BUSCAR...">
-                <button><i class="fas fa-search"></i></button>
-            </div>
-        </nav>
-    </div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>
+      Key Workspace
+    </a>
+
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav">
+      <a href="sobre.html">Sobre</a>
+      <a href="proyectos.html">Proyectos</a>
+      <a href="oportunidades.html">Oportunidades</a>
+      <a href="florecimiento.html">Florecimiento</a>
+      <a href="contacto.html" class="nav-cta">Contacto</a>
+    </nav>
+  </div>
 </header>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-    <div class="container hero-inner">
-        <div class="hero-text">
-            <h2>Educación, empleabilidad y cultura <strong>100% online</strong></h2>
-            <p style="margin-top:14px; font-size:1.05rem; color:#555; max-width:520px;">Una plataforma digital que trabaja por correo y mensajería. Sin sedes. Sin fronteras. Sin horarios.</p>
-            <a href="sobre-nosotros.html" class="btn">Conoce más</a>
-        </div>
-        <div class="hero-slider">
-            <div class="swiper mySwiperHero">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="slide-bg slide-bg-primary">
-                            <div class="slide-content">
-                                <div class="slide-title">Oportunidades para crecer</div>
-                                <a href="oportunidades.html" class="slide-btn">EXPLORAR</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-bg slide-bg-secondary">
-                            <div class="slide-content">
-                                <div class="slide-title">Conoce nuestra trayectoria</div>
-                                <a href="sobre-nosotros.html" class="slide-btn">DESCUBRIR</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-bg slide-bg-purple">
-                            <div class="slide-content">
-                                <div class="slide-title">Sé parte del cambio</div>
-                                <a href="contactanos.html" class="slide-btn">CONTACTAR</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-bg" style="background-color: var(--orange);">
-                            <div class="slide-content">
-                                <div class="slide-title">Florecimiento Key 2026</div>
-                                <a href="florecimiento.html" class="slide-btn" style="background: var(--yellow); color: var(--primary);">POSTULAR</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
+  <div class="container">
+    <p class="eyebrow">Un espacio digital · 100% online</p>
+    <h1 class="hero-title">
+      Aprender, crear<br>
+      y crecer <em>sin sedes</em><br>
+      ni fronteras.
+    </h1>
+    <p class="hero-sub">
+      Key Workspace trabaja educación, empleabilidad y cultura por correo y mensajería.
+      Sin oficinas. Sin horarios. Sin reuniones obligatorias.
+    </p>
+    <div class="hero-cta">
+      <a href="proyectos.html" class="btn btn-primary">Ver proyectos</a>
+      <a href="sobre.html" class="btn btn-ghost">Conoce el espacio →</a>
     </div>
+
+    <ul class="hero-meta">
+      <li><strong>+12</strong> años de trayectoria</li>
+      <li><strong>100%</strong> asíncrono</li>
+      <li><strong>0</strong> sedes físicas</li>
+    </ul>
+  </div>
 </section>
 
-<!-- ===== TARJETAS ===== -->
-<section class="cards">
-    <div class="container cards-grid">
-        <div class="card">
-            <h3>¿Qué es Key Code?</h3>
-            <p>Una plataforma digital independiente que impulsa educación, empleabilidad y cultura a través de proyectos 100% online.</p>
-            <a href="sobre-nosotros.html" class="btn-small">Conoce más</a>
-        </div>
-        <div class="card">
-            <h3>¿Cómo trabajamos?</h3>
-            <p>Toda nuestra comunicación es asíncrona: por correo electrónico y mensajería. Sin reuniones obligatorias, sin horarios fijos, sin sedes.</p>
-            <a href="sobre-nosotros.html#modelo" class="btn-small">Conoce más</a>
-        </div>
-        <div class="card">
-            <h3>Nuestro impacto</h3>
-            <p><strong>+12 años</strong> de trayectoria. <strong>+50 estudiantes</strong> alcanzados, <strong>+30 jóvenes</strong> multiplicadores y <strong>+20 Jóvenes Key</strong> formados.</p>
-            <a href="sobre-nosotros.html#trayectoria" class="btn-small">Conoce más</a>
-        </div>
-    </div>
+<!-- ===== MANIFIESTO ===== -->
+<section class="manifesto">
+  <div class="container-narrow">
+    <p class="display-text">
+      Creemos que una oportunidad puede abrir una puerta, y que una persona puede abrir
+      muchas más. Por eso trabajamos en un espacio donde la distancia no importa y el tiempo
+      se respeta.
+    </p>
+  </div>
 </section>
 
-<!-- ===== PROYECTOS PROMOCIONADOS ===== -->
-<section class="programa-cosecha" style="background: var(--primary); color: #fff; padding: 50px 0; text-align: center;">
-    <div class="container">
-        <h2 style="font-size: 2.5rem; font-weight: 300; margin-bottom: 8px;">Proyectos que promocionamos</h2>
-        <p style="font-size: 1.2rem; color: var(--yellow); margin-bottom: 24px;">Iniciativas independientes que comparten nuestra visión</p>
-        <p style="max-width: 700px; margin: 0 auto 30px; font-size: 1.05rem; line-height: 1.6; opacity: 0.9;">
-            Key Code difunde y apoya proyectos de terceros que trabajan en educación, cultura, empleabilidad y desarrollo. No somos sus representantes legales, pero creemos en su labor y la compartimos.
+<!-- ===== ÁREAS ===== -->
+<section class="areas">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">Qué hacemos</p>
+      <h2>Tres áreas, un mismo espacio</h2>
+    </header>
+
+    <div class="grid-3">
+      <article class="area-card">
+        <div class="area-num">01</div>
+        <h3>Educación</h3>
+        <p>Experiencias formativas que amplían conocimientos y capacidades, sin depender de horarios ni aulas físicas.</p>
+      </article>
+      <article class="area-card">
+        <div class="area-num">02</div>
+        <h3>Empleabilidad</h3>
+        <p>Herramientas y preparación para la transición al mundo laboral, con foco en talento digital y trabajo remoto.</p>
+      </article>
+      <article class="area-card">
+        <div class="area-num">03</div>
+        <h3>Cultura</h3>
+        <p>Contenido editorial, archivo digital y proyectos que preservan la memoria y difunden el conocimiento.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROYECTOS ===== -->
+<section class="projects">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">Proyectos promocionados</p>
+      <h2>Espacios independientes que difundimos</h2>
+      <p class="section-lead">Cada uno tiene su propia identidad y su propio equipo. Key Workspace los promociona, no los representa.</p>
+    </header>
+
+    <div class="grid-3">
+      <a href="https://keyworkspace.github.io/windsor/" class="project-card project-windsor">
+        <div class="project-tag">Estrategia · Diseño · Tecnología</div>
+        <h3>Windsor</h3>
+        <p>Servicios digitales para emprendedores y organizaciones que quieren construir con propósito.</p>
+        <span class="project-link">Visitar Windsor →</span>
+      </a>
+
+      <a href="https://keyworkspace.github.io/heliot/" class="project-card project-heliot">
+        <div class="project-tag">Editorial independiente</div>
+        <h3>Heliot Media</h3>
+        <p>Publicación sobre cultura, academia y sociedad, con mirada crítica y humana.</p>
+        <span class="project-link">Visitar Heliot →</span>
+      </a>
+
+      <a href="https://keyworkspace.github.io/artsandculture/" class="project-card project-arts">
+        <div class="project-tag">Museo digital</div>
+        <h3>Arts &amp; Culture</h3>
+        <p>Archivo en línea con 50 piezas emblemáticas del arte y la cultura universal.</p>
+        <span class="project-link">Visitar el museo →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLORECIMIENTO ===== -->
+<section class="featured">
+  <div class="container">
+    <div class="featured-card">
+      <div class="featured-content">
+        <p class="eyebrow">Convocatoria abierta · 2026</p>
+        <h2>Florecimiento Key</h2>
+        <p class="featured-sub">
+          Envía una idea. La evaluamos por su mérito. Si florece, la convertimos en proyecto.
+          El Salvador y Corea del Sur como punto de partida.
         </p>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; max-width:980px; margin:0 auto;">
-            <div style="background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); border-radius:14px; padding:24px 20px; text-align:left;">
-                <h3 style="color:var(--yellow); font-size:1.2rem; margin-bottom:8px;">Windsor</h3>
-                <p style="font-size:.95rem; line-height:1.6; opacity:.9; margin-bottom:14px;">Estrategia, diseño y tecnología para emprendedores y organizaciones.</p>
-                <a href="https://windsor-one.github.io/windsor/" target="_blank" rel="noopener noreferrer" style="color:var(--yellow); font-weight:700;">Visitar sitio →</a>
-            </div>
-            <div style="background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); border-radius:14px; padding:24px 20px; text-align:left;">
-                <h3 style="color:var(--yellow); font-size:1.2rem; margin-bottom:8px;">Heliot Media</h3>
-                <p style="font-size:.95rem; line-height:1.6; opacity:.9; margin-bottom:14px;">Proyecto editorial independiente sobre cultura, academia y sociedad.</p>
-                <a href="https://windsor-one.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer" style="color:var(--yellow); font-weight:700;">Visitar sitio →</a>
-            </div>
-            <div style="background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); border-radius:14px; padding:24px 20px; text-align:left;">
-                <h3 style="color:var(--yellow); font-size:1.2rem; margin-bottom:8px;">Arts & Culture</h3>
-                <p style="font-size:.95rem; line-height:1.6; opacity:.9; margin-bottom:14px;">Museo digital y archivo en línea de arte y cultura universal.</p>
-                <a href="https://keycodeonline.github.io/artsandculture/" target="_blank" rel="noopener noreferrer" style="color:var(--yellow); font-weight:700;">Visitar sitio →</a>
-            </div>
+        <div class="featured-cta">
+          <a href="postular.html" class="btn btn-primary">Enviar una idea</a>
+          <a href="florecimiento.html" class="btn btn-ghost">Conocer la convocatoria →</a>
         </div>
+      </div>
+      <div class="featured-mark" aria-hidden="true">개화</div>
     </div>
-</section>
-
-<!-- ===== NUESTRO ALCANCE ===== -->
-<section class="pilares" id="alcance">
-    <div class="container">
-        <h2>Nuestro alcance</h2>
-        <p class="sub">Cifras que reflejan nuestra trayectoria</p>
-        <div class="pilares-grid">
-            <div class="pilar-item">
-                <i class="fas fa-calendar-alt pilar-icon"></i>
-                <h4>Trayectoria</h4>
-                <div class="numero" data-target="12">12</div>
-                <div class="label">años de acompañamiento</div>
-            </div>
-            <div class="pilar-item">
-                <i class="fas fa-user-graduate pilar-icon"></i>
-                <h4>Estudiantes</h4>
-                <div class="numero" data-target="50">50</div>
-                <div class="label">alcanzados desde 2024</div>
-            </div>
-            <div class="pilar-item">
-                <i class="fas fa-users pilar-icon"></i>
-                <h4>Multiplicación</h4>
-                <div class="numero" data-target="30">30</div>
-                <div class="label">jóvenes alcanzados en 2024</div>
-            </div>
-            <div class="pilar-item">
-                <i class="fas fa-star pilar-icon"></i>
-                <h4>Jóvenes Key</h4>
-                <div class="numero" data-target="20">20</div>
-                <div class="label">acompañados desde 2025</div>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 
 <!-- ===== TRAYECTORIA ===== -->
-<section class="historias">
-    <div class="container">
-        <h2>Nuestra Trayectoria</h2>
-        <p class="sub">12+ años de compromiso con la juventud</p>
-        <div class="swiper-wrapper-container">
-            <div class="swiper mySwiperHistorias">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide timeline-slide">
-                        <div class="timeline-content bg-yellow">
-                            <div class="timeline-year">2013 – 2023</div>
-                            <div class="timeline-title">Acompañamiento cercano</div>
-                            <div class="timeline-desc">Apoyo educativo y financiero a <strong>2 jóvenes</strong> durante más de una década.</div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide timeline-slide">
-                        <div class="timeline-content bg-orange">
-                            <div class="timeline-year">2024</div>
-                            <div class="timeline-title">Experiencias de formación</div>
-                            <div class="timeline-desc"><strong>+50 estudiantes</strong> en inglés, orientación vocacional y medioambiente.</div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide timeline-slide">
-                        <div class="timeline-content bg-purple">
-                            <div class="timeline-year">2024</div>
-                            <div class="timeline-title">Multiplicación del impacto</div>
-                            <div class="timeline-desc">Un joven formado guía a <strong>+30 jóvenes</strong> en su comunidad.</div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide timeline-slide">
-                        <div class="timeline-content bg-green">
-                            <div class="timeline-year">2025</div>
-                            <div class="timeline-title">Surgen los Jóvenes Key</div>
-                            <div class="timeline-desc"><strong>+20 jóvenes</strong> reciben formación y herramientas.</div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide timeline-slide">
-                        <div class="timeline-content bg-secondary">
-                            <div class="timeline-year">2026</div>
-                            <div class="timeline-title">Key Code</div>
-                            <div class="timeline-desc">La iniciativa se consolida como plataforma digital 100% online.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-pagination-historias"></div>
-        </div>
+<section class="timeline">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">Nuestra trayectoria</p>
+      <h2>Una historia que empezó mucho antes</h2>
+    </header>
+
+    <ol class="timeline-list">
+      <li>
+        <span class="timeline-year">2013 – 2023</span>
+        <h3>Acompañamiento cercano</h3>
+        <p>Apoyo educativo y financiero a dos jóvenes durante más de una década.</p>
+      </li>
+      <li>
+        <span class="timeline-year">2024</span>
+        <h3>Experiencias de formación</h3>
+        <p>Más de 50 estudiantes en inglés, orientación vocacional y medioambiente.</p>
+      </li>
+      <li>
+        <span class="timeline-year">2024</span>
+        <h3>Multiplicación del impacto</h3>
+        <p>Un joven formado guía a más de 30 jóvenes en su comunidad.</p>
+      </li>
+      <li>
+        <span class="timeline-year">2025</span>
+        <h3>Surgen los Jóvenes Key</h3>
+        <p>Más de 20 jóvenes formados con herramientas y acompañamiento.</p>
+      </li>
+      <li>
+        <span class="timeline-year">2026</span>
+        <h3>Key Workspace</h3>
+        <p>La iniciativa se consolida como espacio digital 100% online.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== MODELO ===== -->
+<section class="model">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Un modelo claro, sin humo</h2>
+    </header>
+
+    <div class="grid-2">
+      <div class="model-item">
+        <span class="model-icon" aria-hidden="true">01</span>
+        <h3>100% online</h3>
+        <p>No tenemos sedes ni presencia territorial. Todo ocurre en línea.</p>
+      </div>
+      <div class="model-item">
+        <span class="model-icon" aria-hidden="true">02</span>
+        <h3>Asíncrono</h3>
+        <p>Comunicación por correo y mensajería. Sin reuniones obligatorias.</p>
+      </div>
+      <div class="model-item">
+        <span class="model-icon" aria-hidden="true">03</span>
+        <h3>Evaluación por mérito</h3>
+        <p>Las ideas se juzgan por su valor, no por quién las envía.</p>
+      </div>
+      <div class="model-item">
+        <span class="model-icon" aria-hidden="true">04</span>
+        <h3>Autoría protegida</h3>
+        <p>Cada participante recibe un código que respalda su crédito.</p>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-final">
+  <div class="container-narrow">
+    <h2 class="display-text">
+      ¿Tienes una idea<br>
+      <em>o una pregunta?</em>
+    </h2>
+    <p>Escríbenos por correo. Te respondemos por escrito.</p>
+    <a href="contacto.html" class="btn btn-primary">Ir a contacto</a>
+  </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="footer">
-    <div class="container footer-grid">
-        <div class="col-logo">
-            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key Code"></a>
-        </div>
-        <div class="col-enlaces">
-            <p><strong>Plataforma</strong></p>
-            <a href="sobre-nosotros.html">Sobre nosotros</a>
-            <a href="oportunidades.html">Oportunidades</a>
-            <a href="administrados.html">Proyectos</a>
-            <a href="blog.html">Blog</a>
-            <a href="contactanos.html">Contáctanos</a>
-        </div>
-        <div class="col-enlaces">
-            <p><strong>Transparencia y legal</strong></p>
-            <a href="legal.html#naturaleza">Naturaleza de Key Code</a>
-            <a href="legal.html#aviso-legal">Aviso Legal</a>
-            <a href="legal.html#politica-editorial">Política Editorial</a>
-            <a href="legal.html#politica-privacidad">Política de Privacidad</a>
-            <a href="legal.html#politica-cookies">Política de Cookies</a>
-            <a href="legal.html#terminos-condiciones">Términos y Condiciones</a>
-            <a href="legal.html#propiedad-intelectual">Propiedad Intelectual</a>
-        </div>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <span>Key Workspace</span>
+      <p class="footer-sub">Un espacio digital 100% online. Sin sedes, sin fronteras, sin horarios.</p>
     </div>
-    <div class="social">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-tiktok"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
+
+    <div class="footer-col">
+      <h4>Espacio</h4>
+      <a href="sobre.html">Sobre</a>
+      <a href="proyectos.html">Proyectos</a>
+      <a href="oportunidades.html">Oportunidades</a>
+      <a href="contacto.html">Contacto</a>
     </div>
-    <div class="copyright">Key Code · 2026</div>
+
+    <div class="footer-col">
+      <h4>Convocatoria</h4>
+      <a href="florecimiento.html">Florecimiento Key</a>
+      <a href="postular.html">Enviar idea</a>
+      <a href="seleccionadas.html">Seleccionadas</a>
+      <a href="reclamar.html">Reclamar autoría</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Proyectos</h4>
+      <a href="https://keyworkspace.github.io/windsor/">Windsor</a>
+      <a href="https://keyworkspace.github.io/heliot/">Heliot Media</a>
+      <a href="https://keyworkspace.github.io/artsandculture/">Arts &amp; Culture</a>
+      <a href="https://keyworkspace.github.io/blog/">Blog</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="legal.html#naturaleza">Naturaleza</a>
+      <a href="legal.html#aviso">Aviso legal</a>
+      <a href="legal.html#privacidad">Privacidad</a>
+      <a href="legal.html#terminos">Términos</a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>Key Workspace · 2026</span>
+    <span>Hecho por correo, no por reuniones.</span>
+  </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
