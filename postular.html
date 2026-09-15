@@ -1,589 +1,313 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Postular · Florecimiento Key · Key Code</title>
-    <meta name="description" content="Envía tu idea a Florecimiento Key. It's time to FloreSer.">
-    <link rel="icon" href="./assets/logo-simbolo.png" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-    .flor-main{
-      --flor-bg:#fbf8f1;
-      --flor-cream:#f5efdf;
-      --flor-line:#e8e0ce;
-      --flor-line-2:#d9cfb8;
-      --flor-text:#1a1f2e;
-      --flor-muted:#5c6478;
-      --maqui:#d9558a; --maqui-2:#e88ab5; --maqui-3:#f4a3c7; --maqui-bg:#fce7f0;
-      --indigo:#3a5da8; --indigo-bg:#e8efff;
-      --celadon:#4a8f70; --celadon-2:#6ddba0; --celadon-3:#8fbfa8; --celadon-bg:#e3f5ea;
-      --gold:#b8912e; --gold-bg:#fbf3dc;
-      --ok:#4a8f70;
-      --warn:#c94a5a;
-      color:var(--flor-text);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
-      line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;
-      background:#ffffff;
-    }
-    .flor-main a{color:var(--maqui);text-decoration:none}
-    .flor-main a:hover{text-decoration:underline}
-    .flor-main .btn-flor{color:#0a1f14;text-decoration:none}
-    .flor-main .btn-flor:hover{text-decoration:none}
-    .flor-main .btn-flor-ghost{color:var(--flor-text)}
-    .flor-main .btn-flor-ghost:hover{text-decoration:none}
-    .flor-wrap{max-width:940px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
-
-    .flor-main .hangul-bg{position:absolute;top:60px;left:50%;transform:translateX(-50%);
-      font-family:serif;font-weight:900;color:rgba(217,85,138,.04);
-      font-size:min(38vw,480px);line-height:1;user-select:none;pointer-events:none;
-      letter-spacing:-.05em;z-index:0;overflow:hidden}
-    .flor-main .anil-pattern{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.05;
-      background-image:
-        repeating-linear-gradient(45deg,transparent 0 14px,rgba(58,93,168,.5) 14px 15px),
-        repeating-linear-gradient(-45deg,transparent 0 14px,rgba(58,93,168,.5) 14px 15px);
-      background-size:28px 28px;
-      mask-image:radial-gradient(ellipse at 85% 30%,#000 0%,transparent 60%);
-      -webkit-mask-image:radial-gradient(ellipse at 85% 30%,#000 0%,transparent 60%)}
-    .flor-main .bojagi-pattern{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.06;
-      background-image:
-        linear-gradient(rgba(74,143,112,.6) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(74,143,112,.6) 1px,transparent 1px);
-      background-size:120px 120px,120px 120px;
-      mask-image:radial-gradient(ellipse at 15% 30%,#000 0%,transparent 60%);
-      -webkit-mask-image:radial-gradient(ellipse at 15% 30%,#000 0%,transparent 60%)}
-    .flor-main #petals{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.55}
-    .flor-main .orb{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
-    .flor-main .orb-1{width:480px;height:480px;background:radial-gradient(circle,rgba(244,163,199,.28),transparent 70%);top:80px;left:-180px;opacity:.55}
-    .flor-main .orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(109,219,160,.24),transparent 70%);bottom:-100px;right:-200px;opacity:.5}
-
-    .flor-main .doodle{position:absolute;pointer-events:none;z-index:1;opacity:.28;
-      stroke:var(--maqui);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-    .flor-main .doodle.green{stroke:var(--celadon);opacity:.32}
-    .flor-main .spin-slow{animation:florSpin 60s linear infinite}
-    .flor-main .sway{animation:florSway 10s ease-in-out infinite}
-    @keyframes florSpin{to{transform:rotate(360deg)}}
-    @keyframes florSway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
-
-    /* HEADER FORM */
-    .form-head{position:relative;padding:76px 0 48px;overflow:hidden;
-      background:linear-gradient(180deg,#ffffff 0%,var(--flor-bg) 100%);
-      border-bottom:1px solid var(--flor-line)}
-    .form-head .flor-wrap{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
-    .flor-tag{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:1.9px;
-      text-transform:uppercase;color:var(--maqui);border:1px solid rgba(217,85,138,.3);
-      padding:9px 18px;border-radius:999px;margin-bottom:24px;
-      background:var(--maqui-bg);font-weight:600}
-    .flor-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--maqui)}
-
-    .form-title{font-size:clamp(34px,5.6vw,56px);line-height:1.05;font-weight:900;letter-spacing:-1.6px;
-      margin-bottom:16px;color:var(--flor-text)}
-    .form-title em{font-style:normal;
-      background:linear-gradient(135deg,#d9558a 0%,#e88ab5 40%,#4a8f70 100%);
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    .slogan{font-size:15px;font-style:italic;color:var(--maqui);letter-spacing:.5px;margin-bottom:20px;font-weight:500;
-      display:inline-flex;align-items:center;gap:12px}
-    .slogan::before,.slogan::after{content:"";width:30px;height:1px;
-      background:linear-gradient(90deg,transparent,var(--maqui),transparent)}
-    .flor-lead{color:var(--flor-muted);font-size:16px;max-width:640px}
-
-    .form-section{padding:56px 0 80px;position:relative;background:var(--flor-bg)}
-    .form-shell{background:#ffffff;border:1px solid var(--flor-line);border-radius:16px;padding:42px;
-      position:relative;overflow:hidden;
-      box-shadow:0 4px 24px rgba(26,31,46,.04)}
-    .form-shell::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
-      background:linear-gradient(90deg,var(--maqui),var(--gold),var(--celadon))}
-    @media(max-width:600px){.form-shell{padding:26px}}
-
-    .field{margin-bottom:26px}
-    .field label{display:block;font-size:14px;font-weight:700;margin-bottom:10px;color:var(--flor-text)}
-    .field label .opt{color:var(--flor-muted);font-weight:400;font-size:12.5px;margin-left:6px}
-    .hint{font-size:12.5px;color:var(--flor-muted);margin-top:8px;display:block;line-height:1.5}
-    .flor-main input[type=text],.flor-main textarea,.flor-main select{
-      width:100%;background:#ffffff;border:1px solid var(--flor-line-2);border-radius:12px;
-      padding:14px 16px;color:var(--flor-text);font-size:15px;font-family:inherit;transition:.2s}
-    .flor-main input[type=text]:focus,.flor-main textarea:focus,.flor-main select:focus{
-      outline:none;border-color:var(--celadon);box-shadow:0 0 0 4px rgba(74,143,112,.12)}
-    .flor-main textarea{min-height:118px;resize:vertical;line-height:1.65}
-    .flor-main select{cursor:pointer;appearance:none;
-      background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235c6478' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat:no-repeat;background-position:right 16px center;background-size:18px;padding-right:46px}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    @media(max-width:600px){.row{grid-template-columns:1fr}}
-
-    .checks{border-top:1px solid var(--flor-line);padding-top:28px;margin-top:10px}
-    .checks > label{font-size:15px;margin-bottom:20px;display:block;font-weight:700;color:var(--flor-text)}
-    .check{display:flex;gap:13px;align-items:flex-start;font-size:13.5px;color:var(--flor-muted);margin-bottom:16px;line-height:1.65}
-    .check input{margin-top:3px;accent-color:var(--celadon);flex-shrink:0;width:17px;height:17px;cursor:pointer}
-    .check label{font-weight:400;margin:0;font-size:13.5px;color:var(--flor-muted);cursor:pointer}
-    .check a{color:var(--celadon);text-decoration:underline}
-
-    .form-actions{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-    .btn-flor{display:inline-flex;align-items:center;gap:10px;padding:17px 36px;border-radius:999px;
-      font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
-    .btn-flor-green{background:linear-gradient(135deg,var(--celadon),var(--celadon-2));color:#0a1f14;border:none}
-    .btn-flor-green:hover:not(:disabled){transform:translateY(-2px)}
-    .btn-flor-green:disabled{opacity:.55;cursor:not-allowed;transform:none}
-    .btn-flor-ghost{background:#ffffff;color:var(--flor-text);border:1px solid var(--flor-line-2)}
-    .btn-flor-ghost:hover{border-color:var(--celadon);color:var(--celadon);text-decoration:none}
-    .btn-flor svg{width:18px;height:18px}
-    #status{font-size:14px}
-
-    .result{display:none;margin-top:36px;
-      background:var(--celadon-bg);border:1px solid rgba(74,143,112,.3);
-      border-radius:16px;padding:34px;position:relative;overflow:hidden;
-      animation:florReveal .5s ease-out}
-    @keyframes florReveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-    .result.show{display:block}
-    .result::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
-      background:linear-gradient(90deg,var(--celadon),var(--celadon-2))}
-    .result h3{color:var(--celadon);font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-    .result h3 svg{width:22px;height:22px;stroke:var(--celadon);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-    .result p{color:var(--flor-muted);font-size:14px;margin-bottom:18px;line-height:1.7}
-    .code-box{display:flex;align-items:center;gap:12px;
-      background:#ffffff;border:1px dashed var(--celadon);
-      border-radius:12px;padding:18px;flex-wrap:wrap}
-    .code-box code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-      font-size:16px;color:var(--celadon);word-break:break-all;flex:1;
-      min-width:200px;letter-spacing:.6px;font-weight:700}
-    .copy-btn{background:linear-gradient(135deg,var(--celadon),var(--celadon-2));
-      color:#0a1f14;border:none;padding:11px 22px;border-radius:9px;font-size:13px;font-weight:700;
-      cursor:pointer;font-family:inherit;transition:.2s;
-      display:inline-flex;align-items:center;gap:7px}
-    .copy-btn:hover{transform:translateY(-1px)}
-    .copy-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-    .result .fine{font-size:13px;color:var(--flor-muted);margin-top:22px;margin-bottom:0}
-    .char-count{font-variant-numeric:tabular-nums;color:var(--celadon);font-weight:600}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Postular · Florecimiento Key</title>
+  <meta name="description" content="Envía tu idea a Florecimiento Key. It's time to FloreSer.">
+  <meta name="theme-color" content="#0C1F33">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
-    <div class="top-bar">
-        <div class="container top-bar-inner">
-            <div class="menu-sup">
-                <a href="oportunidades.html">OPORTUNIDADES</a>
-                <a href="administrados.html">PROYECTOS</a>
-                <a href="https://keycodeonline.github.io/windsor/" target="_blank" rel="noopener noreferrer">WINDSOR</a>
-                <a href="https://keycodeonline.github.io/Heliot-Media/" target="_blank" rel="noopener noreferrer">HELIOT</a>
-            </div>
-        </div>
-    </div>
-    <div class="main-header container">
-        <div class="logo">
-            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key Code"></a>
-        </div>
-        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <nav class="nav-principal" id="mainNav">
-            <div class="submenu">
-                <a href="sobre-nosotros.html">Sobre nosotros <i class="fas fa-chevron-down"></i></a>
-                <div class="submenu-content">
-                    <a href="sobre-nosotros.html#plataforma">Qué es Key Code</a>
-                    <a href="sobre-nosotros.html#areas">Áreas de trabajo</a>
-                    <a href="sobre-nosotros.html#modelo">Cómo trabajamos</a>
-                    <a href="sobre-nosotros.html#vision">Visión de futuro</a>
-                </div>
-            </div>
-            <div class="submenu">
-                <a href="oportunidades.html">Oportunidades <i class="fas fa-chevron-down"></i></a>
-                <div class="submenu-content">
-                    <a href="oportunidades.html#empleo">Empleo</a>
-                    <a href="oportunidades.html#educacion">Educación y formación</a>
-                    <a href="oportunidades.html#becas">Becas y oportunidades</a>
-                    <a href="florecimiento.html">Florecimiento Key</a>
-                </div>
-            </div>
-            <a href="administrados.html">Proyectos</a>
-            <a href="blog.html">Blog</a>
-            <a href="contactanos.html">Contáctanos</a>
-            <div class="search-box">
-                <input type="text" placeholder="BUSCAR...">
-                <button><i class="fas fa-search"></i></button>
-            </div>
-        </nav>
-    </div>
-</header>
-
-<main class="flor-main">
-
-  <div class="hangul-bg">개화</div>
-  <div class="anil-pattern"></div>
-  <div class="bojagi-pattern"></div>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-
-  <header class="form-head">
-    <canvas id="petals"></canvas>
-    <svg class="doodle sway" style="top:16%;right:5%" width="86" height="86" viewBox="0 0 86 86">
-      <circle cx="43" cy="38" r="6"/>
-      <path d="M43 32c-6-5-14-5-17 2 5 5 13 5 17-2z"/>
-      <path d="M43 32c6-5 14-5 17 2-5 5-13 5-17-2z"/>
-      <path d="M43 44c-6 5-14 5-17-2 5-5 13-5 17 2z"/>
-      <path d="M43 44c6 5 14 5 17-2-5-5-13-5-17 2z"/>
-    </svg>
-    <svg class="doodle green spin-slow" style="bottom:12%;left:4%" width="80" height="80" viewBox="0 0 80 80">
-      <circle cx="40" cy="40" r="28" stroke-dasharray="3 6"/>
-      <circle cx="40" cy="40" r="14"/>
-    </svg>
-
-    <div class="flor-wrap">
-      <span class="flor-tag">Postulación · 2026</span>
-      <h1 class="form-title">Envía tu <em>idea</em></h1>
-      <p class="slogan">It's time to FloreSer</p>
-      <p class="flor-lead">
-        Comparte tu idea con nosotros. Al enviar, recibirás un código de autoría que respalda
-        tu crédito cuando el proyecto se haga realidad.
-      </p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Key Workspace
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="sobre.html">Sobre</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="oportunidades.html">Oportunidades</a>
+        <a href="florecimiento.html">Florecimiento</a>
+        <a href="contacto.html" class="nav-cta">Contacto</a>
+      </nav>
     </div>
   </header>
 
-  <section class="form-section">
-    <div class="flor-wrap">
-      <div class="form-shell">
-        <form id="ideaForm" novalidate>
-
-          <div class="field">
-            <label for="titulo">Título de la idea</label>
-            <input type="text" id="titulo" name="titulo" maxlength="120" required
-                   placeholder="Ej: Red de mentoría entre jóvenes y adultos mayores">
-            <span class="hint">Máximo 120 caracteres. Sé específico y claro.</span>
-          </div>
-
-          <div class="row">
-            <div class="field">
-              <label for="categoria">Categoría</label>
-              <select id="categoria" name="categoria" required>
-                <option value="">Selecciona una</option>
-                <option>Empleabilidad juvenil</option>
-                <option>Educación y formación</option>
-                <option>Adultos mayores</option>
-                <option>Inclusión y diversidad</option>
-                <option>Medioambiente</option>
-                <option>Bienestar y salud</option>
-                <option>Tecnología cívica</option>
-                <option>Cultura y comunidad</option>
-                <option>Otra</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="alias">Alias público <span class="opt">(opcional)</span></label>
-              <input type="text" id="alias" name="alias" maxlength="40"
-                     placeholder="Ej: CosechaVerde">
-              <span class="hint">Si tu idea es seleccionada, se publicará con este alias.</span>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="problema">¿Qué problema resuelve?</label>
-            <textarea id="problema" name="problema" maxlength="900" required
-                      placeholder="Describe el problema o necesidad concreta que tu idea aborda."></textarea>
-            <span class="hint"><span id="cProblema" class="char-count">0</span> / 900 · mínimo 40</span>
-          </div>
-
-          <div class="field">
-            <label for="solucion">¿Cómo lo resuelve tu idea?</label>
-            <textarea id="solucion" name="solucion" maxlength="1400" required
-                      placeholder="Explica la solución: qué se hace, cómo se implementa, quién participa, qué recursos necesita."></textarea>
-            <span class="hint"><span id="cSolucion" class="char-count">0</span> / 1400 · mínimo 60</span>
-          </div>
-
-          <div class="field">
-            <label for="impacto">Impacto esperado <span class="opt">(opcional)</span></label>
-            <textarea id="impacto" name="impacto" maxlength="600"
-                      placeholder="¿A cuántas personas beneficiaría? ¿Qué cambiaría si se implementa?"></textarea>
-            <span class="hint"><span id="cImpacto" class="char-count">0</span> / 600</span>
-          </div>
-
-          <div class="checks">
-            <label>Antes de enviar</label>
-            <div class="check">
-              <input type="checkbox" id="terminos" required>
-              <label for="terminos">
-                He leído y acepto las <a href="florecimiento.html#bases" target="_blank">bases de la convocatoria</a>.
-                Entiendo que Key Code puede implementar, adaptar o modificar mi idea sin compensación económica,
-                y que el crédito se otorga cuando el proyecto se hace realidad.
-              </label>
-            </div>
-            <div class="check">
-              <input type="checkbox" id="original" required>
-              <label for="original">Declaro que esta idea es original y no infringe derechos de terceros.</label>
-            </div>
-            <div class="check">
-              <input type="checkbox" id="mayor" required>
-              <label for="mayor">Declaro ser mayor de edad.</label>
-            </div>
-          </div>
-
-          <div class="form-actions">
-            <button type="submit" class="btn-flor btn-flor-green" id="submitBtn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-              Enviar idea
-            </button>
-            <a href="florecimiento.html" class="btn-flor btn-flor-ghost">Cancelar</a>
-            <span id="status"></span>
-          </div>
-        </form>
-
-        <div class="result" id="result">
-          <h3><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Idea recibida</h3>
-          <p>Guarda este código. Es tu identificador de autoría: con él podrás reclamar crédito cuando tu idea pase a la etapa de implementación.</p>
-          <div class="code-box">
-            <code id="codeOut">—</code>
-            <button class="copy-btn" id="copyBtn" type="button">
-              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              Copiar
-            </button>
-          </div>
-          <p class="fine">Los resultados se publican en el sitio del evento. Mantén tu código a mano.</p>
-        </div>
-      </div>
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">
+      <div class="hero-grid"></div>
+      <div class="hero-glow hero-glow-1"></div>
+    </div>
+    <div class="container page-hero-content">
+      <p class="eyebrow"><span class="eyebrow-dot"></span>Postulación · Florecimiento Key</p>
+      <h1 class="page-hero-title">
+        Envía tu <em>idea.</em>
+      </h1>
+      <p class="page-hero-sub">
+        Comparte tu propuesta con nosotros. Al enviar, recibirás un código de autoría que
+        respalda tu crédito cuando el proyecto se haga realidad.
+      </p>
     </div>
   </section>
 
-</main>
+  <section class="section">
+    <div class="container form-container">
+      <form id="ideaForm" class="contact-form convocatoria-form" novalidate>
 
-<footer class="footer">
+        <div class="form-group">
+          <label for="titulo">Título de la idea <span class="req">*</span></label>
+          <input type="text" id="titulo" name="titulo" maxlength="120" required
+                 placeholder="Ej: Red de mentoría entre jóvenes y adultos mayores">
+          <span class="hint">Máximo 120 caracteres. Sé específico.</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="categoria">Categoría <span class="req">*</span></label>
+            <select id="categoria" name="categoria" required>
+              <option value="">Selecciona una</option>
+              <option>Empleabilidad juvenil</option>
+              <option>Educación y formación</option>
+              <option>Adultos mayores</option>
+              <option>Inclusión y diversidad</option>
+              <option>Medioambiente</option>
+              <option>Bienestar y salud</option>
+              <option>Tecnología cívica</option>
+              <option>Cultura y comunidad</option>
+              <option>Otra</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="alias">Alias público <span class="opt">(opcional)</span></label>
+            <input type="text" id="alias" name="alias" maxlength="40"
+                   placeholder="Ej: CosechaVerde">
+            <span class="hint">Si tu idea es seleccionada, se publicará con este alias.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="problema">¿Qué problema resuelve? <span class="req">*</span></label>
+          <textarea id="problema" name="problema" maxlength="900" required
+                    placeholder="Describe el problema o necesidad concreta que tu idea aborda."></textarea>
+          <span class="hint"><span id="cProblema" class="char-count">0</span> / 900 · mínimo 40</span>
+        </div>
+
+        <div class="form-group">
+          <label for="solucion">¿Cómo lo resuelve tu idea? <span class="req">*</span></label>
+          <textarea id="solucion" name="solucion" maxlength="1400" required
+                    placeholder="Explica la solución: qué se hace, cómo se implementa, quién participa, qué recursos necesita."></textarea>
+          <span class="hint"><span id="cSolucion" class="char-count">0</span> / 1400 · mínimo 60</span>
+        </div>
+
+        <div class="form-group">
+          <label for="impacto">Impacto esperado <span class="opt">(opcional)</span></label>
+          <textarea id="impacto" name="impacto" maxlength="600"
+                    placeholder="¿A cuántas personas beneficiaría? ¿Qué cambiaría si se implementa?"></textarea>
+          <span class="hint"><span id="cImpacto" class="char-count">0</span> / 600</span>
+        </div>
+
+        <div class="checkbox-group">
+          <label class="checkbox">
+            <input type="checkbox" id="terminos" required>
+            <span>He leído y acepto las <a href="florecimiento.html#bases" target="_blank" class="inline-link">bases de la convocatoria</a>. Entiendo que Key Workspace puede implementar, adaptar o modificar mi idea sin compensación económica, y que el crédito se otorga cuando el proyecto se hace realidad.</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="original" required>
+            <span>Declaro que esta idea es original y no infringe derechos de terceros.</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="mayor" required>
+            <span>Declaro ser mayor de edad.</span>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            Enviar idea
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <a href="florecimiento.html" class="btn btn-ghost">Cancelar</a>
+        </div>
+
+        <p id="status" class="status-msg" role="status" aria-live="polite"></p>
+      </form>
+
+      <aside class="code-result" id="result" hidden>
+        <p class="code-result-label">Idea recibida</p>
+        <h3>Guarda tu código de autoría.</h3>
+        <p class="code-result-desc">
+          Es tu identificador. Con él podrás reclamar crédito cuando tu idea pase a la etapa
+          de implementación. No está vinculado a ningún dato personal.
+        </p>
+        <div class="code-display">
+          <code id="codeOut">—</code>
+          <button type="button" class="copy-btn" id="copyBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <p class="code-result-fine">
+          Los resultados se publican en <a href="seleccionadas.html" class="inline-link">seleccionadas</a>.
+          Mantén tu código a mano.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="site-footer">
     <div class="container footer-grid">
-        <div class="col-logo">
-            <a href="index.html"><img src="./assets/logo-horizontal.png" alt="Key Code"></a>
-        </div>
-        <div class="col-enlaces">
-            <p><strong>Plataforma</strong></p>
-            <a href="sobre-nosotros.html">Sobre nosotros</a>
-            <a href="oportunidades.html">Oportunidades</a>
-            <a href="administrados.html">Proyectos</a>
-            <a href="blog.html">Blog</a>
-            <a href="contactanos.html">Contáctanos</a>
-        </div>
-        <div class="col-enlaces">
-            <p><strong>Transparencia y legal</strong></p>
-            <a href="legal.html#naturaleza">Naturaleza de Key Code</a>
-            <a href="legal.html#aviso-legal">Aviso Legal</a>
-            <a href="legal.html#politica-editorial">Política Editorial</a>
-            <a href="legal.html#politica-privacidad">Política de Privacidad</a>
-            <a href="legal.html#politica-cookies">Política de Cookies</a>
-            <a href="legal.html#terminos-condiciones">Términos y Condiciones</a>
-            <a href="legal.html#propiedad-intelectual">Propiedad Intelectual</a>
-        </div>
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Key Workspace</span>
+        <p class="footer-sub">Un espacio digital para aprender, crear y crecer.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Espacio</h4>
+        <a href="sobre.html">Sobre</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="oportunidades.html">Oportunidades</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h4>Convocatoria</h4>
+        <a href="florecimiento.html">Florecimiento Key</a>
+        <a href="postular.html">Enviar idea</a>
+        <a href="seleccionadas.html">Seleccionadas</a>
+        <a href="reclamar.html">Reclamar autoría</a>
+      </div>
+      <div class="footer-col">
+        <h4>Proyectos</h4>
+        <a href="https://keyworkspace.github.io/windsor/">Windsor</a>
+        <a href="https://keyworkspace.github.io/thenewkey/">The New Key</a>
+        <a href="https://keyworkspace.github.io/artsandculture/">Arts &amp; Culture</a>
+        <a href="https://keyworkspace.github.io/blog/">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="legal.html#naturaleza">Naturaleza</a>
+        <a href="legal.html#aviso">Aviso legal</a>
+        <a href="legal.html#privacidad">Privacidad</a>
+        <a href="legal.html#terminos">Términos</a>
+      </div>
     </div>
-    <div class="social">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-tiktok"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
+    <div class="container footer-bottom">
+      <span>Key Workspace · 2026 · Florecimiento Key</span>
+      <span>Un espacio digital independiente.</span>
     </div>
-    <div class="copyright">Key Code · 2026 · Florecimiento Key · 개화</div>
-</footer>
+  </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-<script src="script.js"></script>
-<script>
-/* ===== PÉTALOS SOBRE FONDO CLARO ===== */
-(function(){
-  const c = document.getElementById('petals');
-  if (!c) return;
-  const host = c.parentElement;
-  const ctx = c.getContext('2d');
-  let w, h, items = [];
-  const MAQUI = ['#d9558a','#e88ab5','#f4a3c7','#ffc9e0'];
-  const HOJA = ['#4a8f70','#6ddba0','#8fbfa8','#7ec9a3'];
-  const GOLD = ['#b8912e','#c9a75a'];
-  const COUNT = window.innerWidth < 720 ? 14 : 24;
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      'use strict';
 
-  function resize(){
-    w = c.width = host.offsetWidth;
-    h = c.height = host.offsetHeight;
-  }
-  resize();
-  addEventListener('resize', resize);
+      const form = document.getElementById('ideaForm');
+      const status = document.getElementById('status');
+      const result = document.getElementById('result');
+      const codeOut = document.getElementById('codeOut');
+      const submitBtn = document.getElementById('submitBtn');
 
-  function drawMaqui(ctx, size, color){
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.moveTo(0, -size * .9);
-    ctx.bezierCurveTo(size * .7, -size * .5, size * .8, size * .4, 0, size);
-    ctx.bezierCurveTo(-size * .8, size * .4, -size * .7, -size * .5, 0, -size * .9);
-    ctx.fill();
-    ctx.globalAlpha = .5;
-    ctx.fillStyle = '#fff';
-    ctx.beginPath();
-    ctx.ellipse(-size * .15, -size * .25, size * .16, size * .36, -.2, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.globalAlpha = 1;
-  }
-  function drawBlossom(ctx, size, color){
-    ctx.fillStyle = color;
-    for (let i = 0; i < 5; i++){
-      ctx.save();
-      ctx.rotate((Math.PI * 2 / 5) * i);
-      ctx.beginPath();
-      ctx.ellipse(0, -size * .55, size * .4, size * .65, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    }
-    ctx.fillStyle = '#b8912e';
-    ctx.beginPath();
-    ctx.arc(0, 0, size * .16, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  function drawLeaf(ctx, size, color){
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.ellipse(0, 0, size * .32, size, 0, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  function P(){ this.reset(true); }
-  P.prototype.reset = function(init){
-    const r = Math.random();
-    if (r < .45) this.type = 'maqui';
-    else if (r < .75) this.type = 'blossom';
-    else this.type = 'leaf';
-    this.x = Math.random() * w;
-    this.y = init ? Math.random() * h : -30;
-    this.size = 5 + Math.random() * 8;
-    this.vy = .25 + Math.random() * .5;
-    this.vx = (Math.random() - .5) * .45;
-    this.rot = Math.random() * Math.PI * 2;
-    this.rs = (Math.random() - .5) * .02;
-    this.op = .35 + Math.random() * .4;
-    this.ph = Math.random() * Math.PI * 2;
-    this.ps = .01 + Math.random() * .02;
-    if (this.type === 'leaf') this.color = HOJA[Math.floor(Math.random() * HOJA.length)];
-    else if (Math.random() < .15) this.color = GOLD[Math.floor(Math.random() * GOLD.length)];
-    else this.color = MAQUI[Math.floor(Math.random() * MAQUI.length)];
-  };
-  P.prototype.draw = function(){
-    ctx.save();
-    ctx.translate(this.x, this.y);
-    ctx.rotate(this.rot);
-    ctx.globalAlpha = this.op;
-    if (this.type === 'maqui') drawMaqui(ctx, this.size, this.color);
-    else if (this.type === 'blossom') drawBlossom(ctx, this.size * .8, this.color);
-    else drawLeaf(ctx, this.size, this.color);
-    ctx.restore();
-  };
-  P.prototype.update = function(){
-    this.ph += this.ps;
-    this.x += this.vx + Math.sin(this.ph) * .45;
-    this.y += this.vy;
-    this.rot += this.rs;
-    if (this.y > h + 30) this.reset(false);
-    if (this.x < -30) this.x = w + 20;
-    if (this.x > w + 30) this.x = -20;
-  };
-  for (let i = 0; i < COUNT; i++) items.push(new P());
-  (function loop(){
-    ctx.clearRect(0, 0, w, h);
-    items.forEach(p => { p.update(); p.draw(); });
-    requestAnimationFrame(loop);
-  })();
-})();
+      const bind = (id, out) => {
+        const el = document.getElementById(id);
+        const o = document.getElementById(out);
+        if (el && o) el.addEventListener('input', () => { o.textContent = el.value.length; });
+      };
+      bind('problema', 'cProblema');
+      bind('solucion', 'cSolucion');
+      bind('impacto', 'cImpacto');
 
-/* ===== FORM ===== */
-const form = document.getElementById('ideaForm');
-const status = document.getElementById('status');
-const result = document.getElementById('result');
-const codeOut = document.getElementById('codeOut');
-const submitBtn = document.getElementById('submitBtn');
+      async function generarCodigo(payload) {
+        try {
+          const data = new TextEncoder().encode(payload);
+          const buf = await crypto.subtle.digest('SHA-256', data);
+          const bytes = new Uint8Array(buf);
+          const alpha = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+          let raw = '';
+          for (let i = 0; i < 16; i++) raw += alpha[bytes[i] % alpha.length];
+          return 'KEY-' + raw.match(/.{1,4}/g).join('-');
+        } catch {
+          const seg = () => Math.random().toString(36).slice(2, 6).toUpperCase();
+          return `KEY-${seg()}-${seg()}-${seg()}-${seg()}`;
+        }
+      }
 
-const bind = (id, out) => {
-  const el = document.getElementById(id);
-  const o = document.getElementById(out);
-  el.addEventListener('input', () => { o.textContent = el.value.length; });
-};
-bind('problema','cProblema');
-bind('solucion','cSolucion');
-bind('impacto','cImpacto');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-async function generarCodigo(payload){
-  const data = new TextEncoder().encode(payload);
-  const buf = await crypto.subtle.digest('SHA-256', data);
-  const bytes = new Uint8Array(buf);
-  const alpha = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let raw = '';
-  for (let i = 0; i < 16; i++) raw += alpha[bytes[i] % alpha.length];
-  return 'KEY-' + raw.match(/.{1,4}/g).join('-');
-}
+        const titulo = form.titulo.value.trim();
+        const categoria = form.categoria.value;
+        const problema = form.problema.value.trim();
+        const solucion = form.solucion.value.trim();
+        const alias = form.alias.value.trim();
+        const impacto = form.impacto.value.trim();
+        const ok = form.terminos.checked && form.original.checked && form.mayor.checked;
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const titulo = form.titulo.value.trim();
-  const categoria = form.categoria.value;
-  const problema = form.problema.value.trim();
-  const solucion = form.solucion.value.trim();
-  const alias = form.alias.value.trim();
-  const impacto = form.impacto.value.trim();
-  const ok = form.terminos.checked && form.original.checked && form.mayor.checked;
+        const fail = (m) => { status.textContent = m; status.classList.add('is-error'); };
 
-  const fail = (m) => { status.textContent = m; status.style.color = 'var(--warn)'; };
+        if (!titulo || !categoria || !problema || !solucion) return fail('Completa los campos obligatorios.');
+        if (problema.length < 40) return fail('Desarrolla más el problema (mín. 40).');
+        if (solucion.length < 60) return fail('Desarrolla más la solución (mín. 60).');
+        if (!ok) return fail('Debes aceptar las tres declaraciones.');
 
-  if (!titulo || !categoria || !problema || !solucion) return fail('Completa los campos obligatorios.');
-  if (problema.length < 40) return fail('Desarrolla más el problema (mín. 40).');
-  if (solucion.length < 60) return fail('Desarrolla más la solución (mín. 60).');
-  if (!ok) return fail('Debes aceptar las tres declaraciones.');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Enviando…';
+        status.textContent = '';
+        status.classList.remove('is-error');
 
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = 'Enviando…';
-  status.textContent = '';
+        const payload = JSON.stringify({
+          t: titulo, c: categoria, p: problema, s: solucion, a: alias, i: impacto,
+          ts: Date.now(), r: Math.random().toString(36).slice(2)
+        });
 
-  const payload = JSON.stringify({
-    t: titulo, c: categoria, p: problema, s: solucion, a: alias, i: impacto,
-    ts: Date.now(), r: Math.random().toString(36).slice(2)
-  });
+        const codigo = await generarCodigo(payload);
 
-  let codigo;
-  try { codigo = await generarCodigo(payload); }
-  catch {
-    const seg = () => Math.random().toString(36).slice(2,6).toUpperCase();
-    codigo = `KEY-${seg()}-${seg()}-${seg()}-${seg()}`;
-  }
+        /* ENVÍO REAL — descomenta cuando conectes Formspree:
+        await fetch('https://formspree.io/f/TU_ID', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ titulo, categoria, problema, solucion, alias, impacto, codigo })
+        });
+        */
 
-  // ENVÍO REAL — descomenta cuando conectes Formspree:
-  // await fetch('https://formspree.io/f/TU_ID', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-  //   body: JSON.stringify({ titulo, categoria, problema, solucion, alias, impacto, codigo })
-  // });
+        console.log('[Florecimiento Key] Propuesta:', { titulo, categoria, codigo });
 
-  console.log('[Florecimiento Key] Propuesta:', { titulo, categoria, codigo });
+        codeOut.textContent = codigo;
+        result.hidden = false;
+        submitBtn.textContent = 'Enviada';
+        status.textContent = 'Guarda tu código.';
+        status.style.color = 'var(--success)';
 
-  codeOut.textContent = codigo;
-  result.classList.add('show');
-  submitBtn.textContent = 'Enviada';
-  status.textContent = 'Guarda tu código.';
-  status.style.color = 'var(--ok)';
+        form.querySelectorAll('input, textarea, select').forEach(el => {
+          if (el.type === 'checkbox') el.checked = false;
+          else el.value = '';
+        });
+        ['cProblema', 'cSolucion', 'cImpacto'].forEach(id => {
+          const n = document.getElementById(id);
+          if (n) n.textContent = '0';
+        });
 
-  form.querySelectorAll('input, textarea, select').forEach(el => {
-    if (el.type === 'checkbox') el.checked = false;
-    else el.value = '';
-  });
-  ['cProblema','cSolucion','cImpacto'].forEach(id => document.getElementById(id).textContent = '0');
+        result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
 
-  result.scrollIntoView({ behavior: 'smooth', block: 'center' });
-});
-
-document.getElementById('copyBtn').addEventListener('click', async () => {
-  const texto = codeOut.textContent;
-  const btn = document.getElementById('copyBtn');
-  const original = btn.innerHTML;
-  try {
-    await navigator.clipboard.writeText(texto);
-    btn.textContent = '¡Copiado!';
-    setTimeout(() => btn.innerHTML = original, 1800);
-  } catch {
-    const ta = document.createElement('textarea');
-    ta.value = texto;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    btn.textContent = '¡Copiado!';
-    setTimeout(() => btn.innerHTML = original, 1800);
-  }
-});
-</script>
-
+      document.getElementById('copyBtn').addEventListener('click', async () => {
+        const texto = codeOut.textContent;
+        const btn = document.getElementById('copyBtn');
+        const original = btn.innerHTML;
+        try {
+          await navigator.clipboard.writeText(texto);
+          btn.textContent = '¡Copiado!';
+          setTimeout(() => btn.innerHTML = original, 1800);
+        } catch {
+          const ta = document.createElement('textarea');
+          ta.value = texto;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          btn.textContent = '¡Copiado!';
+          setTimeout(() => btn.innerHTML = original, 1800);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
