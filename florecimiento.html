@@ -34,26 +34,21 @@
 
   <section class="flor-hero">
     <canvas id="petals" aria-hidden="true"></canvas>
-
     <div class="container flor-hero-content">
       <div class="flor-badges">
         <span class="flor-badge">Primera edición · 2026</span>
         <span class="flor-badge flor-badge-accent">Convocatoria abierta</span>
       </div>
-
       <h1 class="flor-title">
         Florecimiento <em>Key</em>
       </h1>
       <p class="flor-hangul" aria-hidden="true">개화</p>
-
       <p class="flor-slogan">It's time to FloreSer</p>
-
       <p class="flor-lead">
         Como el maquilishuat que florece en seco y como el mugunghwa que nunca se marchita,
         las buenas ideas nacen cuando deberían rendirse. Envía la tuya. La evaluamos por
         su mérito y convertimos en proyectos las que puedan florecer.
       </p>
-
       <div class="flor-cta">
         <a href="postular.html" class="btn btn-primary">
           Enviar una idea
@@ -61,7 +56,6 @@
         </a>
         <a href="#manifiesto" class="btn btn-ghost">Por qué esta temática</a>
       </div>
-
       <ul class="flor-facts">
         <li>Postulación directa</li>
         <li>Evaluación por mérito</li>
@@ -77,31 +71,26 @@
         <p class="eyebrow">Manifiesto</p>
         <h2>Por qué convocamos así</h2>
       </header>
-
       <div class="flor-manifesto">
         <blockquote>
           "Convocamos con esta temática porque El Salvador y Corea del Sur nos enseñaron
           que florecer no es un privilegio, sino una decisión que se toma incluso en la sequía."
         </blockquote>
-
         <p>
           No usamos la cultura como decoración. Usamos el maquilishuat porque abre en la estación
           seca, cuando todo lo demás se rinde. Usamos el mugunghwa porque significa literalmente
           <em>la flor que nunca se marchita</em>. Ambos son símbolos nacionales de pueblos que
           aprendieron a florecer después de la guerra, de la diáspora, de la reconstrucción.
         </p>
-
         <p>
           Convocamos a quienes quieren florecer sin pedir permiso. Esta convocatoria no busca
           ideas perfectas: busca ideas que germinen en la adversidad.
         </p>
-
         <p>
           Las ideas se evalúan por su mérito, no por quién las envía. Cada participante recibe
           un código de autoría, y las propuestas seleccionadas pasan a implementación con
           reconocimiento a quien corresponda.
         </p>
-
         <p class="flor-sign">개화 · 두 땅, 한 꽃 · Florecimiento</p>
       </div>
     </div>
@@ -113,25 +102,21 @@
         <p class="eyebrow">Dos tierras, una flor</p>
         <h2>El puente cultural</h2>
       </header>
-
       <div class="flor-fusion">
         <div class="fusion-side">
           <h3>El Salvador</h3>
           <p><strong>Maquilishuat</strong> — árbol nacional. Florece entre febrero y abril, en plena estación seca. Sus flores rosadas caen como lluvia.</p>
           <p><strong>Flor de Izote</strong> — flor nacional. Blanca, en racimos, comestible. Belleza que también nutre.</p>
         </div>
-
         <div class="fusion-bridge" aria-hidden="true">
           <svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="20" stroke-dasharray="3 6"/><circle cx="23" cy="23" r="10"/></svg>
         </div>
-
         <div class="fusion-side">
           <h3>Corea del Sur</h3>
           <p><strong>Mugunghwa</strong> — flor nacional. Llamada 무궁화, <em>la flor que nunca se marchita</em>.</p>
           <p><strong>Beotkkot</strong> — flor de cerezo. Cae en primavera en pocos días, recordando que la belleza es breve.</p>
         </div>
       </div>
-
       <div class="flor-pairs">
         <article class="pair">
           <h4>Añil salvadoreño</h4>
@@ -159,7 +144,6 @@
         <p class="eyebrow">El proceso</p>
         <h2>Cómo funciona</h2>
       </header>
-
       <div class="grid-4">
         <article class="step">
           <span class="step-num">01</span>
@@ -182,7 +166,6 @@
           <p>Las ideas seleccionadas se publican y pasan a implementación.</p>
         </article>
       </div>
-
       <div class="legal-note" style="margin-top: 40px;">
         Cada propuesta se evalúa de forma individual. Las ideas seleccionadas se publican
         en este sitio y pasan a la etapa de implementación. La comunicación de resultados
@@ -197,7 +180,6 @@
         <p class="eyebrow">Líneas temáticas</p>
         <h2>Categorías</h2>
       </header>
-
       <ul class="categories">
         <li>Empleabilidad juvenil</li>
         <li>Educación y formación</li>
@@ -219,7 +201,6 @@
         <h2>Bases de la convocatoria</h2>
         <p class="section-lead">Al enviar tu propuesta aceptas los siguientes términos.</p>
       </header>
-
       <div class="flor-bases">
         <details open>
           <summary>1. Organizador</summary>
@@ -333,8 +314,7 @@
         <h4>Proyectos</h4>
         <a href="https://keyworkspace.github.io/windsor/">Windsor</a>
         <a href="https://keyworkspace.github.io/thenewkey/">The New Key</a>
-        <a href="https://keyworkspace.github.io/artsandculture/">Arts &amp; Culture</a>
-        <a href="https://keyworkspace.github.io/blog/">Blog</a>
+        <a href="https://keyworkspace.github.io/artsandculture/">Key Arts &amp; Culture</a>
       </div>
       <div class="footer-col">
         <h4>Legal</h4>
@@ -352,7 +332,6 @@
 
   <script src="script.js"></script>
   <script>
-    /* Pétalos flotantes — sutiles, sobre paleta fría */
     (function () {
       const c = document.getElementById('petals');
       if (!c) return;
@@ -361,11 +340,9 @@
       let w, h, items = [];
       const COLORS = ['#00E5FF', '#00B8D4', '#00E676', '#FFD600'];
       const COUNT = window.innerWidth < 720 ? 12 : 22;
-
       function resize() { w = c.width = host.offsetWidth; h = c.height = host.offsetHeight; }
       resize();
       addEventListener('resize', resize);
-
       function drawShape(ctx, size, color) {
         ctx.fillStyle = color;
         ctx.globalAlpha = 0.5;
@@ -376,7 +353,6 @@
         ctx.fill();
         ctx.globalAlpha = 1;
       }
-
       function P() { this.reset(true); }
       P.prototype.reset = function (init) {
         this.x = Math.random() * w;
